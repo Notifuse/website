@@ -1,0 +1,38 @@
+---
+// No imports needed for this static illustration
+---
+
+<div
+  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-lg mt-4 opacity-65"
+>
+  <div class="bg-gray-900 rounded-lg p-4 h-40 flex flex-col overflow-hidden">
+    <!-- Terminal Header -->
+    <div class="flex items-center gap-2 mb-3">
+      <div class="flex gap-1">
+        <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+        <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+        <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+      </div>
+      <div class="text-xs text-gray-400 ml-2">Terminal</div>
+    </div>
+
+    <!-- CURL Command -->
+    <div class="flex-1 overflow-hidden">
+      <div class="text-xs font-mono text-green-400 leading-relaxed">
+        <div class="text-gray-400">$ curl -X POST \</div>
+        <div class="ml-2 text-blue-300">
+          https://demo.notifuse.com/api/transactional.send \
+        </div>
+        <div class="ml-2 text-yellow-300">
+          -H "Authorization: Bearer YOUR_TOKEN" \
+        </div>
+        <div class="ml-2 text-purple-300">
+          -H "Content-Type: application/json" \
+        </div>
+        <div class="ml-2 text-orange-300">
+          -d '{`{ "workspace_id": "demo", "notification": { ... } }`}'
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,444 @@
+---
+import "../styles/global.css"
+import emailBuilderImage from "../assets/screenshots/email_builder.png"
+import emailBuilderZoomImage from "../assets/screenshots/email_builder_zoom.png"
+import IntegrationMarquee from "../components/IntegrationMarquee.astro"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+import FileManagerPreview from "../components/FileManagerPreview.astro"
+import ContactProfilePreview from "../components/ContactProfilePreview.astro"
+import AnalyticsPreview from "../components/AnalyticsPreview.astro"
+import ABTestingPreview from "../components/ABTestingPreview.astro"
+import TransactionalAPIPreview from "../components/TransactionalAPIPreview.astro"
+import NotificationCenterPreview from "../components/NotificationCenterPreview.astro"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Notifuse - Open-Source Newsletter & Notification Platform</title>
+    <meta
+      name="description"
+      content="The creative platform for cross-functional newsletter and notification workflows. Open-source, powerful, and built for teams."
+    />
+  </head>
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <section>
+        <div class="px-4 lg:px-8 py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Content -->
+            <div class="text-center lg:text-left">
+              <h1 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-6">
+                The open-source <span class="italic text-primary"
+                  >alternative</span
+                > to:<br />
+                <span class="text-sm lg:text-lg text-gray-600 font-normal"
+                  >Mailchimp, Brevo, Mailjet, Listmonk, Mailerlite, Klaviyo...</span
+                >
+              </h1>
+              <p class="text-lg text-black mb-10 max-w-3xl lg:max-w-none">
+                Notifuse is a modern newsletter and notification platform that
+                allows you to send newsletters and transactional emails at a
+                fraction of the cost.
+              </p>
+              <div
+                class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              >
+                <a
+                  href="#"
+                  class="bg-primary text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+                >
+                  Live Demo
+                </a>
+                <a
+                  href="#"
+                  class="border border-gray-200 text-gray-700 px-4 py-2 rounded-md text-base font-semibold hover:bg-white transition-colors"
+                >
+                  One-click Deploy
+                </a>
+              </div>
+            </div>
+
+            <!-- App Preview -->
+            <div
+              class="relative max-w-md mx-auto lg:max-w-md lg:ml-auto lg:mr-0"
+            >
+              <div class="relative">
+                <img
+                  src={emailBuilderImage.src}
+                  alt="Notifuse Dashboard Preview"
+                  class="w-full rounded-xl shadow-xl shadow-primary/25 border border-gray-200"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Integration Logos - Streaming -->
+          <IntegrationMarquee />
+        </div>
+      </section>
+
+      <!-- Features Bento Grid -->
+      <section class="border-t border-gray-200" id="features">
+        <div class="py-20">
+          <div class="px-4 lg:px-8 text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">
+              Everything you need to succeed
+            </h2>
+            <p class="text-xl text-gray-600 mx-auto">
+              Powerful features designed to help you create, send, and track
+              your newsletters with ease.
+            </p>
+          </div>
+
+          <!-- Bento Grid -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 border-t border-gray-200 overflow-hidden"
+          >
+            <!-- Row 1: 2 Big Blocks -->
+            <!-- Visual Email Builder -->
+            <div
+              class="md:col-span-2 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-6">
+                <h3 class="text-lg font-bold text-slate-900">
+                  Visual Email Builder
+                </h3>
+              </div>
+              <div class="flex flex-col md:flex-row md:items-start gap-6">
+                <div class="flex-1">
+                  <p class="text-gray-600 text-sm mb-4">
+                    Create stunning emails with our intuitive drag-and-drop
+                    editor. Build responsive layouts with <span
+                      class="text-primary font-semibold">MJML</span
+                    > components and real-time preview.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-6">
+                    Personalize emails with <span
+                      class="text-primary font-semibold">Liquid</span
+                    > templating variables like <span
+                      class="px-1.5 py-0.5 bg-orange-100 rounded font-mono text-xs"
+                      >{`{{ contact.first_name }}`}</span
+                    > and custom fields for dynamic content.
+                  </p>
+                </div>
+                <div
+                  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl w-full md:max-w-72 md:flex-shrink-0"
+                >
+                  <div class="rounded-xl overflow-hidden bg-white">
+                    <img
+                      src={emailBuilderZoomImage.src}
+                      alt="Email Builder Interface"
+                      class="w-full h-auto opacity-65"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- S3 File Manager -->
+            <div
+              class="md:col-span-1 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  S3 File Manager
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Integrated file management with <span
+                  class="text-primary font-semibold">S3</span
+                > compatible storage for images, attachments, and <span
+                  class="text-primary font-semibold">CDN</span
+                > delivery.
+              </p>
+              <FileManagerPreview />
+            </div>
+
+            <!-- Row 2: 3 Small Blocks -->
+            <!-- Contact Profiles -->
+            <div
+              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Contact Profiles
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Rich contact profiles with custom fields for advanced
+                segmentation and personalization across your campaigns.
+              </p>
+              <ContactProfilePreview />
+            </div>
+
+            <!-- Opens & Click Tracking -->
+            <div
+              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Opens & Click Tracking
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Real-time analytics with detailed open rates, click tracking,
+                and engagement metrics for campaign optimization.
+              </p>
+              <AnalyticsPreview />
+            </div>
+
+            <!-- A/B Testing -->
+            <div
+              class="md:col-span-1 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  A/B Testing
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Optimize your newsletters with built-in A/B testing for subject
+                lines, content, and send times.
+              </p>
+              <ABTestingPreview />
+            </div>
+
+            <!-- Row 3: 2 Big Blocks -->
+            <!-- Notification Center -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Notification Center
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Self-service portal for contacts to manage their subscriptions
+                and preferences.
+              </p>
+              <NotificationCenterPreview />
+            </div>
+
+            <!-- Transactional API & MJML -->
+            <div
+              class="md:col-span-2 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Transactional API
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Powerful REST API for transactional emails with responsive
+                templates for perfect rendering across all devices.
+              </p>
+              <TransactionalAPIPreview />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="border-t border-gray-200" id="pricing">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">
+              Start your journey today
+            </h2>
+            <p class="text-xl text-gray-600">
+              Start creating powerful newsletters for free.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <!-- Free Plan -->
+            <div
+              class="border border-gray-200 bg-white rounded-md p-8 hover:border-gray-200 transition-colors"
+            >
+              <div class="text-center mb-8">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">
+                  Forever Free
+                </h3>
+                <p class="text-gray-600">Open-source self-hosted solution.</p>
+              </div>
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-500 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Unlimited subscribers</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-500 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Unlimited campaigns</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-500 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">All features included</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-500 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-700">Self-hosted</span>
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="w-full bg-primary text-white py-2 px-4 rounded-md font-semibold hover:bg-primary/80 transition-colors text-center block"
+              >
+                Get Started
+              </a>
+            </div>
+
+            <!-- Support Plan -->
+            <div
+              class="bg-gray-900 border border-gray-700 rounded-md p-8 hover:border-gray-600 transition-colors"
+            >
+              <div class="text-center mb-8">
+                <h3 class="text-xl font-bold text-white mb-2">Enterprise</h3>
+                <p class="text-gray-300">With dedicated support.</p>
+              </div>
+              <ul class="space-y-4 mb-8">
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-400 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-300">Priority support</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-400 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-300">Custom implementation</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-400 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-300">Training & onboarding</span>
+                </li>
+                <li class="flex items-center">
+                  <svg
+                    class="w-5 h-5 text-green-400 mr-3"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-gray-300">SLA guarantee</span>
+                </li>
+              </ul>
+              <a
+                href="#"
+                class="w-full bg-gradient-to-r from-white to-gray-100 text-slate-900 py-2 px-4 rounded-md font-semibold hover:from-gray-100 hover:to-gray-200 transition-all text-center block"
+              >
+                Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter Subscribe Section -->
+      <section class="bg-gray-900 text-white border-t border-gray-200">
+        <div class="px-4 lg:px-8 py-20 text-center">
+          <h2 class="text-2xl font-bold mb-4">
+            Stay updated with <span class="italic text-primary">Notifuse</span>
+          </h2>
+          <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
+            Get the latest updates, feature announcements, and tips for building
+            better newsletters. Join our community of developers and marketers.
+          </p>
+          <div class="max-w-md mx-auto">
+            <form class="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                class="flex-1 px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                required
+              />
+              <button
+                type="submit"
+                class="bg-primary text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+            <p class="text-sm text-gray-400 mt-3">
+              No spam, unsubscribe at any time.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </body>
+</html>

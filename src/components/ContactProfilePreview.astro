@@ -1,0 +1,61 @@
+---
+import avatarImage from "../assets/illustrations/face.jpg"
+---
+
+<div
+  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-lg mt-4 opacity-65"
+>
+  <div class="bg-white rounded-lg p-4 h-40 flex flex-col">
+    <div class="flex items-start gap-3 flex-1">
+      <!-- Profile Photo -->
+      <div
+        class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+      >
+        <img
+          src={avatarImage.src}
+          alt="Avatar"
+          class="w-full h-full object-cover rounded-full"
+        />
+      </div>
+
+      <!-- Contact Details -->
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1">
+          <div class="font-semibold text-gray-900 text-sm">John Doe</div>
+        </div>
+
+        <p class="text-gray-600 text-xs mb-2">john.doe@example.com</p>
+
+        <!-- Custom Fields -->
+        <div class="space-y-1">
+          <div class="flex items-center gap-2 text-xs">
+            <span class="text-gray-500">Lists:</span>
+            <span
+              class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"
+            >
+              Newsletter
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Engagement Stats -->
+    <div class="mt-auto pt-3 border-t border-gray-100">
+      <div class="grid grid-cols-3 gap-2 text-center">
+        <div>
+          <div class="text-sm font-semibold text-gray-900">70%</div>
+          <div class="text-xs text-gray-500">Open Rate</div>
+        </div>
+        <div>
+          <div class="text-sm font-semibold text-gray-900">21%</div>
+          <div class="text-xs text-gray-500">Click Rate</div>
+        </div>
+        <div>
+          <div class="text-sm font-semibold text-gray-900">33</div>
+          <div class="text-xs text-gray-500">Emails Sent</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

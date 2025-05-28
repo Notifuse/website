@@ -1,0 +1,73 @@
+---
+import lotusImage from "../assets/illustrations/lotus.jpg"
+import stMichelImage from "../assets/illustrations/st_michel.jpg"
+import birdImage from "../assets/illustrations/bird.jpg"
+---
+
+<div
+  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-lg mt-4 opacity-65"
+>
+  <div class="bg-white rounded-lg p-4">
+    <!-- File thumbnails -->
+    <div class="grid grid-cols-6 gap-1 mb-3">
+      <div
+        class="aspect-square rounded-sm border-2 border-white shadow-sm overflow-hidden"
+      >
+        <img
+          src={lotusImage.src}
+          alt="Lotus"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div
+        class="aspect-square rounded-sm border-2 border-white shadow-sm overflow-hidden"
+      >
+        <img
+          src={stMichelImage.src}
+          alt="St Michel"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div
+        class="aspect-square rounded-sm border-2 border-white shadow-sm overflow-hidden"
+      >
+        <img
+          src={birdImage.src}
+          alt="Bird"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div
+        class="aspect-square bg-gray-50 border border-dashed border-gray-300 rounded-sm flex items-center justify-center"
+      >
+        <svg
+          class="w-2 h-2 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 4v16m8-8H4"></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Uploading bar -->
+    <div class="mt-2">
+      <div class="flex justify-between text-xs text-gray-500 mb-1">
+        <span>Uploading image.jpg</span>
+        <span>73%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-1">
+        <div
+          class="bg-primary h-1 rounded-full transition-all duration-300"
+          style="width: 73%"
+        >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

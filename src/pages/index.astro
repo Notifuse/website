@@ -303,9 +303,9 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             <div
               class="md:col-span-2 p-8 border-b border-gray-200 hover:bg-white transition-colors"
             >
-              <div class="grid grid-cols-2 gap-8">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Left Column: Title and Description -->
-                <div class="flex flex-col justify-center">
+                <div class="flex flex-col justify-center md:order-1">
                   <div class="mb-4 flex items-center gap-2">
                     <h3 class="text-lg font-semibold text-slate-900">
                       Automations
@@ -333,7 +333,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </div>
 
                 <!-- Right Column: Illustration -->
-                <div>
+                <div class="md:order-2">
                   <AutomationsPreview />
                 </div>
               </div>

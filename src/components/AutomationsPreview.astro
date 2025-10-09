@@ -1,0 +1,159 @@
+---
+// Automations Preview Component
+---
+
+<div
+  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-lg mt-4 opacity-65"
+>
+  <div class="bg-white rounded-lg py-6 px-4 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-3">
+      <!-- Node 1: Trigger -->
+      <div
+        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/5 border border-primary/20"
+      >
+        <div
+          class="w-5 h-5 rounded-full bg-white flex items-center justify-center flex-shrink-0"
+        >
+          <svg
+            class="w-3 h-3 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
+            ></path>
+          </svg>
+        </div>
+        <p class="text-xs font-medium text-slate-900">Subscribes</p>
+      </div>
+
+      <!-- Arrow Down -->
+      <div class="flex justify-center">
+        <svg
+          class="w-4 h-4 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+
+      <!-- Node 2: Wait -->
+      <div
+        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-yellow-50 border border-yellow-200"
+      >
+        <div
+          class="w-5 h-5 bg-white flex items-center justify-center rounded-full flex-shrink-0"
+        >
+          <svg
+            class="w-3 h-3 text-yellow-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+        </div>
+        <p class="text-xs font-medium text-slate-900">Wait 1 day</p>
+      </div>
+
+      <!-- Arrow Down -->
+      <div class="flex justify-center">
+        <svg
+          class="w-4 h-4 text-gray-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+        </svg>
+      </div>
+
+      <!-- Node 3: A/B Test -->
+      <div
+        class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-50 border border-purple-200"
+      >
+        <div
+          class="w-5 h-5 bg-white flex items-center justify-center rounded flex-shrink-0"
+        >
+          <span class="text-purple-500 text-[10px] font-bold">A/B</span>
+        </div>
+        <p class="text-xs font-medium text-slate-900">A/B Test</p>
+      </div>
+
+      <!-- Split Arrows and Actions -->
+      <div class="flex gap-2">
+        <!-- Email A -->
+        <div class="flex flex-col items-end gap-1">
+          <svg
+            class="w-3.5 h-3.5 text-gray-400 mr-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            ></svg
+          >
+          <div
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200"
+          >
+            <div
+              class="w-4 h-4 rounded bg-white flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-blue-500 text-xs font-bold">A</span>
+            </div>
+            <p class="text-xs font-medium text-slate-900">Email A</p>
+          </div>
+        </div>
+
+        <!-- Email B -->
+        <div class="flex flex-col items-start gap-1">
+          <svg
+            class="w-3.5 h-3.5 text-gray-400 ml-3"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            ></svg
+          >
+          <div
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200"
+          >
+            <div
+              class="w-4 h-4 rounded bg-white flex items-center justify-center flex-shrink-0"
+            >
+              <span class="text-green-500 text-xs font-bold">B</span>
+            </div>
+            <p class="text-xs font-medium text-slate-900">Email B</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

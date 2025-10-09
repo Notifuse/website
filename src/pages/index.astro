@@ -11,6 +11,10 @@ import AnalyticsPreview from "../components/AnalyticsPreview.astro"
 import ABTestingPreview from "../components/ABTestingPreview.astro"
 import TransactionalAPIPreview from "../components/TransactionalAPIPreview.astro"
 import NotificationCenterPreview from "../components/NotificationCenterPreview.astro"
+import SegmentationEnginePreview from "../components/SegmentationEnginePreview.astro"
+import PermissionsPreview from "../components/PermissionsPreview.astro"
+import WorkspacesPreview from "../components/WorkspacesPreview.astro"
+import AutomationsPreview from "../components/AutomationsPreview.astro"
 ---
 
 <html lang="en">
@@ -164,69 +168,21 @@ import NotificationCenterPreview from "../components/NotificationCenterPreview.a
             </div>
 
             <!-- Row 2: 3 Small Blocks -->
-            <!-- Contact Profiles -->
+            <!-- Contact Profiles & Activity Timeline -->
             <div
-              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+              class="md:col-span-1 md:row-span-2 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Contact Profiles
+                  Contact Profiles & Timeline
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Rich contact profiles with custom fields for advanced
-                segmentation and personalization across your campaigns.
+                Rich contact profiles with custom fields and complete activity
+                history including messages, profile changes, webhook events, and
+                subscription list changes.
               </p>
               <ContactProfilePreview />
-            </div>
-
-            <!-- Opens & Click Tracking -->
-            <div
-              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
-            >
-              <div class="mb-4">
-                <h3 class="text-lg font-semibold text-slate-900">
-                  Opens & Click Tracking
-                </h3>
-              </div>
-              <p class="text-gray-600 text-sm mb-6">
-                Real-time analytics with detailed open rates, click tracking,
-                and engagement metrics for campaign optimization.
-              </p>
-              <AnalyticsPreview />
-            </div>
-
-            <!-- A/B Testing -->
-            <div
-              class="md:col-span-1 p-8 border-b border-gray-200 hover:bg-white transition-colors"
-            >
-              <div class="mb-4">
-                <h3 class="text-lg font-semibold text-slate-900">
-                  A/B Testing
-                </h3>
-              </div>
-              <p class="text-gray-600 text-sm mb-6">
-                Optimize your newsletters with built-in A/B testing for subject
-                lines, content, and send times.
-              </p>
-              <ABTestingPreview />
-            </div>
-
-            <!-- Row 3: 2 Big Blocks -->
-            <!-- Notification Center -->
-            <div
-              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
-            >
-              <div class="mb-4">
-                <h3 class="text-lg font-semibold text-slate-900">
-                  Notification Center
-                </h3>
-              </div>
-              <p class="text-gray-600 text-sm mb-6">
-                Self-service portal for contacts to manage their subscriptions
-                and preferences.
-              </p>
-              <NotificationCenterPreview />
             </div>
 
             <!-- Transactional API & MJML -->
@@ -243,6 +199,144 @@ import NotificationCenterPreview from "../components/NotificationCenterPreview.a
                 templates for perfect rendering across all devices.
               </p>
               <TransactionalAPIPreview />
+            </div>
+
+            <!-- Row 3: Opens & Click Tracking -->
+            <!-- Opens & Click Tracking -->
+            <div
+              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Opens & Click Tracking
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Real-time analytics with detailed open rates, click tracking,
+                and engagement metrics for campaign optimization.
+              </p>
+              <AnalyticsPreview />
+            </div>
+
+            <!-- Notification Center -->
+            <div
+              class="md:col-span-1 p-8 border-r border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Notification Center
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Self-service portal for contacts to manage subscriptions,
+                preferences, and communication settings.
+              </p>
+              <NotificationCenterPreview />
+            </div>
+
+            <!-- A/B Testing -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  A/B Testing
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Optimize your newsletters with built-in A/B testing for subject
+                lines, content, and send times.
+              </p>
+              <ABTestingPreview />
+            </div>
+
+            <!-- Row 4: Segmentation Engine -->
+            <!-- Real-time Segmentation -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Real-time Segmentation
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Segment contacts by property, activity, and subscription. Build
+                dynamic rules with relative dates for targeted campaigns.
+              </p>
+              <SegmentationEnginePreview />
+            </div>
+
+            <!-- Row 5: Permissions + Workspaces + Automations -->
+            <!-- User Permissions -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  User Permissions
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Granular workspace-level access control with multiple roles.
+                Perfect for team collaboration and security.
+              </p>
+              <PermissionsPreview />
+            </div>
+
+            <!-- Workspaces -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">Workspaces</h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-6">
+                Multi-tenant architecture with custom domains. Each workspace
+                has isolated data, contacts, and campaigns. Perfect for
+                agencies.
+              </p>
+              <WorkspacesPreview />
+            </div>
+
+            <!-- Automations - Coming Soon -->
+            <div
+              class="md:col-span-2 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="grid grid-cols-2 gap-8">
+                <!-- Left Column: Title and Description -->
+                <div class="flex flex-col justify-center">
+                  <div class="mb-4 flex items-center gap-2">
+                    <h3 class="text-lg font-semibold text-slate-900">
+                      Automations
+                    </h3>
+                    <span
+                      class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-semibold rounded"
+                    >
+                      Coming Soon
+                    </span>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Event-driven workflows built on contact timeline. Create
+                    automated sequences based on subscriber behavior and
+                    actions.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Trigger emails, wait periods, conditions, and A/B tests in
+                    multi-step flows. Perfect for welcome series, onboarding,
+                    and re-engagement campaigns.
+                  </p>
+                  <p class="text-gray-600 text-sm">
+                    Design complex journeys with visual workflow builder and
+                    automatic execution.
+                  </p>
+                </div>
+
+                <!-- Right Column: Illustration -->
+                <div>
+                  <AutomationsPreview />
+                </div>
+              </div>
             </div>
           </div>
         </div>

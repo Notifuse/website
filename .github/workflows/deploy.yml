@@ -26,7 +26,7 @@ jobs:
         run: npm run build
       
       - name: Create service account file
-        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > $HOME/gcloud-service-key.json
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > ${{ github.workspace }}/gcloud-service-key.json
       
       - name: Deploy to Firebase
         run: |

@@ -1,0 +1,49 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!-- 2-Column Layout: Sidebar + Content -->
+<div class="flex">
+  <!-- Sidebar - Table of Contents (Desktop only) -->
+  <aside
+    id="toc-sidebar"
+    class="hidden lg:block lg:w-64 border-r border-gray-200 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto"
+  >
+    <slot name="toc" />
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 min-w-0">
+    <slot />
+  </main>
+</div>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar for sidebar */
+  #toc-sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  #toc-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  #toc-sidebar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+
+  #toc-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+</style>
+

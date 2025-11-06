@@ -1,0 +1,500 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+
+// Import competitor logos
+import listmonkLogo from "../../assets/competitors/listmonk-logo.png"
+import resendLogo from "../../assets/competitors/resend-logo.png"
+import mailchimpLogo from "../../assets/competitors/mailchimp-logo.png"
+import loopsLogo from "../../assets/competitors/loops-logo.png"
+import customerioLogo from "../../assets/competitors/customerio-logo.png"
+import klaviyoLogo from "../../assets/competitors/klaviyo-logo.png"
+import mailerliteLogo from "../../assets/competitors/mailerlite-logo.png"
+import brevoLogo from "../../assets/competitors/brevo-logo.png"
+
+// Comparison alternatives data
+const alternatives = [
+  {
+    name: "Listmonk",
+    slug: "listmonk",
+    description: "Self-hosted mailing list manager",
+    logo: listmonkLogo,
+    available: true,
+  },
+  {
+    name: "Resend",
+    slug: "resend",
+    description: "Email API built for developers",
+    logo: resendLogo,
+    available: false,
+  },
+  {
+    name: "Mailchimp",
+    slug: "mailchimp",
+    description: "Popular email marketing platform",
+    logo: mailchimpLogo,
+    available: false,
+  },
+  {
+    name: "Loops",
+    slug: "loops",
+    description: "Email platform designed for SaaS",
+    logo: loopsLogo,
+    available: false,
+  },
+  {
+    name: "Customer.io",
+    slug: "customerio",
+    description: "Automated messaging platform",
+    logo: customerioLogo,
+    available: false,
+  },
+  {
+    name: "Klaviyo",
+    slug: "klaviyo",
+    description: "Marketing automation for ecommerce",
+    logo: klaviyoLogo,
+    available: false,
+  },
+  {
+    name: "MailerLite",
+    slug: "mailerlite",
+    description: "Email marketing platform",
+    logo: mailerliteLogo,
+    available: false,
+  },
+  {
+    name: "Brevo",
+    slug: "brevo",
+    description: "Digital marketing platform",
+    logo: brevoLogo,
+    available: false,
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Notifuse Alternatives Comparison - vs Listmonk, Mailchimp, Brevo & More
+    </title>
+    <meta
+      name="description"
+      content="Compare Notifuse with popular email platforms like Listmonk, Mailchimp, Brevo, SendGrid, Mailgun, and more. Find the best self-hosted email solution for your needs."
+    />
+    <link rel="canonical" href="https://notifuse.com/compare" />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="keywords"
+      content="Notifuse alternatives, email platform comparison, Listmonk alternative, Mailchimp alternative, self-hosted email, open source newsletter"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/compare" />
+    <meta property="og:title" content="Notifuse Alternatives Comparison" />
+    <meta
+      property="og:description"
+      content="Compare Notifuse with popular email platforms like Listmonk, Mailchimp, Brevo, SendGrid, and more."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse Alternatives Comparison" />
+    <meta
+      name="twitter:description"
+      content="Compare Notifuse with popular email platforms."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              Compare
+              <span
+                class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent"
+              >
+                Notifuse
+              </span>
+              <span class="text-slate-900"> with Alternatives</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+              See how Notifuse stacks up against other email platforms.
+              Self-hosted, cloud-based, open-source, or proprietary—find the
+              right comparison for your needs.
+            </p>
+
+            <!-- Newsletter Signup CTA -->
+            <div class="max-w-md mx-auto">
+              <p class="text-sm text-gray-600 mb-4">
+                Get notified when new features are added
+              </p>
+              <form
+                id="newsletter-form-hero"
+                class="flex flex-col sm:flex-row gap-3"
+              >
+                <input
+                  id="email-input-hero"
+                  type="email"
+                  placeholder="Enter your email"
+                  class="flex-1 px-4 py-2.5 rounded-md border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+                <button
+                  id="subscribe-btn-hero"
+                  type="submit"
+                  class="bg-primary text-white px-6 py-2.5 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Subscribe to newsletter
+                </button>
+              </form>
+              <div id="form-message-hero" class="mt-3 text-sm"></div>
+              <p class="text-xs text-gray-500 mt-2">
+                No spam. Unsubscribe anytime.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Grid -->
+      <section class="border-b border-gray-200">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-gray-200"
+        >
+          {
+            alternatives.map((alt, index) => (
+              <a
+                href={alt.available ? `/compare/notifuse-vs-${alt.slug}` : "#"}
+                class={`relative p-8 border-r border-b border-gray-200 transition-colors ${
+                  alt.available
+                    ? "hover:bg-white cursor-pointer"
+                    : "cursor-not-allowed opacity-60"
+                }`}
+              >
+                {!alt.available && (
+                  <div class="absolute top-4 right-4">
+                    <span class="text-xs bg-gray-600 text-white px-2 py-1">
+                      Coming Soon
+                    </span>
+                  </div>
+                )}
+
+                <div class="mb-6">
+                  <img
+                    src={alt.logo.src}
+                    alt={`${alt.name} logo`}
+                    class="h-8 mb-4"
+                  />
+                  <h3 class="text-lg font-bold text-slate-900 mb-2">
+                    Notifuse vs {alt.name}
+                  </h3>
+                </div>
+
+                <p class="text-sm text-gray-600 mb-6">{alt.description}</p>
+
+                {alt.available ? (
+                  <div class="flex items-center text-primary text-sm font-semibold">
+                    View Comparison
+                    <svg
+                      class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div class="text-sm text-gray-400">
+                    Comparison coming soon
+                  </div>
+                )}
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      <!-- Why Compare Section -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-16">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">
+              Why Compare Email Platforms?
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900 mb-2">
+                    Make Informed Decisions
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Understand the differences in features, pricing, and
+                    capabilities before choosing your email platform.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900 mb-2">Save Money</h3>
+                  <p class="text-sm text-gray-600">
+                    See how self-hosted solutions like Notifuse compare to
+                    expensive cloud platforms and calculate your savings.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900 mb-2">
+                    Find the Right Features
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Discover which platform has the visual builders, APIs,
+                    segmentation, and automation features you need.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start">
+                <div
+                  class="w-12 h-12 bg-primary/10 flex items-center justify-center mr-4 flex-shrink-0"
+                >
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    ></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-semibold text-slate-900 mb-2">
+                    Own Your Data
+                  </h3>
+                  <p class="text-sm text-gray-600">
+                    Learn about self-hosted vs cloud solutions and take control
+                    of your email data and infrastructure.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-16">
+          <div
+            class="max-w-3xl mx-auto bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 text-center"
+          >
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">
+              Ready to Try Notifuse?
+            </h2>
+            <p class="text-gray-600 mb-6">
+              Experience the modern, self-hosted email platform with advanced
+              features for developers and marketers.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Try Live Demo
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
+              >
+                Deploy Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById(
+          "newsletter-form-hero"
+        ) as HTMLFormElement
+        const emailInput = document.getElementById(
+          "email-input-hero"
+        ) as HTMLInputElement
+        const submitBtn = document.getElementById(
+          "subscribe-btn-hero"
+        ) as HTMLButtonElement
+        const messageDiv = document.getElementById(
+          "form-message-hero"
+        ) as HTMLDivElement
+
+        function showMessage(message: string, isError: boolean = false): void {
+          if (messageDiv) {
+            messageDiv.textContent = message
+            messageDiv.className = `mt-3 text-sm ${isError ? "text-red-400" : "text-green-400"}`
+          }
+        }
+
+        function setLoading(loading: boolean): void {
+          if (submitBtn) {
+            submitBtn.disabled = loading
+            submitBtn.textContent = loading
+              ? "Subscribing..."
+              : "Subscribe to newsletter"
+          }
+        }
+
+        if (form && emailInput && submitBtn && messageDiv) {
+          form.addEventListener("submit", async function (e) {
+            e.preventDefault()
+
+            const email = emailInput.value.trim()
+            if (!email) {
+              showMessage("Please enter a valid email address.", true)
+              return
+            }
+
+            setLoading(true)
+            messageDiv.textContent = ""
+
+            try {
+              const response = await fetch(
+                "https://v3.notifuse.com/subscribe",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    workspace_id: "notifuse",
+                    contact: {
+                      email: email,
+                    },
+                    list_ids: ["newsletter"],
+                  }),
+                }
+              )
+
+              if (response.ok) {
+                const data = await response.json()
+                if (data.success) {
+                  showMessage(
+                    "Successfully subscribed! Check your email for confirmation."
+                  )
+                  emailInput.value = ""
+                } else {
+                  showMessage("Subscription failed. Please try again.", true)
+                }
+              } else {
+                const errorData = await response.json().catch(() => ({}))
+                const errorMessage =
+                  errorData.message || "Subscription failed. Please try again."
+                showMessage(errorMessage, true)
+              }
+            } catch (error) {
+              console.error("Subscription error:", error)
+              showMessage(
+                "Network error. Please check your connection and try again.",
+                true
+              )
+            } finally {
+              setLoading(false)
+            }
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

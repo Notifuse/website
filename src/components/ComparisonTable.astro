@@ -1,0 +1,110 @@
+---
+interface FeatureRow {
+  feature: string;
+  notifuse: boolean | string;
+  competitor: boolean | string;
+  description?: string;
+  tooltip?: string;
+}
+
+interface Props {
+  title: string;
+  features: FeatureRow[];
+  competitorName: string;
+}
+
+const { title, features, competitorName } = Astro.props;
+
+// Helper to render cell content
+function renderCell(value: boolean | string) {
+  if (typeof value === "boolean") {
+    return value
+      ? '<svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>'
+      : '<svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>';
+  }
+  return `<span class="text-sm">${value}</span>`;
+}
+---
+
+<div class="mb-6">
+  <h3 class="text-lg font-semibold text-slate-900 mb-4">{title}</h3>
+  <div class="overflow-x-auto border border-gray-200 rounded-lg">
+    <table class="w-full">
+      <thead class="bg-gray-50 border-b border-gray-200">
+        <tr>
+          <th class="text-left py-3 px-4 font-semibold text-sm text-slate-900">
+            Feature
+          </th>
+          <th
+            class="text-left py-3 px-4 font-semibold text-sm text-slate-900"
+          >
+            Notifuse
+          </th>
+          <th
+            class="text-left py-3 px-4 font-semibold text-sm text-slate-900"
+          >
+            {competitorName}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          features.map((row, index) => (
+            <tr
+              class={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
+                index === features.length - 1 ? "border-b-0" : ""
+              }`}
+            >
+              <td class="py-3 px-4 align-top">
+                <div>
+                  <div class="font-medium text-gray-900 text-sm flex items-center gap-1">
+                    {row.feature}
+                    {row.tooltip && (
+                      <div class="relative inline-block tooltip-container">
+                        <svg
+                          class="w-4 h-4 text-gray-400 cursor-help"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <div class="tooltip-text absolute left-0 bottom-full mb-2 hidden w-64 bg-gray-900 text-white text-xs rounded p-2 z-10">
+                          {row.tooltip}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  {row.description && (
+                    <div class="text-xs text-gray-500 mt-1">
+                      {row.description}
+                    </div>
+                  )}
+                </div>
+              </td>
+              <td
+                class="py-3 px-4 text-left align-top"
+                set:html={renderCell(row.notifuse)}
+              />
+              <td
+                class="py-3 px-4 text-left align-top"
+                set:html={renderCell(row.competitor)}
+              />
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<style>
+  .tooltip-container:hover .tooltip-text {
+    display: block;
+  }
+</style>

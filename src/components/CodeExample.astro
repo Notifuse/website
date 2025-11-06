@@ -1,0 +1,54 @@
+---
+interface Props {
+  language?: string;
+  title?: string;
+}
+
+const { language = "javascript", title } = Astro.props;
+---
+
+<div class="my-6">
+  {
+    title && (
+      <div class="text-sm font-semibold text-gray-700 mb-2">{title}</div>
+    )
+  }
+  <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-700">
+    <div class="flex items-center justify-between px-4 py-2 bg-gray-800">
+      <span class="text-xs text-gray-400 font-mono">{language}</span>
+      <button
+        class="copy-btn text-xs text-gray-400 hover:text-white transition-colors"
+        data-copy-target="code-content"
+      >
+        Copy
+      </button>
+    </div>
+    <pre
+      class="p-4 overflow-x-auto text-sm"><code id="code-content" class="text-gray-100 font-mono"><slot /></code></pre>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const copyButtons = document.querySelectorAll(".copy-btn");
+
+    copyButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const codeBlock = button
+          .closest(".bg-gray-900")
+          ?.querySelector("code");
+        if (codeBlock) {
+          const code = codeBlock.textContent || "";
+          navigator.clipboard.writeText(code).then(() => {
+            const originalText = button.textContent;
+            button.textContent = "Copied!";
+            setTimeout(() => {
+              button.textContent = originalText;
+            }, 2000);
+          });
+        }
+      });
+    });
+  });
+</script>
+

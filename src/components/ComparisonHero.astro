@@ -1,0 +1,46 @@
+---
+interface Props {
+  competitor: string;
+  description: string;
+}
+
+const { competitor, description } = Astro.props;
+---
+
+<section class="border-b border-gray-200">
+  <div class="px-4 lg:px-8 py-20">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Headline with gradient accent -->
+      <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+        <span
+          class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent"
+        >
+          Notifuse
+        </span>
+        <span class="text-slate-900"> vs {competitor}</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+        {description}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+          class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+        >
+          Try Live Demo
+        </a>
+        <a
+          href="https://docs.notifuse.com/installation"
+          class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+        >
+          Deploy Now
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

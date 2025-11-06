@@ -1,0 +1,1203 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import ComparisonLayout from "../../components/ComparisonLayout.astro"
+import TableOfContents from "../../components/TableOfContents.astro"
+import ComparisonHero from "../../components/ComparisonHero.astro"
+import ProConsTable from "../../components/ProConsTable.astro"
+import ComparisonTable from "../../components/ComparisonTable.astro"
+import FeatureSection from "../../components/FeatureSection.astro"
+import ComparisonCTA from "../../components/ComparisonCTA.astro"
+import emailEditorImage from "../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../assets/screenshots/dashboard.png"
+
+// Table of Contents items
+const tocItems = [
+  { id: "overview", label: "Overview" },
+  { id: "quick-comparison", label: "Quick Comparison" },
+  { id: "email-builder", label: "Visual Email Builder" },
+  { id: "mailing-list", label: "Mailing-list Management" },
+  { id: "campaigns", label: "Campaigns" },
+  { id: "email-sending", label: "Email Sending & Deliverability" },
+  { id: "contact-management", label: "Contact Management & Segmentation" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
+  { id: "developer-api", label: "Developer Experience & API" },
+  { id: "use-cases", label: "Use Cases" },
+  { id: "why-switch", label: "Why Switch to Notifuse" },
+  { id: "faq", label: "FAQ" },
+]
+
+// Pros & Cons Summary Data
+const proConsRows = [
+  {
+    label: "Starting Price",
+    notifuse: "Free (self-hosted)",
+    competitor: "Free (self-hosted)",
+  },
+  {
+    label: "Open Source License",
+    notifuse: "AGPL-3.0",
+    competitor: "AGPL-3.0",
+  },
+  {
+    label: "Best For",
+    notifuse: "Developers & marketers needing advanced features",
+    competitor: "Simple newsletter campaigns",
+  },
+  {
+    label: "Security & Testing",
+    notifuse: ">80% test coverage, modern security practices",
+    competitor: "No automated tests, 6+ years of technical debt",
+  },
+  {
+    label: "Visual Tools",
+    notifuse: "MJML drag-and-drop editor",
+    competitor: "Basic visual editor",
+  },
+  {
+    label: "Integrations",
+    notifuse:
+      "Amazon SES, Mailgun, Postmark, Mailjet, SparkPost, S3, Supabase, SMTP",
+    competitor: "SMTP",
+  },
+  {
+    label: "Multi-tenancy",
+    notifuse: "Yes (Workspaces)",
+    competitor: "No",
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Notifuse vs Listmonk: Self-Hosted Email Platform Comparison (2025)
+    </title>
+    <meta
+      name="description"
+      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+    />
+    <link
+      rel="canonical"
+      href="https://notifuse.com/compare/notifuse-vs-listmonk"
+    />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Listmonk, Listmonk alternative, self-hosted email platform, MJML email builder, transactional email API, newsletter software comparison"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://notifuse.com/compare/notifuse-vs-listmonk"
+    />
+    <meta
+      property="og:title"
+      content="Notifuse vs Listmonk: Self-Hosted Email Platform Comparison"
+    />
+    <meta
+      property="og:description"
+      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Notifuse vs Listmonk: Self-Hosted Email Platform Comparison"
+    />
+    <meta
+      name="twitter:description"
+      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <ComparisonHero
+        competitor="Listmonk"
+        description="The core of any emailing platform comes down to two things: deliverability and a visual email builder. Notifuse connects natively to major ESPs for best deliverability and brings a modern visual email builder built on top of the MJML spec—plus advanced segmentation, multi-tenant workspaces, and powerful APIs."
+      />
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs Listmonk"
+        description="Detailed comparison of features, pricing, and use cases"
+      >
+        <!-- Table of Contents (Sidebar) -->
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Overview Section -->
+        <FeatureSection id="overview" title="Overview">
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12"
+          >
+            <div
+              class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12"
+            >
+              <h3 class="text-xl font-bold text-slate-900 mb-8">
+                The Two Core Features of Any Emailing Platform
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Deliverability
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> Native connections
+                    to major ESPs (Amazon SES, Mailgun, Postmark, Mailjet, SparkPost)
+                    for best deliverability.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Listmonk:</strong> Custom SMTP.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Visual Email Builder
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> MJML-based drag-and-drop
+                    builder with real-time preview. <strong
+                      >Guaranteed mobile-responsive across all email clients.</strong
+                    >
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Listmonk:</strong> Basic visual editor — without guarantee
+                    of mobile-responsive rendering across all email clients.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Listmonk</span> is a lightweight,
+            self-hosted newsletter manager focused on simplicity. It offers a basic
+            visual editor but lacks the MJML-based rendering guarantees and native
+            ESP integrations that modern teams need.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> is a comprehensive,
+            self-hosted email platform that combines newsletter functionality with
+            transactional email capabilities, visual MJML builder, advanced segmentation,
+            A/B testing, multi-tenancy, and robust APIs. <strong
+              >Designed to scale and compete against top closed-source
+              competitors</strong
+            >, it's built for both marketers and developers who need
+            enterprise-grade features.
+          </p>
+        </FeatureSection>
+
+        <!-- Quick Comparison Table -->
+        <FeatureSection id="quick-comparison" title="Quick Comparison" gradient>
+          <ProConsTable competitor="Listmonk" rows={proConsRows} />
+          <ComparisonCTA compact />
+        </FeatureSection>
+
+        <!-- Visual Email Builder -->
+        <FeatureSection id="email-builder" title="Visual Email Builder">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual email editors, but Notifuse's MJML-based
+            approach guarantees mobile-responsive rendering across all email
+            clients, while Listmonk's basic editor doesn't provide this
+            guarantee.
+          </p>
+
+          <ComparisonTable
+            title="Email Editor Comparison"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Visual Email Builder",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - guarantees mobile-responsive & compatible with all email clients',
+                competitor:
+                  "Basic visual editor - does not guarantee mobile-responsive or compatibility across all email clients",
+              },
+              {
+                feature: "Templating Engine",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Golang",
+                description: "Dynamic variables for personalization",
+              },
+              {
+                feature: "Built-in File Manager",
+                notifuse: "S3-compatible storage with CDN support",
+                competitor: "S3-compatible storage without CDN support",
+              },
+              {
+                feature: "Template Library",
+                notifuse: "Coming soon",
+                competitor: false,
+              },
+              {
+                feature: "Support for Test Data",
+                notifuse: true,
+                competitor: false,
+                description: "Preview emails with sample contact data",
+              },
+            ]}
+          />
+
+          <!-- Email Editor Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={emailEditorImage.src}
+                  alt="Notifuse MJML Email Builder"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - MJML Email Builder
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse's MJML-based builder guarantees that emails render
+              perfectly on all devices and email clients (Gmail, Outlook, Apple
+              Mail, etc.). Listmonk's basic visual editor doesn't provide these
+              guarantees, which can lead to rendering issues.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Mailing-list Management -->
+        <FeatureSection id="mailing-list" title="Mailing-list Management">
+          <p class="text-gray-600 mb-6">
+            Essential features for managing subscriber lists and preferences.
+          </p>
+
+          <ComparisonTable
+            title="List Management Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Private Lists",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Double Opt-in",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Welcome Email",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Unsubscribe Email",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "List Analytics",
+                notifuse: true,
+                competitor: false,
+                description: "Active, unsubscribed, spam, complaints metrics",
+              },
+              {
+                feature: "Notification Center",
+                notifuse: true,
+                competitor: false,
+                description: "Self-service notification center for subscribers",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Campaigns -->
+        <FeatureSection id="campaigns" title="Campaigns">
+          <p class="text-gray-600 mb-6">
+            Compare newsletter and broadcast campaign features between both
+            platforms.
+          </p>
+
+          <ComparisonTable
+            title="Campaign Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Send to Multiple Lists",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Filter by Contact Segments",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "A/B Testing with Auto Winner Selection",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Automatically send winning variant to remaining contacts",
+              },
+              {
+                feature: "UTM Tracking Parameters",
+                notifuse: true,
+                competitor: false,
+                description: "Measure campaign performance with UTM tags",
+              },
+              {
+                feature: "Campaign Analytics",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Schedule in Specific Timezone",
+                notifuse: true,
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Contact Management & Segmentation -->
+        <FeatureSection
+          id="contact-management"
+          title="Contact Management & Segmentation"
+        >
+          <p class="text-gray-600 mb-6">
+            Notifuse shines with advanced contact management and powerful
+            segmentation capabilities.
+          </p>
+
+          <ComparisonTable
+            title="Contact & Segmentation Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Custom Contact Fields",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Activity Timeline",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Complete history of emails, opens, clicks, and profile changes",
+              },
+              {
+                feature: "Dynamic Segments",
+                notifuse: true,
+                competitor: false,
+                description: "Auto-update based on rules and conditions",
+              },
+              {
+                feature: "Relative Date Filters",
+                notifuse: true,
+                competitor: false,
+                description: 'E.g., "subscribed in the last 30 days"',
+              },
+            ]}
+          />
+
+          <!-- Contact Profile Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={contactProfileImage.src}
+                  alt="Notifuse Contact Profile with Activity Timeline"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Contact Profile with Activity Timeline
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Email Sending & Deliverability -->
+        <FeatureSection
+          id="email-sending"
+          title="Email Sending & Deliverability"
+        >
+          <p class="text-gray-600 mb-6">
+            Both platforms support SMTP integration, but Notifuse offers more
+            flexibility and better deliverability monitoring.
+          </p>
+
+          <ComparisonTable
+            title="Email Delivery Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "SMTP Integration",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: true,
+                competitor: false,
+                tooltip:
+                  "Built-in SMTP server that accepts standard SMTP connections for sending transactional emails - perfect for legacy integrations.",
+              },
+              {
+                feature: "Native Integrations",
+                notifuse: "Amazon SES, Mailgun, Postmark, Mailjet, SparkPost",
+                competitor: false,
+              },
+              {
+                feature: "Opens/Clicks Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Delivery Webhooks",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Spam Webhooks",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Complaint Webhooks",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Unsubscribe Webhooks",
+                notifuse: true,
+                competitor: false,
+              },
+            ]}
+          />
+
+          <ComparisonCTA
+            title="Need reliable email delivery?"
+            description="Try Notifuse with your preferred SMTP provider and see the difference."
+            compact
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Track campaign performance and engagement with detailed analytics.
+          </p>
+
+          <ComparisonTable
+            title="Analytics Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Open Rate Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Click Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Complaint Tracking",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Unsubscribe Tracking",
+                notifuse: true,
+                competitor: false,
+              },
+            ]}
+          />
+
+          <!-- Analytics Dashboard Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={dashboardImage.src}
+                  alt="Notifuse Analytics Dashboard"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Analytics Dashboard
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Multi-tenancy & Agency -->
+        <FeatureSection id="multi-tenancy" title="Multi-tenancy & Agency">
+          <p class="text-gray-600 mb-6">
+            Notifuse is built for agencies and SaaS platforms that need complete
+            workspace isolation.
+          </p>
+
+          <ComparisonTable
+            title="Multi-tenancy & Agency Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Database Isolation & custom domain per workspace",
+                competitor: false,
+                description:
+                  "Isolated environments for multiple brands or clients",
+              },
+              {
+                feature: "User Permissions",
+                notifuse: true,
+                competitor: true,
+                description: "Granular access control for team collaboration",
+              },
+            ]}
+          />
+
+          <div
+            class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Perfect for Agencies
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse's workspace feature makes it ideal for agencies managing
+              multiple clients. Each client gets their own isolated environment
+              with custom domains, separate contacts, and dedicated API keys—all
+              from one installation.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Developer Experience & API -->
+        <FeatureSection id="developer-api" title="Developer Experience & API">
+          <p class="text-gray-600 mb-6">
+            For developers building SaaS applications, API quality and developer
+            experience are crucial.
+          </p>
+
+          <ComparisonTable
+            title="API & Developer Tools"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "RESTful API",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Transactional Email API",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Dev/Test environment",
+                notifuse: "Workspace-based environments",
+                competitor: false,
+              },
+              {
+                feature: "OpenAPI Specification",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Full API documentation in OpenAPI format - useful for AI integrations and code generation",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Built-in SMTP server that accepts standard SMTP connections for sending transactional emails - perfect for legacy integrations.",
+              },
+              {
+                feature: "Observability & Monitoring",
+                notifuse: "Messages & Webhooks history. OpenTelemetry tracing.",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Developer Advantage
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Built for developers who need production-ready email
+              infrastructure. OpenAPI specification, SMTP relay for legacy
+              integrations, workspace-based dev/test environments, and
+              comprehensive transactional API—everything you need to ship fast
+              and scale confidently.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Use Cases -->
+        <FeatureSection id="use-cases" title="When to Choose Each Platform">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choose Notifuse -->
+            <div
+              class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Notifuse
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Notifuse is the better choice if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Are building a <strong>SaaS application</strong> that needs
+                    transactional + marketing emails</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>guaranteed mobile-responsive emails</strong> with
+                    MJML-based builder</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>advanced segmentation</strong> and A/B testing</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Are an <strong>agency</strong> managing multiple clients (workspaces)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>team collaboration</strong> with granular permissions</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Prioritize <strong>security and reliability</strong> with tested,
+                    production-ready code</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want a <strong>modern, intuitive UI</strong> with great UX</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Choose Listmonk -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Listmonk
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Listmonk might be sufficient if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Only need <strong>simple newsletter</strong> functionality</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Are comfortable writing <strong>HTML/Markdown</strong
+                    ></span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want the <strong>lightest possible</strong> resource footprint</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Don't need <strong>multi-tenancy</strong> or workspaces</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Don't require advanced features or integrations</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Prefer a <strong>minimal, no-frills</strong> approach</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Why Switch to Notifuse -->
+        <FeatureSection
+          id="why-switch"
+          title="Why Switch to Notifuse?"
+          gradient
+        >
+          <p class="text-gray-600 mb-8">
+            Notifuse is a <strong>safe bet for the future</strong>. While
+            Listmonk remains focused on basic newsletter functionality, Notifuse
+            has the ambition to compete with closed-source giants like Mailchimp
+            and Klaviyo. Teams and developers choose Notifuse when they need:
+          </p>
+
+          <div class="space-y-6">
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                MJML-Based Visual Builder
+              </h4>
+              <p class="text-gray-700 text-sm">
+                While Listmonk has a basic visual editor, Notifuse's MJML-based
+                builder guarantees mobile-responsive rendering across all email
+                clients (Gmail, Outlook, Apple Mail, Yahoo, etc.). No more
+                rendering issues or broken layouts—your emails will look perfect
+                everywhere.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Multi-Tenant Architecture
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Agencies and SaaS platforms need workspace isolation. Notifuse
+                provides complete multi-tenancy with separate databases, custom
+                domains, and API keys per workspace—something Listmonk doesn't
+                offer.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Advanced Segmentation
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Move beyond simple lists. Notifuse's dynamic segmentation with
+                real-time updates, relative dates, and complex rules lets you
+                target the right audience at the right time.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Modern Developer Experience
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Robust REST APIs, webhooks for events, better error handling,
+                and comprehensive documentation. Built for developers who are
+                building products, not just sending newsletters.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Team Collaboration
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Granular permissions, user roles, and team management. Notifuse
+                is built for teams, not just solo users.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Security & Code Quality
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Security matters when handling customer data. Notifuse has <strong
+                  >>80% test coverage</strong
+                > with comprehensive automated tests, ensuring reliability and catching
+                security issues before they reach production. Built with modern,
+                state-of-the-art technologies and security best practices—without
+                the vulnerabilities that often hide in 6+ years of legacy code and
+                technical debt.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Better Analytics & A/B Testing
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Optimize your campaigns with built-in A/B testing, detailed
+                engagement metrics, and actionable insights—not just basic open
+                rates.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8"
+          >
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">
+              Ready to upgrade from Listmonk?
+            </h4>
+            <p class="text-gray-600 text-center mb-6">
+              Migration is straightforward. Export your contacts from Listmonk
+              and import them into Notifuse in minutes.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Try Live Demo
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                View Installation Guide
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ Section -->
+        <FeatureSection id="faq" title="Frequently Asked Questions">
+          <div class="space-y-6">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How do I migrate from Listmonk to Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Migration is straightforward: Export your contacts from Listmonk
+                as CSV, then import them into Notifuse using our CSV import
+                tool. You can recreate your email templates using our visual
+                MJML builder or import your existing HTML. Check our <a
+                  href="https://docs.notifuse.com"
+                  class="text-primary hover:underline">documentation</a
+                > for a detailed migration guide.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                What does Notifuse offer that Listmonk doesn't?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Key differentiators include: Visual MJML email builder,
+                multi-tenant workspaces for agencies, advanced segmentation with
+                dynamic rules, A/B testing, team permissions, notification
+                center for subscribers, S3 file management with CDN,
+                comprehensive webhooks, and better API documentation. Notifuse
+                is designed for both marketers and developers, while Listmonk
+                focuses on simplicity.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is Notifuse harder to learn than Listmonk?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Not at all. While Notifuse has more features, it's designed with
+                excellent UX in mind. The visual MJML builder actually makes
+                email creation easier than writing HTML/Markdown in Listmonk.
+                You can start with basic features and gradually adopt advanced
+                capabilities as needed.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How do the APIs compare?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Both platforms offer REST APIs, but Notifuse provides more
+                comprehensive endpoints, better error handling, webhook support
+                for events, and workspace-level API keys. Notifuse's API is
+                designed for SaaS applications that need programmatic email
+                functionality, while Listmonk's API covers basic operations.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can I use both platforms together?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Technically yes, but it's not recommended. You'd be managing
+                separate contact lists, templates, and analytics. It's better to
+                choose the platform that matches your needs. Start with Listmonk
+                if you need simplicity, or Notifuse if you want room to grow.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How does code quality and testing compare?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse has <strong>>80% test coverage</strong> with comprehensive
+                automated tests for all critical functionality, ensuring reliability
+                and catching bugs before they reach production. The codebase is built
+                with modern, state-of-the-art technologies and best practices. Listmonk,
+                while functional, has accumulated 6+ years of technical debt and
+                lacks automated testing, which can lead to more bugs and harder maintenance
+                over time.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is there enterprise support available?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes! Notifuse offers enterprise support with priority
+                assistance, custom implementation, training, onboarding, and SLA
+                guarantees. Contact us for details. Listmonk relies on community
+                support.
+              </p>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Final CTA -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <ComparisonCTA
+                title="Ready to experience Notifuse?"
+                description="Join developers and marketers who have upgraded from Listmonk to Notifuse for advanced features and better email experiences."
+              />
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </body>
+</html>

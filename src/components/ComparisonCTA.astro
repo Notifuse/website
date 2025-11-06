@@ -1,0 +1,54 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  compact?: boolean;
+}
+
+const {
+  title = "Ready to try Notifuse?",
+  description = "Start sending beautiful emails with our modern, self-hosted platform.",
+  compact = false,
+} = Astro.props;
+---
+
+{
+  compact ? (
+    <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+      <a
+        href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+        class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+      >
+        Try Live Demo
+      </a>
+      <a
+        href="https://docs.notifuse.com/installation"
+        class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors text-center"
+      >
+        Deploy Now
+      </a>
+    </div>
+  ) : (
+    <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+      <div class="text-center max-w-2xl mx-auto">
+        <h3 class="text-2xl font-bold text-slate-900 mb-3">{title}</h3>
+        <p class="text-gray-600 mb-6">{description}</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+            class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+          >
+            Try Live Demo
+          </a>
+          <a
+            href="https://docs.notifuse.com/installation"
+            class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
+          >
+            Deploy Now
+          </a>
+        </div>
+      </div>
+    </div>
+  )
+}
+

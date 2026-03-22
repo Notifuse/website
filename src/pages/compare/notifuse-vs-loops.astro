@@ -39,7 +39,7 @@ const proConsRows = [
   {
     label: "Starting Price",
     notifuse: "Free (self-hosted)",
-    competitor: "Free tier: 3,000 emails/month",
+    competitor: "Free tier: 1,000 contacts",
   },
   {
     label: "License",
@@ -54,22 +54,22 @@ const proConsRows = [
   {
     label: "Infrastructure",
     notifuse:
-      "Multiple ESPs (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + Custom SMTP",
-    competitor: "Amazon SES only (with markup)",
+      "7 ESPs (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + Custom SMTP",
+    competitor: "Loops' own managed infrastructure",
   },
   {
-    label: "Visual Builder",
-    notifuse: "MJML drag-and-drop & code editor",
-    competitor: "None (React Email code-based only)",
+    label: "Email Editor",
+    notifuse: "MJML visual drag-and-drop + code editor",
+    competitor: "Visual block editor (no code mode)",
   },
   {
-    label: "Segmentation",
-    notifuse: "Dynamic with filters & conditions",
-    competitor: "Static buckets only",
+    label: "Contact Fields",
+    notifuse: "20 predefined + 20 custom (incl. JSON)",
+    competitor: "8 default + custom (string, number, boolean, date)",
   },
   {
-    label: "Contact Timeline",
-    notifuse: "Yes (full activity history)",
+    label: "Multi-tenancy",
+    notifuse: "Yes (Workspaces with DB isolation)",
     competitor: "No",
   },
 ]
@@ -84,20 +84,20 @@ const proConsRows = [
 
     <!-- SEO Meta Tags -->
     <title>
-      Notifuse vs Resend: Open-Source vs Closed-Source Email Platform (2026)
+      Notifuse vs Loops: Open-Source vs Cloud-Only Email Platform (2026)
     </title>
     <meta
       name="description"
-      content="Compare Notifuse and Resend for email delivery and automations. Notifuse is open-source with MJML builder, while Resend uses Amazon SES with markup pricing. Features, pricing, and use cases."
+      content="Compare Notifuse and Loops for email marketing, transactional emails, and automations. Notifuse is open-source with ESP flexibility. Loops is a managed SaaS for SaaS companies. Features, pricing, and use cases."
     />
     <link
       rel="canonical"
-      href="https://notifuse.com/compare/notifuse-vs-resend"
+      href="https://notifuse.com/compare/notifuse-vs-loops"
     />
     <meta name="theme-color" content="#FF6B35" />
     <meta
       name="keywords"
-      content="Notifuse vs Resend, Resend alternative, open-source email platform, MJML email builder, Amazon SES, React Email, email API comparison"
+      content="Notifuse vs Loops, Loops alternative, open-source email platform, SaaS email, self-hosted email, email marketing comparison"
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
@@ -105,15 +105,15 @@ const proConsRows = [
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
-      content="https://notifuse.com/compare/notifuse-vs-resend"
+      content="https://notifuse.com/compare/notifuse-vs-loops"
     />
     <meta
       property="og:title"
-      content="Notifuse vs Resend: Open-Source vs Closed-Source Email Platform"
+      content="Notifuse vs Loops: Open-Source vs Cloud-Only Email Platform"
     />
     <meta
       property="og:description"
-      content="Compare Notifuse (open-source, self-hosted) and Resend (closed-source, Amazon SES wrapper). Features, pricing, and which is better for developers and marketers."
+      content="Compare Notifuse (open-source, self-hosted) and Loops (cloud SaaS for SaaS). Features, pricing, and which is better for your team."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -124,11 +124,11 @@ const proConsRows = [
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Notifuse vs Resend: Open-Source Email Platform Comparison"
+      content="Notifuse vs Loops: Open-Source Email Platform Comparison"
     />
     <meta
       name="twitter:description"
-      content="Compare Notifuse (open-source) vs Resend (Amazon SES wrapper). Self-hosted MJML builder vs cloud React Email."
+      content="Compare Notifuse (open-source, self-hosted) vs Loops (cloud SaaS). ESP flexibility, MJML builder, multi-tenancy vs managed simplicity."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -158,13 +158,13 @@ const proConsRows = [
 
       <!-- Hero Section -->
       <ComparisonHero
-        competitor="Resend"
-        description="Notifuse is open-source with a visual MJML builder. Resend is a closed-source wrapper around Amazon SES with code-based React Email. Choose Notifuse to avoid vendor lock-in and ESP limitations."
+        competitor="Loops"
+        description="Notifuse is open-source and self-hosted with ESP flexibility and an MJML visual + code editor. Loops is a managed cloud SaaS with its own sending infrastructure. Choose Notifuse for data ownership, ESP choice, and advanced features like RFM segmentation, data feeds, and a built-in blog CMS."
       />
 
       <!-- Main Comparison Layout -->
       <ComparisonLayout
-        title="Notifuse vs Resend"
+        title="Notifuse vs Loops"
         description="Detailed comparison of features, pricing, and use cases"
       >
         <!-- Table of Contents (Sidebar) -->
@@ -186,182 +186,99 @@ const proConsRows = [
                   <div class="flex items-start mb-4">
                     <span class="text-2xl font-bold text-primary mr-3">1.</span>
                     <h4 class="font-semibold text-slate-900 mt-1">
-                      Open-Source vs Closed-Source
+                      Open-Source vs Cloud SaaS
                     </h4>
                   </div>
                   <p class="text-sm text-gray-700 mb-3">
                     <strong class="text-primary">Notifuse:</strong> AGPL-3.0 open-source,
-                    self-hosted. Full control over your code and data.
+                    self-hosted. Full data ownership, inspect and modify the code.
                   </p>
                   <p class="text-sm text-gray-500">
-                    <strong>Resend:</strong> Proprietary closed-source SaaS. Vendor
-                    lock-in with no code access.
+                    <strong>Loops:</strong> Managed cloud SaaS—easier setup, but
+                    proprietary with no code access.
                   </p>
                 </div>
                 <div>
                   <div class="flex items-start mb-4">
                     <span class="text-2xl font-bold text-primary mr-3">2.</span>
                     <h4 class="font-semibold text-slate-900 mt-1">
-                      Visual Builder vs Code-Based
+                      ESP Flexibility vs Managed Infrastructure
                     </h4>
                   </div>
                   <p class="text-sm text-gray-700 mb-3">
-                    <strong class="text-primary">Notifuse:</strong> MJML visual drag-and-drop
-                    builder. No coding required.
+                    <strong class="text-primary">Notifuse:</strong> Choose any ESP, use
+                    different providers for transactional vs marketing, switch anytime.
                   </p>
                   <p class="text-sm text-gray-500">
-                    <strong>Resend:</strong> React Email only. Requires coding every
-                    email template.
+                    <strong>Loops:</strong> Managed sending infrastructure with built-in
+                    deliverability tools—simpler but no ESP choice.
                   </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Critical: Amazon SES Callout -->
-          <div
-            class="bg-gradient-to-br from-gray-200 via-gray-200 to-red-400 p-px rounded-xl mb-8"
-          >
-            <div
-              class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-8"
-            >
-              <div class="flex items-start">
-                <svg
-                  class="w-8 h-8 text-red-500 mr-4 flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                  ></path>
-                </svg>
-                <div>
-                  <h4 class="font-bold text-slate-900 mb-2 text-lg">
-                    Resend Uses Amazon SES Under the Hood
-                  </h4>
-                  <p class="text-gray-700 text-sm mb-3">
-                    Resend is built on top of Amazon SES and adds a pricing
-                    markup. With Notifuse, you can:
-                  </p>
-                  <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex items-start">
-                      <svg
-                        class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      <span
-                        >Connect <strong>directly to Amazon SES</strong> (same infrastructure,
-                        no markup)</span
-                      >
-                    </li>
-                    <li class="flex items-start">
-                      <svg
-                        class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      <span
-                        ><strong>Not tied to one ESP:</strong> Use Amazon SES, Mailgun,
-                        Postmark, or any custom SMTP server</span
-                      >
-                    </li>
-                    <li class="flex items-start">
-                      <svg
-                        class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      <span
-                        ><strong>Customize sending rate limits</strong> (Resend doesn't
-                        allow this)</span
-                      >
-                    </li>
-                    <li class="flex items-start">
-                      <svg
-                        class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"></path>
-                      </svg>
-                      <span
-                        >Pay <strong>only AWS costs</strong> (~$1 per 10,000 emails)</span
-                      >
-                    </li>
-                  </ul>
                 </div>
               </div>
             </div>
           </div>
 
           <p class="text-gray-600 mb-6">
-            <span class="font-semibold text-slate-900">Resend</span> is a developer-first,
-            cloud-based email API built on Amazon SES. It's focused on simplicity
-            with React Email templates but is proprietary, cloud-only, and charges
-            a markup on Amazon SES infrastructure.
+            <span class="font-semibold text-slate-900">Loops</span> is a cloud-only
+            email platform "built for SaaS" with visual automations, campaigns,
+            transactional emails, and 20+ native integrations (Stripe, Clerk, Zapier).
+            It manages sending infrastructure for you but locks you to its own system.
           </p>
           <p class="text-gray-600 mb-6">
             <span class="font-semibold text-slate-900">Notifuse</span> is an open-source,
-            self-hosted email platform with a visual MJML builder, advanced segmentation,
-            multi-tenancy, and flexible ESP connections. <strong
-              >Not tied to any single ESP</strong
-            >—use Amazon SES, Mailgun, Postmark, SendGrid, or mix different ESPs for
-            transactional vs marketing emails.
+            self-hosted email platform with a visual MJML builder + code editor, advanced
+            segmentation with RFM analysis, multi-tenancy, and flexible ESP connections.
+            <strong>Choose your own ESP</strong>—Amazon SES, Mailgun, Postmark, SendGrid,
+            or mix providers for different email types.
           </p>
         </FeatureSection>
 
         <!-- Quick Comparison Table -->
         <FeatureSection id="quick-comparison" title="Quick Comparison" gradient>
-          <ProConsTable competitor="Resend" rows={proConsRows} />
+          <ProConsTable competitor="Loops" rows={proConsRows} />
           <ComparisonCTA compact />
         </FeatureSection>
 
         <!-- Email Builder -->
         <FeatureSection id="email-builder" title="Email Builder">
           <p class="text-gray-600 mb-6">
-            The biggest difference: Notifuse has a visual no-code builder, while
-            Resend requires coding every email template in React.
+            Both platforms have visual email editors, but with different philosophies.
+            Notifuse provides both visual and code editing with Liquid templating. Loops
+            offers a visual-only block editor with variable substitution.
           </p>
 
           <ComparisonTable
             title="Email Builder Comparison"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Visual Email Builder",
                 notifuse:
                   '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - visual drag-and-drop & code editor, guarantees mobile-responsive & compatible with all email clients',
-                competitor: "None - React Email requires coding",
+                competitor: "Block-based document editor with slash menu and markdown support",
+              },
+              {
+                feature: "Code Editor / Raw HTML",
+                notifuse: "MJML code mode alongside visual editor",
+                competitor: false,
+                description: "Loops is visual-only by design — no code editing",
               },
               {
                 feature: "Templating Engine",
                 notifuse:
-                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
-                competitor: "React/JSX",
-                description: "Dynamic variables for personalization",
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a> (if/else, loops, 20+ filters)',
+                competitor: "Variable substitution ({propertyName}) with fallbacks",
+              },
+              {
+                feature: "Conditional Content",
+                notifuse: "Liquid if/else/unless blocks",
+                competitor: false,
+                description: "Show/hide content based on contact data",
+              },
+              {
+                feature: "Reusable Components",
+                notifuse: "Coming soon",
+                competitor: "Yes (sync changes across all emails)",
               },
               {
                 feature: "Built-in File Manager",
@@ -369,21 +286,24 @@ const proConsRows = [
                 competitor: false,
               },
               {
-                feature: "Template Library",
-                notifuse: "Coming soon",
-                competitor: "React Email templates",
+                feature: "MJML Import",
+                notifuse: "Native",
+                competitor: "Yes (upload zip)",
               },
               {
-                feature: "MJML Code Editor",
-                notifuse: "Direct MJML code editing alongside visual drag-and-drop",
+                feature: "AI Content Generation",
+                notifuse: "Claude AI integration for content & subject lines",
                 competitor: false,
-                description: "Switch between visual and code modes",
               },
               {
-                feature: "Support for Test Data",
-                notifuse: true,
-                competitor: false,
-                description: "Preview emails with sample contact data",
+                feature: "Email Translation",
+                notifuse: "Translations for configured languages",
+                competitor: "Automatic email translation",
+              },
+              {
+                feature: "Pre-send Validation",
+                notifuse: false,
+                competitor: "Guardian (checks variables, links, fallbacks)",
               },
             ]}
           />
@@ -402,17 +322,17 @@ const proConsRows = [
               </div>
             </div>
             <p class="text-center text-xs text-gray-500 mt-2">
-              Notifuse UI - MJML Visual Email Builder (No Coding Required)
+              Notifuse UI - MJML Visual Email Builder with Code Editor
             </p>
           </div>
 
           <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
-            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <h4 class="font-semibold text-slate-900 mb-2">Visual + Code Control</h4>
             <p class="text-gray-700 text-sm">
-              With Notifuse, non-technical team members can create emails using
-              the visual MJML builder. Resend requires developers to code every
-              email template in React, making it unsuitable for teams with
-              marketers or non-technical staff.
+              Notifuse gives developers and marketers full control with both visual
+              and code editing, plus Liquid conditional logic for dynamic content.
+              Loops' visual-only approach is simpler but limits
+              customization—no conditional content blocks, no raw HTML access.
             </p>
           </div>
         </FeatureSection>
@@ -420,50 +340,38 @@ const proConsRows = [
         <!-- Mailing-list Management -->
         <FeatureSection id="mailing-list" title="Mailing-list Management">
           <p class="text-gray-600 mb-6">
-            Both platforms support audience management, but with different
-            capabilities. Note: Resend calls mailing lists "Topics".
+            Both platforms support mailing lists with public/private visibility
+            and subscription management.
           </p>
 
           <ComparisonTable
             title="List Management Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Mailing Lists",
-                notifuse: "Lists with full features",
-                competitor: "Topics (Resend's terminology)",
-              },
-              {
-                feature: "Private Lists",
-                notifuse: true,
-                competitor: true,
+                notifuse: "Full-featured (public/private)",
+                competitor: "Yes (public/private)",
               },
               {
                 feature: "Double Opt-in",
                 notifuse: true,
-                competitor: false,
+                competitor: "Yes (forms only)",
               },
               {
-                feature: "Welcome Email",
-                notifuse: true,
-                competitor: false,
+                feature: "Subscription Management",
+                notifuse: "Notification Center (10+ languages)",
+                competitor: "Preference Center (auto-generated)",
               },
               {
-                feature: "Unsubscribe Email",
+                feature: "Auto Welcome/Unsubscribe Emails",
                 notifuse: true,
-                competitor: false,
+                competitor: true,
               },
               {
-                feature: "List Analytics",
-                notifuse: true,
-                competitor: false,
-                description: "Active, unsubscribed, spam, complaints metrics",
-              },
-              {
-                feature: "Notification Center",
-                notifuse: true,
-                competitor: false,
-                description: "Self-service notification center for subscribers",
+                feature: "Contact Statuses",
+                notifuse: "Active, Pending, Unsubscribed, Bounced, Complained",
+                competitor: "Subscribed, Unsubscribed, Pending",
               },
             ]}
           />
@@ -472,13 +380,14 @@ const proConsRows = [
         <!-- Campaigns -->
         <FeatureSection id="campaigns" title="Campaigns">
           <p class="text-gray-600 mb-6">
-            Both platforms support broadcast campaigns, but Notifuse offers
-            significantly more features.
+            Both platforms support broadcast campaigns with scheduling and
+            audience filtering. Notifuse adds A/B testing for campaigns,
+            automatic UTM parameters, and data feeds.
           </p>
 
           <ComparisonTable
             title="Campaign Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Broadcast Campaigns",
@@ -486,31 +395,26 @@ const proConsRows = [
                 competitor: true,
               },
               {
-                feature: "Send to Multiple Lists",
+                feature: "A/B Testing",
+                notifuse: "Yes with auto winner selection",
+                competitor: "Not in campaigns (automations only)",
+                description: "Loops supports A/B testing only within automated workflows, not one-off campaigns",
+              },
+              {
+                feature: "Automatic UTM Parameters",
                 notifuse: true,
+                competitor: false,
+                description: "Loops requires manually adding UTM params to links",
+              },
+              {
+                feature: "Scheduled Sending",
+                notifuse: "Yes (with timezone)",
                 competitor: true,
               },
               {
-                feature: "Filter by Contact Segments",
-                notifuse: true,
-                competitor: false,
-                description:
-                  "Resend segments are static buckets without filters",
-              },
-              {
-                feature: "A/B Testing with Auto Winner Selection",
-                notifuse: true,
-                competitor: false,
-              },
-              {
-                feature: "UTM Tracking Parameters",
-                notifuse: true,
-                competitor: false,
-              },
-              {
-                feature: "Schedule in Specific Timezone",
-                notifuse: true,
-                competitor: false,
+                feature: "Segment Filtering",
+                notifuse: "Dynamic segments",
+                competitor: "Saved filters",
               },
               {
                 feature: "Global Data Feed",
@@ -523,6 +427,120 @@ const proConsRows = [
                 competitor: false,
                 description: "Personalize emails with real-time data (product recs, pricing, inventory)",
               },
+              {
+                feature: "Circuit Breaker Protection",
+                notifuse: true,
+                competitor: false,
+                description: "Automatic pause on delivery failures to protect sender reputation",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">A/B Testing for Campaigns</h4>
+            <p class="text-gray-700 text-sm">
+              A/B testing is essential for optimizing subject lines and content.
+              Notifuse lets you A/B test any campaign with automatic winner
+              selection. Loops only supports A/B testing within automations
+              (Experiments), not for one-off campaign sends.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Email Sending & Deliverability -->
+        <FeatureSection
+          id="email-sending"
+          title="Email Sending & Deliverability"
+        >
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8"
+          >
+            <div
+              class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8"
+            >
+              <h4 class="font-bold text-slate-900 mb-3 text-lg">
+                ESP Flexibility: Choose Your Provider
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-sm font-semibold text-primary mb-2">
+                    Notifuse
+                  </p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>
+                      ✓ Choose any ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet,
+                      SparkPost) + Custom SMTP
+                    </li>
+                    <li>✓ Use different ESPs for transactional vs marketing</li>
+                    <li>✓ Switch ESPs anytime without migration</li>
+                    <li>✓ Pay ESP costs directly (no markup)</li>
+                    <li>✓ No vendor lock-in</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-700 mb-2">Loops</p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>✓ Managed infrastructure (no ESP setup needed)</li>
+                    <li>✓ Built-in deliverability (DKIM, SPF, dedicated IPs)</li>
+                    <li>✓ Google Postmaster integration</li>
+                    <li>✗ No ESP choice—locked to Loops infrastructure</li>
+                    <li>✗ Can't mix providers for different email types</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ComparisonTable
+            title="Email Delivery Features"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "ESP Options",
+                notifuse:
+                  "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + Custom SMTP",
+                competitor: "Loops' managed infrastructure",
+              },
+              {
+                feature: "Separate ESPs for Email Types",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Use different ESPs for transactional vs marketing",
+              },
+              {
+                feature: "Custom Sending Domain",
+                notifuse: true,
+                competitor: "Yes (subdomain)",
+              },
+              {
+                feature: "Dedicated IPs",
+                notifuse: "Via ESP provider",
+                competitor: "Yes (built-in)",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: "Full relay server for legacy integrations",
+                competitor: "Template-based (transactional only)",
+                tooltip:
+                  "Notifuse's SMTP relay accepts standard SMTP connections. Loops' SMTP requires pre-built templates in the Loops UI.",
+              },
+              {
+                feature: "Google Postmaster Integration",
+                notifuse: false,
+                competitor: true,
+                description: "Monitor Gmail deliverability performance",
+              },
+              {
+                feature: "Opens/Clicks Tracking",
+                notifuse: true,
+                competitor: "Marketing only (disabled for transactional)",
+              },
+              {
+                feature: "Bounce/Complaint Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
             ]}
           />
         </FeatureSection>
@@ -533,37 +551,51 @@ const proConsRows = [
           title="Contact Management & Segmentation"
         >
           <p class="text-gray-600 mb-6">
-            A major difference: Notifuse has full contact activity timelines and
-            dynamic segmentation, while Resend has static segments only and no
-            activity timeline.
+            Both platforms offer contact management with activity timelines and
+            dynamic segmentation. Notifuse adds RFM analysis and JSON custom
+            fields.
           </p>
 
           <ComparisonTable
             title="Contact & Segmentation Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Custom Contact Fields",
+                notifuse: "20 predefined + 20 custom (string, number, datetime, JSON)",
+                competitor: "8 default + custom (string, number, boolean, date)",
+              },
+              {
+                feature: "JSON Custom Fields",
                 notifuse: true,
-                competitor: true,
+                competitor: false,
+                description: "Store structured data (preferences, metadata) per contact",
               },
               {
                 feature: "Activity Timeline",
                 notifuse: true,
-                competitor: false,
-                description:
-                  "Complete history of emails, opens, clicks, and profile changes",
+                competitor: true,
               },
               {
-                feature: "Segmentation Type",
-                notifuse: "Dynamic with filters & conditions",
-                competitor: "Static buckets only (no dynamic rules)",
+                feature: "Segmentation",
+                notifuse: "Dynamic with filters, AND/OR logic, activity + property conditions",
+                competitor: "Saved filters with AND/OR, property + activity conditions",
               },
               {
-                feature: "Relative Date Filters",
-                notifuse: true,
+                feature: "RFM Segmentation",
+                notifuse: "Segment by Recency, Frequency & Monetary value",
                 competitor: false,
-                description: 'E.g., "subscribed in the last 30 days"',
+                description: "Target contacts based on purchase behavior (e.g., high-value customers, at-risk churners)",
+              },
+              {
+                feature: "CSV Import",
+                notifuse: "Field mapping with progress tracking",
+                competitor: true,
+              },
+              {
+                feature: "Email Blocklist",
+                notifuse: false,
+                competitor: "Address, domain & TLD patterns",
               },
             ]}
           />
@@ -582,8 +614,7 @@ const proConsRows = [
               </div>
             </div>
             <p class="text-center text-xs text-gray-500 mt-2">
-              Notifuse UI - Contact Profile with Activity Timeline (Resend
-              doesn't have this)
+              Notifuse UI - Contact Profile with Activity Timeline
             </p>
           </div>
 
@@ -591,143 +622,30 @@ const proConsRows = [
             class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
           >
             <h4 class="font-semibold text-slate-900 mb-2">
-              Dynamic vs Static Segmentation
+              RFM Segmentation: Target by Purchase Behavior
             </h4>
             <p class="text-gray-700 text-sm">
-              Notifuse's dynamic segments automatically update based on
-              conditions and filters. Resend's segments are just static
-              buckets—you manually add/remove contacts. This means no "engaged
-              users in last 30 days" or "opened but didn't click" segments in
-              Resend.
+              Notifuse's RFM segmentation lets you segment contacts by Recency
+              (when they last purchased), Frequency (how often), and Monetary
+              value (how much they spent). This is essential for e-commerce and
+              SaaS retention—Loops doesn't offer goal-based segmentation.
             </p>
           </div>
-        </FeatureSection>
-
-        <!-- Email Sending & Deliverability -->
-        <FeatureSection
-          id="email-sending"
-          title="Email Sending & Deliverability"
-        >
-          <div
-            class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8"
-          >
-            <div
-              class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8"
-            >
-              <h4 class="font-bold text-slate-900 mb-3 text-lg">
-                ESP Flexibility: A Major Advantage
-              </h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <p class="text-sm font-semibold text-primary mb-2">
-                    Notifuse
-                  </p>
-                  <ul class="text-sm text-gray-700 space-y-1">
-                    <li>
-                      ✓ Choose any ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet,
-                      SparkPost) + Custom SMTP
-                    </li>
-                    <li>✓ Use different ESPs for transactional vs marketing</li>
-                    <li>✓ Switch ESPs anytime</li>
-                    <li>✓ Customize sending rate limits</li>
-                    <li>✓ No vendor lock-in</li>
-                  </ul>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-gray-700 mb-2">Resend</p>
-                  <ul class="text-sm text-gray-500 space-y-1">
-                    <li>✗ Locked to Amazon SES only</li>
-                    <li>✗ Can't use different ESPs</li>
-                    <li>✗ Can't switch providers</li>
-                    <li>✗ Can't customize rate limits</li>
-                    <li>✗ Vendor lock-in</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <ComparisonTable
-            title="Email Delivery Features"
-            competitorName="Resend"
-            features={[
-              {
-                feature: "ESP Options",
-                notifuse:
-                  "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + Custom SMTP",
-                competitor: "Amazon SES only (locked-in)",
-              },
-              {
-                feature: "Separate ESPs for Email Types",
-                notifuse: true,
-                competitor: false,
-                description:
-                  "Use different ESPs for transactional vs marketing",
-              },
-              {
-                feature: "Customizable Rate Limits",
-                notifuse: true,
-                competitor: false,
-              },
-              {
-                feature: "SMTP Relay",
-                notifuse: true,
-                competitor: false,
-                tooltip:
-                  "Built-in SMTP server that accepts standard SMTP connections for sending transactional emails - perfect for legacy integrations.",
-              },
-              {
-                feature: "Opens/Clicks Tracking",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Bounce Webhooks",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Delivery Webhooks",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Spam Webhooks",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Complaint Webhooks",
-                notifuse: true,
-                competitor: true,
-              },
-            ]}
-          />
         </FeatureSection>
 
         <!-- Analytics & Reporting -->
         <FeatureSection id="analytics" title="Analytics & Reporting">
           <p class="text-gray-600 mb-6">
-            Both platforms track email events, but Notifuse provides more
-            comprehensive analytics and reporting.
+            Both platforms track email engagement events. Loops adds Google
+            Postmaster integration for Gmail deliverability monitoring.
           </p>
 
           <ComparisonTable
             title="Analytics Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
-                feature: "Open Rate Tracking",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Click Tracking",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "Bounce Tracking",
+                feature: "Open/Click/Bounce Tracking",
                 notifuse: true,
                 competitor: true,
               },
@@ -737,16 +655,19 @@ const proConsRows = [
                 competitor: true,
               },
               {
-                feature: "Unsubscribe Tracking",
+                feature: "Campaign Analytics",
                 notifuse: true,
                 competitor: true,
               },
               {
                 feature: "Transactional vs Marketing Stats",
-                notifuse: true,
-                competitor: false,
-                description:
-                  "Separate analytics for transactional and broadcast campaigns",
+                notifuse: "Separate dashboards",
+                competitor: "Metrics pages",
+              },
+              {
+                feature: "Real-time Message Logs",
+                notifuse: "Live event tracking with filtering",
+                competitor: "Event logs (hourly updates)",
               },
             ]}
           />
@@ -773,13 +694,13 @@ const proConsRows = [
         <!-- Multi-tenancy & Agency -->
         <FeatureSection id="multi-tenancy" title="Multi-tenancy & Agency">
           <p class="text-gray-600 mb-6">
-            Notifuse is built for agencies and SaaS platforms. Resend has no
-            multi-tenancy.
+            Notifuse supports isolated workspaces for agencies and multi-brand
+            teams. Loops has team collaboration but no multi-tenancy.
           </p>
 
           <ComparisonTable
-            title="Multi-tenancy & Agency Features"
-            competitorName="Resend"
+            title="Multi-tenancy & Team Features"
+            competitorName="Loops"
             features={[
               {
                 feature: "Multi-tenancy",
@@ -789,10 +710,9 @@ const proConsRows = [
                   "Isolated environments for multiple brands or clients",
               },
               {
-                feature: "User Permissions",
-                notifuse: true,
-                competitor: false,
-                description: "Granular access control for team collaboration",
+                feature: "Team Roles",
+                notifuse: "Admins with API keys",
+                competitor: "Member/Owner roles, unlimited free seats",
               },
             ]}
           />
@@ -804,9 +724,10 @@ const proConsRows = [
               Perfect for Agencies
             </h4>
             <p class="text-gray-700 text-sm">
-              Notifuse's workspace feature makes it ideal for agencies managing
-              multiple clients. Each client gets their own isolated
-              environment—Resend doesn't support this.
+              Notifuse's workspace feature lets agencies manage multiple clients
+              with isolated databases, custom domains, and separate API keys.
+              Loops doesn't support multi-tenancy—you'd need separate accounts
+              for each client.
             </p>
           </div>
         </FeatureSection>
@@ -814,12 +735,14 @@ const proConsRows = [
         <!-- Developer Experience & API -->
         <FeatureSection id="developer-api" title="Developer Experience & API">
           <p class="text-gray-600 mb-6">
-            Both are developer-friendly, but with different approaches.
+            Both are developer-friendly with REST APIs and OpenAPI specs. Loops
+            offers more turnkey integrations; Notifuse provides a more extensive
+            API surface.
           </p>
 
           <ComparisonTable
             title="API & Developer Tools"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "RESTful API",
@@ -828,50 +751,52 @@ const proConsRows = [
               },
               {
                 feature: "Transactional Email API",
-                notifuse: true,
-                competitor: true,
-              },
-              {
-                feature: "React Email Support",
-                notifuse: false,
-                competitor: true,
-                description: "Code-based email templates using React",
-              },
-              {
-                feature: "Dev/Test Environment",
-                notifuse: "Workspace-based environments",
-                competitor: "Sandbox mode",
+                notifuse: "Attachments, CC/BCC, dedup via external_id",
+                competitor: "Attachments, idempotency keys",
               },
               {
                 feature: "OpenAPI Specification",
                 notifuse: true,
                 competitor: true,
-                description:
-                  "Full API documentation in OpenAPI format - useful for AI integrations and code generation",
+              },
+              {
+                feature: "Official SDKs",
+                notifuse: false,
+                competitor: "JS/TS, PHP, Ruby, Nuxt",
               },
               {
                 feature: "SMTP Relay",
-                notifuse: true,
-                competitor: false,
-                description: "Built-in SMTP server for legacy integrations",
+                notifuse: "Full relay server",
+                competitor: "Template-based (transactional only)",
+                description: "Loops SMTP requires pre-built templates; Notifuse accepts standard SMTP",
               },
               {
                 feature: "Outgoing Webhooks",
-                notifuse: true,
-                competitor: true,
+                notifuse: "26+ event types, multiple endpoints",
+                competitor: "20+ event types",
+              },
+              {
+                feature: "Native Integrations",
+                notifuse: "Supabase, Anthropic, Firecrawl",
+                competitor: "20+ (Stripe, Clerk, Segment, HubSpot, Zapier, etc.)",
+              },
+              {
+                feature: "Broadcast Management API",
+                notifuse: "Full CRUD + scheduling via API",
+                competitor: "Campaigns via UI only",
               },
             ]}
           />
 
           <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
             <h4 class="font-semibold text-slate-900 mb-2">
-              Different Developer Philosophies
+              Integrations: Turnkey vs Flexible
             </h4>
             <p class="text-gray-700 text-sm">
-              Resend is developer-first with code-based React Email
-              templates—great if you love coding emails. Notifuse serves both
-              developers AND marketers with MJML visual builder, SMTP relay,
-              OpenAPI spec, and workspace-based testing.
+              Loops offers 20+ native integrations (Stripe, Clerk, Zapier,
+              Segment, HubSpot) for quick setup. Notifuse has fewer built-in
+              integrations but provides 26+ webhook event types and a full API
+              for building custom integrations with any service.
             </p>
           </div>
         </FeatureSection>
@@ -879,49 +804,68 @@ const proConsRows = [
         <!-- Automations -->
         <FeatureSection id="automations" title="Automations">
           <p class="text-gray-600 mb-6">
-            Notifuse includes a visual automation builder for event-driven
-            workflows. Resend has no automation capabilities.
+            Both platforms include visual automation builders. Notifuse adds
+            webhook actions and list management nodes. Loops calls automations
+            "Loops" with Experiments for A/B testing.
           </p>
 
           <ComparisonTable
             title="Automation Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
-                feature: "Visual Automation Builder",
+                feature: "Visual Workflow Builder",
                 notifuse: "Canvas-based flow editor",
-                competitor: false,
+                competitor: "Visual workflow designer",
               },
               {
-                feature: "Event Triggers",
+                feature: "Trigger Types",
                 notifuse: "Contact, list, segment, email & custom events",
-                competitor: false,
+                competitor: "Contact, property update, list & custom events",
+              },
+              {
+                feature: "A/B Testing",
+                notifuse: true,
+                competitor: "Yes (Experiments)",
               },
               {
                 feature: "Branching Logic",
-                notifuse: "IF/THEN filters, A/B test splits, list status branches",
-                competitor: false,
+                notifuse: "IF/THEN filters, A/B splits, list status branches",
+                competitor: "Audience filter, Branch & Experiment",
               },
               {
-                feature: "Delay & Timing",
-                notifuse: "Configurable wait periods between steps",
+                feature: "Delay Nodes",
+                notifuse: true,
+                competitor: "Yes (Timer)",
+              },
+              {
+                feature: "Webhook Actions",
+                notifuse: true,
                 competitor: false,
+                description: "Trigger external HTTP calls from automation flows",
+              },
+              {
+                feature: "Add/Remove from List",
+                notifuse: true,
+                competitor: false,
+                description: "Manage list membership as part of automation flows",
               },
               {
                 feature: "Journey Tracking",
-                notifuse: "Track contact status through automation flows",
-                competitor: false,
+                notifuse: "Active, completed, exited & failed states",
+                competitor: "Metrics per loop",
               },
             ]}
           />
 
           <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
-            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <h4 class="font-semibold text-slate-900 mb-2">Automation Actions</h4>
             <p class="text-gray-700 text-sm">
-              Automations let you build welcome series, onboarding drips, and
-              re-engagement workflows that run automatically. Instead of manually
-              creating campaigns for each lifecycle stage, set up flows once and
-              let them trigger based on contact behavior.
+              Both platforms support email sending, delays, and branching in
+              automations. Notifuse adds webhook actions (call external APIs) and
+              list management (add/remove contacts from lists) as automation
+              nodes—useful for complex workflows that integrate with external
+              systems.
             </p>
           </div>
         </FeatureSection>
@@ -929,33 +873,41 @@ const proConsRows = [
         <!-- Custom Events & Goals -->
         <FeatureSection id="custom-events" title="Custom Events & Goals">
           <p class="text-gray-600 mb-6">
-            Track user behavior from external systems and build RFM segments.
-            Resend has no custom event or goal tracking.
+            Both platforms support custom event tracking. Notifuse adds goal
+            types and RFM segmentation based on event data.
           </p>
 
           <ComparisonTable
             title="Event & Goal Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Custom Event Tracking",
-                notifuse: "API-driven event ingestion with batch import",
-                competitor: false,
+                notifuse: "API-driven with batch import (up to 50 events)",
+                competitor: "API-driven",
               },
               {
                 feature: "Goal Types",
                 notifuse: "purchase, subscription, lead, signup, booking, trial",
                 competitor: false,
+                description: "Categorize events for business-specific segmentation",
               },
               {
                 feature: "RFM Segmentation",
-                notifuse: "Segment by Recency, Frequency & Monetary value",
+                notifuse: "Aggregate: sum, count, avg, min, max",
                 competitor: false,
+                description: "Segment by Recency, Frequency & Monetary value",
               },
               {
-                feature: "Contact Timeline",
-                notifuse: "Events displayed in contact activity history",
-                competitor: false,
+                feature: "Events in Segments & Automations",
+                notifuse: "Activity timeline, segment conditions & automation triggers",
+                competitor: "Automation triggers only",
+              },
+              {
+                feature: "Event Properties in Emails",
+                notifuse: false,
+                competitor: "Yes (per-event, {EVENT_PROPERTY:name})",
+                description: "Loops allows event-specific data in email personalization",
               },
             ]}
           />
@@ -964,13 +916,13 @@ const proConsRows = [
         <!-- Blog -->
         <FeatureSection id="blog" title="Blog">
           <p class="text-gray-600 mb-6">
-            Built-in blogging platform with Liquid theming and newsletter
-            integration. Resend has no blog feature.
+            Notifuse includes a built-in blog CMS with Liquid theming and
+            newsletter integration. Loops has no blog feature.
           </p>
 
           <ComparisonTable
             title="Blog Features"
-            competitorName="Resend"
+            competitorName="Loops"
             features={[
               {
                 feature: "Built-in Blog CMS",
@@ -987,11 +939,6 @@ const proConsRows = [
                 notifuse: "Connect blog to email lists for subscriber growth",
                 competitor: false,
               },
-              {
-                feature: "Auto-generated SEO",
-                notifuse: "Sitemap, robots.txt, OG tags, canonical URLs",
-                competitor: false,
-              },
             ]}
           />
         </FeatureSection>
@@ -999,7 +946,9 @@ const proConsRows = [
         <!-- Pricing & Cost Comparison -->
         <FeatureSection id="pricing" title="Pricing & Cost Comparison" gradient>
           <p class="text-gray-600 mb-6">
-            The cost difference is significant, especially at scale.
+            Notifuse is free software—you pay only for hosting and ESP costs.
+            Loops charges per contact count, which scales linearly as your
+            audience grows.
           </p>
 
           <div
@@ -1009,65 +958,39 @@ const proConsRows = [
               class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8"
             >
               <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">
-                Same Infrastructure, Different Cost
+                Cost at Scale: Fixed vs Growing
               </h4>
               <p class="text-gray-700 text-sm text-center mb-6">
-                Resend uses Amazon SES under the hood and charges separately for
-                transactional vs marketing emails.
+                Notifuse cost stays flat regardless of contact count. Loops
+                pricing grows linearly with subscribers.
               </p>
 
-              <!-- Transactional Email Pricing -->
-              <div class="mb-6">
-                <h5
-                  class="text-sm font-semibold text-slate-900 text-center mb-3"
-                >
-                  Transactional Emails (100k/month)
-                </h5>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                  <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="text-xs text-gray-500 mb-1">Amazon SES</div>
-                    <div class="text-2xl font-bold text-gray-700">$10</div>
-                  </div>
-                  <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="text-xs text-gray-500 mb-1">Resend</div>
-                    <div class="text-2xl font-bold text-gray-700">$35</div>
-                  </div>
-                  <div
-                    class="border border-primary bg-orange-50 rounded-lg p-4"
-                  >
-                    <div class="text-xs text-gray-500 mb-1">Markup</div>
-                    <div class="text-2xl font-bold text-primary">$25</div>
-                  </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">1,000 contacts</div>
+                  <div class="text-lg font-bold text-gray-700">Loops: $0</div>
+                  <div class="text-xs text-gray-400">Free tier (4k sends/mo)</div>
                 </div>
-              </div>
-
-              <!-- Marketing Email Pricing -->
-              <div class="mb-6">
-                <h5
-                  class="text-sm font-semibold text-slate-900 text-center mb-3"
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">5,000 contacts</div>
+                  <div class="text-lg font-bold text-gray-700">Loops: $49/mo</div>
+                  <div class="text-xs text-gray-400">Starter plan</div>
+                </div>
+                <div
+                  class="border border-primary bg-orange-50 rounded-lg p-4"
                 >
-                  Marketing Emails (10k contacts)
-                </h5>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
-                  <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="text-xs text-gray-500 mb-1">Notifuse</div>
-                    <div class="text-2xl font-bold text-primary">Unlimited</div>
-                    <div class="text-xs text-gray-600">No per-contact fees</div>
-                  </div>
-                  <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="text-xs text-gray-500 mb-1">Resend</div>
-                    <div class="text-2xl font-bold text-gray-700">$80</div>
-                    <div class="text-xs text-gray-600">10,000 contacts</div>
-                  </div>
+                  <div class="text-xs text-gray-500 mb-1">Any size</div>
+                  <div class="text-lg font-bold text-primary">Notifuse: ~$25-40/mo</div>
+                  <div class="text-xs text-gray-400">Hosting + ESP costs</div>
                 </div>
               </div>
 
               <p class="text-xs text-gray-500 text-center mb-2">
-                Notifuse total: $10 (Amazon SES) + $15-30 (hosting) =
-                ~$25-40/month for unlimited transactional + marketing
+                Notifuse total: ~$15-30 (hosting) + ~$10 (Amazon SES for 100k
+                emails) = ~$25-40/month regardless of contact count
               </p>
               <p class="text-[10px] text-gray-400 text-center">
-                Pricing as of November 2025
+                Pricing as of March 2026
               </p>
             </div>
           </div>
@@ -1091,12 +1014,13 @@ const proConsRows = [
                 <strong>+ Hosting:</strong> ~$15-30/month<br />
                 <strong>+ Amazon SES:</strong> ~$10/month (100k emails)
                 <div class="mt-2 pt-2 border-t border-gray-200">
-                  <strong>Total: ~$25-40/month</strong> for unlimited emails
+                  <strong>Total: ~$25-40/month</strong> for unlimited contacts
                 </div>
               </div>
 
               <ul class="space-y-2 text-sm">
-                <li>✓ Unlimited emails (pay only AWS/hosting)</li>
+                <li>✓ Unlimited contacts (no per-contact fees)</li>
+                <li>✓ Pay only ESP + hosting costs</li>
                 <li>✓ Open-source code</li>
                 <li>✓ No vendor lock-in</li>
                 <li>✓ ESP flexibility</li>
@@ -1105,40 +1029,41 @@ const proConsRows = [
             </div>
 
             <div class="border border-gray-200 rounded-xl p-8">
-              <h3 class="text-2xl font-bold text-slate-900 mb-2">Resend</h3>
-              <div class="text-sm text-gray-600 mb-4">Pay-per-send pricing</div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Loops</h3>
+              <div class="text-sm text-gray-600 mb-4">Per-contact pricing</div>
 
               <div class="space-y-3 mb-6 text-sm">
                 <div>
-                  <strong>Free:</strong> 3,000 emails/month<br />
-                  <span class="text-gray-500">Then $0</span>
+                  <strong>Free:</strong> 1,000 contacts, 4,000 sends/month<br />
+                  <span class="text-gray-500">Light branding on emails</span>
                 </div>
                 <div>
-                  <strong>Pro:</strong> 50,000 emails/month<br />
-                  <span class="text-gray-500">$20/month</span>
+                  <strong>Starter:</strong> 5,000 contacts, unlimited sends<br />
+                  <span class="text-gray-500">$49/month</span>
                 </div>
                 <div>
-                  <strong>Scale:</strong> 100,000 emails/month<br />
-                  <span class="text-gray-500">$90/month</span>
+                  <strong>Enterprise:</strong> 100,000+ contacts<br />
+                  <span class="text-gray-500">Custom pricing</span>
                 </div>
                 <div class="text-xs text-gray-500">
-                  + Costs increase with volume
+                  Price scales by subscriber count between tiers
                 </div>
               </div>
 
               <ul class="space-y-2 text-sm text-gray-500">
+                <li>✓ Zero setup (managed SaaS)</li>
+                <li>✓ All features at every tier</li>
+                <li>✓ Unlimited free team members</li>
                 <li>✗ Closed-source</li>
-                <li>✗ Cloud-only</li>
-                <li>✗ Amazon SES lock-in</li>
-                <li>✗ No visual builder</li>
-                <li>✗ No multi-tenancy</li>
+                <li>✗ Cost grows with contacts</li>
+                <li>✗ No ESP choice</li>
               </ul>
             </div>
           </div>
 
           <ComparisonCTA
             title="Ready to save on email costs?"
-            description="Connect Notifuse directly to Amazon SES and avoid the markup."
+            description="Self-host Notifuse, connect to your preferred ESP, and stop paying per contact."
             compact
           />
         </FeatureSection>
@@ -1189,7 +1114,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Want <strong>open-source</strong> solution (not proprietary)</span
+                    >Want <strong>open-source</strong> with full data ownership</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1204,7 +1129,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Need <strong>visual email builder</strong> (no React coding)</span
+                    >Need <strong>ESP flexibility</strong> (not locked to one provider)</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1219,8 +1144,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Want <strong>ESP flexibility</strong> (not locked to Amazon
-                    SES)</span
+                    >Need <strong>MJML code editor</strong> for precise email control</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1235,48 +1159,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Need <strong>dynamic segmentation</strong> with filters</span
-                  >
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Need <strong>contact activity timeline</strong></span>
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Want to <strong>avoid Amazon SES markup</strong></span>
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span
-                    >Are an <strong>agency</strong> (need multi-tenancy)</span
+                    >Need <strong>multi-tenancy</strong> for multiple brands or clients</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1291,8 +1174,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Need <strong>event-driven automations</strong> for welcome series,
-                    re-engagement & onboarding</span
+                    >Want <strong>RFM segmentation</strong> based on purchase behavior</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1307,14 +1189,43 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Want to <strong>track custom events</strong> and segment by purchase
-                    behavior (RFM)</span
+                    >Need <strong>data feeds</strong> for real-time email personalization</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want a <strong>built-in blog CMS</strong> with newsletter integration</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>A/B testing on campaigns</strong> (not just automations)</span
                   >
                 </li>
               </ul>
             </div>
 
-            <!-- Choose Resend -->
+            <!-- Choose Loops -->
             <div class="border border-gray-200 rounded-xl p-8">
               <div class="flex items-center mb-4">
                 <div
@@ -1333,11 +1244,11 @@ const proConsRows = [
                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                   </svg>
                 </div>
-                <h3 class="text-xl font-bold text-slate-900">Choose Resend</h3>
+                <h3 class="text-xl font-bold text-slate-900">Choose Loops</h3>
               </div>
 
               <p class="text-gray-700 text-sm mb-4">
-                Resend might work if you:
+                Loops might work if you:
               </p>
 
               <ul class="space-y-3">
@@ -1353,47 +1264,8 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >Prefer <strong>fully managed cloud</strong> (no server management)</span
+                    >Want <strong>fully managed SaaS</strong> (zero server management)</span
                   >
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Love <strong>coding emails in React</strong></span>
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Low volume (within 3,000/month free tier)</span>
-                </li>
-                <li class="flex items-start text-sm">
-                  <svg
-                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Don't need visual builder or marketers on team</span>
                 </li>
                 <li class="flex items-start text-sm">
                   <svg
@@ -1407,7 +1279,7 @@ const proConsRows = [
                       clip-rule="evenodd"></path>
                   </svg>
                   <span
-                    >OK with <strong>Amazon SES markup</strong> for convenience</span
+                    >Need <strong>quick setup</strong> with built-in deliverability</span
                   >
                 </li>
                 <li class="flex items-start text-sm">
@@ -1421,7 +1293,48 @@ const proConsRows = [
                       d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clip-rule="evenodd"></path>
                   </svg>
-                  <span>Static segments are sufficient</span>
+                  <span
+                    >Want <strong>turnkey integrations</strong> (Stripe, Clerk, Zapier, Segment)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Prefer <strong>visual-only editing</strong> (no code complexity)</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Your team is small and prefers <strong>cloud convenience</strong></span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span><strong>Contact-based pricing</strong> fits your budget</span>
                 </li>
               </ul>
             </div>
@@ -1431,12 +1344,12 @@ const proConsRows = [
         <!-- Why Choose Notifuse -->
         <FeatureSection
           id="why-switch"
-          title="Why Choose Notifuse Over Resend?"
+          title="Why Choose Notifuse Over Loops?"
           gradient
         >
           <p class="text-gray-600 mb-8">
-            Teams choose Notifuse over Resend when they need more than just a
-            simple email API:
+            Teams choose Notifuse over Loops when they need more control,
+            flexibility, and advanced features:
           </p>
 
           <div class="space-y-6">
@@ -1446,62 +1359,44 @@ const proConsRows = [
               </h4>
               <p class="text-gray-700 text-sm">
                 Notifuse is AGPL-3.0 open-source—inspect the code, modify it,
-                contribute. Resend is closed-source proprietary software with
-                vendor lock-in.
+                contribute. Loops is closed-source proprietary software. With
+                Notifuse, you own your data and infrastructure.
               </p>
             </div>
 
             <div class="border-l-4 border-primary pl-6 py-2">
               <h4 class="font-semibold text-slate-900 mb-2">
-                Visual Builder for Teams
+                ESP Flexibility
               </h4>
-              <p class="text-gray-700 text-sm">
-                Resend requires developers to code every email in React.
-                Notifuse's MJML visual builder lets marketers create emails
-                without coding—perfect for cross-functional teams.
-              </p>
-            </div>
-
-            <div class="border-l-4 border-primary pl-6 py-2">
-              <h4 class="font-semibold text-slate-900 mb-2">
-                No Amazon SES Markup
-              </h4>
-              <p class="text-gray-700 text-sm">
-                Resend uses Amazon SES and charges a markup. Notifuse connects
-                directly to Amazon SES (or any other ESP) with no markup—you pay
-                only AWS costs. Save $300/year by avoiding Resend's markup.
-              </p>
-            </div>
-
-            <div class="border-l-4 border-primary pl-6 py-2">
-              <h4 class="font-semibold text-slate-900 mb-2">ESP Flexibility</h4>
               <p class="text-gray-700 text-sm">
                 Not tied to one provider. Use Amazon SES for transactional
-                emails, Mailgun for marketing campaigns. Switch ESPs anytime.
-                Customize sending rate limits. Resend locks you into Amazon SES
-                only.
+                emails, Mailgun for marketing campaigns. Switch ESPs anytime
+                without migrating platforms. Loops locks you to its own
+                infrastructure—no ESP choice.
               </p>
             </div>
 
             <div class="border-l-4 border-primary pl-6 py-2">
               <h4 class="font-semibold text-slate-900 mb-2">
-                Dynamic Segmentation
+                MJML Code Editor + Liquid Templating
               </h4>
               <p class="text-gray-700 text-sm">
-                Notifuse has real dynamic segments with filters and conditions.
-                Resend's "segments" are just static buckets—no "engaged in last
-                30 days" or "opened but didn't click" targeting.
+                Notifuse offers both visual drag-and-drop and MJML code
+                editing, plus Liquid templates with conditional logic
+                (if/else/unless). Loops provides a visual-only editor with
+                variable substitution—no conditional content, no code access.
               </p>
             </div>
 
             <div class="border-l-4 border-primary pl-6 py-2">
               <h4 class="font-semibold text-slate-900 mb-2">
-                Contact Activity Timeline
+                Cost at Scale
               </h4>
               <p class="text-gray-700 text-sm">
-                See the complete history of every contact's interactions. Resend
-                doesn't have contact timelines—you can't see a contact's email
-                history or behavior.
+                Notifuse cost stays flat regardless of contact count (~$25-40/month
+                for hosting + ESP). Loops pricing grows linearly with
+                subscribers—at 5,000 contacts you're paying $49/month, and it
+                keeps climbing.
               </p>
             </div>
 
@@ -1510,9 +1405,32 @@ const proConsRows = [
                 Multi-Tenancy for Agencies
               </h4>
               <p class="text-gray-700 text-sm">
-                Manage multiple clients with isolated workspaces. Each gets
-                their own database, domain, and API keys. Resend doesn't support
-                multi-tenancy.
+                Manage multiple clients with isolated workspaces—each gets
+                their own database, domain, and API keys. Loops doesn't
+                support multi-tenancy.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                RFM Segmentation & Goals
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Track custom events with goal types (purchase, subscription,
+                lead) and segment contacts by Recency, Frequency, and Monetary
+                value. Loops has event tracking but no goal-based or RFM
+                segmentation.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Built-in Blog CMS
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Publish blog content with Liquid theming, SEO optimization,
+                and direct newsletter integration—no separate blogging platform
+                needed. Loops has no blog feature.
               </p>
             </div>
           </div>
@@ -1521,11 +1439,12 @@ const proConsRows = [
             class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8"
           >
             <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">
-              Ready to move from Resend?
+              Ready to move from Loops?
             </h4>
             <p class="text-gray-600 text-center mb-6">
-              Migrate your contacts and templates to Notifuse. Connect to Amazon
-              SES directly and start saving.
+              Export your contacts as CSV and import them into Notifuse with
+              automatic field mapping. Connect to your preferred ESP and start
+              sending.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -1549,78 +1468,78 @@ const proConsRows = [
           <div class="space-y-6">
             <div class="border border-gray-200 rounded-lg p-6">
               <h4 class="font-semibold text-slate-900 mb-3">
-                Can I get the same deliverability as Resend?
+                Can Notifuse match Loops' deliverability?
               </h4>
               <p class="text-gray-700 text-sm">
-                Yes! Resend uses Amazon SES under the hood. Notifuse can connect
-                directly to Amazon SES (same infrastructure, same
-                deliverability) without Resend's markup. You get identical
-                delivery performance at a fraction of the cost.
-              </p>
-            </div>
-
-            <div class="border border-gray-200 rounded-lg p-6">
-              <h4 class="font-semibold text-slate-900 mb-3">
-                Why pay Resend when I can use Amazon SES directly?
-              </h4>
-              <p class="text-gray-700 text-sm">
-                Exactly! Resend charges separately: $35/month for 100k
-                transactional emails + $80/month for 10k marketing contacts.
-                Amazon SES (which Resend uses) costs only $10 for 100k emails.
-                With Notifuse + Amazon SES, you pay $10 for AWS + ~$15-30 for
-                hosting = $25-40 total for BOTH transactional and unlimited
-                marketing emails. You avoid Resend's markup entirely—that's
-                significant savings especially if you need both email types.
-              </p>
-            </div>
-
-            <div class="border border-gray-200 rounded-lg p-6">
-              <h4 class="font-semibold text-slate-900 mb-3">
-                Do I need to code emails with Notifuse like with Resend?
-              </h4>
-              <p class="text-gray-700 text-sm">
-                No! That's a major advantage. Resend requires coding every email
-                template in React. Notifuse has a visual MJML builder—drag,
-                drop, and create beautiful emails without writing code. Perfect
-                for teams with marketers.
-              </p>
-            </div>
-
-            <div class="border border-gray-200 rounded-lg p-6">
-              <h4 class="font-semibold text-slate-900 mb-3">
-                Can I use different ESPs for different email types?
-              </h4>
-              <p class="text-gray-700 text-sm">
-                Yes with Notifuse! Use Amazon SES for transactional emails and
-                Mailgun for marketing campaigns. Resend locks you into Amazon
-                SES only—you can't mix providers or switch without migrating
+                Yes. Notifuse connects to major ESPs (Amazon SES, Mailgun,
+                Postmark, SendGrid) which handle deliverability, IP reputation,
+                and compliance. You configure SPF/DKIM through your ESP—same
+                industry-standard infrastructure that powers most email
                 platforms.
               </p>
             </div>
 
             <div class="border border-gray-200 rounded-lg p-6">
               <h4 class="font-semibold text-slate-900 mb-3">
-                What about contact segmentation?
+                Does Notifuse have automations like Loops?
               </h4>
               <p class="text-gray-700 text-sm">
-                Notifuse has dynamic segments with filters and conditions (e.g.,
-                "opened in last 7 days", "clicked but didn't convert"). Resend's
-                "segments" are just static buckets—you manually manage who's in
-                each bucket. No dynamic filtering or auto-updating.
+                Yes. Both have visual workflow builders with triggers, delays,
+                branching, and A/B testing. Notifuse adds webhook actions (call
+                external APIs from workflows) and list management nodes
+                (add/remove contacts from lists)—useful for complex workflows
+                that integrate with external systems.
               </p>
             </div>
 
             <div class="border border-gray-200 rounded-lg p-6">
               <h4 class="font-semibold text-slate-900 mb-3">
-                Is Resend really just Amazon SES with markup?
+                How do the email editors compare?
               </h4>
               <p class="text-gray-700 text-sm">
-                Yes. Resend is built on Amazon SES infrastructure and adds
-                convenience features (React Email, nice UI, webhooks) but
-                charges significantly more than using Amazon SES directly. With
-                Notifuse, you get those same features plus visual builder,
-                segmentation, and multi-tenancy—while connecting directly to
-                Amazon SES or any ESP you prefer.
+                Notifuse has an MJML visual editor plus a code mode, with Liquid
+                templating for conditional content (if/else/unless). Loops has a
+                visual block editor with variable substitution and fallback
+                values—simpler but less flexible. Loops also has reusable
+                Components for brand consistency, which Notifuse is adding soon.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                What about Loops' integrations (Stripe, Clerk, Zapier)?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Loops offers 20+ native integrations for quick setup. Notifuse
+                has fewer built-in integrations (Supabase, Anthropic, Firecrawl)
+                but provides 26+ webhook event types and a full REST API—you can
+                integrate with any service, including Stripe and Clerk, using
+                webhooks or automation webhook nodes.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is Notifuse harder to set up?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Self-hosting requires more initial setup than a cloud SaaS, but
+                Notifuse offers one-click deploy options (PikaPods, RepoCloud,
+                Sealos, Northflank) and Docker Compose for quick starts. Once
+                deployed, the day-to-day experience is similar—both have web UIs
+                for managing contacts, campaigns, and automations.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can I migrate from Loops to Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes. Export your contacts from Loops as CSV and import into
+                Notifuse with automatic field mapping and progress tracking.
+                Email templates need to be rebuilt in the MJML editor, and
+                automations need to be recreated in Notifuse's visual builder.
               </p>
             </div>
           </div>
@@ -1632,7 +1551,7 @@ const proConsRows = [
             <div class="max-w-4xl mx-auto">
               <ComparisonCTA
                 title="Ready to experience Notifuse?"
-                description="Open-source, self-hosted, visual MJML builder, ESP flexibility, and no Amazon SES markup. Join teams who switched from Resend."
+                description="Open-source, self-hosted, ESP flexibility, MJML code editor, and RFM segmentation. Join teams who chose Notifuse for full control over their email infrastructure."
               />
             </div>
           </div>

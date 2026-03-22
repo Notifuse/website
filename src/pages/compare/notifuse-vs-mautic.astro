@@ -1,0 +1,1440 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import ComparisonLayout from "../../components/ComparisonLayout.astro"
+import TableOfContents from "../../components/TableOfContents.astro"
+import ComparisonHero from "../../components/ComparisonHero.astro"
+import ProConsTable from "../../components/ProConsTable.astro"
+import ComparisonTable from "../../components/ComparisonTable.astro"
+import FeatureSection from "../../components/FeatureSection.astro"
+import ComparisonCTA from "../../components/ComparisonCTA.astro"
+import emailEditorImage from "../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../assets/screenshots/dashboard.png"
+
+// Table of Contents items
+const tocItems = [
+  { id: "overview", label: "Overview" },
+  { id: "quick-comparison", label: "Quick Comparison" },
+  { id: "pricing", label: "Pricing & Infrastructure" },
+  { id: "email-builder", label: "Visual Email Builder" },
+  { id: "campaigns", label: "Campaigns" },
+  { id: "transactional", label: "Transactional Email" },
+  { id: "contact-management", label: "Contact Management & Segmentation" },
+  { id: "email-sending", label: "Email Sending & Deliverability" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "automations", label: "Automations" },
+  { id: "custom-events", label: "Custom Events & Goals" },
+  { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
+  { id: "developer-api", label: "Developer Experience & API" },
+  { id: "blog", label: "Blog" },
+  { id: "use-cases", label: "Use Cases" },
+  { id: "why-switch", label: "Why Choose Notifuse" },
+  { id: "faq", label: "FAQ" },
+]
+
+// Pros & Cons Summary Data
+const proConsRows = [
+  {
+    label: "Starting Price",
+    notifuse: "Free (self-hosted)",
+    competitor: "Free (self-hosted)",
+  },
+  {
+    label: "License",
+    notifuse: "AGPL-3.0",
+    competitor: "GPL v3",
+  },
+  {
+    label: "Best For",
+    notifuse: "Email marketing, transactional email & developer-friendly automations",
+    competitor: "Full marketing automation with multi-channel (SMS, push, social)",
+  },
+  {
+    label: "Setup Complexity",
+    notifuse: "Docker one-click deploy, setup wizard",
+    competitor: "PHP, Composer, MySQL, 3-17 cron jobs, web server config",
+  },
+  {
+    label: "User Interface",
+    notifuse: "Modern UI built with current technologies",
+    competitor: "Aging UI built on Bootstrap 3 (2013, EOL 2019) — redesign in progress",
+  },
+  {
+    label: "Visual Email Builder",
+    notifuse: "MJML drag-and-drop & code editor",
+    competitor: "GrapesJS builder with MJML themes (no code editor)",
+  },
+  {
+    label: "ESP Integrations",
+    notifuse: "Native APIs: Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
+    competitor: "SendGrid API built-in; others via Symfony Mailer (no batch sending)",
+  },
+  {
+    label: "Multi-tenancy",
+    notifuse: "Yes (Workspaces)",
+    competitor: "No",
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Notifuse vs Mautic: Open-Source Email & Marketing Automation Comparison (2026)
+    </title>
+    <meta
+      name="description"
+      content="Compare Notifuse and Mautic for email marketing, transactional email, and automations. Features, API, pricing, and which open-source platform is better for your team."
+    />
+    <link
+      rel="canonical"
+      href="https://notifuse.com/compare/notifuse-vs-mautic"
+    />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Mautic, Mautic alternative, open-source email platform, self-hosted marketing automation, MJML email builder, transactional email API"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://notifuse.com/compare/notifuse-vs-mautic"
+    />
+    <meta
+      property="og:title"
+      content="Notifuse vs Mautic: Open-Source Email & Marketing Automation Comparison"
+    />
+    <meta
+      property="og:description"
+      content="Compare Notifuse and Mautic for email marketing, transactional email, and automations. Features, API, pricing, and which open-source platform is better for your team."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Notifuse vs Mautic: Open-Source Email & Marketing Automation Comparison"
+    />
+    <meta
+      name="twitter:description"
+      content="Compare Notifuse and Mautic for email marketing, transactional email, and automations. Features, API, pricing, and which open-source platform is better for your team."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Staminads Analytics -->
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <ComparisonHero
+        competitor="Mautic"
+        description="Both are open-source and self-hosted. Mautic tries to cover everything—email, SMS, push, forms, landing pages—but many features feel unfinished and the UI shows its age. Notifuse focuses on email and does it exceptionally well, with a native MJML code editor, direct ESP API integrations, and one-click Docker deployment."
+      />
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs Mautic"
+        description="Detailed comparison of features, pricing, and use cases"
+      >
+        <!-- Table of Contents (Sidebar) -->
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Overview Section -->
+        <FeatureSection id="overview" title="Overview">
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12"
+          >
+            <div
+              class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12"
+            >
+              <h3 class="text-xl font-bold text-slate-900 mb-8">
+                Two Different Approaches
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Breadth: Many Features, Uneven Polish
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-500">
+                    <strong>Mautic:</strong> A marketing automation suite that covers
+                    email, SMS (Twilio), push notifications (OneSignal), landing pages,
+                    forms, lead scoring, lifecycle stages, and social monitoring.
+                    Long feature list, but many capabilities lack the polish and
+                    reliability of purpose-built tools. The admin interface is built on
+                    Bootstrap 3 (2013) with legacy frontend libraries, and most
+                    features depend on cron jobs to function.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Depth: Email Done Right
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> A modern email
+                    platform focused on email marketing, transactional email, automations,
+                    blogging, and AI content generation. Native ESP integrations with
+                    batch sending and bounce management, MJML code editor, and simple
+                    Docker deployment.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Mautic</span> is a
+            10+ year old open-source marketing automation platform built on
+            PHP/Symfony. It offers a wide range of marketing tools—from email and
+            SMS to landing pages and lead scoring. However, many of these
+            features have rough edges: segments rebuild on cron schedules
+            instead of updating in real-time, ESP integrations through Symfony
+            Mailer lack batch sending and bounce management, A/B testing
+            requires manual winner selection, and the UI is still built on
+            Bootstrap 3 with a redesign that hasn't shipped yet.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> takes a
+            focused approach to email—and does it right. Real-time
+            segmentation, native ESP API integrations with batch sending and
+            bounce management, A/B testing with automatic winner selection,
+            a dedicated transactional API, MJML code editor, and multi-tenant
+            workspaces. <strong>Every feature is production-ready with >80%
+            test coverage</strong>, not a checkbox on a feature list.
+          </p>
+        </FeatureSection>
+
+        <!-- Quick Comparison Table -->
+        <FeatureSection id="quick-comparison" title="Quick Comparison" gradient>
+          <ProConsTable competitor="Mautic" rows={proConsRows} />
+          <ComparisonCTA compact />
+        </FeatureSection>
+
+        <!-- Pricing & Infrastructure -->
+        <FeatureSection id="pricing" title="Pricing & Infrastructure">
+          <p class="text-gray-600 mb-6">
+            Both platforms are free and open-source. The real cost difference is
+            in infrastructure and operational overhead.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">Notifuse Setup</h4>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Single Docker container + PostgreSQL</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Setup wizard on first launch</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>One-click deploys (PikaPods, RepoCloud, Sealos, Northflank)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span><strong>No cron jobs needed</strong></span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">Mautic Setup</h4>
+              <ul class="space-y-2 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>PHP 8.2+, Composer, MySQL/MariaDB, Apache/Nginx</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Docker images available (not production-ready out of the box)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span><strong>3 essential + up to 14 optional cron jobs</strong> (segments, campaigns, triggers, broadcasts, imports, bounces, webhooks, reports, etc.)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-4 h-4 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Third-party options: Cloudron, DDEV for local dev</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Mautic's cron jobs are not optional—without them, segments don't
+              update, campaigns don't trigger, and emails don't send. Each cron
+              job needs to be staggered at specific intervals to avoid server
+              overload. Notifuse handles all background processing internally
+              with no external scheduler required.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Visual Email Builder -->
+        <FeatureSection id="email-builder" title="Visual Email Builder">
+          <p class="text-gray-600 mb-6">
+            Both platforms use MJML for responsive email rendering. The key
+            difference is that Notifuse exposes a full MJML code editor alongside
+            the visual builder, while Mautic uses MJML as a theme framework
+            within GrapesJS without direct code access.
+          </p>
+
+          <ComparisonTable
+            title="Email Editor Comparison"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Visual Email Builder",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based drag-and-drop editor',
+                competitor:
+                  "GrapesJS builder with MJML theme support",
+              },
+              {
+                feature: "MJML Code Editor",
+                notifuse: "Direct MJML code editing alongside visual drag-and-drop",
+                competitor: false,
+                description: "Switch between visual and code modes freely",
+              },
+              {
+                feature: "Templating Engine",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Twig (Symfony)",
+                description: "Dynamic variables for personalization",
+              },
+              {
+                feature: "Built-in File Manager",
+                notifuse: "S3-compatible storage with CDN support",
+                competitor: "Basic asset manager",
+              },
+              {
+                feature: "Template Versioning",
+                notifuse: "Automatic version history",
+                competitor: false,
+                description: "Every update creates a new version",
+              },
+              {
+                feature: "Support for Test Data",
+                notifuse: true,
+                competitor: false,
+                description: "Preview emails with sample contact data",
+              },
+            ]}
+          />
+
+          <!-- Email Editor Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={emailEditorImage.src}
+                  alt="Notifuse MJML Email Builder"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - MJML Email Builder with Code Editor
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Direct MJML code access means developers can fine-tune responsive
+              layouts, build reusable components, and debug rendering issues
+              without leaving the editor. For marketers, the visual builder
+              handles everything—no code required. Having both modes in one
+              editor means your team can work however they prefer.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campaigns -->
+        <FeatureSection id="campaigns" title="Campaigns">
+          <p class="text-gray-600 mb-6">
+            Both platforms support broadcast email campaigns with segmentation.
+            Notifuse adds automatic A/B winner selection and data feeds for
+            dynamic content.
+          </p>
+
+          <ComparisonTable
+            title="Campaign Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Broadcast Campaigns",
+                notifuse: true,
+                competitor: "Segment emails",
+              },
+              {
+                feature: "Filter by Segments",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "A/B Testing with Auto Winner",
+                notifuse: "Auto winner by open rate or click rate",
+                competitor: "Manual winner selection only",
+              },
+              {
+                feature: "UTM Tracking",
+                notifuse: "Automatic on all external links",
+                competitor: "Supported via UTM tags feature",
+              },
+              {
+                feature: "Schedule in Timezone",
+                notifuse: true,
+                competitor: false,
+                description: "Server timezone only in Mautic",
+              },
+              {
+                feature: "Global Data Feed",
+                notifuse: "Single API call, cached data shared across all recipients",
+                competitor: false,
+              },
+              {
+                feature: "Per-Recipient Data Feed",
+                notifuse: "Individual API calls with contact-specific data",
+                competitor: false,
+                description: "Personalize emails with real-time data (product recs, pricing, inventory)",
+              },
+              {
+                feature: "Campaign Analytics",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Transactional Email -->
+        <FeatureSection id="transactional" title="Transactional Email">
+          <p class="text-gray-600 mb-6">
+            Notifuse has a dedicated transactional email API designed for
+            application-triggered emails. Mautic can send emails to existing
+            contacts via its API, but has no purpose-built transactional
+            endpoint.
+          </p>
+
+          <ComparisonTable
+            title="Transactional Email Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Dedicated Transactional API",
+                notifuse: "Full REST API with dynamic data, CC/BCC",
+                competitor: "No dedicated endpoint — send pre-built emails to existing contacts only",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Built-in SMTP server that accepts standard SMTP connections for sending transactional emails — perfect for legacy integrations.",
+              },
+              {
+                feature: "Auto Contact Creation",
+                notifuse: "Upsert contacts on send",
+                competitor: false,
+                description: "Contact must pre-exist in Mautic",
+              },
+              {
+                feature: "Attachments",
+                notifuse: "20 files, 3MB each, 10MB total",
+                competitor: false,
+              },
+              {
+                feature: "Deduplication",
+                notifuse: "external_id based",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <ComparisonCTA
+            title="Need a transactional email API?"
+            description="Notifuse's dedicated transactional API handles password resets, order confirmations, and notifications with automatic contact management."
+            compact
+          />
+        </FeatureSection>
+
+        <!-- Contact Management & Segmentation -->
+        <FeatureSection
+          id="contact-management"
+          title="Contact Management & Segmentation"
+        >
+          <p class="text-gray-600 mb-6">
+            Both platforms offer contact management and dynamic segmentation.
+            Mautic adds lead scoring, lifecycle stages, and anonymous visitor
+            tracking. Notifuse adds RFM segmentation and real-time segment
+            updates.
+          </p>
+
+          <ComparisonTable
+            title="Contact & Segmentation Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Custom Contact Fields",
+                notifuse: "20 fields (5 string, 5 number, 5 datetime, 5 JSON)",
+                competitor: "20+ field types, unlimited custom fields",
+              },
+              {
+                feature: "Dynamic Segments",
+                notifuse: "Real-time, auto-updating",
+                competitor: "Cron-dependent rebuild (every 15 min)",
+              },
+              {
+                feature: "RFM Segmentation",
+                notifuse: "Segment by Recency, Frequency & Monetary value",
+                competitor: false,
+              },
+              {
+                feature: "Activity Timeline",
+                notifuse: true,
+                competitor: true,
+                description: "Complete history of emails, events, and profile changes",
+              },
+              {
+                feature: "CSV Import",
+                notifuse: "Auto-mapping & progress tracking",
+                competitor: "Field mapping with background processing",
+              },
+              {
+                feature: "Geolocation",
+                notifuse: false,
+                competitor: "IP-based (MaxMind GeoLite2)",
+              },
+              {
+                feature: "Anonymous Visitor Tracking",
+                notifuse: false,
+                competitor: "Cookie/IP-based tracking before identification",
+              },
+              {
+                feature: "Lead Scoring",
+                notifuse: false,
+                competitor: "Points system with triggers and point groups",
+              },
+              {
+                feature: "Lifecycle Stages",
+                notifuse: false,
+                competitor: "Forward-only stage progression",
+              },
+            ]}
+          />
+
+          <!-- Contact Profile Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={contactProfileImage.src}
+                  alt="Notifuse Contact Profile with Activity Timeline"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Contact Profile with Activity Timeline
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Different Priorities
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Mautic offers geolocation, anonymous visitor tracking, lead
+              scoring, and lifecycle stages—useful for full-funnel marketing
+              automation. Notifuse focuses on what matters most for email:
+              real-time dynamic segments that update instantly (no cron delay)
+              and RFM segmentation to target contacts by purchase behavior.
+              For email-first teams, real-time segmentation and RFM analysis
+              deliver more actionable targeting than website tracking.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Email Sending & Deliverability -->
+        <FeatureSection
+          id="email-sending"
+          title="Email Sending & Deliverability"
+        >
+          <p class="text-gray-600 mb-6">
+            Notifuse integrates natively with major ESP APIs, providing batch
+            sending and bounce management out of the box. Mautic has SendGrid
+            API built-in and supports others via Symfony Mailer, but those
+            transports lack batch sending and bounce management—requiring
+            marketplace plugins for production use.
+          </p>
+
+          <ComparisonTable
+            title="Email Delivery Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "SMTP Integration",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Native ESP APIs",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost — with batch sending & bounce management",
+                competitor: "SendGrid built-in; others via Symfony Mailer (no batch sending or bounce management — marketplace plugins needed)",
+              },
+              {
+                feature: "Opens/Clicks Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Management",
+                notifuse: "Automatic via ESP webhooks",
+                competitor: "IMAP monitoring + provider-dependent webhooks",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Built-in SMTP server for legacy integrations",
+              },
+              {
+                feature: "Reply Monitoring",
+                notifuse: "Via ESP webhooks",
+                competitor: "IMAP-based reply tracking",
+              },
+              {
+                feature: "Email Queue",
+                notifuse: "Built-in",
+                competitor: "RabbitMQ, Beanstalkd, Redis, SQS, etc.",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Both platforms track email engagement. Mautic has a more advanced
+            reporting system with custom report builders and scheduled delivery.
+          </p>
+
+          <ComparisonTable
+            title="Analytics Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Open/Click/Bounce Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Complaint Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Campaign Analytics",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Custom Reports",
+                notifuse: false,
+                competitor: "10 data source categories with calculated columns",
+              },
+              {
+                feature: "Scheduled Report Emails",
+                notifuse: false,
+                competitor: "CSV daily/weekly/monthly",
+              },
+              {
+                feature: "Dashboard Widgets",
+                notifuse: "Coming soon",
+                competitor: "Customizable drag-and-drop dashboard",
+              },
+            ]}
+          />
+
+          <!-- Analytics Dashboard Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={dashboardImage.src}
+                  alt="Notifuse Analytics Dashboard"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Analytics Dashboard
+            </p>
+          </div>
+
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              On Reporting
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Mautic offers a custom report builder with more data sources
+              and calculated columns. However, the reporting interface uses
+              the same aging Bootstrap 3 UI and the data relies on
+              cron-rebuilt segments. Notifuse's analytics are focused on email
+              delivery metrics with real-time data from ESP webhooks.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual automation builders. Mautic has more
+            built-in action types reflecting its broader marketing scope.
+            Notifuse's strength is custom event triggers from your application.
+          </p>
+
+          <ComparisonTable
+            title="Automation Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Visual Automation Builder",
+                notifuse: "Canvas-based flow editor",
+                competitor: "Drag-and-drop campaign builder",
+              },
+              {
+                feature: "Trigger Sources",
+                notifuse: "Contact, list, segment, email & custom events",
+                competitor: "Segments and forms",
+              },
+              {
+                feature: "Custom Event Triggers",
+                notifuse: "API-driven custom events",
+                competitor: false,
+                description: "Trigger automations based on any user behavior from your app",
+              },
+              {
+                feature: "Branching Logic",
+                notifuse: "IF/THEN filters, A/B splits, list status",
+                competitor: "Decisions (behavior) + conditions (data)",
+              },
+              {
+                feature: "Available Actions",
+                notifuse: "Email, add/remove list, webhook",
+                competitor: "21+ actions (email, webhook, tags, segments, points, stages, integrations, etc.)",
+              },
+              {
+                feature: "Journey Tracking",
+                notifuse: "Active, completed, exited & failed states",
+                competitor: "Campaign event log",
+              },
+              {
+                feature: "Webhook Action",
+                notifuse: "POST with Bearer token",
+                competitor: "GET/POST/PUT/PATCH/DELETE with custom headers",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">How They Compare</h4>
+            <p class="text-gray-700 text-sm">
+              Mautic lists more built-in action types (21+), but its
+              automations depend entirely on cron jobs—events are processed
+              every 15 minutes at best, not in real-time. Notifuse processes
+              automation steps internally every 10 seconds, supports custom
+              event triggers from your application via API, and tracks
+              individual contact journeys with clear
+              active/completed/exited/failed states.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Custom Events & Goals -->
+        <FeatureSection id="custom-events" title="Custom Events & Goals">
+          <p class="text-gray-600 mb-6">
+            Track user behavior from external systems and build RFM segments.
+            Mautic has no custom event or goal tracking.
+          </p>
+
+          <ComparisonTable
+            title="Event & Goal Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Custom Event Tracking",
+                notifuse: "API-driven event ingestion with batch import",
+                competitor: false,
+              },
+              {
+                feature: "Goal Types",
+                notifuse: "purchase, subscription, lead, signup, booking, trial",
+                competitor: false,
+              },
+              {
+                feature: "RFM Segmentation",
+                notifuse: "Segment by Recency, Frequency & Monetary value",
+                competitor: false,
+              },
+              {
+                feature: "Contact Timeline",
+                notifuse: "Events displayed in contact activity history",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenancy & Agency -->
+        <FeatureSection id="multi-tenancy" title="Multi-tenancy & Agency">
+          <p class="text-gray-600 mb-6">
+            Notifuse is built for agencies and SaaS platforms with workspace
+            isolation. Mautic has more granular permissions but no
+            multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Multi-tenancy & Permissions"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Database isolation & custom domain per workspace",
+                competitor: false,
+                description: "Isolated environments for multiple brands or clients",
+              },
+              {
+                feature: "User Permissions",
+                notifuse: "Admin invitation system",
+                competitor: "Granular role-based permissions (view/edit/create/delete per module)",
+              },
+            ]}
+          />
+
+          <div
+            class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Different Approaches
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Mautic has more granular role-based access control per module, but
+              no multi-tenancy. Notifuse's workspace model is purpose-built for
+              agencies managing multiple clients—each client gets an isolated
+              environment with separate databases, custom domains, and dedicated
+              API keys, all from one installation.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Developer Experience & API -->
+        <FeatureSection id="developer-api" title="Developer Experience & API">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer REST APIs. Mautic has 30+ resource endpoints
+            and a plugin marketplace. Notifuse has a dedicated transactional API,
+            full OpenAPI coverage, and built-in observability.
+          </p>
+
+          <ComparisonTable
+            title="API & Developer Tools"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "RESTful API",
+                notifuse: true,
+                competitor: "30+ resource endpoints",
+              },
+              {
+                feature: "Transactional Email API",
+                notifuse: "Dedicated endpoint with dynamic data",
+                competitor: false,
+              },
+              {
+                feature: "OpenAPI Specification",
+                notifuse: "Full API coverage",
+                competitor: "Partial (v2 endpoints via API Platform; v1 not fully covered)",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: true,
+                competitor: false,
+                description: "Built-in SMTP server for legacy integrations",
+              },
+              {
+                feature: "Webhook Events",
+                notifuse: "All email, contact, list & segment events",
+                competitor: "Configurable webhook events",
+              },
+              {
+                feature: "Dev/Test Environment",
+                notifuse: "Workspace-based environments",
+                competitor: false,
+              },
+              {
+                feature: "Observability",
+                notifuse: "Message & webhook logs, OpenTelemetry tracing",
+                competitor: "Basic logging",
+              },
+              {
+                feature: "Plugin Ecosystem",
+                notifuse: false,
+                competitor: "Marketplace with community plugins",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Developer Advantage
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse is built for developers who need email infrastructure
+              they can integrate quickly. Full OpenAPI spec, dedicated
+              transactional API, SMTP relay for legacy systems, and
+              workspace-based environments for dev/staging/production—everything
+              you need to ship fast and scale confidently.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Built-in blogging platform with Liquid theming, AI content
+            generation, and newsletter integration. Mautic has no blog feature.
+          </p>
+
+          <ComparisonTable
+            title="Blog Features"
+            competitorName="Mautic"
+            features={[
+              {
+                feature: "Built-in Blog CMS",
+                notifuse: "Categories, posts, scheduling & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Liquid Theme Engine",
+                notifuse: "Customizable templates with Shopify Liquid syntax",
+                competitor: false,
+              },
+              {
+                feature: "Newsletter Integration",
+                notifuse: "Connect blog to email lists for subscriber growth",
+                competitor: false,
+              },
+              {
+                feature: "AI Content Generation",
+                notifuse: "Claude AI + Firecrawl web research",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Use Cases -->
+        <FeatureSection id="use-cases" title="When to Choose Each Platform">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choose Notifuse -->
+            <div
+              class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Notifuse
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Notifuse is the better choice if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Focus primarily on <strong>email marketing & transactional email</strong></span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want an <strong>MJML code editor</strong> alongside the visual builder</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>native ESP integrations</strong> with batch sending & bounce management</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>multi-tenant workspaces</strong> for agencies or SaaS</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want <strong>simple Docker deployment</strong> without cron job management</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>custom events & RFM segmentation</strong> for e-commerce</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want a <strong>built-in blog</strong> with AI content generation</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want <strong>A/B testing with automatic winner</strong> selection</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Choose Mautic -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Mautic
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Mautic may work if you're willing to trade polish for breadth:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>multi-channel marketing</strong> (SMS via Twilio, push via OneSignal, social monitoring)</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want a <strong>landing page builder</strong> and <strong>form builder</strong></span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>lead scoring</strong> and <strong>lifecycle stages</strong></span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Require <strong>anonymous visitor tracking</strong> on your website</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>granular role-based permissions</strong> per module</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Want a <strong>plugin ecosystem</strong> and marketplace</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>advanced custom reporting</strong> with scheduled delivery</span>
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Need <strong>geolocation tracking</strong> and <strong>contact ownership</strong></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Why Choose Notifuse -->
+        <FeatureSection
+          id="why-switch"
+          title="Why Choose Notifuse?"
+          gradient
+        >
+          <p class="text-gray-600 mb-8">
+            Mautic checks many boxes on a feature list, but having a feature
+            and having it work well are different things. Notifuse focuses on
+            fewer capabilities and makes each one production-ready. Here's
+            what sets it apart:
+          </p>
+
+          <div class="space-y-6">
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Modern User Interface
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Mautic's admin interface is built on Bootstrap 3 (released 2013,
+                end-of-life 2019) with legacy JavaScript libraries like Chosen.js
+                and typeahead.js. A UI redesign is in progress but hasn't shipped
+                yet. Notifuse is built with modern frontend technologies for a
+                clean, intuitive experience.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                MJML Code Editor
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Both platforms use MJML for responsive emails. But Notifuse lets
+                you edit MJML code directly alongside the visual builder—switch
+                between modes freely. Mautic uses MJML as a theme framework
+                within GrapesJS without exposing the code for direct editing.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Native ESP Integrations
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse connects natively to Amazon SES, Mailgun, Postmark,
+                SendGrid, Mailjet, and SparkPost—with batch sending and bounce
+                management built in. Mautic has SendGrid API built-in and
+                supports others via Symfony Mailer, but those transports lack
+                batch sending and bounce management without marketplace plugins.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Dedicated Transactional API
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse has a purpose-built transactional API with dynamic data,
+                attachments, CC/BCC, and automatic contact creation. Mautic can
+                only send pre-built emails to contacts that already exist in the
+                system.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Simple Deployment
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Deploy Notifuse with a single Docker container—no cron jobs, no
+                PHP runtime, no web server configuration. Mautic requires PHP
+                8.2+, Composer, MySQL, a web server, and 3 to 17 cron jobs to
+                function properly.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Multi-Tenant Workspaces
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Agencies and SaaS platforms need workspace isolation. Notifuse
+                provides complete multi-tenancy with separate databases, custom
+                domains, and API keys per workspace. Mautic has no multi-tenancy
+                —you'd need separate installations for each client.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Custom Events & RFM Segmentation
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Track purchases, subscriptions, and user behavior from your
+                application. Build segments based on Recency, Frequency, and
+                Monetary value—perfect for e-commerce and SaaS. Mautic has lead
+                scoring but no custom event tracking or RFM analysis.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Security & Code Quality
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse has <strong>>80% test coverage</strong> with
+                comprehensive automated tests, modern security practices, and
+                built-in OpenTelemetry tracing for observability. Built with
+                modern technologies and designed for production reliability.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8"
+          >
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">
+              Ready to try Notifuse?
+            </h4>
+            <p class="text-gray-600 text-center mb-6">
+              Export your contacts from Mautic as CSV and import them into
+              Notifuse in minutes. Recreate your templates using the MJML builder
+              or import existing HTML.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Try Live Demo
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                View Installation Guide
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ Section -->
+        <FeatureSection id="faq" title="Frequently Asked Questions">
+          <div class="space-y-6">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How do I migrate from Mautic to Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Export your contacts from Mautic as CSV (up to 1 million
+                contacts), then import them into Notifuse using the CSV import
+                tool with auto-field mapping. Recreate your email templates using
+                the MJML visual builder or code editor, or import your existing
+                HTML. Check our <a href="https://docs.notifuse.com" class="text-primary hover:underline">documentation</a> for detailed guides.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                What does Mautic offer that Notifuse doesn't?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Mautic has a longer feature list: form builder, landing page
+                builder, SMS (via Twilio), push notifications (via OneSignal),
+                social monitoring (Twitter), lead scoring, lifecycle stages,
+                anonymous visitor tracking, geolocation, contact ownership,
+                custom reporting, dynamic web content, focus items (website
+                overlays), and a plugin marketplace. However, many of these
+                features depend on cron jobs, rely on third-party plugins for
+                production readiness, and are presented through an aging UI
+                built on Bootstrap 3. Evaluate whether you need the breadth of
+                features or the polish and reliability of each one.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                What does Notifuse offer that Mautic doesn't?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse's advantages include: MJML code editor alongside the
+                visual builder, native ESP API integrations with batch sending
+                and bounce management, dedicated transactional email API with
+                auto contact creation, multi-tenant workspaces, built-in blog
+                with Liquid theming, AI content generation (Claude AI +
+                Firecrawl), data feeds for campaigns (global and per-recipient),
+                custom event tracking with RFM segmentation, A/B testing with
+                automatic winner selection, SMTP relay, and cron-free Docker
+                deployment.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Which is easier to set up?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse is significantly easier to deploy. A single Docker
+                container with PostgreSQL and a setup wizard gets you running.
+                One-click deployment options are available on PikaPods,
+                RepoCloud, Sealos, and Northflank. Mautic requires PHP, Composer,
+                MySQL, a web server (Apache/Nginx), and properly configured cron
+                jobs—3 essential ones that must run every 15 minutes, plus up to
+                14 more for features like broadcasts, imports, bounces, and
+                reports.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How do automations compare?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Both platforms offer visual automation builders. Mautic has more
+                built-in action types (21+) including points, stages, tags, and
+                integration pushes—reflecting its broader marketing scope.
+                Notifuse's strength is custom event triggers: trigger automations
+                based on any user behavior from your application via API. Both
+                support delays, branching logic, and webhooks. Mautic's
+                automations depend on cron jobs; Notifuse processes them
+                internally.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is there enterprise support available?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes! Notifuse offers enterprise support with priority
+                assistance, custom implementation, training, onboarding, and SLA
+                guarantees. Contact us for details. Mautic relies on community
+                support, though commercial hosted versions are available from
+                third parties like Mautic.com (by Acquia).
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can I use both platforms together?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Technically yes, but it's not recommended. You'd be managing
+                separate contact databases, templates, and analytics across two
+                systems. If you need Mautic's multi-channel features (SMS, push)
+                alongside Notifuse's email capabilities, consider using Notifuse
+                for email and dedicated tools for other channels instead.
+              </p>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Final CTA -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <ComparisonCTA
+                title="Ready to experience Notifuse?"
+                description="Join developers and marketers who choose Notifuse for focused, reliable email infrastructure with native ESP integrations and simple deployment."
+              />
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </body>
+</html>

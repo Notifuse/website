@@ -1,0 +1,1587 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import ComparisonLayout from "../../components/ComparisonLayout.astro"
+import TableOfContents from "../../components/TableOfContents.astro"
+import ComparisonHero from "../../components/ComparisonHero.astro"
+import ProConsTable from "../../components/ProConsTable.astro"
+import ComparisonTable from "../../components/ComparisonTable.astro"
+import FeatureSection from "../../components/FeatureSection.astro"
+import ComparisonCTA from "../../components/ComparisonCTA.astro"
+import emailEditorImage from "../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../assets/screenshots/dashboard.png"
+
+// Table of Contents items
+const tocItems = [
+  { id: "overview", label: "Overview" },
+  { id: "quick-comparison", label: "Quick Comparison" },
+  { id: "pricing", label: "Pricing & Cost" },
+  { id: "email-builder", label: "Visual Email Builder" },
+  { id: "campaigns", label: "Campaigns" },
+  { id: "transactional", label: "Transactional Email" },
+  { id: "email-sending", label: "Email Sending & Providers" },
+  { id: "contact-management", label: "Contact Management & Segmentation" },
+  { id: "automations", label: "Automations" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "custom-events", label: "Custom Events & Goals" },
+  { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
+  { id: "blog", label: "Blog" },
+  { id: "use-cases", label: "Use Cases" },
+  { id: "why-switch", label: "Why Switch to Notifuse" },
+  { id: "faq", label: "FAQ" },
+]
+
+// Pros & Cons Summary Data
+const proConsRows = [
+  {
+    label: "Starting Price",
+    notifuse: "Free (self-hosted)",
+    competitor: "Free (250 contacts), paid from ~$13/month",
+  },
+  {
+    label: "License",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "Proprietary SaaS",
+  },
+  {
+    label: "Email Providers",
+    notifuse:
+      "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, SMTP",
+    competitor: "Mailchimp infrastructure only",
+  },
+  {
+    label: "Transactional Email",
+    notifuse: "Included",
+    competitor: "Paid add-on ($20/25k emails, Standard plan required)",
+  },
+  {
+    label: "Best For",
+    notifuse:
+      "Teams wanting full control over email infrastructure and costs",
+    competitor: "Teams wanting a fully managed, all-in-one platform",
+  },
+  {
+    label: "Data Ownership",
+    notifuse: "Full (your PostgreSQL database)",
+    competitor: "Mailchimp-hosted",
+  },
+  {
+    label: "Multi-tenancy",
+    notifuse: "Yes (Workspaces with database isolation)",
+    competitor: "No (subaccounts via Mandrill only)",
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Notifuse vs Mailchimp: Open-Source Email Platform Comparison (2026)
+    </title>
+    <meta
+      name="description"
+      content="Compare Notifuse and Mailchimp for email marketing, transactional email, and automation. Features, pricing, and which is better for developers who want control over their email infrastructure."
+    />
+    <link
+      rel="canonical"
+      href="https://notifuse.com/compare/notifuse-vs-mailchimp"
+    />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Mailchimp, Mailchimp alternative, open-source email marketing, self-hosted Mailchimp alternative, email platform comparison"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://notifuse.com/compare/notifuse-vs-mailchimp"
+    />
+    <meta
+      property="og:title"
+      content="Notifuse vs Mailchimp: Open-Source Email Platform Comparison"
+    />
+    <meta
+      property="og:description"
+      content="Compare Notifuse and Mailchimp for email marketing, transactional email, and automation. Features, pricing, and which is better for developers who want control over their email infrastructure."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Notifuse vs Mailchimp: Open-Source Email Platform Comparison"
+    />
+    <meta
+      name="twitter:description"
+      content="Compare Notifuse and Mailchimp for email marketing, transactional email, and automation. Features, pricing, and which is better for developers who want control over their email infrastructure."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Staminads Analytics -->
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <ComparisonHero
+        competitor="Mailchimp"
+        description="Mailchimp is the most recognized email marketing platform. Notifuse is the open-source alternative that gives you full control over your data, costs, and email infrastructure — with native integrations for 7 major ESPs, a modern MJML visual builder, and transactional email included at no extra cost."
+      />
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs Mailchimp"
+        description="Detailed comparison of features, pricing, and use cases"
+      >
+        <!-- Table of Contents (Sidebar) -->
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Overview Section -->
+        <FeatureSection id="overview" title="Overview">
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12"
+          >
+            <div
+              class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12"
+            >
+              <h3 class="text-xl font-bold text-slate-900 mb-8">
+                Two Fundamentally Different Approaches
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Cost & Freedom
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> Free software.
+                    Pay only for hosting + your email provider (e.g., Amazon SES at
+                    ~$0.10/1,000 emails). No per-contact pricing.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Mailchimp:</strong> Per-contact monthly subscription.
+                    Transactional email, SMS, and dedicated IPs are paid add-ons.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Email Provider Choice
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> Native integrations
+                    with 7 major ESPs (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet,
+                    SparkPost, SMTP). Switch providers without migration.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Mailchimp:</strong> Locked to Mailchimp's own email
+                    infrastructure. No provider choice.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Mailchimp</span> (now part
+            of Intuit) is the most recognized email marketing platform, offering a
+            fully managed experience with 300+ integrations, landing pages, predictive
+            analytics, and SMS marketing. It's designed for teams that want everything
+            in one place without managing infrastructure.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source,
+            self-hosted email platform that combines newsletter functionality with
+            transactional email, visual MJML builder, advanced segmentation,
+            marketing automation, and multi-tenancy. <strong
+              >Designed for teams that want enterprise-grade features with full
+              control over their data and costs</strong
+            >, it's built for both marketers and developers.
+          </p>
+        </FeatureSection>
+
+        <!-- Quick Comparison Table -->
+        <FeatureSection id="quick-comparison" title="Quick Comparison" gradient>
+          <ProConsTable competitor="Mailchimp" rows={proConsRows} />
+          <ComparisonCTA compact />
+        </FeatureSection>
+
+        <!-- Pricing & Cost -->
+        <FeatureSection id="pricing" title="Pricing & Cost">
+          <p class="text-gray-600 mb-6">
+            Pricing is the #1 reason teams look for Mailchimp alternatives.
+            Here's how the cost models compare.
+          </p>
+
+          <ComparisonTable
+            title="Pricing Comparison"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Starting Price",
+                notifuse: "Free (self-hosted)",
+                competitor: "Free (250 contacts, 500 emails/month)",
+              },
+              {
+                feature: "Cost Model",
+                notifuse: "Hosting + email provider costs",
+                competitor: "Per-contact monthly subscription",
+              },
+              {
+                feature: "Transactional Email",
+                notifuse: "Included at no extra cost",
+                competitor:
+                  "Paid add-on: $20/block of 25k emails (Standard/Premium plan required)",
+              },
+              {
+                feature: "Contact Limits",
+                notifuse: "Unlimited (your database)",
+                competitor: "Varies by plan (250 to 1.5M)",
+              },
+              {
+                feature: "Email Send Limits",
+                notifuse: "Unlimited (your provider's limits)",
+                competitor: "Plan-dependent (500 to 15x contacts/month)",
+              },
+              {
+                feature: "SMS",
+                notifuse: false,
+                competitor: "Paid add-on (credit-based, select regions)",
+              },
+              {
+                feature: "Dedicated IP",
+                notifuse: "Use your provider's IPs",
+                competitor: "$29.95/month add-on",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Cost at Scale</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse is free software. Your only costs are hosting and your
+              chosen email provider. For example, Amazon SES charges ~$0.10 per
+              1,000 emails — a fraction of Mailchimp's per-contact pricing at
+              scale. As your audience grows, the savings compound.
+            </p>
+          </div>
+
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              The Trade-off
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Mailchimp is a fully managed service — you don't need to manage
+              servers, databases, or updates. If you prefer zero infrastructure
+              management and don't mind per-contact pricing, that convenience
+              has value.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Visual Email Builder -->
+        <FeatureSection id="email-builder" title="Visual Email Builder">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual email editors, but they take different
+            approaches. Notifuse uses MJML for guaranteed cross-client
+            rendering, while Mailchimp offers a large library of pre-built
+            templates.
+          </p>
+
+          <ComparisonTable
+            title="Email Editor Comparison"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Visual Email Builder",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - visual drag-and-drop & code editor, guarantees mobile-responsive across all email clients',
+                competitor:
+                  "Drag-and-drop builder with 100+ pre-built templates",
+              },
+              {
+                feature: "Templating Engine",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Handlebars + merge tags (*|MERGETAG|*)",
+                description: "Dynamic variables for personalization",
+              },
+              {
+                feature: "MJML Code Editor",
+                notifuse:
+                  "Direct MJML code editing alongside visual drag-and-drop",
+                competitor: "Custom HTML editing",
+                description: "Switch between visual and code modes",
+              },
+              {
+                feature: "Built-in File Manager",
+                notifuse: "S3-compatible storage with CDN support",
+                competitor: "Content Studio for creative assets",
+              },
+              {
+                feature: "Pre-built Templates",
+                notifuse: "Coming soon",
+                competitor: "100+ industry-specific templates",
+              },
+              {
+                feature: "AI Content Generation",
+                notifuse: "Claude AI integration (email + blog)",
+                competitor: "Built-in generative AI",
+              },
+              {
+                feature: "Support for Test Data",
+                notifuse: true,
+                competitor: true,
+                description: "Preview emails with sample contact data",
+              },
+            ]}
+          />
+
+          <!-- Email Editor Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={emailEditorImage.src}
+                  alt="Notifuse MJML Email Builder"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - MJML Email Builder
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse's MJML-based builder guarantees that emails render
+              perfectly on all devices and email clients (Gmail, Outlook, Apple
+              Mail, etc.). Mailchimp's builder is mature and offers more
+              pre-built templates, but Notifuse's MJML approach provides
+              stronger cross-client rendering guarantees.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campaigns -->
+        <FeatureSection id="campaigns" title="Campaigns">
+          <p class="text-gray-600 mb-6">
+            Compare newsletter and broadcast campaign features between both
+            platforms.
+          </p>
+
+          <ComparisonTable
+            title="Campaign Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Broadcast Campaigns",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "A/B Testing",
+                notifuse: "Subject lines + content, auto winner selection",
+                competitor:
+                  "Up to 8 multivariate combinations (Premium plan only)",
+              },
+              {
+                feature: "Filter by Contact Segments",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Send Time Optimization",
+                notifuse: false,
+                competitor: "Standard/Premium plans",
+              },
+              {
+                feature: "Global Data Feed",
+                notifuse:
+                  "Single API call, cached data shared across all recipients",
+                competitor: false,
+              },
+              {
+                feature: "Per-Recipient Data Feed",
+                notifuse:
+                  "Individual API calls with contact-specific data",
+                competitor: false,
+                description:
+                  "Personalize emails with real-time data (product recs, pricing, inventory)",
+              },
+              {
+                feature: "UTM Tracking Parameters",
+                notifuse: true,
+                competitor: true,
+                description: "Measure campaign performance with UTM tags",
+              },
+              {
+                feature: "Dynamic Content",
+                notifuse: "Via Liquid templating",
+                competitor: "Standard/Premium plans",
+              },
+              {
+                feature: "RSS-to-Email",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Campaign Analytics",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Schedule in Specific Timezone",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Transactional Email -->
+        <FeatureSection id="transactional" title="Transactional Email">
+          <p class="text-gray-600 mb-6">
+            Transactional email is a key differentiator. Notifuse includes it
+            at no extra cost, while Mailchimp requires a paid add-on
+            (Mandrill).
+          </p>
+
+          <ComparisonTable
+            title="Transactional Email Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Included in Platform",
+                notifuse: true,
+                competitor:
+                  "Paid add-on (Standard/Premium plan + $20/25k emails)",
+              },
+              {
+                feature: "REST API",
+                notifuse: true,
+                competitor: "Yes (102 endpoints)",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: "Built-in (port 587, STARTTLS)",
+                competitor: true,
+                tooltip:
+                  "Built-in SMTP server that accepts standard SMTP connections for sending transactional emails - perfect for legacy integrations.",
+              },
+              {
+                feature: "Contact Auto-Upsert on Send",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Automatically creates or updates contact profiles when sending",
+              },
+              {
+                feature: "Deduplication (external_id)",
+                notifuse: true,
+                competitor: false,
+                description: "Prevent duplicate sends with custom identifiers",
+              },
+              {
+                feature: "Attachments",
+                notifuse: "Up to 20 files, 10MB total",
+                competitor: true,
+              },
+              {
+                feature: "CC/BCC Support",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Inbound Email Processing",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Dedicated IPs",
+                notifuse: "Use your provider's IPs",
+                competitor: "$29.95/month per IP, with warmup",
+              },
+              {
+                feature: "Subaccounts",
+                notifuse: "Workspaces (database-isolated)",
+                competitor: "Yes (custom quotas, independent activity)",
+              },
+              {
+                feature: "Transactional SMS",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Message Search",
+                notifuse: true,
+                competitor: "Yes (30-day content storage)",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Key Difference</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse includes transactional email at no extra cost. With
+              Mailchimp, you need at least a Standard plan plus the Mandrill
+              add-on — $20 per block of 25,000 emails. For password resets,
+              order confirmations, and welcome emails, Notifuse is significantly
+              more cost-effective.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Email Sending & Providers -->
+        <FeatureSection
+          id="email-sending"
+          title="Email Sending & Providers"
+        >
+          <p class="text-gray-600 mb-6">
+            Notifuse lets you choose your email provider, while Mailchimp
+            locks you into its own infrastructure.
+          </p>
+
+          <ComparisonTable
+            title="Email Delivery Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Native ESP Integrations",
+                notifuse:
+                  "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
+                competitor: "Mailchimp infrastructure only",
+              },
+              {
+                feature: "SMTP Integration",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Switch Providers Without Migration",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Change ESP without touching templates, contacts, or workflows",
+              },
+              {
+                feature: "Opens/Clicks Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Delivery Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Complaint Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Domain Authentication (SPF/DKIM)",
+                notifuse: "Via your email provider",
+                competitor: "Built-in",
+              },
+            ]}
+          />
+
+          <ComparisonCTA
+            title="Want email provider freedom?"
+            description="Try Notifuse with your preferred ESP and switch anytime without migration."
+            compact
+          />
+        </FeatureSection>
+
+        <!-- Contact Management & Segmentation -->
+        <FeatureSection
+          id="contact-management"
+          title="Contact Management & Segmentation"
+        >
+          <p class="text-gray-600 mb-6">
+            Both platforms offer advanced contact management. Mailchimp excels
+            in predictive analytics, while Notifuse offers more flexible
+            custom fields and a self-service notification center.
+          </p>
+
+          <ComparisonTable
+            title="Contact & Segmentation Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Custom Contact Fields",
+                notifuse:
+                  "20 custom fields (5 each: string, number, datetime, JSON)",
+                competitor: "Custom merge fields",
+              },
+              {
+                feature: "Activity Timeline",
+                notifuse: true,
+                competitor: true,
+                description:
+                  "Complete history of emails, opens, clicks, and profile changes",
+              },
+              {
+                feature: "Dynamic Segments",
+                notifuse: true,
+                competitor: true,
+                description: "Auto-update based on rules and conditions",
+              },
+              {
+                feature: "Predictive Segmentation",
+                notifuse: false,
+                competitor: "Standard/Premium plans",
+              },
+              {
+                feature: "CSV Import with Auto-detection",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Sign-up Forms",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Surveys",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Double Opt-in",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Welcome Email",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Notification Center",
+                notifuse: "Self-service subscription management, 10 languages",
+                competitor: false,
+                description:
+                  "Subscribers manage their own notification preferences",
+              },
+            ]}
+          />
+
+          <!-- Contact Profile Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={contactProfileImage.src}
+                  alt="Notifuse Contact Profile with Activity Timeline"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Contact Profile with Activity Timeline
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual automation builders. Mailchimp provides
+            pre-built templates for common workflows, while Notifuse offers
+            more flexibility with custom event triggers and webhook actions.
+          </p>
+
+          <ComparisonTable
+            title="Automation Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Visual Workflow Builder",
+                notifuse: "Canvas-based flow editor",
+                competitor:
+                  "Customer Journey Builder (Essentials+, branching on Standard+)",
+              },
+              {
+                feature: "Event Triggers",
+                notifuse: "Contact, list, segment, email & custom events",
+                competitor: "E-commerce, behavioral, date-based",
+              },
+              {
+                feature: "Branching Logic",
+                notifuse:
+                  "IF/THEN filters, A/B test splits, list status branches",
+                competitor: "Yes (Standard+ for branching)",
+              },
+              {
+                feature: "Pre-built Automation Templates",
+                notifuse: false,
+                competitor: "12+ templates (welcome, cart, etc.)",
+              },
+              {
+                feature: "Webhook Actions",
+                notifuse: "HTTP POST with Bearer token auth",
+                competitor: "Limited",
+              },
+              {
+                feature: "Custom Event Triggers",
+                notifuse: true,
+                competitor: "Limited to e-commerce events",
+              },
+              {
+                feature: "Delay & Timing",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Journey Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Different Strengths
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Mailchimp's pre-built automation templates get you started
+              faster with common workflows like welcome series and abandoned
+              carts. Notifuse offers more flexibility for custom workflows with
+              webhook actions, custom event triggers, and an open-source engine
+              you can audit and extend.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Track campaign performance and engagement with detailed analytics.
+            Mailchimp offers broader analytics capabilities including revenue
+            tracking and industry benchmarking.
+          </p>
+
+          <ComparisonTable
+            title="Analytics Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Open Rate Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Click Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Complaint Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Revenue Tracking",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Industry Benchmarking",
+                notifuse: false,
+                competitor: "Yes (data from 481M+ campaigns)",
+              },
+              {
+                feature: "Landing Page Analytics",
+                notifuse: false,
+                competitor: true,
+              },
+            ]}
+          />
+
+          <!-- Analytics Dashboard Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={dashboardImage.src}
+                  alt="Notifuse Analytics Dashboard"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Analytics Dashboard
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Custom Events & Goals -->
+        <FeatureSection id="custom-events" title="Custom Events & Goals">
+          <p class="text-gray-600 mb-6">
+            Track user behavior from external systems and build behavioral
+            segments. Notifuse offers a more flexible event system, while
+            Mailchimp focuses on e-commerce events.
+          </p>
+
+          <ComparisonTable
+            title="Event & Goal Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Custom Event Tracking",
+                notifuse: "API-driven event ingestion with batch import",
+                competitor: "Limited (e-commerce focused)",
+              },
+              {
+                feature: "Goal Types",
+                notifuse:
+                  "purchase, subscription, lead, signup, booking, trial",
+                competitor: "E-commerce goals",
+              },
+              {
+                feature: "Goal-based Segmentation",
+                notifuse:
+                  "Segment by aggregate functions (sum, count, avg, min, max) on events",
+                competitor: "Purchase behavior segmentation",
+              },
+              {
+                feature: "Contact Timeline",
+                notifuse: "Events displayed in contact activity history",
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenancy & Agency -->
+        <FeatureSection id="multi-tenancy" title="Multi-tenancy & Agency">
+          <p class="text-gray-600 mb-6">
+            Notifuse is built for agencies and SaaS platforms that need
+            complete workspace isolation. Mailchimp does not offer
+            multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Multi-tenancy & Agency Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Database isolation & custom domain per workspace",
+                competitor: false,
+                description:
+                  "Isolated environments for multiple brands or clients",
+              },
+              {
+                feature: "User Permissions",
+                notifuse: true,
+                competitor: true,
+                description: "Granular access control for team collaboration",
+              },
+            ]}
+          />
+
+          <div
+            class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Perfect for Agencies
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse's workspace feature makes it ideal for agencies managing
+              multiple clients. Each client gets their own isolated environment
+              with custom domains, separate contacts, and dedicated API keys—all
+              from one installation. Mailchimp requires separate accounts for
+              each client.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse includes a built-in blogging platform with Liquid theming
+            and SEO optimization.
+          </p>
+
+          <ComparisonTable
+            title="Blog Features"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Built-in Blog CMS",
+                notifuse: "Categories, posts, scheduling & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Liquid Theme Engine",
+                notifuse:
+                  "Customizable templates with Shopify Liquid syntax",
+                competitor: false,
+              },
+              {
+                feature: "Auto-generated SEO",
+                notifuse: "Sitemap, robots.txt, OG tags, canonical URLs",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Use Cases -->
+        <FeatureSection id="use-cases" title="When to Choose Each Platform">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choose Notifuse -->
+            <div
+              class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Notifuse
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Notifuse is the better choice if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>full ownership</strong> of your data and email
+                    infrastructure</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need to <strong>minimize email costs</strong> (pay only hosting
+                    + provider, not per-contact)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>email provider flexibility</strong> (7 ESPs, switch
+                    anytime)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Are a <strong>developer or technical team</strong> comfortable
+                    with self-hosting</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>multi-tenant workspaces</strong> for client or
+                    project isolation</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>transactional email included</strong> without paying
+                    for add-ons</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>event-driven automations</strong> with custom
+                    event triggers</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Value <strong>open-source software</strong> you can audit,
+                    modify, and extend</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Have <strong>data residency or compliance</strong> requirements
+                    (GDPR, etc.)</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Choose Mailchimp -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Mailchimp
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Mailchimp is the better choice if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want a <strong>fully managed platform</strong> with zero infrastructure
+                    to maintain</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>300+ turnkey integrations</strong> (Shopify,
+                    WooCommerce, Salesforce)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>landing pages</strong>, sign-up forms, and a
+                    website builder</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>SMS marketing</strong> alongside email</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>predictive segmentation</strong> and industry
+                    benchmarking</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>pre-built automation templates</strong> for quick
+                    setup</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Your team is <strong>non-technical</strong> and prefers a
+                    point-and-click experience</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>Send Time Optimization</strong> and multivariate
+                    testing (8 variants)</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Why Switch to Notifuse -->
+        <FeatureSection
+          id="why-switch"
+          title="Why Switch to Notifuse?"
+          gradient
+        >
+          <p class="text-gray-600 mb-8">
+            Looking for a Mailchimp alternative? Teams choose Notifuse when
+            they want <strong>enterprise-grade features without enterprise
+            pricing</strong>. Here's what makes the difference:
+          </p>
+
+          <div class="space-y-6">
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                No Per-Contact Pricing
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse is free software. Pay only for hosting + your email
+                provider. As your audience grows from 1,000 to 100,000
+                contacts, your Notifuse costs stay the same — while Mailchimp's
+                per-contact pricing scales up significantly.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Email Provider Freedom
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Choose the best ESP for your needs. Use Amazon SES for
+                cost-effective bulk sends, Postmark for fast transactional
+                delivery, or Mailgun for developer-friendly APIs. Switch
+                providers without touching your templates, contacts, or
+                workflows.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Full Data Ownership
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Your contacts, your database, your servers. No third party has
+                access to your subscriber data or engagement metrics. Essential
+                for GDPR compliance, data residency requirements, and regulated
+                industries.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Transactional Email Included
+              </h4>
+              <p class="text-gray-700 text-sm">
+                No paid add-ons. Send password resets, order confirmations,
+                and welcome emails from the same platform as your marketing
+                campaigns. With Mailchimp, transactional email requires the
+                Mandrill add-on at $20 per block of 25,000 emails.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                MJML-Based Visual Builder
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Guaranteed mobile-responsive rendering across all email
+                clients (Gmail, Outlook, Apple Mail, Yahoo, etc.). No more
+                rendering issues or broken layouts — your emails will look
+                perfect everywhere.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Multi-Tenant Architecture
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Agencies and SaaS platforms need workspace isolation. Notifuse
+                provides complete multi-tenancy with separate databases, custom
+                domains, and API keys per workspace — something Mailchimp
+                doesn't offer.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Open Source & Extensible
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Inspect the code, extend the platform, contribute
+                improvements. No vendor lock-in, no black boxes. With
+                Mailchimp, you're subject to their pricing changes, feature
+                decisions, and terms of service.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Advanced Automation
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Visual workflow builder with custom event triggers, webhook
+                actions, and branching logic. Build exactly the automation
+                flows you need — from welcome series to complex re-engagement
+                workflows.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8"
+          >
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">
+              Ready to switch from Mailchimp?
+            </h4>
+            <p class="text-gray-600 text-center mb-6">
+              Export your contacts from Mailchimp as CSV, import them into
+              Notifuse in minutes, and connect your preferred email provider.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Try Live Demo
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                View Installation Guide
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ Section -->
+        <FeatureSection id="faq" title="Frequently Asked Questions">
+          <div class="space-y-6">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How do I migrate from Mailchimp to Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Migration is straightforward: Export your contacts from
+                Mailchimp as CSV, then import them into Notifuse using our CSV
+                import tool with auto-detection. Recreate your email templates
+                using the visual MJML builder, and connect your preferred email
+                provider (Amazon SES, Mailgun, etc.). Check our <a
+                  href="https://docs.notifuse.com"
+                  class="text-primary hover:underline">documentation</a
+                > for details.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How much can I save switching from Mailchimp?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse is free software. With Amazon SES (~$0.10 per 1,000
+                emails), sending 100,000 emails/month costs roughly $10 in
+                provider fees plus a few dollars for hosting. Compare that to
+                Mailchimp's Standard plan pricing at scale, plus $20 per block
+                of 25,000 transactional emails if you use Mandrill.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Does Notifuse have everything Mailchimp has?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                No — and we're transparent about that. Mailchimp offers
+                landing pages, SMS marketing, predictive analytics, 300+
+                integrations, Send Time Optimization, and multivariate testing
+                that Notifuse doesn't have. But Notifuse offers data
+                ownership, email provider flexibility, multi-tenancy, included
+                transactional email, and an open-source codebase that Mailchimp
+                doesn't.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is Notifuse harder to set up than Mailchimp?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse requires self-hosting via Docker. If you're
+                comfortable with Docker, setup takes minutes with our one-click
+                deployment options (PikaPods, RepoCloud, Sealos). If you
+                prefer zero infrastructure management, Mailchimp's managed
+                service may be a better fit for your team.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can I use my existing email provider with Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes. Notifuse integrates natively with Amazon SES, Mailgun,
+                Postmark, SendGrid, Mailjet, SparkPost, and any SMTP server.
+                You can even use different providers for different purposes —
+                e.g., SES for bulk campaigns and Postmark for transactional
+                email.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Does Notifuse support SMS?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Not currently. Notifuse focuses on email marketing and
+                transactional email. If SMS is critical for your business,
+                Mailchimp offers it as a paid add-on in select regions (US,
+                Canada, UK, EU, Australia).
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is there enterprise support available?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes! Notifuse offers enterprise support with priority
+                assistance, custom implementation, training, onboarding, and
+                SLA guarantees. Contact us for details.
+              </p>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Final CTA -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <ComparisonCTA
+                title="Ready to take control of your email?"
+                description="Join developers and marketers who have switched from Mailchimp to Notifuse for full data ownership, provider flexibility, and no per-contact pricing."
+              />
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </body>
+</html>

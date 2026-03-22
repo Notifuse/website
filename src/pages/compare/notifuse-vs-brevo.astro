@@ -1,0 +1,1724 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import ComparisonLayout from "../../components/ComparisonLayout.astro"
+import TableOfContents from "../../components/TableOfContents.astro"
+import ComparisonHero from "../../components/ComparisonHero.astro"
+import ProConsTable from "../../components/ProConsTable.astro"
+import ComparisonTable from "../../components/ComparisonTable.astro"
+import FeatureSection from "../../components/FeatureSection.astro"
+import ComparisonCTA from "../../components/ComparisonCTA.astro"
+import emailEditorImage from "../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../assets/screenshots/dashboard.png"
+
+// Table of Contents items
+const tocItems = [
+  { id: "overview", label: "Overview" },
+  { id: "quick-comparison", label: "Quick Comparison" },
+  { id: "pricing", label: "Pricing & Cost Comparison" },
+  { id: "email-builder", label: "Email Builder" },
+  { id: "campaigns", label: "Campaigns" },
+  { id: "contact-management", label: "Contact Management & Segmentation" },
+  { id: "email-sending", label: "Email Sending & Deliverability" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "automations", label: "Automations" },
+  { id: "custom-events", label: "Custom Events & Goals" },
+  { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
+  { id: "developer-api", label: "Developer Experience & API" },
+  { id: "blog", label: "Blog" },
+  { id: "use-cases", label: "Use Cases" },
+  { id: "why-switch", label: "Why Choose Notifuse" },
+  { id: "faq", label: "FAQ" },
+]
+
+// Pros & Cons Summary Data
+const proConsRows = [
+  {
+    label: "Starting Price",
+    notifuse: "Free (self-hosted)",
+    competitor: "Free tier: 300 emails/day",
+  },
+  {
+    label: "License",
+    notifuse: "AGPL-3.0 (Open-source)",
+    competitor: "Proprietary (Closed-source)",
+  },
+  {
+    label: "Deployment",
+    notifuse: "Self-hosted",
+    competitor: "Cloud-only SaaS",
+  },
+  {
+    label: "Contact Limits",
+    notifuse: "Unlimited",
+    competitor: "100K free, 500K Starter, 2M Pro",
+  },
+  {
+    label: "Email Volume",
+    notifuse: "Unlimited (ESP-dependent)",
+    competitor: "300/day free, then plan-based",
+  },
+  {
+    label: "Feature Access",
+    notifuse: "All features included",
+    competitor: "Gated by tier ($18-$499+/mo)",
+  },
+  {
+    label: "Data Ownership",
+    notifuse: "Full (your infrastructure)",
+    competitor: "Brevo-hosted (EU data center)",
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Notifuse vs Brevo: Open-Source Self-Hosted vs SaaS Email Platform (2026)
+    </title>
+    <meta
+      name="description"
+      content="Compare Notifuse (open-source, self-hosted) and Brevo (SaaS, multi-channel). Features, pricing, automations, and which is better for your email needs. Formerly Sendinblue."
+    />
+    <link
+      rel="canonical"
+      href="https://notifuse.com/compare/notifuse-vs-brevo"
+    />
+    <meta name="theme-color" content="#FF6B35" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Brevo, Brevo alternative, Sendinblue alternative, self-hosted email platform, open-source email marketing, Brevo pricing"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://notifuse.com/compare/notifuse-vs-brevo"
+    />
+    <meta
+      property="og:title"
+      content="Notifuse vs Brevo: Open-Source Self-Hosted vs SaaS Email Platform"
+    />
+    <meta
+      property="og:description"
+      content="Compare Notifuse (open-source, self-hosted) and Brevo (SaaS, multi-channel). All features included vs tier-gated pricing starting at $499/mo."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Notifuse vs Brevo: Open-Source Email Platform Comparison"
+    />
+    <meta
+      name="twitter:description"
+      content="Compare Notifuse (open-source, self-hosted) vs Brevo (SaaS). All features included vs $499/mo for advanced features."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Staminads Analytics -->
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <!-- Navigation -->
+      <Navigation />
+
+      <!-- Hero Section -->
+      <ComparisonHero
+        competitor="Brevo"
+        description="Notifuse is open-source and self-hosted with all features included. Brevo (formerly Sendinblue) is a multi-channel SaaS that gates key features behind $18-$499+/mo tiers. Choose Notifuse for full data ownership and no per-contact pricing."
+      />
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs Brevo"
+        description="Detailed comparison of features, pricing, and use cases"
+      >
+        <!-- Table of Contents (Sidebar) -->
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Overview Section -->
+        <FeatureSection id="overview" title="Overview">
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12"
+          >
+            <div
+              class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12"
+            >
+              <h3 class="text-xl font-bold text-slate-900 mb-8">
+                The Two Core Differences
+              </h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      Open-Source vs Proprietary SaaS
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> AGPL-3.0 open-source,
+                    self-hosted. Full control over your code and data.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Brevo:</strong> Proprietary closed-source SaaS with tiered
+                    pricing. Your data lives on Brevo's servers.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">
+                      All Features Included vs Tier-Gated
+                    </h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse:</strong> Every feature available
+                    from day one. No per-contact fees.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Brevo:</strong> Key features locked behind Standard ($18/mo),
+                    Professional ($499/mo), and Enterprise tiers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Critical: Feature Gating Callout -->
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-red-400 p-px rounded-xl mb-8"
+          >
+            <div
+              class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-8"
+            >
+              <div class="flex items-start">
+                <svg
+                  class="w-8 h-8 text-red-500 mr-4 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  ></path>
+                </svg>
+                <div>
+                  <h4 class="font-bold text-slate-900 mb-2 text-lg">
+                    Brevo's Feature Gating
+                  </h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    Many features you'd expect to be standard require paid upgrades on Brevo:
+                  </p>
+                  <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span
+                        ><strong>Standard ($18/mo):</strong> Marketing automation, A/B testing,
+                        advanced reports, send time optimization</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span
+                        ><strong>Professional ($499/mo):</strong> WhatsApp, push notifications,
+                        contact scoring, AI segmentation, phone support</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span
+                        ><strong>Enterprise (custom):</strong> CDP, loyalty programs, custom
+                        objects, dedicated IP, SSO</span
+                      >
+                    </li>
+                    <li class="flex items-start">
+                      <svg
+                        class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span
+                        ><strong class="text-primary">Notifuse:</strong> All features included
+                        at $0 software cost</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Brevo</span> (formerly Sendinblue) is
+            a multi-channel SaaS marketing platform offering email, SMS, WhatsApp, CRM,
+            and live chat. It's feature-rich but gates key capabilities behind expensive
+            tiers and charges per contact.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source,
+            self-hosted email platform with a visual MJML builder, advanced segmentation,
+            automations, multi-tenancy, and flexible ESP connections. <strong
+              >All features included</strong
+            > from day one—no tier-based pricing, no per-contact fees.
+          </p>
+        </FeatureSection>
+
+        <!-- Quick Comparison Table -->
+        <FeatureSection id="quick-comparison" title="Quick Comparison" gradient>
+          <ProConsTable competitor="Brevo" rows={proConsRows} />
+          <ComparisonCTA compact />
+        </FeatureSection>
+
+        <!-- Pricing & Cost Comparison -->
+        <FeatureSection id="pricing" title="Pricing & Cost Comparison" gradient>
+          <p class="text-gray-600 mb-6">
+            Brevo's tiered pricing adds up quickly. Notifuse is free software—you only pay for hosting and your ESP.
+          </p>
+
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-8"
+          >
+            <div
+              class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8"
+            >
+              <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">
+                Cost at Scale: 100K Emails/Month
+              </h4>
+              <p class="text-gray-700 text-sm text-center mb-6">
+                Compare the real cost when you need automation, A/B testing, and advanced features.
+              </p>
+
+              <!-- Cost Comparison -->
+              <div class="mb-6">
+                <h5
+                  class="text-sm font-semibold text-slate-900 text-center mb-3"
+                >
+                  With Automations & Advanced Features
+                </h5>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                  <div
+                    class="border border-primary bg-orange-50 rounded-lg p-4"
+                  >
+                    <div class="text-xs text-gray-500 mb-1">Notifuse + SES</div>
+                    <div class="text-2xl font-bold text-primary">~$25-40</div>
+                    <div class="text-xs text-gray-600">All features included</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Brevo Standard</div>
+                    <div class="text-2xl font-bold text-gray-700">$18+</div>
+                    <div class="text-xs text-gray-600">Basic automation only</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Brevo Professional</div>
+                    <div class="text-2xl font-bold text-gray-700">$499+</div>
+                    <div class="text-xs text-gray-600">Full feature access</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brevo Tier Breakdown -->
+              <div class="mb-6">
+                <h5
+                  class="text-sm font-semibold text-slate-900 text-center mb-3"
+                >
+                  Brevo Plan Breakdown
+                </h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-center">
+                  <div class="border border-gray-200 rounded-lg p-3">
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Free</div>
+                    <div class="text-sm text-gray-600">300 emails/day</div>
+                    <div class="text-xs text-gray-400">100K contacts</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-3">
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Starter $9/mo</div>
+                    <div class="text-sm text-gray-600">5K emails/mo</div>
+                    <div class="text-xs text-gray-400">No automation</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-3">
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Standard $18/mo</div>
+                    <div class="text-sm text-gray-600">Automation + A/B</div>
+                    <div class="text-xs text-gray-400">No WhatsApp/push</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-3">
+                    <div class="text-xs font-semibold text-gray-700 mb-1">Pro $499/mo</div>
+                    <div class="text-sm text-gray-600">All channels</div>
+                    <div class="text-xs text-gray-400">AI + scoring</div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-500 text-center mb-2">
+                Notifuse total: $0 (software) + $10 (Amazon SES for 100K) + $15-30 (hosting) = ~$25-40/month for all features
+              </p>
+              <p class="text-[10px] text-gray-400 text-center">
+                Pricing as of March 2026
+              </p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div
+              class="border-2 border-primary rounded-xl p-8 relative overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-semibold"
+              >
+                Best Value
+              </div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse</h3>
+              <div class="text-4xl font-bold text-primary mb-2">$0</div>
+              <p class="text-sm text-gray-600 mb-4">
+                Software cost (self-hosted)
+              </p>
+
+              <div class="text-sm text-gray-700 mb-6">
+                <strong>+ Hosting:</strong> ~$15-30/month<br />
+                <strong>+ Amazon SES:</strong> ~$10/month (100k emails)
+                <div class="mt-2 pt-2 border-t border-gray-200">
+                  <strong>Total: ~$25-40/month</strong> for unlimited features
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-sm">
+                <li>&#10003; Unlimited contacts (no per-contact fees)</li>
+                <li>&#10003; All features included from day one</li>
+                <li>&#10003; Open-source code</li>
+                <li>&#10003; ESP flexibility</li>
+                <li>&#10003; Full data ownership</li>
+              </ul>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Brevo</h3>
+              <div class="text-sm text-gray-600 mb-4">Tiered SaaS pricing</div>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Free:</strong> 300 emails/day, 100K contacts<br />
+                  <span class="text-gray-500">No automation, Brevo branding</span>
+                </div>
+                <div>
+                  <strong>Starter:</strong> From $9/month<br />
+                  <span class="text-gray-500">5K-100K emails, no automation</span>
+                </div>
+                <div>
+                  <strong>Standard:</strong> From $18/month<br />
+                  <span class="text-gray-500">Automation, A/B testing</span>
+                </div>
+                <div>
+                  <strong>Professional:</strong> From $499/month<br />
+                  <span class="text-gray-500">WhatsApp, push, AI, scoring</span>
+                </div>
+                <div class="text-xs text-gray-500">
+                  + Enterprise for CDP, loyalty, SSO
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-sm text-gray-500">
+                <li>&#10007; Per-contact pricing at scale</li>
+                <li>&#10007; Features gated by tier</li>
+                <li>&#10007; Closed-source</li>
+                <li>&#10007; Cloud-only</li>
+                <li>&#10007; Data on Brevo's servers</li>
+              </ul>
+            </div>
+          </div>
+
+          <ComparisonCTA
+            title="Ready to save on email costs?"
+            description="Get all features for the cost of hosting + ESP. No per-contact fees, no tier gates."
+            compact
+          />
+        </FeatureSection>
+
+        <!-- Email Builder -->
+        <FeatureSection id="email-builder" title="Email Builder">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual email editors, but with different approaches to code access and templating.
+          </p>
+
+          <ComparisonTable
+            title="Email Builder Comparison"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Visual Email Builder",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - visual drag-and-drop & code editor, guarantees mobile-responsive & compatible with all email clients',
+                competitor: "Drag-and-drop editor (no code access)",
+              },
+              {
+                feature: "MJML Code Editor",
+                notifuse: "Direct MJML code editing alongside visual drag-and-drop",
+                competitor: false,
+                description: "Switch between visual and code modes",
+              },
+              {
+                feature: "HTML Editor",
+                notifuse: "Via MJML code mode",
+                competitor: "Raw HTML editor available",
+              },
+              {
+                feature: "Templating Engine",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Brevo's proprietary template language",
+                description: "Dynamic variables for personalization",
+              },
+              {
+                feature: "Built-in File Manager",
+                notifuse: "S3-compatible storage with CDN support",
+                competitor: "Basic image uploads",
+              },
+              {
+                feature: "Template Library",
+                notifuse: "Coming soon",
+                competitor: "50+ pre-built templates",
+              },
+              {
+                feature: "AI Content Generation",
+                notifuse: "Via Anthropic (Claude) integration",
+                competitor: "Built-in AI (subject lines + body)",
+              },
+              {
+                feature: "Support for Test Data",
+                notifuse: true,
+                competitor: false,
+                description: "Preview emails with sample contact data",
+              },
+            ]}
+          />
+
+          <!-- Email Editor Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={emailEditorImage.src}
+                  alt="Notifuse MJML Email Builder"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - MJML Visual Email Builder with Code Editor
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why MJML Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse uses MJML, the industry-standard framework for responsive emails.
+              Unlike Brevo's proprietary editor, MJML is open-source and guarantees
+              compatibility across all email clients. You also get direct code access
+              for full customization—something Brevo's drag-and-drop editor doesn't offer.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campaigns -->
+        <FeatureSection id="campaigns" title="Campaigns">
+          <p class="text-gray-600 mb-6">
+            Both platforms support broadcast campaigns. Brevo adds SMS and WhatsApp
+            but locks them behind the $499/mo Professional plan.
+          </p>
+
+          <ComparisonTable
+            title="Campaign Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Broadcast Campaigns",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "A/B Testing",
+                notifuse: "Auto winner selection (open/click rate)",
+                competitor: "Yes (Standard plan, $18/mo+)",
+              },
+              {
+                feature: "UTM Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Schedule Campaigns",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "AI Send Time Optimization",
+                notifuse: false,
+                competitor: "Professional plan ($499/mo)",
+              },
+              {
+                feature: "Global Data Feed",
+                notifuse: "Single API call, cached data shared across all recipients",
+                competitor: false,
+              },
+              {
+                feature: "Per-Recipient Data Feed",
+                notifuse: "Individual API calls with contact-specific data",
+                competitor: false,
+                description: "Personalize emails with real-time data (product recs, pricing, inventory)",
+              },
+              {
+                feature: "SMS Campaigns",
+                notifuse: false,
+                competitor: "Yes (credit-based)",
+              },
+              {
+                feature: "WhatsApp Campaigns",
+                notifuse: false,
+                competitor: "Professional plan ($499/mo)",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Email-Focused vs Multi-Channel</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse focuses on doing email exceptionally well. If you need SMS and WhatsApp,
+              Brevo offers them—but at $499+/month on the Professional plan. Notifuse's data feeds
+              let you pull real-time personalized content into emails, a feature Brevo doesn't have.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Contact Management & Segmentation -->
+        <FeatureSection
+          id="contact-management"
+          title="Contact Management & Segmentation"
+        >
+          <p class="text-gray-600 mb-6">
+            Both platforms offer contact management and segmentation. Notifuse includes
+            everything by default; Brevo's advanced segmentation requires paid tiers.
+          </p>
+
+          <ComparisonTable
+            title="Contact & Segmentation Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Contact Profiles",
+                notifuse: "Full profiles with 20 custom fields (5 per type)",
+                competitor: "Full profiles with unlimited custom attributes",
+              },
+              {
+                feature: "Activity Timeline",
+                notifuse: "Complete interaction history per contact",
+                competitor: false,
+                description:
+                  "See all emails, opens, clicks, bounces, list changes, and custom events",
+              },
+              {
+                feature: "Dynamic Segmentation",
+                notifuse: "Filters & conditions with auto-update (included)",
+                competitor: "Yes (Standard plan, $18/mo+)",
+              },
+              {
+                feature: "RFM Segmentation",
+                notifuse: "Built-in (Recency, Frequency, Monetary)",
+                competitor: "Enterprise CDP only (30+ scores)",
+              },
+              {
+                feature: "Contact Scoring",
+                notifuse: "Via segments (RFM conditions & behavioral filters)",
+                competitor: "Professional plan ($499/mo)",
+              },
+              {
+                feature: "Double Opt-in",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "CSV Import",
+                notifuse: "Auto-detection & field mapping",
+                competitor: true,
+              },
+              {
+                feature: "Contact Limits",
+                notifuse: "Unlimited",
+                competitor: "100K free, 500K Starter, 2M Pro",
+              },
+              {
+                feature: "Notification Center",
+                notifuse: true,
+                competitor: false,
+                description: "Self-service subscription management for contacts",
+              },
+            ]}
+          />
+
+          <!-- Contact Profile Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={contactProfileImage.src}
+                  alt="Notifuse Contact Profile with Activity Timeline"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Contact Profile with Activity Timeline
+            </p>
+          </div>
+
+          <div
+            class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Unlimited Contacts vs Per-Contact Pricing
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse has no contact limits—store as many contacts as your
+              infrastructure allows. Brevo caps contacts by plan tier (100K free,
+              500K on Starter, 2M on Professional) and charges more as you grow.
+              At scale, this difference is significant.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Email Sending & Deliverability -->
+        <FeatureSection
+          id="email-sending"
+          title="Email Sending & Deliverability"
+        >
+          <div
+            class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8"
+          >
+            <div
+              class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8"
+            >
+              <h4 class="font-bold text-slate-900 mb-3 text-lg">
+                ESP Flexibility vs Locked Infrastructure
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-sm font-semibold text-primary mb-2">
+                    Notifuse
+                  </p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>
+                      &#10003; Choose any ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet,
+                      SparkPost) + Custom SMTP
+                    </li>
+                    <li>&#10003; Use different ESPs for transactional vs marketing</li>
+                    <li>&#10003; Switch ESPs anytime</li>
+                    <li>&#10003; Customize sending rate limits</li>
+                    <li>&#10003; No vendor lock-in</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-700 mb-2">Brevo</p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>&#10007; Locked to Brevo's own infrastructure</li>
+                    <li>&#10007; Can't use different ESPs</li>
+                    <li>&#10007; Dedicated IP requires Enterprise plan</li>
+                    <li>&#10007; Rate limits controlled by Brevo</li>
+                    <li>&#10007; Vendor lock-in</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ComparisonTable
+            title="Email Delivery Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "ESP Options",
+                notifuse:
+                  "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + Custom SMTP",
+                competitor: "Brevo's own infrastructure only",
+              },
+              {
+                feature: "Separate ESPs for Email Types",
+                notifuse: true,
+                competitor: false,
+                description:
+                  "Use different ESPs for transactional vs marketing",
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: "Built-in SMTP server",
+                competitor: true,
+              },
+              {
+                feature: "Dedicated IP",
+                notifuse: "Via your ESP provider",
+                competitor: "Enterprise plan only",
+              },
+              {
+                feature: "DKIM/SPF/DMARC",
+                notifuse: "Via your ESP",
+                competitor: "Built-in (1024/2048-bit DKIM)",
+              },
+              {
+                feature: "IP Warmup",
+                notifuse: "Via ESP tools",
+                competitor: "Built-in warmup controls",
+              },
+              {
+                feature: "Opens/Clicks Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce/Complaint Webhooks",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Inbound Email Parsing",
+                notifuse: false,
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Brevo offers more reporting features on paid tiers. Notifuse provides
+            contact-level activity timelines that Brevo lacks.
+          </p>
+
+          <ComparisonTable
+            title="Analytics Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Open Rate Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Click Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Bounce Tracking",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Click Heatmaps",
+                notifuse: false,
+                competitor: "Standard plan ($18/mo+)",
+              },
+              {
+                feature: "Geographic Reports",
+                notifuse: false,
+                competitor: "Standard plan ($18/mo+)",
+              },
+              {
+                feature: "Device Reports",
+                notifuse: false,
+                competitor: "Standard plan ($18/mo+)",
+              },
+              {
+                feature: "Contact Activity Timeline",
+                notifuse: "Full interaction history per contact",
+                competitor: false,
+                description:
+                  "Track every email, open, click, bounce, list change, and custom event per contact",
+              },
+              {
+                feature: "Transactional vs Marketing Stats",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "AI Data Analyst",
+                notifuse: false,
+                competitor: "Professional plan ($499/mo)",
+              },
+            ]}
+          />
+
+          <!-- Analytics Dashboard Screenshot -->
+          <div class="my-8">
+            <div
+              class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl"
+            >
+              <div class="rounded-xl overflow-hidden">
+                <img
+                  src={dashboardImage.src}
+                  alt="Notifuse Analytics Dashboard"
+                  class="w-full h-auto"
+                />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">
+              Notifuse UI - Analytics Dashboard
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Different Strengths</h4>
+            <p class="text-gray-700 text-sm">
+              Brevo has richer aggregate reporting (heatmaps, geo, device) on paid plans.
+              Notifuse's contact activity timeline gives you deeper per-contact insight—see
+              the complete history of every contact's interactions, which Brevo doesn't offer.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Both platforms offer visual automation builders. Key difference: Notifuse
+            includes automations for free; Brevo requires the Standard plan ($18/mo+).
+          </p>
+
+          <ComparisonTable
+            title="Automation Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Visual Automation Builder",
+                notifuse: "Canvas-based flow editor (included)",
+                competitor: "Drag-and-drop builder (Standard plan, $18/mo+)",
+              },
+              {
+                feature: "Event Triggers",
+                notifuse: "Contact, list, segment, email & custom events",
+                competitor: "Signups, cart abandonment, behavior, API",
+              },
+              {
+                feature: "Branching Logic",
+                notifuse: "IF/THEN filters, A/B test splits, list status branches",
+                competitor: true,
+              },
+              {
+                feature: "Delay & Timing",
+                notifuse: "Configurable wait periods (minutes to days)",
+                competitor: true,
+              },
+              {
+                feature: "Multi-Channel Actions",
+                notifuse: "Email + webhook",
+                competitor: "Email, SMS, WhatsApp, push, chat (Pro, $499/mo)",
+              },
+              {
+                feature: "Pre-built Templates",
+                notifuse: false,
+                competitor: "Welcome, birthday, abandoned cart templates",
+              },
+              {
+                feature: "Journey Tracking",
+                notifuse: "Track contact status through flows",
+                competitor: true,
+              },
+              {
+                feature: "Webhook Actions",
+                notifuse: true,
+                competitor: false,
+                description: "HTTP POST to external URLs within automation flows",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Automation Pricing</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse includes automations at no extra cost. Brevo requires at minimum
+              the Standard plan ($18/mo) for basic automations, and the Professional
+              plan ($499/mo) for multi-channel automation actions like SMS, WhatsApp, and push.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Custom Events & Goals -->
+        <FeatureSection id="custom-events" title="Custom Events & Goals">
+          <p class="text-gray-600 mb-6">
+            Both platforms support custom event tracking. Notifuse adds predefined
+            goal types and built-in RFM segmentation.
+          </p>
+
+          <ComparisonTable
+            title="Event & Goal Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Custom Event Tracking",
+                notifuse: "API-driven event ingestion with batch import",
+                competitor: "Events API with batch support",
+              },
+              {
+                feature: "Goal Types",
+                notifuse: "purchase, subscription, lead, signup, booking, trial",
+                competitor: false,
+                description: "Predefined goal types with monetary value tracking",
+              },
+              {
+                feature: "RFM Segmentation",
+                notifuse: "Built-in (Recency, Frequency, Monetary)",
+                competitor: "Enterprise CDP only",
+              },
+              {
+                feature: "Contact Timeline Integration",
+                notifuse: "Events displayed in contact activity history",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenancy & Agency -->
+        <FeatureSection id="multi-tenancy" title="Multi-tenancy & Agency">
+          <p class="text-gray-600 mb-6">
+            Both platforms support multi-tenant setups. Brevo requires Enterprise
+            pricing; Notifuse includes it for free.
+          </p>
+
+          <ComparisonTable
+            title="Multi-tenancy & Agency Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Database isolation per workspace (included)",
+                competitor: "Master/sub-accounts (Enterprise plan)",
+              },
+              {
+                feature: "Custom Domain per Workspace",
+                notifuse: true,
+                competitor: "Sub-account level (Enterprise)",
+              },
+              {
+                feature: "Workspace Isolation",
+                notifuse: "Full (contacts, templates, campaigns, settings)",
+                competitor: "Sub-account separation",
+              },
+              {
+                feature: "User Permissions",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div
+            class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6"
+          >
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Multi-tenancy Without Enterprise Pricing
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse's workspace feature is included at no extra cost—perfect for
+              agencies managing multiple clients. Each client gets their own isolated
+              environment. Brevo's equivalent (master/sub-accounts) requires their
+              Enterprise plan with custom pricing.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Developer Experience & API -->
+        <FeatureSection id="developer-api" title="Developer Experience & API">
+          <p class="text-gray-600 mb-6">
+            Brevo has a more mature API ecosystem with official SDKs in 7+ languages.
+            Notifuse offers a clean REST API with native Supabase integration.
+          </p>
+
+          <ComparisonTable
+            title="API & Developer Tools"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "RESTful API",
+                notifuse: true,
+                competitor: "Yes (comprehensive, ~20 endpoint categories)",
+              },
+              {
+                feature: "Transactional Email API",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "SMTP Relay",
+                notifuse: "Built-in SMTP server",
+                competitor: true,
+              },
+              {
+                feature: "OpenAPI Specification",
+                notifuse: true,
+                competitor: "Yes (Swagger v2)",
+              },
+              {
+                feature: "Official SDKs",
+                notifuse: false,
+                competitor: "7+ languages (Node, PHP, Python, Java, C#, Go, Ruby)",
+              },
+              {
+                feature: "Outgoing Webhooks",
+                notifuse: "With HMAC-SHA256 signature verification",
+                competitor: true,
+              },
+              {
+                feature: "Rate Limiting",
+                notifuse: "N/A (self-hosted, you control limits)",
+                competitor: "Per-endpoint rate limits",
+              },
+              {
+                feature: "Supabase Integration",
+                notifuse: "Native (Auth hooks + user sync)",
+                competitor: false,
+              },
+              {
+                feature: "CMS Plugins",
+                notifuse: "Community WordPress plugin",
+                competitor: "WordPress, Shopify, WooCommerce",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">
+              Different API Philosophies
+            </h4>
+            <p class="text-gray-700 text-sm">
+              Brevo's API covers more ground (SMS, WhatsApp, CRM, ecommerce) with official
+              SDKs in 7+ languages. Notifuse's API is focused on email with a clean OpenAPI
+              spec and native Supabase integration. Being self-hosted means no rate limits
+              and full control over your API usage.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse includes a built-in blogging platform. Brevo doesn't offer
+            blog functionality.
+          </p>
+
+          <ComparisonTable
+            title="Blog Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Built-in Blog CMS",
+                notifuse: "Categories, posts, scheduling & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Liquid Theme Engine",
+                notifuse: "Customizable templates with Shopify Liquid syntax",
+                competitor: false,
+              },
+              {
+                feature: "Newsletter Integration",
+                notifuse: "Connect blog to email lists for subscriber growth",
+                competitor: false,
+              },
+              {
+                feature: "Auto-generated SEO",
+                notifuse: "Sitemap, robots.txt, OG tags, canonical URLs",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Use Cases -->
+        <FeatureSection id="use-cases" title="When to Choose Each Platform">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choose Notifuse -->
+            <div
+              class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8"
+            >
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">
+                  Choose Notifuse
+                </h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Notifuse is the better choice if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>open-source</strong> with full data ownership</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>all features without paying $499/mo</strong></span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>MJML code access</strong> alongside visual editing</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>ESP flexibility</strong> (choose your own provider)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>unlimited contacts</strong> (no per-contact fees)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Are an <strong>agency</strong> needing multi-tenancy (included free)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want a <strong>built-in blog</strong> with newsletter integration</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>data feeds</strong> for real-time email personalization</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- Choose Brevo -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div
+                  class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4"
+                >
+                  <svg
+                    class="w-6 h-6 text-gray-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choose Brevo</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">
+                Brevo might be better if you:
+              </p>
+
+              <ul class="space-y-3">
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>multi-channel</strong> (SMS, WhatsApp, push notifications)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want a <strong>sales CRM</strong> with deal pipelines</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>live chat and chatbot</strong></span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Prefer a <strong>fully managed SaaS</strong> (no self-hosting)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need a <strong>landing page builder</strong></span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want <strong>pre-built automation templates</strong></span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>advanced reporting</strong> (heatmaps, geo, device)</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>official SDKs</strong> in 7+ languages</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Why Choose Notifuse -->
+        <FeatureSection
+          id="why-switch"
+          title="Why Choose Notifuse Over Brevo?"
+          gradient
+        >
+          <p class="text-gray-600 mb-8">
+            Teams choose Notifuse over Brevo when they want full control, transparent
+            pricing, and all features without tier gates:
+          </p>
+
+          <div class="space-y-6">
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                No Feature Gating
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Every Notifuse feature is available from day one. No $18/mo for
+                automations, no $499/mo for WhatsApp actions or AI. Brevo's tier
+                system means you're always one upgrade away from the feature you need.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Open-Source Freedom
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse is AGPL-3.0 open-source. Inspect the code, modify it,
+                contribute back. Brevo is closed-source—you trust their code
+                without seeing it, and you can't customize the platform.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Full Data Ownership
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Your data stays on your infrastructure. No third-party access,
+                no data processing agreements to worry about. Brevo hosts your
+                data on their EU servers—you're trusting them with your contacts.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">ESP Flexibility</h4>
+              <p class="text-gray-700 text-sm">
+                Choose your own email provider—Amazon SES, Mailgun, Postmark,
+                SendGrid, or any SMTP server. Use different ESPs for transactional
+                vs marketing. Brevo locks you into their infrastructure with no
+                ESP choice.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Unlimited Contacts
+              </h4>
+              <p class="text-gray-700 text-sm">
+                No per-contact pricing. Store as many contacts as your infrastructure
+                supports. Brevo caps contacts by tier—100K free, 500K on Starter,
+                2M on Professional—and charges more as you grow.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                MJML Code Access
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse's MJML editor gives you both visual drag-and-drop AND
+                direct code access. Brevo's editor is visual-only with no code
+                mode—limiting for developers who need precise control.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-primary pl-6 py-2">
+              <h4 class="font-semibold text-slate-900 mb-2">
+                Multi-Tenancy Included
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Manage multiple clients with isolated workspaces at no extra cost.
+                Brevo's equivalent (master/sub-accounts) requires Enterprise
+                pricing—typically thousands per month.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8"
+          >
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">
+              Ready to move from Brevo?
+            </h4>
+            <p class="text-gray-600 text-center mb-6">
+              Import your contacts, recreate your templates in MJML, and connect
+              your preferred ESP. All features included from day one.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Try Live Demo
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                View Installation Guide
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ Section -->
+        <FeatureSection id="faq" title="Frequently Asked Questions">
+          <div class="space-y-6">
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is Brevo better than Notifuse for email marketing?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                It depends on your needs. Brevo offers more channels (SMS, WhatsApp, push)
+                and a sales CRM, but gates key email features behind paid tiers ($18-$499+/mo).
+                Notifuse includes all email marketing features—automation, A/B testing,
+                segmentation, data feeds—at no software cost. For pure email marketing,
+                Notifuse gives you more for less.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can Notifuse replace Brevo?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                For email marketing and transactional email, yes. Notifuse covers broadcast
+                campaigns, automations, segmentation, transactional API, and more. However,
+                if you rely on Brevo's SMS, WhatsApp, CRM, live chat, or landing pages,
+                you'd need separate tools for those channels.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Does Notifuse support SMS and WhatsApp like Brevo?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                No. Notifuse is focused on email. If you need SMS and WhatsApp, note that
+                Brevo requires the Professional plan ($499/mo) for WhatsApp campaigns.
+                Many teams find that email-focused tools do email better, and use dedicated
+                SMS/WhatsApp services when needed.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                How does pricing compare at scale?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                At scale, the difference is dramatic. Notifuse costs ~$25-40/month
+                (hosting + ESP) for unlimited contacts and all features. Brevo's
+                Professional plan starts at $499/month, and Enterprise is custom pricing.
+                Even Brevo's Standard plan ($18/mo) only gives you basic automation—for
+                the full feature set, you're looking at $499+/month.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Can I migrate from Brevo to Notifuse?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Yes. Export your contacts from Brevo as CSV and import them into Notifuse
+                with auto-detection and field mapping. You'll need to recreate your email
+                templates in Notifuse's MJML builder and set up your automations. The API
+                is different, so transactional email integrations will need updating.
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-lg p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">
+                Is Notifuse suitable for ecommerce like Brevo?
+              </h4>
+              <p class="text-gray-700 text-sm">
+                Notifuse supports ecommerce email workflows through custom events, goal
+                tracking (purchase, subscription types), and RFM segmentation. However,
+                Brevo has deeper ecommerce integrations (Shopify, WooCommerce plugins,
+                order sync, product catalogs). For email-focused ecommerce marketing,
+                Notifuse works well; for a full ecommerce suite, Brevo has more built-in.
+              </p>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Final CTA -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <ComparisonCTA
+                title="Ready to experience Notifuse?"
+                description="Open-source, self-hosted, all features included. No tier gates, no per-contact pricing. Join teams who switched from Brevo."
+              />
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <!-- Footer -->
+      <Footer />
+    </div>
+  </body>
+</html>

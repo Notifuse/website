@@ -25,6 +25,9 @@ const tocItems = [
   { id: "analytics", label: "Analytics & Reporting" },
   { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
   { id: "developer-api", label: "Developer Experience & API" },
+  { id: "automations", label: "Automations" },
+  { id: "custom-events", label: "Custom Events & Goals" },
+  { id: "blog", label: "Blog" },
   { id: "use-cases", label: "Use Cases" },
   { id: "why-switch", label: "Why Switch to Notifuse" },
   { id: "faq", label: "FAQ" },
@@ -44,7 +47,7 @@ const proConsRows = [
   },
   {
     label: "Best For",
-    notifuse: "Developers & marketers needing advanced features",
+    notifuse: "Developers & marketers needing automations, segmentation & advanced features",
     competitor: "Simple newsletter campaigns",
   },
   {
@@ -54,13 +57,13 @@ const proConsRows = [
   },
   {
     label: "Visual Tools",
-    notifuse: "MJML drag-and-drop editor",
+    notifuse: "MJML drag-and-drop & code editor",
     competitor: "Basic visual editor",
   },
   {
     label: "Integrations",
     notifuse:
-      "Amazon SES, Mailgun, Postmark, Mailjet, SparkPost, S3, Supabase, SMTP",
+      "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, S3, Supabase, SMTP",
     competitor: "SMTP",
   },
   {
@@ -80,11 +83,11 @@ const proConsRows = [
 
     <!-- SEO Meta Tags -->
     <title>
-      Notifuse vs Listmonk: Self-Hosted Email Platform Comparison (2025)
+      Notifuse vs Listmonk: Self-Hosted Email Platform Comparison (2026)
     </title>
     <meta
       name="description"
-      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+      content="Compare Notifuse and Listmonk for newsletters, transactional email, and automations. Features, API, pricing, and which is better for developers and marketers."
     />
     <link
       rel="canonical"
@@ -109,7 +112,7 @@ const proConsRows = [
     />
     <meta
       property="og:description"
-      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+      content="Compare Notifuse and Listmonk for newsletters, transactional email, and automations. Features, API, pricing, and which is better for developers and marketers."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -124,7 +127,7 @@ const proConsRows = [
     />
     <meta
       name="twitter:description"
-      content="Compare Notifuse and Listmonk for newsletters and transactional email. Features, API, pricing, and which is better for developers and marketers."
+      content="Compare Notifuse and Listmonk for newsletters, transactional email, and automations. Features, API, pricing, and which is better for developers and marketers."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -187,7 +190,7 @@ const proConsRows = [
                   </div>
                   <p class="text-sm text-gray-700 mb-3">
                     <strong class="text-primary">Notifuse:</strong> Native connections
-                    to major ESPs (Amazon SES, Mailgun, Postmark, Mailjet, SparkPost)
+                    to major ESPs (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost)
                     for best deliverability.
                   </p>
                   <p class="text-sm text-gray-500">
@@ -256,7 +259,7 @@ const proConsRows = [
               {
                 feature: "Visual Email Builder",
                 notifuse:
-                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - guarantees mobile-responsive & compatible with all email clients',
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a>-based - visual drag-and-drop & code editor, guarantees mobile-responsive & compatible with all email clients',
                 competitor:
                   "Basic visual editor - does not guarantee mobile-responsive or compatibility across all email clients",
               },
@@ -276,6 +279,12 @@ const proConsRows = [
                 feature: "Template Library",
                 notifuse: "Coming soon",
                 competitor: false,
+              },
+              {
+                feature: "MJML Code Editor",
+                notifuse: "Direct MJML code editing alongside visual drag-and-drop",
+                competitor: false,
+                description: "Switch between visual and code modes",
               },
               {
                 feature: "Support for Test Data",
@@ -405,6 +414,17 @@ const proConsRows = [
                 notifuse: true,
                 competitor: false,
               },
+              {
+                feature: "Global Data Feed",
+                notifuse: "Single API call, cached data shared across all recipients",
+                competitor: false,
+              },
+              {
+                feature: "Per-Recipient Data Feed",
+                notifuse: "Individual API calls with contact-specific data",
+                competitor: false,
+                description: "Personalize emails with real-time data (product recs, pricing, inventory)",
+              },
             ]}
           />
         </FeatureSection>
@@ -497,7 +517,7 @@ const proConsRows = [
               },
               {
                 feature: "Native Integrations",
-                notifuse: "Amazon SES, Mailgun, Postmark, Mailjet, SparkPost",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
                 competitor: false,
               },
               {
@@ -701,6 +721,126 @@ const proConsRows = [
           </div>
         </FeatureSection>
 
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Notifuse includes a visual automation builder for event-driven
+            workflows. Listmonk has no automation capabilities.
+          </p>
+
+          <ComparisonTable
+            title="Automation Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Visual Automation Builder",
+                notifuse: "Canvas-based flow editor",
+                competitor: false,
+              },
+              {
+                feature: "Event Triggers",
+                notifuse: "Contact, list, segment, email & custom events",
+                competitor: false,
+              },
+              {
+                feature: "Branching Logic",
+                notifuse: "IF/THEN filters, A/B test splits, list status branches",
+                competitor: false,
+              },
+              {
+                feature: "Delay & Timing",
+                notifuse: "Configurable wait periods between steps",
+                competitor: false,
+              },
+              {
+                feature: "Journey Tracking",
+                notifuse: "Track contact status through automation flows",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Why This Matters</h4>
+            <p class="text-gray-700 text-sm">
+              Automations let you build welcome series, onboarding drips, and
+              re-engagement workflows that run automatically. Instead of manually
+              creating campaigns for each lifecycle stage, set up flows once and
+              let them trigger based on contact behavior.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Custom Events & Goals -->
+        <FeatureSection id="custom-events" title="Custom Events & Goals">
+          <p class="text-gray-600 mb-6">
+            Track user behavior from external systems and build RFM segments.
+            Listmonk has no custom event or goal tracking.
+          </p>
+
+          <ComparisonTable
+            title="Event & Goal Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Custom Event Tracking",
+                notifuse: "API-driven event ingestion with batch import",
+                competitor: false,
+              },
+              {
+                feature: "Goal Types",
+                notifuse: "purchase, subscription, lead, signup, booking, trial",
+                competitor: false,
+              },
+              {
+                feature: "RFM Segmentation",
+                notifuse: "Segment by Recency, Frequency & Monetary value",
+                competitor: false,
+              },
+              {
+                feature: "Contact Timeline",
+                notifuse: "Events displayed in contact activity history",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Built-in blogging platform with Liquid theming and newsletter
+            integration. Listmonk has no blog feature.
+          </p>
+
+          <ComparisonTable
+            title="Blog Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Built-in Blog CMS",
+                notifuse: "Categories, posts, scheduling & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Liquid Theme Engine",
+                notifuse: "Customizable templates with Shopify Liquid syntax",
+                competitor: false,
+              },
+              {
+                feature: "Newsletter Integration",
+                notifuse: "Connect blog to email lists for subscriber growth",
+                competitor: false,
+              },
+              {
+                feature: "Auto-generated SEO",
+                notifuse: "Sitemap, robots.txt, OG tags, canonical URLs",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
         <!-- Use Cases -->
         <FeatureSection id="use-cases" title="When to Choose Each Platform">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -841,6 +981,38 @@ const proConsRows = [
                   </svg>
                   <span
                     >Want a <strong>modern, intuitive UI</strong> with great UX</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Need <strong>event-driven automations</strong> for welcome series,
+                    re-engagement & onboarding</span
+                  >
+                </li>
+                <li class="flex items-start text-sm">
+                  <svg
+                    class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span
+                    >Want to <strong>track custom events</strong> and segment by purchase
+                    behavior (RFM)</span
                   >
                 </li>
               </ul>
@@ -1116,10 +1288,12 @@ const proConsRows = [
                 What does Notifuse offer that Listmonk doesn't?
               </h4>
               <p class="text-gray-700 text-sm">
-                Key differentiators include: Visual MJML email builder,
+                Key differentiators include: Visual MJML email builder with
+                code editor, event-driven automations, custom events with RFM
+                segmentation, built-in blog with Liquid theming,
                 multi-tenant workspaces for agencies, advanced segmentation with
-                dynamic rules, A/B testing, team permissions, notification
-                center for subscribers, S3 file management with CDN,
+                dynamic rules, A/B testing, data feeds for campaigns, team permissions,
+                notification center for subscribers, S3 file management with CDN,
                 comprehensive webhooks, and better API documentation. Notifuse
                 is designed for both marketers and developers, while Listmonk
                 focuses on simplicity.

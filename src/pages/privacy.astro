@@ -1,0 +1,404 @@
+---
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+
+const lastUpdated = "March 27, 2026"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Privacy Policy - Notifuse</title>
+    <meta
+      name="description"
+      content="Notifuse Privacy Policy. Learn how 12 Megavolt collects, uses, and protects your personal data in compliance with GDPR and applicable regulations."
+    />
+    <link rel="canonical" href="https://notifuse.com/privacy" />
+    <meta name="robots" content="index, follow" />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main class="max-w-4xl mx-auto px-4 lg:px-8 py-20">
+        <h1 class="text-4xl font-bold mb-4">Privacy Policy</h1>
+        <p class="text-gray-500 mb-12">Last updated: {lastUpdated}</p>
+
+        <!-- 1. Controller Identity -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="controller">1. Data Controller</h2>
+          <p class="text-gray-600 mb-4">
+            The data controller for your personal data is:
+          </p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 text-gray-700 space-y-1">
+            <p><strong>12 Megavolt &mdash; Pierre Bazoge, Entrepreneur Individuel</strong></p>
+            <p>4 rue Paul Claudel, 41100 Vendôme, France</p>
+            <p>SIRET: 507 888 568 00015</p>
+            <p>Email: <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a></p>
+          </div>
+          <p class="text-gray-600 mt-4">
+            Hosting providers: OVHcloud, 2 rue Kellermann, 59100 Roubaix, France. Google Cloud Belgium, Chaussée de La Hulpe 166, 1170 Brussels, Belgium.
+          </p>
+        </section>
+
+        <!-- 2. Data Protection Officer -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="dpo">2. Privacy Contact</h2>
+          <p class="text-gray-600">
+            You may contact our privacy team at
+            <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>
+            for any questions related to the processing of your personal data or to exercise your rights.
+          </p>
+        </section>
+
+        <!-- 3. Data We Collect -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="data-collected">3. Data We Collect</h2>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.1 Account data</h3>
+          <p class="text-gray-600 mb-2">When you create an account on Notifuse Cloud, we collect:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Email address</li>
+            <li>Full name</li>
+            <li>Organization name</li>
+            <li>Website URL</li>
+            <li>Logo URL (optional)</li>
+            <li>Chosen subdomain</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.2 Billing data</h3>
+          <p class="text-gray-600 mb-2">When you subscribe to a paid plan, our payment processor (Stripe) collects:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Payment method details (processed and stored by Stripe)</li>
+            <li>Billing address</li>
+            <li>Invoice history</li>
+          </ul>
+          <p class="text-gray-600 mt-2">
+            We do not store credit card numbers on our servers. All payment data is handled by Stripe, Inc. in accordance with PCI DSS standards.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.3 Usage data</h3>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Service usage metrics (emails sent, API calls)</li>
+            <li>Login timestamps and IP addresses</li>
+            <li>Browser type, operating system, and device information</li>
+            <li>Pages visited on our website</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.4 Support data</h3>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Communications when you contact our support team</li>
+            <li>Any information you voluntarily provide in support requests</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.5 Data processed on behalf of customers</h3>
+          <p class="text-gray-600">
+            As part of the service, Notifuse processes data on behalf of our customers (who act as data controllers for their end users).
+            This data may include email addresses, names, and other contact information of our customers' recipients.
+            This processing is governed by our Data Processing Agreement (DPA) with each customer, not by this Privacy Policy.
+          </p>
+        </section>
+
+        <!-- 4. Purposes and Legal Bases -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="purposes">4. Purposes and Legal Bases</h2>
+          <p class="text-gray-600 mb-4">
+            We process your personal data for the following purposes, each with its corresponding legal basis under GDPR Article 6:
+          </p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-gray-600 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Purpose</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Legal Basis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Account creation and management</td>
+                  <td class="px-4 py-3">Contractual necessity (Art. 6(1)(b))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Service delivery (sending emails and notifications)</td>
+                  <td class="px-4 py-3">Contractual necessity (Art. 6(1)(b))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Billing and invoicing</td>
+                  <td class="px-4 py-3">Contractual necessity (Art. 6(1)(b)) and legal obligation (Art. 6(1)(c))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Customer support</td>
+                  <td class="px-4 py-3">Contractual necessity (Art. 6(1)(b))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Product improvement and usage analytics</td>
+                  <td class="px-4 py-3">Legitimate interest (Art. 6(1)(f))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Security and fraud prevention</td>
+                  <td class="px-4 py-3">Legitimate interest (Art. 6(1)(f))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Marketing communications to existing customers</td>
+                  <td class="px-4 py-3">Legitimate interest (Art. 6(1)(f), LCEN soft opt-in)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Marketing communications to prospects</td>
+                  <td class="px-4 py-3">Consent (Art. 6(1)(a))</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Tax and accounting records</td>
+                  <td class="px-4 py-3">Legal obligation (Art. 6(1)(c))</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Cookies and website analytics</td>
+                  <td class="px-4 py-3">Consent (Art. 6(1)(a)), except strictly necessary cookies</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-gray-600 mt-4">
+            Where we rely on legitimate interest, we have conducted balancing tests to ensure our interests do not override your rights and freedoms.
+            You may request details of these assessments by contacting us.
+          </p>
+        </section>
+
+        <!-- 5. Data Retention -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="retention">5. Data Retention</h2>
+          <p class="text-gray-600 mb-4">We retain your personal data only as long as necessary for the purposes described above:</p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-gray-600 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Data Category</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Retention Period</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Account data</td>
+                  <td class="px-4 py-3">Duration of the contract + 3 years</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Billing and invoicing data</td>
+                  <td class="px-4 py-3">10 years (French Commercial Code, Art. L123-22)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Email sending logs</td>
+                  <td class="px-4 py-3">1 year</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Support tickets</td>
+                  <td class="px-4 py-3">Duration of the contract + 2 years</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Usage analytics</td>
+                  <td class="px-4 py-3">25 months (CNIL guidance)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Cookie consent records</td>
+                  <td class="px-4 py-3">13 months</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Marketing consent records</td>
+                  <td class="px-4 py-3">Duration of consent + 3 years</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 6. Recipients and Subprocessors -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="recipients">6. Recipients and Subprocessors</h2>
+          <p class="text-gray-600 mb-4">
+            Your personal data may be shared with the following categories of recipients, strictly for the purposes described in this policy:
+          </p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-gray-600 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Subprocessor</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Location</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Purpose</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Transfer Mechanism</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">OVHcloud</td>
+                  <td class="px-4 py-3">France</td>
+                  <td class="px-4 py-3">Cloud hosting and data storage</td>
+                  <td class="px-4 py-3">N/A (EU)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Google Cloud</td>
+                  <td class="px-4 py-3">Belgium</td>
+                  <td class="px-4 py-3">Cloud hosting and data storage</td>
+                  <td class="px-4 py-3">N/A (EU)</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3">Stripe, Inc.</td>
+                  <td class="px-4 py-3">United States</td>
+                  <td class="px-4 py-3">Payment processing</td>
+                  <td class="px-4 py-3">EU-US Data Privacy Framework</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">Postmark (ActiveCampaign, LLC)</td>
+                  <td class="px-4 py-3">United States</td>
+                  <td class="px-4 py-3">System emails (account verification, notifications)</td>
+                  <td class="px-4 py-3">EU-US Data Privacy Framework</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-gray-600 mt-4">
+            This list was last updated on March 27, 2026. We will notify you by email before adding or replacing any subprocessor.
+          </p>
+          <p class="text-gray-600 mt-2">
+            We do not sell your personal data. We do not share your data with third parties for their own marketing purposes.
+          </p>
+        </section>
+
+        <!-- 7. International Transfers -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="transfers">7. International Data Transfers</h2>
+          <p class="text-gray-600 mb-4">
+            Your data is primarily stored and processed within the European Economic Area (EEA). When data is transferred outside the EEA, we ensure adequate protection through one of the following mechanisms:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li><strong>EU adequacy decisions</strong> &mdash; Transfers to countries recognized by the European Commission as providing adequate data protection (e.g., UK, under the renewed adequacy decision valid until December 2031).</li>
+            <li><strong>EU-US Data Privacy Framework</strong> &mdash; For US-based subprocessors certified under the DPF (validated by the EU General Court in September 2025).</li>
+            <li><strong>Standard Contractual Clauses (SCCs)</strong> &mdash; EU-approved contractual safeguards, maintained as a supplementary measure.</li>
+          </ul>
+        </section>
+
+        <!-- 8. Your Rights -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="rights">8. Your Rights</h2>
+          <p class="text-gray-600 mb-4">
+            Under the GDPR, you have the following rights regarding your personal data:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li><strong>Right of access</strong> (Art. 15) &mdash; Obtain a copy of the personal data we hold about you.</li>
+            <li><strong>Right to rectification</strong> (Art. 16) &mdash; Correct inaccurate or incomplete data.</li>
+            <li><strong>Right to erasure</strong> (Art. 17) &mdash; Request deletion of your data under certain circumstances.</li>
+            <li><strong>Right to restrict processing</strong> (Art. 18) &mdash; Limit how we use your data in certain conditions.</li>
+            <li><strong>Right to data portability</strong> (Art. 20) &mdash; Receive your data in a structured, commonly used, machine-readable format.</li>
+            <li><strong>Right to object</strong> (Art. 21) &mdash; Object to processing based on legitimate interests or for direct marketing (absolute right for direct marketing).</li>
+            <li><strong>Right not to be subject to automated decisions</strong> (Art. 22) &mdash; Not be subject to decisions based solely on automated processing, including profiling.</li>
+            <li><strong>Right to withdraw consent</strong> (Art. 7(3)) &mdash; Withdraw your consent at any time, without affecting the lawfulness of processing carried out before withdrawal.</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">How to exercise your rights</h3>
+          <p class="text-gray-600">
+            Send your request to <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>.
+            We will respond within <strong>one month</strong> of receiving your request. This period may be extended by two additional months for complex or numerous requests, in which case we will inform you of the extension.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">Right to lodge a complaint</h3>
+          <p class="text-gray-600">
+            If you believe your rights have not been respected, you have the right to lodge a complaint with the
+            <strong>Commission Nationale de l'Informatique et des Libert&eacute;s (CNIL)</strong>:
+          </p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-2 text-gray-700 text-sm space-y-1">
+            <p>CNIL &mdash; 3 Place de Fontenoy, TSA 80715, 75334 Paris Cedex 07, France</p>
+            <p>Website: <a href="https://www.cnil.fr" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">www.cnil.fr</a></p>
+          </div>
+        </section>
+
+        <!-- 9. Security -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="security">9. Security Measures</h2>
+          <p class="text-gray-600 mb-4">
+            We implement appropriate technical and organizational measures to protect your personal data, including:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Encryption of data in transit (TLS) and at rest</li>
+            <li>Access controls and role-based authentication</li>
+            <li>Regular security assessments and vulnerability monitoring</li>
+            <li>Incident response procedures</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            In the event of a personal data breach that poses a high risk to your rights and freedoms, we will notify the CNIL within 72 hours and inform you without undue delay.
+          </p>
+        </section>
+
+        <!-- 10. Cookies -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="cookies">10. Cookies</h2>
+          <p class="text-gray-600 mb-4">
+            Our website uses cookies and similar technologies. We distinguish between:
+          </p>
+          <h3 class="text-lg font-semibold mt-4 mb-3">Strictly necessary cookies (no consent required)</h3>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Authentication and session cookies</li>
+            <li>Security cookies</li>
+            <li>User interface preference cookies (e.g., language)</li>
+            <li>Load-balancing cookies</li>
+          </ul>
+          <h3 class="text-lg font-semibold mt-4 mb-3">Analytics cookies (consent required)</h3>
+          <p class="text-gray-600 mb-2">
+            We use analytics tools to understand how visitors interact with our website. These cookies are only set after you give your consent via our cookie banner.
+          </p>
+          <p class="text-gray-600 mt-4">
+            You can manage your cookie preferences at any time by clicking the "Manage Cookies" link in the footer. You may also configure your browser to refuse cookies. Refusing non-essential cookies does not affect your ability to use our services.
+          </p>
+          <p class="text-gray-600 mt-2">
+            We re-request your cookie consent every 13 months, in accordance with CNIL recommendations.
+          </p>
+        </section>
+
+        <!-- 11. Data Provision -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="data-provision">11. Is Providing Data Mandatory?</h2>
+          <p class="text-gray-600">
+            Providing your email address and name is necessary to create an account and use Notifuse Cloud (contractual requirement).
+            Without this data, we cannot provide you with the service.
+            Providing billing information is necessary to subscribe to a paid plan.
+            All other data is optional.
+          </p>
+        </section>
+
+        <!-- 12. Automated Decision-Making -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="automated-decisions">12. Automated Decision-Making</h2>
+          <p class="text-gray-600">
+            We do not use automated decision-making, including profiling, that produces legal effects or similarly significantly affects you.
+            If this changes in the future, we will update this policy and provide you with meaningful information about the logic involved.
+          </p>
+        </section>
+
+        <!-- 13. Changes -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="changes">13. Changes to This Policy</h2>
+          <p class="text-gray-600">
+            We may update this Privacy Policy from time to time. We will notify you of significant changes by email or by posting a notice on our website at least 30 days before the changes take effect.
+            The "Last updated" date at the top of this page indicates when the policy was last revised.
+          </p>
+        </section>
+
+        <!-- 14. Contact -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="contact">14. Contact Us</h2>
+          <p class="text-gray-600">
+            For any questions about this Privacy Policy or your personal data, contact us at:
+          </p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-2 text-gray-700 text-sm space-y-1">
+            <p>12 Megavolt &mdash; Privacy Team</p>
+            <p>Email: <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a></p>
+            <p>Privacy contact: <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a></p>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

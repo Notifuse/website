@@ -1,0 +1,463 @@
+---
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+
+const lastUpdated = "March 27, 2026"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Terms of Service - Notifuse</title>
+    <meta
+      name="description"
+      content="Notifuse Terms of Service. The terms governing your use of the Notifuse platform operated by 12 Megavolt."
+    />
+    <link rel="canonical" href="https://notifuse.com/terms" />
+    <meta name="robots" content="index, follow" />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main class="max-w-4xl mx-auto px-4 lg:px-8 py-20">
+        <h1 class="text-4xl font-bold mb-4">Terms of Service</h1>
+        <p class="text-gray-500 mb-12">Last updated: {lastUpdated}</p>
+
+        <!-- 1. Introduction -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="introduction">1. Introduction</h2>
+          <p class="text-gray-600 mb-4">
+            These Terms of Service ("Terms") govern your access to and use of the Notifuse platform ("Service"), operated by
+            <strong>12 Megavolt</strong>, a company registered in France ("we", "us", "Company").
+          </p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 text-gray-700 space-y-1">
+            <p><strong>12 Megavolt &mdash; Pierre Bazoge, Entrepreneur Individuel</strong></p>
+            <p>4 rue Paul Claudel, 41100 Vendôme, France</p>
+            <p>SIRET: 507 888 568 00015</p>
+            <p>Email: <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a></p>
+          </div>
+          <p class="text-gray-600 mt-4">
+            <strong>Hosting providers:</strong> OVHcloud, 2 rue Kellermann, 59100 Roubaix, France. Google Cloud Belgium, Chaussée de La Hulpe 166, 1170 Brussels, Belgium.
+          </p>
+          <p class="text-gray-600 mt-4">
+            By creating an account or using the Service, you agree to these Terms. If you are using the Service on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.
+          </p>
+        </section>
+
+        <!-- 2. Service Description -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="service">2. Service Description</h2>
+          <p class="text-gray-600 mb-4">
+            Notifuse is an <strong>email and notification orchestration platform</strong>. It enables you to create, manage, and track email campaigns, newsletters, and transactional notifications. Notifuse does not send emails directly &mdash; it orchestrates sending through the Email Service Provider (ESP) that you configure (see Section 6).
+          </p>
+          <p class="text-gray-600 mb-4">The Service is offered as:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li><strong>Notifuse Cloud</strong> &mdash; A managed, hosted version of the platform accessible at notifuse.cloud.</li>
+            <li><strong>Notifuse Self-Hosted</strong> &mdash; An open-source version you can deploy on your own infrastructure, governed by its <a href="https://github.com/notifuse/notifuse/blob/main/LICENSE" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">open-source license</a>.</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            These Terms apply specifically to <strong>Notifuse Cloud</strong>. The self-hosted version is subject solely to its open-source license terms. A Notifuse Cloud subscription does not entitle you to support, maintenance, or updates for the self-hosted version. If you export data from Cloud and import it into a self-hosted instance, your use of that instance is governed exclusively by the open-source license, and these Terms no longer apply to that usage.
+          </p>
+        </section>
+
+        <!-- 3. Eligibility -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="eligibility">3. Eligibility</h2>
+          <p class="text-gray-600 mb-4">
+            The Service is designed for professional use. By agreeing to these Terms, you represent and warrant that:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>You are at least 16 years old.</li>
+            <li>You are acting in a <strong>professional or business capacity</strong>.</li>
+            <li>The information you provide is accurate and complete.</li>
+          </ul>
+        </section>
+
+        <!-- 4. Account -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="account">4. Account Registration and Security</h2>
+          <p class="text-gray-600 mb-4">
+            To access the Service, you must create an account by providing a valid email address. You are responsible for:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Maintaining the security of your account credentials.</li>
+            <li>All activities that occur under your account.</li>
+            <li>The security and proper management of any third-party credentials (such as ESP API keys) that you store within the Service. You must not share these credentials outside of the platform and must rotate them if you suspect they have been compromised.</li>
+            <li>Notifying us immediately of any unauthorized access at <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>.</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            We encrypt third-party credentials at rest within our infrastructure. However, we disclaim liability for the compromise of third-party credentials resulting from your actions, such as sharing them insecurely or failing to rotate them after a suspected breach.
+          </p>
+        </section>
+
+        <!-- 5. Acceptable Use -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="acceptable-use">5. Acceptable Use Policy</h2>
+          <p class="text-gray-600 mb-4">
+            You agree to use the Service in compliance with all applicable laws and regulations. You must not use the Service to:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li><strong>Send spam or unsolicited bulk email</strong> &mdash; All recipients must have given valid, verifiable consent (opt-in) or you must have a lawful basis to contact them.</li>
+            <li><strong>Send phishing, malware, or deceptive content</strong> &mdash; Including emails that impersonate another person or entity.</li>
+            <li><strong>Distribute illegal content</strong> &mdash; Including content that infringes intellectual property rights, promotes hate speech, or violates any applicable law.</li>
+            <li><strong>Harvest or scrape email addresses</strong> &mdash; Purchased or scraped email lists are strictly prohibited.</li>
+            <li><strong>Interfere with the Service</strong> &mdash; Including attempting to gain unauthorized access, introducing viruses, or overloading our infrastructure.</li>
+            <li><strong>Resell or redistribute the Service</strong> &mdash; Without our prior written consent.</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">Anti-spam policy</h3>
+          <p class="text-gray-600 mb-4">
+            As an email orchestration platform, we take anti-spam compliance seriously. You must:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Maintain valid consent records for all recipients.</li>
+            <li>Include a clear and functional unsubscribe mechanism in every marketing email.</li>
+            <li>Honor unsubscribe requests promptly.</li>
+            <li>Comply with CAN-SPAM, GDPR, LCEN, and all applicable anti-spam laws.</li>
+            <li>Properly configure SPF, DKIM, and DMARC for your sending domains.</li>
+            <li>Maintain bounce and complaint rates within industry-acceptable thresholds as reported by your ESP.</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            We reserve the right to suspend or terminate accounts that violate this policy, with or without prior notice for severe or repeated violations.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">Fair use</h3>
+          <p class="text-gray-600">
+            Notifuse Cloud does not impose per-email volume limits &mdash; actual sending volume is determined by your ESP. However, your use of the platform's API, dashboard, and infrastructure must remain within reasonable bounds. We reserve the right to throttle or restrict API calls, webhook processing, or other platform operations if your usage pattern degrades the Service for other customers (e.g., sustained excessive API request rates, abnormally large data imports, or automated scripts generating disproportionate load). We will notify you and attempt to resolve the issue collaboratively before taking restrictive action.
+          </p>
+        </section>
+
+        <!-- 6. Email Service Providers (BYO-ESP) -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="byo-esp">6. Email Service Providers (BYO-ESP)</h2>
+          <p class="text-gray-600 mb-4">
+            Notifuse operates as an <strong>orchestration layer</strong>. You are responsible for procuring, configuring, paying for, and maintaining your own Email Service Provider (ESP) &mdash; such as Amazon SES, Mailgun, Postmark, or any SMTP-compatible service &mdash; through which your emails are actually sent.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">6.1 Your responsibilities</h3>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>You are solely responsible for your relationship with your ESP, including compliance with their Terms of Service and Acceptable Use Policy.</li>
+            <li>You are responsible for the configuration, authentication (SPF, DKIM, DMARC), and ongoing maintenance of your ESP account.</li>
+            <li>You are responsible for monitoring your sending reputation, bounce rates, and complaint rates as reported by your ESP.</li>
+            <li>You must store your ESP API keys and credentials securely and rotate them according to your ESP's security recommendations.</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">6.2 Deliverability disclaimer</h3>
+          <p class="text-gray-600 mb-4">
+            <strong>Notifuse does not guarantee email deliverability, inbox placement, sending speed, or delivery rates.</strong> These outcomes are determined by your chosen ESP, your sending domain configuration, your sending reputation, recipient mail servers, and other factors outside our control. We are not liable for emails that are delayed, bounced, filtered as spam, or not delivered by your ESP.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">6.3 ESP suspension or termination</h3>
+          <p class="text-gray-600">
+            If your ESP suspends or terminates your account for any reason (including policy violations), that is a matter between you and your ESP. No refund, credit, or compensation is owed by Notifuse as a result of ESP service disruptions. You may configure a different ESP at any time through the Service.
+          </p>
+        </section>
+
+        <!-- 7. Plans, Pricing and Payment -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="pricing">7. Plans, Pricing, and Payment</h2>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">7.1 Plans and trials</h3>
+          <p class="text-gray-600 mb-4">
+            The Service is offered through paid subscription plans (Starter, Pro, Enterprise). All plans include a <strong>14-day free trial</strong>. No credit card or payment method is required to start a trial. Current pricing is available at
+            <a href="https://notifuse.com" class="text-primary hover:underline">notifuse.com</a>.
+          </p>
+          <p class="text-gray-600 mb-4">
+            At the end of the 14-day trial period, if you have not subscribed to a paid plan, your account will be <strong>suspended</strong>. You will retain read-only access to export your data for an additional <strong>30 days</strong>. After this 30-day grace period, your account and data will be permanently deleted. During the free trial, the Service is provided without any warranty, SLA commitment, or indemnification obligation, and our liability is capped at zero euros.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">7.2 Billing</h3>
+          <p class="text-gray-600 mb-4">
+            Subscriptions are billed in advance on a monthly or annual basis, depending on the billing cycle you select. Annual subscriptions include a <strong>20% discount</strong> compared to monthly billing, applied for the full duration of the annual commitment period. Payments are processed securely by Stripe. TVA non applicable, article 293 B du Code G&eacute;n&eacute;ral des Imp&ocirc;ts. Customers located outside France are responsible for any applicable reverse-charge or local taxes. You are responsible for any withholding taxes, duties, or levies imposed by your local jurisdiction; payments to 12 Megavolt must be made in full, net of any such withholdings.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">7.3 Price changes</h3>
+          <p class="text-gray-600 mb-4">
+            We may change our pricing from time to time. We will notify you at least <strong>30 days</strong> in advance of any price increase. For monthly subscribers, price changes take effect at the start of your next billing cycle after the notice period. For annual subscribers, <strong>price changes take effect at the start of your next annual renewal</strong> &mdash; your rate is locked for the duration of any prepaid annual period.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">7.4 Late payment</h3>
+          <p class="text-gray-600 mb-4">
+            If payment fails, we will notify you and provide a <strong>15-day grace period</strong> to update your payment method. Continued non-payment after the grace period may result in suspension or termination of your account.
+          </p>
+          <p class="text-gray-600">
+            For professional (B2B) customers, in accordance with Article L441-10 of the French Code de Commerce: late payments shall accrue interest at a rate equal to the European Central Bank's most recent refinancing rate plus 10 percentage points, calculated on the overdue amount from the day following the payment due date. In addition, a fixed indemnity of <strong>40 EUR</strong> for recovery costs (<em>indemnit&eacute; forfaitaire pour frais de recouvrement</em>) is due automatically on each late payment, without the need for a reminder. If actual recovery costs exceed this amount, we may claim additional reasonable compensation upon justification.
+          </p>
+        </section>
+
+        <!-- 8. Intellectual Property -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="ip">8. Intellectual Property</h2>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">8.1 Our property</h3>
+          <p class="text-gray-600 mb-4">
+            The Service, including all software, design, trademarks, documentation, and other materials, is owned by 12 Megavolt and protected by applicable intellectual property laws.
+            Your subscription grants you a limited, non-exclusive, non-transferable, revocable right to use the Service for the duration of your subscription.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">8.2 Your content and data</h3>
+          <p class="text-gray-600 mb-4">
+            You retain full ownership of all data and content you upload, create, or transmit through the Service ("Customer Data"). You grant us a limited, non-exclusive, royalty-free license to use, process, and store your Customer Data solely for the purpose of providing the Service to you.
+          </p>
+          <p class="text-gray-600">
+            We will not sell, rent, mine, or repurpose your Customer Data for any reason other than delivering the Service. Upon termination, your data will be handled in accordance with Section 11.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">8.3 Publicity</h3>
+          <p class="text-gray-600">
+            Unless you notify us otherwise in writing, you grant us the right to use your company name and logo on our website and marketing materials solely to identify you as a Notifuse customer. You may revoke this right at any time by emailing <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>.
+          </p>
+        </section>
+
+        <!-- 9. Data Protection -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="data-protection">9. Data Protection</h2>
+          <p class="text-gray-600 mb-4">
+            We process your personal data in accordance with our <a href="/privacy" class="text-primary hover:underline">Privacy Policy</a>. Customer Data is hosted within the <strong>European Union</strong>.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">9.1 Processing roles</h3>
+          <p class="text-gray-600 mb-4">
+            For data you upload about your own end users (email recipients, contacts), you act as the <strong>data controller</strong> and we act as a <strong>data processor</strong> on your behalf under GDPR Article 28. The Data Processing Agreement in Section 9.4 below governs this relationship.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">9.2 Data breach notification</h3>
+          <p class="text-gray-600 mb-4">
+            In the event of a personal data breach affecting data we process on your behalf, we will notify you without undue delay so that you may fulfill your obligations under GDPR Articles 33 and 34.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">9.3 Subprocessors</h3>
+          <p class="text-gray-600">
+            We maintain a list of subprocessors in our <a href="/privacy#recipients" class="text-primary hover:underline">Privacy Policy</a> and will notify you by email before adding or replacing any subprocessor. You may object to a new subprocessor within 30 days of notification. If we cannot reasonably address your objection, you may terminate the affected services.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">9.4 Data Processing Agreement</h3>
+          <p class="text-gray-600 mb-4">
+            This section constitutes the Data Processing Agreement ("DPA") between you (the controller) and 12 Megavolt (the processor) under GDPR Article 28 for personal data you upload to the Service (e.g., contact lists, recipient data).
+          </p>
+          <p class="text-gray-600 mb-2"><strong>Subject matter and scope:</strong> Processing of personal data of your end users (email recipients, contacts) for the purpose of delivering the Service, for the duration of your subscription.</p>
+          <p class="text-gray-600 mb-2"><strong>Types of data:</strong> Email addresses, names, and any other personal data fields you choose to upload or collect through the Service.</p>
+          <p class="text-gray-600 mb-2"><strong>Categories of data subjects:</strong> Your end users, subscribers, contacts, and email recipients.</p>
+          <p class="text-gray-600 mb-4"><strong>Our obligations as processor:</strong></p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Process personal data only on your documented instructions, unless required by EU or French law.</li>
+            <li>Ensure that persons authorized to process the data have committed to confidentiality.</li>
+            <li>Implement appropriate technical and organizational security measures (encryption at rest and in transit, access controls, regular security assessments).</li>
+            <li>Not engage another processor (subprocessor) without your prior notification and the right to object, as described in Section 9.3.</li>
+            <li>Assist you in fulfilling your obligations to respond to data subject requests (access, rectification, erasure, portability, restriction, objection).</li>
+            <li>Assist you in ensuring compliance with your obligations regarding data breach notification, data protection impact assessments, and prior consultation with the CNIL.</li>
+            <li>At the end of the service, delete all personal data or return it to you (see Section 11.3), and delete existing copies unless EU or French law requires storage.</li>
+            <li>Make available all information necessary to demonstrate compliance with these obligations, and allow for and contribute to audits and inspections conducted by you or an auditor mandated by you, with reasonable advance notice.</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            <strong>Your obligations as controller:</strong> You are responsible for ensuring that you have a lawful basis to process the personal data you upload, that you provide appropriate privacy notices to your end users, and that your instructions to us comply with applicable data protection law.
+          </p>
+        </section>
+
+        <!-- 10. Service Availability and SLA -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="sla">10. Service Level Agreement</h2>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">10.1 Uptime and support</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-gray-600 border border-gray-200 rounded-lg">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200"></th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Starter</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Pro</th>
+                  <th class="text-left px-4 py-3 font-semibold border-b border-gray-200">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3 font-medium">Uptime target</td>
+                  <td class="px-4 py-3">99.9%</td>
+                  <td class="px-4 py-3">99.9%</td>
+                  <td class="px-4 py-3">99.95%</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3 font-medium">Support channel</td>
+                  <td class="px-4 py-3">Email</td>
+                  <td class="px-4 py-3">Email</td>
+                  <td class="px-4 py-3">Priority email</td>
+                </tr>
+                <tr class="border-b border-gray-100">
+                  <td class="px-4 py-3 font-medium">Response time</td>
+                  <td class="px-4 py-3">48 hours</td>
+                  <td class="px-4 py-3">24 hours</td>
+                  <td class="px-4 py-3">10 hours</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium">Dedicated contact</td>
+                  <td class="px-4 py-3">No</td>
+                  <td class="px-4 py-3">No</td>
+                  <td class="px-4 py-3">Yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-gray-600 mt-4">
+            Uptime is measured monthly as the percentage of minutes the Service is available, excluding planned maintenance windows. Response times refer to business hours (Monday&ndash;Friday, 9:00&ndash;18:00 CET, excluding French public holidays).
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">10.2 Planned maintenance</h3>
+          <p class="text-gray-600 mb-4">
+            Planned maintenance will be announced at least 48 hours in advance when possible and is excluded from uptime calculations.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-6 mb-3">10.3 Exclusions</h3>
+          <p class="text-gray-600">
+            We are not liable for interruptions caused by force majeure events, third-party service failures (including your ESP), or circumstances beyond our reasonable control. The uptime target does not apply during free trial periods.
+          </p>
+        </section>
+
+        <!-- 11. Termination and Data Portability -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="termination">11. Termination and Data Portability</h2>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">11.1 Termination by you</h3>
+          <p class="text-gray-600 mb-4">
+            You may terminate your account at any time through the Service dashboard or by contacting us. Termination takes effect at the end of your current billing cycle. No refunds are provided for unused portions of a billing period.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">11.2 Termination by us</h3>
+          <p class="text-gray-600 mb-4">
+            We may suspend or terminate your account if you materially breach these Terms (including the Acceptable Use Policy), become subject to a voluntary winding-up or definitive cessation of business activities, or fail to pay fees after the grace period described in Section 7.4. For non-urgent breaches, we will provide reasonable notice and an opportunity to cure before termination. If we terminate your account for reasons other than your breach, we will provide a pro-rata refund for the unused portion of any prepaid fees.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">11.3 Data export and portability</h3>
+          <p class="text-gray-600 mb-4">
+            In accordance with the EU Data Act (Regulation 2023/2854):
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>You may initiate a data export at any time through the Service dashboard.</li>
+            <li>Upon termination, you have <strong>30 days</strong> to retrieve all your data. Data is exported in <strong>JSON and CSV formats</strong>, as applicable to each data type (contacts, campaigns, templates, analytics).</li>
+            <li>After the 30-day retrieval period, we will securely delete your data from our systems, except where retention is required by law (e.g., billing records for 10 years under French law).</li>
+            <li>We provide open APIs and standardized data formats to facilitate switching to another provider.</li>
+            <li>We do not charge exit or data transfer fees.</li>
+          </ul>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">11.4 Switching providers</h3>
+          <p class="text-gray-600">
+            You may switch to another service provider at any time with a maximum notice period of 2 months. During the transition period, you retain full access to the Service at your existing subscription rate. We will provide commercially reasonable cooperation to the receiving provider, limited to: providing API access, standard export documentation, and data export support. We are not obligated to perform custom engineering, integration work, or bespoke migration services.
+          </p>
+        </section>
+
+        <!-- 12. Warranty Disclaimer -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="warranty">12. Warranty Disclaimer</h2>
+          <p class="text-gray-600 mb-4">
+            To the maximum extent permitted by applicable law, the Service is provided <strong>"as is" and "as available"</strong>, without warranties of any kind, whether express, implied, or statutory, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+          </p>
+          <p class="text-gray-600 mb-4">
+            Without limiting the foregoing, we do not warrant that:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>The Service will be uninterrupted, timely, secure, or error-free.</li>
+            <li>The results obtained from the Service will be accurate or reliable.</li>
+            <li>Emails orchestrated through the Service will be delivered by your ESP (see Section 6).</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            This disclaimer does not affect any statutory rights that cannot be waived or limited under applicable law.
+          </p>
+        </section>
+
+        <!-- 13. Limitation of Liability -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="liability">13. Limitation of Liability</h2>
+          <p class="text-gray-600 mb-4">
+            To the maximum extent permitted by applicable law:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-2">
+            <li>Our total aggregate liability arising out of or in connection with these Terms or the Service is limited to the total fees you paid to us during the <strong>12 months</strong> preceding the event giving rise to the claim. For users on a free trial, our total liability is capped at <strong>zero euros</strong>.</li>
+            <li>We are not liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, revenue, data, or business opportunities.</li>
+            <li>We are not liable for any damages arising from your ESP's performance, outages, suspension, or termination (see Section 6).</li>
+          </ul>
+          <p class="text-gray-600 mt-4">
+            Nothing in these Terms excludes or limits our liability for: (a) death or personal injury caused by our negligence; (b) fraud or fraudulent misrepresentation; (c) gross negligence (<em>faute lourde</em>) or willful misconduct (<em>faute intentionnelle</em>); or (d) any other liability that cannot be limited by law.
+          </p>
+        </section>
+
+        <!-- 14. Indemnification -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="indemnification">14. Indemnification</h2>
+          <p class="text-gray-600">
+            You agree to indemnify and hold us harmless from any claims, damages, or expenses (including reasonable legal fees) arising from: (a) your use of the Service in violation of these Terms; (b) content you send through the Service via your ESP; (c) your violation of applicable laws, including anti-spam and data protection laws; (d) your infringement of any third-party rights; or (e) your violation of your ESP's terms of service.
+          </p>
+        </section>
+
+        <!-- 15. Modifications -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="modifications">15. Modifications to These Terms</h2>
+          <p class="text-gray-600 mb-4">
+            We may modify these Terms from time to time. We will notify you of significant changes at least <strong>30 days</strong> before they take effect, by email or through the Service.
+          </p>
+          <p class="text-gray-600">
+            If you do not agree with the modified Terms, you may terminate your account before the changes take effect. Your continued use of the Service after the effective date constitutes acceptance of the updated Terms.
+          </p>
+        </section>
+
+        <!-- 16. Force Majeure -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="force-majeure">16. Force Majeure</h2>
+          <p class="text-gray-600">
+            Neither party shall be liable for any delay or failure to perform its obligations due to circumstances beyond its reasonable control, including but not limited to natural disasters, wars, pandemics, government actions, power failures, internet outages, or third-party service disruptions. If a force majeure event continues for more than 60 days, either party may terminate the affected services upon written notice.
+          </p>
+        </section>
+
+        <!-- 17. Governing Law and Dispute Resolution -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="governing-law">17. Governing Law and Dispute Resolution</h2>
+          <p class="text-gray-600 mb-4">
+            These Terms are governed by and construed in accordance with the laws of <strong>France</strong>, without regard to its conflict of law principles.
+          </p>
+
+          <p class="text-gray-600">
+            Any dispute arising from these Terms shall be submitted to the exclusive jurisdiction of the competent courts of Paris, France.
+          </p>
+        </section>
+
+        <!-- 18. Third-Party Services -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="third-party">18. Third-Party Services</h2>
+          <p class="text-gray-600">
+            The Service may integrate with or allow connections to third-party services, including ESPs, CRMs, analytics tools, webhook endpoints, and other APIs. These third-party services are governed by their own terms and privacy policies. We are not responsible for the availability, accuracy, security, or practices of any third-party service. Your use of third-party integrations is at your own risk.
+          </p>
+        </section>
+
+        <!-- 19. Miscellaneous -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="miscellaneous">19. Miscellaneous</h2>
+          <ul class="list-disc pl-6 text-gray-600 space-y-3">
+            <li><strong>Entire agreement</strong> &mdash; These Terms (including the DPA in Section 9.4), together with the Privacy Policy, constitute the entire agreement between you and us regarding the Service.</li>
+            <li><strong>Severability</strong> &mdash; If any provision of these Terms is held invalid or unenforceable, the remaining provisions continue in full force and effect.</li>
+            <li><strong>No waiver</strong> &mdash; Our failure to enforce any right or provision does not constitute a waiver of that right or provision.</li>
+            <li><strong>Assignment</strong> &mdash; You may not assign your rights under these Terms without our prior written consent. We may assign our rights in connection with a merger, acquisition, or sale of assets, with notice to you.</li>
+            <li><strong>Survival</strong> &mdash; Provisions that by their nature should survive termination (including intellectual property, limitation of liability, indemnification, and governing law) shall survive.</li>
+          </ul>
+        </section>
+
+        <!-- 20. Contact -->
+        <section class="mb-12">
+          <h2 class="text-2xl font-semibold mb-4" id="contact">20. Contact</h2>
+          <p class="text-gray-600">
+            For any questions about these Terms of Service, contact us at:
+          </p>
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mt-2 text-gray-700 text-sm space-y-1">
+            <p>12 Megavolt</p>
+            <p>Email: <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a></p>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

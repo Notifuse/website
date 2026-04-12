@@ -38,7 +38,7 @@ const tocItems = [
 const proConsRows = [
   {
     label: "Starting Price",
-    notifuse: "Free (self-hosted)",
+    notifuse: "From $16/mo (Cloud) · or Self-hosted",
     competitor: "Free (500 subscribers, 12k emails/mo)",
   },
   {
@@ -94,7 +94,7 @@ const proConsRows = [
       rel="canonical"
       href="https://notifuse.com/compare/notifuse-vs-mailerlite"
     />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content="#7763F1" />
     <meta
       name="keywords"
       content="Notifuse vs MailerLite, MailerLite alternative, open-source email platform, self-hosted email, email marketing comparison, MailerLite open source alternative"
@@ -228,8 +228,8 @@ const proConsRows = [
             subscriber count.
           </p>
           <p class="text-gray-600 mb-6">
-            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source,
-            self-hosted email platform with a visual MJML builder + code editor, advanced
+            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source
+            email platform (available as managed Cloud or self-hosted) with a visual MJML builder + code editor, advanced
             segmentation with RFM analysis, multi-tenancy, and flexible ESP connections.
             <strong>Choose your own ESP</strong>—Amazon SES, Mailgun, Postmark, SendGrid,
             or mix providers for different email types.
@@ -1031,9 +1031,8 @@ const proConsRows = [
         <!-- Pricing & Cost Comparison -->
         <FeatureSection id="pricing" title="Pricing & Cost Comparison" gradient>
           <p class="text-gray-600 mb-6">
-            Notifuse is free software—you pay only for hosting and ESP costs.
-            MailerLite charges per subscriber count with a free tier for up to
-            500 subscribers.
+            Notifuse Cloud starts at $16/month with all features included.
+            MailerLite charges per subscriber with features gated by plan tier.
           </p>
 
           <div
@@ -1043,39 +1042,40 @@ const proConsRows = [
               class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8"
             >
               <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">
-                Cost at Scale: Fixed vs Per-Subscriber
+                Cost at Scale: Notifuse Cloud vs MailerLite
               </h4>
               <p class="text-gray-700 text-sm text-center mb-6">
-                Notifuse cost stays flat regardless of contact count. MailerLite
-                pricing grows with subscribers.
+                Notifuse Cloud includes all features on every plan. MailerLite
+                pricing grows with subscribers and gates features by tier.
               </p>
 
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
                 <div class="border border-gray-200 rounded-lg p-4">
-                  <div class="text-xs text-gray-500 mb-1">500 subscribers</div>
-                  <div class="text-lg font-bold text-gray-700">MailerLite: $0</div>
-                  <div class="text-xs text-gray-400">Free tier (12k emails/mo)</div>
+                  <div class="text-xs text-gray-500 mb-1">2,500 subscribers</div>
+                  <div class="text-lg font-bold text-gray-700">MailerLite: $25/mo</div>
+                  <div class="text-xs text-gray-400">Growing Business plan</div>
                 </div>
                 <div class="border border-gray-200 rounded-lg p-4">
                   <div class="text-xs text-gray-500 mb-1">10,000 subscribers</div>
-                  <div class="text-lg font-bold text-gray-700">MailerLite: $47/mo</div>
+                  <div class="text-lg font-bold text-gray-700">MailerLite: $73/mo</div>
                   <div class="text-xs text-gray-400">Growing Business plan</div>
                 </div>
                 <div
                   class="border border-primary bg-orange-50 rounded-lg p-4"
                 >
-                  <div class="text-xs text-gray-500 mb-1">Any size</div>
-                  <div class="text-lg font-bold text-primary">Notifuse: ~$25-40/mo</div>
-                  <div class="text-xs text-gray-400">Hosting + ESP costs</div>
+                  <div class="text-xs text-gray-500 mb-1">Same contacts</div>
+                  <div class="text-lg font-bold text-primary">Notifuse Cloud</div>
+                  <div class="text-xs text-gray-400">Lite $16/mo (2.5K) / Starter $39/mo (10K)</div>
                 </div>
               </div>
 
               <p class="text-xs text-gray-500 text-center mb-2">
-                Notifuse total: ~$15-30 (hosting) + ~$10 (Amazon SES for 100k
-                emails) = ~$25-40/month regardless of contact count
+                Notifuse Cloud: from $16/mo (Lite, 2,500 contacts) to $39/mo
+                (Starter, 10,000 contacts) — all features included, BYO-ESP for
+                unlimited emails
               </p>
               <p class="text-[10px] text-gray-400 text-center">
-                Pricing as of March 2026
+                Pricing as of April 2026
               </p>
             </div>
           </div>
@@ -1089,28 +1089,31 @@ const proConsRows = [
               >
                 Best Value
               </div>
-              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse</h3>
-              <div class="text-4xl font-bold text-primary mb-2">$0</div>
-              <p class="text-sm text-gray-600 mb-4">
-                Software cost (self-hosted)
-              </p>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse Cloud</h3>
+              <div class="text-sm text-gray-600 mb-4">All features on every plan</div>
 
-              <div class="text-sm text-gray-700 mb-6">
-                <strong>+ Hosting:</strong> ~$15-30/month<br />
-                <strong>+ Amazon SES:</strong> ~$10/month (100k emails)
-                <div class="mt-2 pt-2 border-t border-gray-200">
-                  <strong>Total: ~$25-40/month</strong> for unlimited contacts
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Lite:</strong> $16/month — 2,500 active contacts
+                </div>
+                <div>
+                  <strong>Starter:</strong> $39/month — 10,000 active contacts
+                </div>
+                <div>
+                  <strong>Pro:</strong> $99/month — 25,000 active contacts
                 </div>
               </div>
 
               <ul class="space-y-2 text-sm">
-                <li>✓ Unlimited contacts (no per-contact fees)</li>
-                <li>✓ Pay only ESP + hosting costs</li>
-                <li>✓ Open-source code</li>
-                <li>✓ No vendor lock-in</li>
-                <li>✓ ESP flexibility</li>
-                <li>✓ All features included</li>
+                <li>✓ Unlimited emails (BYO-ESP)</li>
+                <li>✓ All features on every plan</li>
+                <li>✓ 30-day free trial</li>
+                <li>✓ Active contacts only (last 30 days)</li>
               </ul>
+
+              <p class="text-xs text-gray-400 mt-4">
+                Or self-host — open-source (AGPL-3.0)
+              </p>
             </div>
 
             <div class="border border-gray-200 rounded-xl p-8">
@@ -1124,7 +1127,7 @@ const proConsRows = [
                 </div>
                 <div>
                   <strong>Growing Business:</strong> from $10/month (500 subs)<br />
-                  <span class="text-gray-500">$47/month at 10,000 subscribers</span>
+                  <span class="text-gray-500">$73/month at 10,000 subscribers</span>
                 </div>
                 <div>
                   <strong>Advanced:</strong> from $20/month (500 subs)<br />
@@ -1147,9 +1150,16 @@ const proConsRows = [
             </div>
           </div>
 
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">No Lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Full database export on demand. Notifuse is open-source (AGPL-3.0) — switch to self-hosted anytime and keep all your data.
+            </p>
+          </div>
+
           <ComparisonCTA
             title="Ready to save on email costs?"
-            description="Self-host Notifuse, connect your preferred ESP, and stop paying per subscriber."
+            description="Try Notifuse Cloud free for 30 days — connect your preferred ESP, and stop paying per subscriber."
             compact
           />
         </FeatureSection>
@@ -1541,10 +1551,10 @@ const proConsRows = [
                 Cost at Scale
               </h4>
               <p class="text-gray-700 text-sm">
-                Notifuse cost stays flat regardless of contact count (~$25-40/month
-                for hosting + ESP). MailerLite pricing grows linearly—at 10,000
-                subscribers you're paying $47/month on Growing Business, and it
-                keeps climbing.
+                Notifuse Cloud Starter costs $39/month for 10,000 active
+                contacts — all features included. MailerLite's Growing plan
+                costs $73/month at the same level, and some features require
+                the pricier Advanced plan.
               </p>
             </div>
 

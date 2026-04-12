@@ -28,6 +28,7 @@ const tocItems = [
   { id: "automations", label: "Automations" },
   { id: "custom-events", label: "Custom Events & Goals" },
   { id: "blog", label: "Blog" },
+  { id: "pricing", label: "Pricing & Managed Service" },
   { id: "use-cases", label: "Use Cases" },
   { id: "why-switch", label: "Why Switch to Notifuse" },
   { id: "faq", label: "FAQ" },
@@ -37,8 +38,8 @@ const tocItems = [
 const proConsRows = [
   {
     label: "Starting Price",
-    notifuse: "Free (self-hosted)",
-    competitor: "Free (self-hosted)",
+    notifuse: "From $16/mo (Cloud) · or Self-hosted",
+    competitor: "Self-hosted only",
   },
   {
     label: "Open Source License",
@@ -93,7 +94,7 @@ const proConsRows = [
       rel="canonical"
       href="https://notifuse.com/compare/notifuse-vs-listmonk"
     />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content="#7763F1" />
     <meta
       name="keywords"
       content="Notifuse vs Listmonk, Listmonk alternative, self-hosted email platform, MJML email builder, transactional email API, newsletter software comparison"
@@ -226,8 +227,8 @@ const proConsRows = [
             ESP integrations that modern teams need.
           </p>
           <p class="text-gray-600 mb-6">
-            <span class="font-semibold text-slate-900">Notifuse</span> is a comprehensive,
-            self-hosted email platform that combines newsletter functionality with
+            <span class="font-semibold text-slate-900">Notifuse</span> is a comprehensive
+            email platform (available as managed Cloud or self-hosted) that combines newsletter functionality with
             transactional email capabilities, visual MJML builder, advanced segmentation,
             A/B testing, multi-tenancy, and robust APIs. <strong
               >Designed to scale and compete against top closed-source
@@ -839,6 +840,66 @@ const proConsRows = [
               },
             ]}
           />
+        </FeatureSection>
+
+        <!-- Pricing & Managed Service -->
+        <FeatureSection id="pricing" title="Pricing & Managed Service" gradient>
+          <p class="text-gray-600 mb-6">
+            Both platforms are open-source for self-hosting. But Notifuse
+            also offers Notifuse Cloud — a fully managed service with professional
+            support. Listmonk has no official managed hosting or support offering.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="border-2 border-primary rounded-xl p-6 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-semibold">
+                Managed
+              </div>
+              <h4 class="font-semibold text-slate-900 mb-3">Notifuse Cloud</h4>
+              <div class="space-y-3 mb-4">
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-sm font-medium text-slate-900">Lite</span>
+                  <span class="text-sm"><strong class="text-primary">$16</strong>/mo — 2,500 contacts</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-sm font-medium text-slate-900">Starter</span>
+                  <span class="text-sm"><strong class="text-primary">$39</strong>/mo — 10,000 contacts</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-gray-100 pb-2">
+                  <span class="text-sm font-medium text-slate-900">Pro</span>
+                  <span class="text-sm"><strong class="text-primary">$99</strong>/mo — 25,000 contacts</span>
+                </div>
+              </div>
+              <ul class="space-y-1 text-sm text-gray-700 mb-4">
+                <li>&#10003; Managed infrastructure & automatic updates</li>
+                <li>&#10003; All features on every plan</li>
+                <li>&#10003; Unlimited emails (BYO-ESP)</li>
+                <li>&#10003; 30-day free trial</li>
+              </ul>
+              <p class="text-xs text-gray-500">Or self-host — open-source (AGPL-3.0)</p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-6">
+              <h4 class="font-semibold text-slate-900 mb-3">Listmonk</h4>
+              <div class="text-3xl font-bold text-slate-900 mb-2">Self host only</div>
+              <p class="text-gray-600 text-sm mb-4">Self-hosted only (AGPL-3.0)</p>
+              <ul class="space-y-1 text-sm text-gray-700">
+                <li class="text-gray-500">&#10007; No official managed service</li>
+                <li class="text-gray-500">&#10007; Community support only (GitHub issues)</li>
+                <li class="text-gray-500">&#10007; No professional SLA</li>
+                <li class="text-gray-500">&#10007; You manage servers, updates, and backups</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">No Lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Full database export on demand. Notifuse is open-source (AGPL-3.0) — switch between Cloud and self-hosted anytime and keep all your data.
+            </p>
+          </div>
+
+          <ComparisonCTA compact />
         </FeatureSection>
 
         <!-- Use Cases -->

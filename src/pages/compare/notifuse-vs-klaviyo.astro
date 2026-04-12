@@ -38,7 +38,7 @@ const tocItems = [
 const proConsRows = [
   {
     label: "Starting Price",
-    notifuse: "Free (self-hosted)",
+    notifuse: "From $16/mo (Cloud) · or Self-hosted",
     competitor: "Free up to 250 contacts; from $20/mo (paid)",
   },
   {
@@ -96,7 +96,7 @@ const proConsRows = [
       rel="canonical"
       href="https://notifuse.com/compare/notifuse-vs-klaviyo"
     />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content="#7763F1" />
     <meta
       name="keywords"
       content="Notifuse vs Klaviyo, Klaviyo alternative, self-hosted email platform, open-source email marketing, MJML email builder, transactional email API, Klaviyo pricing, Klaviyo alternative open source"
@@ -161,7 +161,7 @@ const proConsRows = [
       <!-- Hero Section -->
       <ComparisonHero
         competitor="Klaviyo"
-        description="Klaviyo is a powerful e-commerce marketing platform with deep Shopify integration. But if your focus is email, Notifuse delivers comparable email capabilities—MJML visual builder, automations, segmentation, transactional API—without per-profile pricing that can reach $720/month at 50,000 contacts. Self-hosted, open-source, and free."
+        description="Klaviyo is a powerful e-commerce marketing platform with deep Shopify integration. But if your focus is email, Notifuse delivers comparable email capabilities—MJML visual builder, automations, segmentation, transactional API—without per-profile pricing that can reach $720/month at 50,000 contacts. Cloud from $16/mo or self-host."
       />
 
       <!-- Main Comparison Layout -->
@@ -234,7 +234,7 @@ const proConsRows = [
           </p>
           <p class="text-gray-600 mb-6">
             <span class="font-semibold text-slate-900">Notifuse</span> is an
-            open-source, self-hosted email platform that combines marketing campaigns
+            open-source email platform (available as managed Cloud or self-hosted) that combines marketing campaigns
             with transactional email capabilities. It features an MJML visual builder,
             advanced segmentation with built-in RFM scoring, event-driven automations,
             multi-tenant workspaces, and a built-in blog with AI. <strong
@@ -968,8 +968,8 @@ const proConsRows = [
         <!-- Pricing -->
         <FeatureSection id="pricing" title="Pricing & Cost Comparison" gradient>
           <p class="text-gray-600 mb-8">
-            Notifuse is free and open-source—you pay only for your own
-            infrastructure and ESP costs. Klaviyo charges per active profile,
+            Notifuse Cloud starts at $16/month with all features included and
+            unlimited emails (BYO-ESP). Klaviyo charges per active profile,
             with costs scaling significantly as your list grows.
           </p>
 
@@ -978,39 +978,53 @@ const proConsRows = [
             <div
               class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8"
             >
-              <h3 class="text-xl font-bold text-slate-900 mb-4">
-                Notifuse
-              </h3>
-              <div class="text-3xl font-bold text-primary mb-2">Free</div>
-              <p class="text-gray-600 text-sm mb-6">
-                Self-hosted, open-source (AGPL-3.0)
-              </p>
-              <ul class="space-y-3 text-sm text-gray-700">
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Unlimited contacts</span>
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-slate-900">
+                  Notifuse Cloud
+                </h3>
+                <span class="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Best Value</span>
+              </div>
+              <ul class="space-y-2 text-sm text-gray-700 mb-6">
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Starter</span>
+                  <span><strong>$39/mo</strong> — 10,000 active contacts</span>
                 </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Unlimited workspaces</span>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Pro</span>
+                  <span><strong>$99/mo</strong> — 25,000 active contacts</span>
                 </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>All features included</span>
-                </li>
-                <li class="flex items-start">
-                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Pay only for your ESP & hosting</span>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Business</span>
+                  <span><strong>$249/mo</strong> — 50,000 active contacts</span>
                 </li>
               </ul>
+              <ul class="space-y-3 text-sm text-gray-700 mb-4">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Unlimited emails (BYO-ESP)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>All features on every plan</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>30-day free trial</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Active contacts only (last 30 days)</span>
+                </li>
+              </ul>
+              <p class="text-xs text-gray-500">Or self-host — open-source (AGPL-3.0)</p>
             </div>
 
             <!-- Klaviyo Pricing -->
@@ -1054,13 +1068,20 @@ const proConsRows = [
           <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
             <h4 class="font-semibold text-slate-900 mb-2">Cost at Scale</h4>
             <p class="text-gray-700 text-sm">
-              At <strong>50,000 contacts</strong>, Klaviyo costs approximately
-              <strong>$720/month</strong> for email alone—before adding SMS
-              credits or paid add-ons like helpdesk ($10/mo), AI customer agent
-              ($50/mo), or advanced analytics ($100/mo). Since February 2025,
-              Klaviyo bills for all active profiles, not just those you email.
-              With Notifuse, you pay only for your hosting and ESP costs,
-              typically a fraction of that price.
+              At <strong>10,000 contacts</strong>, Notifuse Cloud Starter costs
+              <strong>$39/month</strong> vs Klaviyo at <strong>$150/month</strong>
+              — save 74%. At <strong>50,000 contacts</strong>, Notifuse Cloud
+              Business costs <strong>$249/month</strong> vs Klaviyo at
+              <strong>~$720/month</strong> — save 65%. Klaviyo bills for all
+              active profiles and charges extra for SMS, helpdesk ($10/mo), AI
+              agent ($50/mo), and analytics ($100/mo).
+            </p>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
+            <h4 class="font-semibold text-slate-900 mb-2">No Lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Full database export on demand. Notifuse is open-source (AGPL-3.0) — switch to self-hosted anytime and keep all your data.
             </p>
           </div>
 
@@ -1250,8 +1271,9 @@ const proConsRows = [
                 Klaviyo's per-profile billing scales aggressively: $150/month
                 at 10,000 contacts, $720/month at 50,000, and $1,380/month at
                 100,000—for email alone. Since February 2025, they bill for all
-                active profiles, not just those you email. Notifuse is
-                free—you only pay for your hosting and ESP.
+                active profiles, not just those you email. Notifuse Cloud
+                Starter is just $39/mo for 10,000 active contacts with all
+                features included. Or self-host.
               </p>
             </div>
 
@@ -1378,10 +1400,11 @@ const proConsRows = [
                 Is Notifuse really free?
               </h4>
               <p class="text-gray-700 text-sm">
-                Yes. Notifuse is open-source (AGPL-3.0) and self-hosted. You
-                deploy it on your own infrastructure and pay only for hosting
-                (as low as a few dollars per month) and your ESP costs. There are
-                no per-profile fees, no volume limits, and no feature gates.
+                Notifuse offers two options: Notifuse Cloud, a fully managed
+                service starting at $16/mo (30-day free trial, no credit card
+                required), and a self-hosted deployment (open-source,
+                AGPL-3.0). Both include all features with no per-profile fees.
+                Full database export on demand — no lock-in.
               </p>
             </div>
 

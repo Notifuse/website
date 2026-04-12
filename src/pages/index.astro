@@ -26,12 +26,12 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
     <title>Notifuse - Free Open-Source Alternative to Mailchimp & Resend</title>
     <meta
       name="description"
-      content="Free, open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
     />
 
     <!-- SEO Meta Tags -->
     <link rel="canonical" href="https://notifuse.com/" />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content="#7763F1" />
     <meta name="author" content="Notifuse" />
     <meta
       name="keywords"
@@ -48,7 +48,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
     />
     <meta
       property="og:description"
-      content="Free, open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -63,7 +63,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
     />
     <meta
       name="twitter:description"
-      content="Free, open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -122,10 +122,10 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                   Live Demo
                 </a>
                 <a
-                  href="https://docs.notifuse.com/installation"
+                  href="https://cloud.notifuse.com/signup"
                   class="border border-gray-200 text-gray-700 px-4 py-2 rounded-md text-base font-semibold hover:bg-white transition-colors"
                 >
-                  One-click Deploy
+                  Sign up free
                 </a>
               </div>
             </div>
@@ -396,159 +396,48 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
         </div>
       </section>
 
-      <!-- Pricing Section -->
-      <section class="border-t border-gray-200" id="pricing">
+      <!-- Support Section -->
+      <section class="border-t border-gray-200">
         <div class="px-4 lg:px-8 py-20">
-          <div class="text-center mb-16">
+          <div class="text-center max-w-3xl mx-auto">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">
-              Start your journey today
+              Customer support is always here to help you
             </h2>
-            <p class="text-xl text-gray-600">
-              Start creating powerful newsletters for free.
+            <p class="text-xl text-gray-600 mb-12">
+              Whether you self-host or use Notifuse Cloud, we've got you
+              covered.
             </p>
-          </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
-            <!-- Free Plan -->
             <div
-              class="border border-gray-200 bg-white rounded-md p-8 hover:border-gray-200 transition-colors"
+              class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto"
             >
-              <div class="text-center mb-8">
-                <h3 class="text-xl font-bold text-slate-900 mb-2">
-                  Forever Free
+              <div class="text-center">
+                <h3 class="font-semibold text-slate-900 mb-2">
+                  Notifuse Cloud
                 </h3>
-                <p class="text-gray-600">Open-source self-hosted solution.</p>
+                <p class="text-gray-600 text-sm mb-4">
+                  Priority email support on all paid plans.
+                </p>
+                <a
+                  href="/pricing"
+                  class="inline-block bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  View pricing
+                </a>
               </div>
-              <ul class="space-y-4 mb-8">
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-700">Unlimited subscribers</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-700">Unlimited campaigns</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-700">All features included</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-500 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-700">Self-hosted</span>
-                </li>
-              </ul>
-              <a
-                href="https://docs.notifuse.com/installation"
-                class="w-full bg-primary text-white py-2 px-4 rounded-md font-semibold hover:bg-primary/80 transition-colors text-center block"
-              >
-                Get Started
-              </a>
-            </div>
-
-            <!-- Support Plan -->
-            <div
-              class="bg-gray-900 border border-gray-700 rounded-md p-8 hover:border-gray-600 transition-colors"
-            >
-              <div class="text-center mb-8">
-                <h3 class="text-xl font-bold text-white mb-2">Enterprise</h3>
-                <p class="text-gray-300">With dedicated support.</p>
+              <div class="text-center">
+                <h3 class="font-semibold text-slate-900 mb-2">Self-hosted</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Community support via GitHub Issues.
+                </p>
+                <a
+                  href="https://github.com/notifuse/notifuse/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-block border border-gray-300 text-slate-900 px-6 py-2.5 rounded-md font-semibold hover:bg-gray-50 transition-colors"
+                >
+                  Open an issue
+                </a>
               </div>
-              <ul class="space-y-4 mb-8">
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-400 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-300">Priority support</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-400 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-300">Custom implementation</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-400 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-300">Training & onboarding</span>
-                </li>
-                <li class="flex items-center">
-                  <svg
-                    class="w-5 h-5 text-green-400 mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                  <span class="text-gray-300">SLA guarantee</span>
-                </li>
-              </ul>
-              <a
-                href="mailto:pierre@notifuse.com"
-                class="w-full bg-gradient-to-r from-white to-gray-100 text-slate-900 py-2 px-4 rounded-md font-semibold hover:from-gray-100 hover:to-gray-200 transition-all text-center block"
-              >
-                Contact Us
-              </a>
             </div>
           </div>
         </div>

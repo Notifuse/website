@@ -37,7 +37,7 @@ const tocItems = [
 const proConsRows = [
   {
     label: "Starting Price",
-    notifuse: "Free (self-hosted)",
+    notifuse: "From $16/mo (Cloud) · or Self-hosted",
     competitor: "Free tier: 300 emails/day",
   },
   {
@@ -92,7 +92,7 @@ const proConsRows = [
       rel="canonical"
       href="https://notifuse.com/compare/notifuse-vs-brevo"
     />
-    <meta name="theme-color" content="#FF6B35" />
+    <meta name="theme-color" content="#7763F1" />
     <meta
       name="keywords"
       content="Notifuse vs Brevo, Brevo alternative, Sendinblue alternative, self-hosted email platform, open-source email marketing, Brevo pricing"
@@ -111,7 +111,7 @@ const proConsRows = [
     />
     <meta
       property="og:description"
-      content="Compare Notifuse (open-source, self-hosted) and Brevo (SaaS, multi-channel). All features included vs tier-gated pricing starting at $499/mo."
+      content="Compare Notifuse (open-source, Cloud or self-hosted) and Brevo (SaaS, multi-channel). All features included vs tier-gated pricing up to $499/mo."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -306,7 +306,7 @@ const proConsRows = [
                       </svg>
                       <span
                         ><strong class="text-primary">Notifuse:</strong> All features included
-                        at $0 software cost</span
+                        on every Cloud plan from $16/mo</span
                       >
                     </li>
                   </ul>
@@ -322,8 +322,8 @@ const proConsRows = [
             tiers and charges per contact.
           </p>
           <p class="text-gray-600 mb-6">
-            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source,
-            self-hosted email platform with a visual MJML builder, advanced segmentation,
+            <span class="font-semibold text-slate-900">Notifuse</span> is an open-source
+            email platform (available as managed Cloud or self-hosted) with a visual MJML builder, advanced segmentation,
             automations, multi-tenancy, and flexible ESP connections. <strong
               >All features included</strong
             > from day one—no tier-based pricing, no per-contact fees.
@@ -339,7 +339,7 @@ const proConsRows = [
         <!-- Pricing & Cost Comparison -->
         <FeatureSection id="pricing" title="Pricing & Cost Comparison" gradient>
           <p class="text-gray-600 mb-6">
-            Brevo's tiered pricing adds up quickly. Notifuse is free software—you only pay for hosting and your ESP.
+            Brevo gates key features behind expensive tiers. Notifuse Cloud includes all features on every plan, starting at $16/mo.
           </p>
 
           <div
@@ -366,8 +366,8 @@ const proConsRows = [
                   <div
                     class="border border-primary bg-orange-50 rounded-lg p-4"
                   >
-                    <div class="text-xs text-gray-500 mb-1">Notifuse + SES</div>
-                    <div class="text-2xl font-bold text-primary">~$25-40</div>
+                    <div class="text-xs text-gray-500 mb-1">Notifuse Cloud Pro</div>
+                    <div class="text-2xl font-bold text-primary">$99</div>
                     <div class="text-xs text-gray-600">All features included</div>
                   </div>
                   <div class="border border-gray-200 rounded-lg p-4">
@@ -399,11 +399,11 @@ const proConsRows = [
                   <div class="border border-gray-200 rounded-lg p-3">
                     <div class="text-xs font-semibold text-gray-700 mb-1">Starter $9/mo</div>
                     <div class="text-sm text-gray-600">5K emails/mo</div>
-                    <div class="text-xs text-gray-400">No automation</div>
+                    <div class="text-xs text-gray-400">Limited automation (2K contacts)</div>
                   </div>
                   <div class="border border-gray-200 rounded-lg p-3">
                     <div class="text-xs font-semibold text-gray-700 mb-1">Standard $18/mo</div>
-                    <div class="text-sm text-gray-600">Automation + A/B</div>
+                    <div class="text-sm text-gray-600">Unlimited automation + A/B</div>
                     <div class="text-xs text-gray-400">No WhatsApp/push</div>
                   </div>
                   <div class="border border-gray-200 rounded-lg p-3">
@@ -415,10 +415,10 @@ const proConsRows = [
               </div>
 
               <p class="text-xs text-gray-500 text-center mb-2">
-                Notifuse total: $0 (software) + $10 (Amazon SES for 100K) + $15-30 (hosting) = ~$25-40/month for all features
+                Notifuse Cloud: from $16/mo (Lite) to $99/mo (Pro) — all features included, BYO-ESP
               </p>
               <p class="text-[10px] text-gray-400 text-center">
-                Pricing as of March 2026
+                Pricing as of April 2026
               </p>
             </div>
           </div>
@@ -432,27 +432,36 @@ const proConsRows = [
               >
                 Best Value
               </div>
-              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse</h3>
-              <div class="text-4xl font-bold text-primary mb-2">$0</div>
-              <p class="text-sm text-gray-600 mb-4">
-                Software cost (self-hosted)
-              </p>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse Cloud</h3>
 
-              <div class="text-sm text-gray-700 mb-6">
-                <strong>+ Hosting:</strong> ~$15-30/month<br />
-                <strong>+ Amazon SES:</strong> ~$10/month (100k emails)
-                <div class="mt-2 pt-2 border-t border-gray-200">
-                  <strong>Total: ~$25-40/month</strong> for unlimited features
+              <div class="space-y-2 mb-6 text-sm">
+                <div class="flex justify-between items-baseline border-b border-gray-100 pb-2">
+                  <span class="font-semibold text-slate-900">Lite</span>
+                  <span class="text-primary font-bold">$16/mo</span>
                 </div>
+                <div class="text-xs text-gray-600 -mt-1 mb-1">2,500 active contacts</div>
+                <div class="flex justify-between items-baseline border-b border-gray-100 pb-2">
+                  <span class="font-semibold text-slate-900">Starter</span>
+                  <span class="text-primary font-bold">$39/mo</span>
+                </div>
+                <div class="text-xs text-gray-600 -mt-1 mb-1">10,000 active contacts</div>
+                <div class="flex justify-between items-baseline border-b border-gray-100 pb-2">
+                  <span class="font-semibold text-slate-900">Pro</span>
+                  <span class="text-primary font-bold">$99/mo</span>
+                </div>
+                <div class="text-xs text-gray-600 -mt-1">25,000 active contacts</div>
               </div>
 
               <ul class="space-y-2 text-sm">
-                <li>&#10003; Unlimited contacts (no per-contact fees)</li>
-                <li>&#10003; All features included from day one</li>
-                <li>&#10003; Open-source code</li>
-                <li>&#10003; ESP flexibility</li>
-                <li>&#10003; Full data ownership</li>
+                <li>&#10003; Unlimited emails (BYO-ESP)</li>
+                <li>&#10003; All features on every plan</li>
+                <li>&#10003; 30-day free trial</li>
+                <li>&#10003; Active contacts only (last 30 days)</li>
               </ul>
+
+              <p class="text-xs text-gray-500 mt-4">
+                Or self-host — open-source (AGPL-3.0)
+              </p>
             </div>
 
             <div class="border border-gray-200 rounded-xl p-8">
@@ -462,11 +471,11 @@ const proConsRows = [
               <div class="space-y-3 mb-6 text-sm">
                 <div>
                   <strong>Free:</strong> 300 emails/day, 100K contacts<br />
-                  <span class="text-gray-500">No automation, Brevo branding</span>
+                  <span class="text-gray-500">Limited automation (2K contacts), Brevo branding</span>
                 </div>
                 <div>
                   <strong>Starter:</strong> From $9/month<br />
-                  <span class="text-gray-500">5K-100K emails, no automation</span>
+                  <span class="text-gray-500">5K-100K emails, limited automation (2K contacts)</span>
                 </div>
                 <div>
                   <strong>Standard:</strong> From $18/month<br />
@@ -491,9 +500,16 @@ const proConsRows = [
             </div>
           </div>
 
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">No Lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Full database export on demand. Notifuse is open-source (AGPL-3.0) — switch to self-hosted anytime and keep all your data.
+            </p>
+          </div>
+
           <ComparisonCTA
             title="Ready to save on email costs?"
-            description="Get all features for the cost of hosting + ESP. No per-contact fees, no tier gates."
+            description="All features from $16/mo with BYO-ESP. No tier gates, no per-contact fees."
             compact
           />
         </FeatureSection>
@@ -619,7 +635,7 @@ const proConsRows = [
               {
                 feature: "AI Send Time Optimization",
                 notifuse: false,
-                competitor: "Professional plan ($499/mo)",
+                competitor: "Standard plan ($18/mo)",
               },
               {
                 feature: "Global Data Feed",
@@ -946,7 +962,8 @@ const proConsRows = [
         <FeatureSection id="automations" title="Automations">
           <p class="text-gray-600 mb-6">
             Both platforms offer visual automation builders. Key difference: Notifuse
-            includes automations for free; Brevo requires the Standard plan ($18/mo+).
+            includes unlimited automations on every plan; Brevo caps automation at 2,000
+            contacts on Free/Starter and requires Standard ($18/mo+) for unlimited.
           </p>
 
           <ComparisonTable
@@ -1000,9 +1017,10 @@ const proConsRows = [
           <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
             <h4 class="font-semibold text-slate-900 mb-2">Automation Pricing</h4>
             <p class="text-gray-700 text-sm">
-              Notifuse includes automations at no extra cost. Brevo requires at minimum
-              the Standard plan ($18/mo) for basic automations, and the Professional
-              plan ($499/mo) for multi-channel automation actions like SMS, WhatsApp, and push.
+              Notifuse includes unlimited automations at no extra cost. Brevo offers
+              limited automation on Free and Starter plans (capped at 2,000 contacts),
+              unlimited automation on the Standard plan ($18/mo), and multi-channel
+              automation actions like SMS, WhatsApp, and push on the Professional plan ($499/mo).
             </p>
           </div>
         </FeatureSection>
@@ -1669,11 +1687,11 @@ const proConsRows = [
                 How does pricing compare at scale?
               </h4>
               <p class="text-gray-700 text-sm">
-                At scale, the difference is dramatic. Notifuse costs ~$25-40/month
-                (hosting + ESP) for unlimited contacts and all features. Brevo's
-                Professional plan starts at $499/month, and Enterprise is custom pricing.
-                Even Brevo's Standard plan ($18/mo) only gives you basic automation—for
-                the full feature set, you're looking at $499+/month.
+                Notifuse Cloud Pro costs $99/month for 25,000 active contacts with all
+                features included. Brevo's Professional plan starts at $499/month for
+                full feature access — that's 5x the cost. Brevo's Standard plan
+                ($18/mo) unlocks unlimited automation but not WhatsApp, push, or AI
+                segmentation. Notifuse includes all features on every plan.
               </p>
             </div>
 

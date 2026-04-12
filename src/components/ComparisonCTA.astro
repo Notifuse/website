@@ -7,7 +7,7 @@ interface Props {
 
 const {
   title = "Ready to try Notifuse?",
-  description = "Start sending beautiful emails with our modern, self-hosted platform.",
+  description = "Start sending beautiful emails with Notifuse Cloud. Or self-host.",
   compact = false,
 } = Astro.props;
 ---
@@ -16,8 +16,14 @@ const {
   compact ? (
     <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
       <a
-        href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+        href="https://cloud.notifuse.com/signup"
         class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+      >
+        Start Free Trial
+      </a>
+      <a
+        href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+        class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors text-center"
       >
         Try Live Demo
       </a>
@@ -25,7 +31,7 @@ const {
         href="https://docs.notifuse.com/installation"
         class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors text-center"
       >
-        Deploy Now
+        Self-Host
       </a>
     </div>
   ) : (
@@ -35,8 +41,14 @@ const {
         <p class="text-gray-600 mb-6">{description}</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+            href="https://cloud.notifuse.com/signup"
             class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+          >
+            Start Free Trial
+          </a>
+          <a
+            href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+            class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
           >
             Try Live Demo
           </a>
@@ -44,11 +56,10 @@ const {
             href="https://docs.notifuse.com/installation"
             class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
           >
-            Deploy Now
+            Self-Host
           </a>
         </div>
       </div>
     </div>
   )
 }
-

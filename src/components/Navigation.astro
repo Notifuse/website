@@ -6,16 +6,15 @@ import logoMedium from "../assets/logo/logo-medium.png"
 <nav
   class="border-b border-gray-200 sticky top-0 z-50 backdrop-blur-sm bg-white-98/95"
 >
-  <div class="px-4 lg:px-8">
+  <div class="max-w-5xl mx-auto px-4 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <div class="flex items-center">
+      <div class="flex items-center gap-8">
         <a href="/">
           <img src={logoMedium.src} alt="Notifuse" class="h-8" />
         </a>
-      </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-6 text-sm">
         <a
           href="/#features"
           class="text-gray-600 hover:text-gray-900 transition-colors"
@@ -26,17 +25,18 @@ import logoMedium from "../assets/logo/logo-medium.png"
           class="text-gray-600 hover:text-gray-900 transition-colors">Compare</a
         >
         <a
-          href="/#pricing"
+          href="/pricing"
           class="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a
         >
         <a
           href="https://docs.notifuse.com"
           class="text-gray-600 hover:text-gray-900 transition-colors">Docs</a
         >
+        </div>
       </div>
 
       <!-- Desktop Actions -->
-      <div class="hidden md:flex items-center space-x-4">
+      <div class="hidden md:flex items-center space-x-6">
         <div class="pt-[7px]">
           <a
             class="github-button"
@@ -50,9 +50,14 @@ import logoMedium from "../assets/logo/logo-medium.png"
           </a>
         </div>
         <a
-          href="https://docs.notifuse.com/installation"
+          href="https://cloud.notifuse.com"
+          class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          >Log in</a
+        >
+        <a
+          href="https://cloud.notifuse.com/signup"
           class="bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/80 transition-colors"
-          >Get Started</a
+          >Sign up free</a
         >
       </div>
 
@@ -123,7 +128,7 @@ import logoMedium from "../assets/logo/logo-medium.png"
           >Compare</a
         >
         <a
-          href="/#pricing"
+          href="/pricing"
           class="block text-gray-600 hover:text-gray-900 transition-colors"
           >Pricing</a
         >
@@ -144,9 +149,9 @@ import logoMedium from "../assets/logo/logo-medium.png"
             Star
           </a>
           <a
-            href="#"
+            href="https://cloud.notifuse.com/signup"
             class="block bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/80 transition-colors text-center"
-            >Get Started</a
+            >Sign up free</a
           >
         </div>
       </div>

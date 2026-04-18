@@ -1,0 +1,246 @@
+---
+import "../styles/global.css"
+import ProConsTable from "./ProConsTable.astro"
+import GtagHead from "./GtagHead.astro"
+import CookieConsent from "./CookieConsent.astro"
+
+interface Benefit {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface PricingTier {
+  name: string;
+  price: string;
+  period: string;
+  features: string[];
+  highlighted?: boolean;
+}
+
+interface TableRow {
+  label: string;
+  notifuse: string;
+  competitor: string;
+}
+
+interface Props {
+  lang: string;
+  metaTitle: string;
+  metaDescription: string;
+  h1: string;
+  subheadline: string;
+  ctaText: string;
+  ctaUrl: string;
+  trustBadges: string[];
+  benefits: Benefit[];
+  competitor?: string;
+  proConsRows?: TableRow[];
+  pricingTiers: PricingTier[];
+  pricingTitle?: string;
+  finalCtaTitle?: string;
+  finalCtaDescription?: string;
+}
+
+const {
+  lang,
+  metaTitle,
+  metaDescription,
+  h1,
+  subheadline,
+  ctaText,
+  ctaUrl,
+  trustBadges,
+  benefits,
+  competitor,
+  proConsRows,
+  pricingTiers,
+  pricingTitle = "Tarifs",
+  finalCtaTitle = "Prêt à reprendre le contrôle de vos emails ?",
+  finalCtaDescription = "Essai gratuit 30 jours. Sans carte bancaire. Toutes les fonctionnalités.",
+} = Astro.props;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title>{metaTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="theme-color" content="#7763F1" />
+
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content="website" />
+
+    <!-- Consent Mode V2 defaults + GA4 (MUST load before Plausible to ensure consent fires first) -->
+    <GtagHead />
+
+    <!-- Plausible — privacy-friendly, no consent needed, loads independently -->
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+  </head>
+
+  <body class="bg-white-98 text-gray-900">
+    <main class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+
+      <!-- Logo -->
+      <div class="text-center mb-8">
+        <a href="https://notifuse.com" class="inline-flex items-center gap-2 text-xl font-bold text-slate-900">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#7763F1"/>
+            <path d="M8 10h16v2H8zm0 5h12v2H8zm0 5h14v2H8z" fill="white"/>
+          </svg>
+          Notifuse
+        </a>
+      </div>
+
+      <!-- Hero -->
+      <section class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+          {h1}
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">
+          {subheadline}
+        </p>
+        <a
+          href={ctaUrl}
+          data-cta
+          class="inline-block bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+        >
+          {ctaText}
+        </a>
+      </section>
+
+      <!-- Trust bar -->
+      <section class="flex flex-wrap justify-center gap-4 mb-12">
+        {trustBadges.map((badge) => (
+          <span class="inline-flex items-center gap-1.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-full px-4 py-2">
+            <svg class="w-4 h-4 text-green-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            {badge}
+          </span>
+        ))}
+      </section>
+
+      <!-- Benefits -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+        {benefits.map((b) => (
+          <div class="bg-white border border-gray-200 rounded-xl p-6">
+            <div class="text-2xl mb-3">{b.icon}</div>
+            <h3 class="font-semibold text-slate-900 mb-2">{b.title}</h3>
+            <p class="text-sm text-gray-600">{b.description}</p>
+          </div>
+        ))}
+      </section>
+
+      <!-- Comparison table -->
+      {competitor && proConsRows && (
+        <section class="mb-12">
+          <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">
+            Notifuse vs {competitor}
+          </h2>
+          <div class="bg-white border border-gray-200 rounded-xl p-4 sm:p-6 overflow-hidden">
+            <ProConsTable competitor={competitor} rows={proConsRows} />
+          </div>
+        </section>
+      )}
+
+      <!-- Pricing -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">
+          {pricingTitle}
+        </h2>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {pricingTiers.map((tier) => (
+            <div class={`rounded-xl p-4 text-center ${tier.highlighted ? 'bg-primary text-white ring-2 ring-primary' : 'bg-white border border-gray-200'}`}>
+              <div class={`text-xs font-medium mb-1 ${tier.highlighted ? 'text-white/80' : 'text-gray-500'}`}>
+                {tier.name}
+              </div>
+              <div class="text-xl font-bold mb-1">{tier.price}</div>
+              <div class={`text-xs ${tier.highlighted ? 'text-white/70' : 'text-gray-400'}`}>
+                {tier.period}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p class="text-center text-xs text-gray-500 mt-3">
+          Emails illimités inclus. Facturation par contacts actifs uniquement.
+        </p>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 text-center mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 mb-3">
+          {finalCtaTitle}
+        </h2>
+        <p class="text-gray-600 mb-6">
+          {finalCtaDescription}
+        </p>
+        <a
+          href={ctaUrl}
+          data-cta
+          class="inline-block bg-primary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+        >
+          {ctaText}
+        </a>
+      </section>
+
+      <!-- Minimal footer -->
+      <footer class="text-center text-xs text-gray-400 py-4 border-t border-gray-200">
+        <p class="mb-2">
+          &copy; {new Date().getFullYear()} Notifuse.
+          <a href="/privacy" class="hover:underline">Politique de confidentialité</a> ·
+          <a href="/terms" class="hover:underline">CGU</a> ·
+          <a href="#" id="cookie-manage" class="hover:underline">Cookies</a>
+        </p>
+        <p>
+          <a id="lang-en" href="/" class="text-gray-400 hover:text-gray-600">English</a>
+          <span class="text-gray-300">·</span>
+          <a id="lang-fr" href="/fr/" class="text-gray-400 hover:text-gray-600">Français</a>
+        </p>
+      </footer>
+    </main>
+
+    <!-- Language switcher logic -->
+    <script is:inline>
+    (function() {
+      var path = window.location.pathname.replace(/\/+$/, '') || '/';
+      var isFr = path === '/fr' || path.startsWith('/fr/');
+      var enLink = document.getElementById('lang-en');
+      var frLink = document.getElementById('lang-fr');
+      if (!enLink || !frLink) return;
+      var slugMap = { '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing' };
+      function addSlash(p) { return p === '/' ? '/' : p + '/'; }
+      var enPath, frPath;
+      if (isFr) { frPath = path; enPath = slugMap[path] || path.replace(/^\/fr/, '') || '/'; }
+      else { enPath = path; frPath = slugMap[path] || '/fr' + (path === '/' ? '' : path); }
+      enLink.href = addSlash(enPath);
+      frLink.href = addSlash(frPath);
+      if (isFr) { frLink.classList.remove('text-gray-400'); frLink.classList.add('text-gray-600', 'font-semibold'); }
+      else { enLink.classList.remove('text-gray-400'); enLink.classList.add('text-gray-600', 'font-semibold'); }
+    })();
+    </script>
+
+    <!-- Cookie consent banner -->
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough to CTA links -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

@@ -1,8 +1,9 @@
 ---
-import "../styles/global.css"
-import Navigation from "../components/Navigation.astro"
-import Footer from "../components/Footer.astro"
-import GtagHead from "../components/GtagHead.astro"
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import CookieConsent from "../../components/CookieConsent.astro"
 
 const CLOUD_SIGNUP_URL = "https://cloud.notifuse.com/signup"
 
@@ -17,7 +18,7 @@ const plans = [
     activeContacts: "2,500",
     storedContacts: "10,000",
     monthlyTimeline: "50,000",
-    dataRetention: "12 months",
+    dataRetention: "12 mois",
     workspaces: "1",
     teamMembers: "3",
   },
@@ -31,7 +32,7 @@ const plans = [
     activeContacts: "10,000",
     storedContacts: "50,000",
     monthlyTimeline: "200,000",
-    dataRetention: "12 months",
+    dataRetention: "12 mois",
     workspaces: "5",
     teamMembers: "3",
   },
@@ -45,7 +46,7 @@ const plans = [
     activeContacts: "25,000",
     storedContacts: "150,000",
     monthlyTimeline: "500,000",
-    dataRetention: "24 months",
+    dataRetention: "24 mois",
     workspaces: "10",
     teamMembers: "10",
   },
@@ -59,121 +60,134 @@ const plans = [
     activeContacts: "50,000",
     storedContacts: "300,000",
     monthlyTimeline: "1,000,000",
-    dataRetention: "36 months",
+    dataRetention: "36 mois",
     workspaces: "20",
     teamMembers: "25",
   },
 ]
 
 const comparisonFeatures = [
-  { label: "Active contacts", key: "activeContacts", tooltip: "Unique contacts with activity in the last 30 days" },
-  { label: "Stored contacts", key: "storedContacts", tooltip: "Total contacts in your database, active or dormant" },
-  { label: "Monthly timeline entries", key: "monthlyTimeline", tooltip: "Emails, opens, clicks, list changes, automations, and custom events" },
-  { label: "Data retention", key: "dataRetention", tooltip: "How long timeline and analytics data stays queryable for segmentation" },
-  { label: "Workspaces", key: "workspaces", tooltip: "Isolated environments with separate contacts, campaigns, and settings" },
-  { label: "Team members", key: "teamMembers", tooltip: "Users who can access your account" },
+  { label: "Contacts actifs", key: "activeContacts", tooltip: "Contacts uniques ayant eu au moins une activité dans les 30 derniers jours" },
+  { label: "Contacts stockés", key: "storedContacts", tooltip: "Total de contacts dans votre base, actifs ou inactifs" },
+  { label: "Entrées timeline/mois", key: "monthlyTimeline", tooltip: "Emails, ouvertures, clics, changements de liste, automations et événements personnalisés" },
+  { label: "Conservation des données", key: "dataRetention", tooltip: "Durée pendant laquelle les données timeline et analytics restent interrogeables pour la segmentation" },
+  { label: "Espaces de travail", key: "workspaces", tooltip: "Environnements isolés avec contacts, campagnes et paramètres séparés" },
+  { label: "Membres d'équipe", key: "teamMembers", tooltip: "Utilisateurs pouvant accéder à votre compte" },
 ]
 
 const includedFeatures = [
-  "Unlimited emails",
-  "MJML visual builder + code editor",
-  "All automation workflows (10 node types)",
-  "Transactional API",
-  "Advanced segmentation (RFM, behavioral, nested)",
-  "Custom event ingestion & data feeds",
-  "Outgoing webhook subscriptions",
-  "Full API access",
-  "Blog CMS & Liquid templating",
-  "All ESP integrations (BYO-ESP)",
-  "Contact timeline & profiles",
-  "A/B testing",
+  "Emails illimités",
+  "Éditeur visuel MJML + éditeur de code",
+  "Toutes les automations (10 types de nœuds)",
+  "API transactionnelle",
+  "Segmentation avancée (RFM, comportementale, imbriquée)",
+  "Ingestion d'événements personnalisés & flux de données",
+  "Abonnements webhook sortants",
+  "Accès complet à l'API",
+  "CMS blog & templating Liquid",
+  "Toutes les intégrations ESP (BYO-ESP)",
+  "Timeline & profils des contacts",
+  "Tests A/B",
   "Analytics & reporting",
 ]
 
 const faqs = [
   {
-    question: "What counts as an active contact?",
+    question: "Qu'est-ce qu'un contact actif ?",
     answer:
-      'An active contact is any unique contact with at least one event recorded in the trailing 30 days — an email sent, a list change, an automation run, or a custom event. Dormant contacts (no activity in 30 days) do NOT count toward your active limit. This is a major advantage — competitors like Mailchimp and Klaviyo bill for all contacts regardless of activity.',
+      "Un contact actif est un contact unique ayant eu au moins un événement enregistré au cours des 30 derniers jours — un email envoyé, un changement de liste, une exécution d'automation ou un événement personnalisé. Les contacts dormants (aucune activité depuis 30 jours) ne comptent PAS dans votre limite de contacts actifs. C'est un avantage majeur — des concurrents comme Mailchimp et Klaviyo facturent tous les contacts, quelle que soit leur activité.",
   },
   {
-    question: "What happens when I exceed my plan limits?",
+    question: "Que se passe-t-il si je dépasse les limites de mon plan ?",
     answer:
-      "There are no overage fees and your campaigns are never paused. We'll notify you at 80% and 100% of your plan limits. If you exceed your tier, you simply move to the next plan on your next billing cycle — no surprise charges, no action required on your side.",
+      "Il n'y a aucun frais de dépassement et vos campagnes ne sont jamais interrompues. Nous vous notifions à 80 % et 100 % des limites de votre plan. Si vous dépassez votre palier, vous passez simplement au plan supérieur lors de votre prochain cycle de facturation — pas de frais surprise, aucune action requise de votre côté.",
   },
   {
-    question: "Do I need to pay for email sending?",
+    question: "Dois-je payer pour l'envoi d'emails ?",
     answer:
-      'No — Notifuse uses a Bring Your Own ESP model. You connect your own email provider (Amazon SES, Postmark, SendGrid, Mailgun, Mailjet, SparkPost, or custom SMTP). We never charge per email. With Amazon SES at ~$0.10/1,000 emails, a Starter plan user sending 50K emails/month pays roughly $49 + $5 = $54/mo total.',
+      "Non — Notifuse utilise un modèle Bring Your Own ESP. Vous connectez votre propre fournisseur d'email (Amazon SES, Postmark, SendGrid, Mailgun, Mailjet, SparkPost ou SMTP personnalisé). Nous ne facturons jamais à l'email. Avec Amazon SES à environ 0,10 $/1 000 emails, un utilisateur du plan Starter envoyant 50 000 emails/mois paie environ 49 $ + 5 $ = 54 $/mois au total.",
   },
   {
-    question: "I don't have an ESP yet. Is setup difficult?",
+    question: "Je n'ai pas encore d'ESP. La mise en place est-elle compliquée ?",
     answer:
-      "Not at all. Most users connect Amazon SES or a standard SMTP server — it takes under 10 minutes. We provide step-by-step guides and verify your configuration automatically. You can also start your trial and configure your ESP later.",
+      "Pas du tout. La plupart des utilisateurs connectent Amazon SES ou un serveur SMTP standard — cela prend moins de 10 minutes. Nous fournissons des guides pas-à-pas et vérifions votre configuration automatiquement. Vous pouvez aussi commencer votre essai et configurer votre ESP plus tard.",
   },
   {
-    question: "What happens after the 30-day trial?",
+    question: "Que se passe-t-il après l'essai de 30 jours ?",
     answer:
-      "During your trial, you get full access to all features with no credit card required. Before the trial ends, we'll remind you to pick a plan. If you don't subscribe, your instance is suspended (not deleted) — your data is preserved for 30 days so you can reactivate anytime.",
+      "Pendant votre essai, vous avez un accès complet à toutes les fonctionnalités sans carte bancaire. Avant la fin de l'essai, nous vous rappelons de choisir un plan. Si vous ne vous abonnez pas, votre instance est suspendue (pas supprimée) — vos données sont conservées pendant 30 jours pour vous permettre de réactiver à tout moment.",
   },
   {
-    question: "Can I switch plans?",
+    question: "Puis-je changer de plan ?",
     answer:
-      "Yes, you can upgrade or downgrade at any time. Upgrades take effect immediately with prorated billing. Downgrades take effect at the end of your current billing cycle.",
+      "Oui, vous pouvez passer à un plan supérieur ou inférieur à tout moment. Les mises à niveau prennent effet immédiatement avec une facturation au prorata. Les rétrogradations prennent effet à la fin de votre cycle de facturation en cours.",
   },
   {
-    question: "What are monthly timeline entries?",
+    question: "Que sont les entrées timeline mensuelles ?",
     answer:
-      "Timeline entries are every contact interaction tracked by the platform: emails sent and engagement (delivery, open, click, bounce), list subscriptions, segment changes, automation runs, and custom events. If you exceed your timeline limit, you'll be auto-upgraded to the next tier on your next billing cycle.",
+      "Les entrées timeline représentent chaque interaction contact suivie par la plateforme : emails envoyés et engagement (livraison, ouverture, clic, rebond), abonnements aux listes, changements de segments, exécutions d'automations et événements personnalisés. Si vous dépassez votre limite timeline, vous serez automatiquement mis à niveau au palier supérieur lors de votre prochain cycle de facturation.",
   },
   {
-    question: "Is my data safe? Where is it hosted?",
+    question: "Mes données sont-elles en sécurité ? Où sont-elles hébergées ?",
     answer:
-      "Your data is hosted in the EU and we are fully GDPR compliant. All data is encrypted at rest and in transit. Each tenant runs in an isolated environment with dedicated database. Daily backups with point-in-time recovery ensure your data is always protected.",
+      "Vos données sont hébergées dans l'UE et nous sommes pleinement conformes au RGPD. Toutes les données sont chiffrées au repos et en transit. Chaque client dispose d'un environnement isolé avec une base de données dédiée. Des sauvegardes quotidiennes avec restauration à un instant donné garantissent que vos données sont toujours protégées.",
   },
   {
-    question: "Is there a free option?",
+    question: "Existe-t-il une option gratuite ?",
     answer:
-      'Yes — Notifuse is open-source (AGPL-3.0) and fully self-hostable with all features included. Notifuse Cloud is the managed, hassle-free version for teams who don\'t want to maintain their own infrastructure.',
+      "Oui — Notifuse est open-source (AGPL-3.0) et entièrement auto-hébergeable avec toutes les fonctionnalités incluses. Notifuse Cloud est la version managée, clé en main, pour les équipes qui ne veulent pas gérer leur propre infrastructure.",
   },
   {
-    question: "What does data retention mean?",
+    question: "Que signifie la conservation des données ?",
     answer:
-      "Data retention determines how long event logs, timeline entries, and email activity are kept queryable for segmentation. After the retention window, data is permanently deleted. Contacts themselves are never deleted. Longer retention is critical for year-over-year comparisons — that's why the Pro plan at 24 months is popular with e-commerce teams.",
+      "La conservation des données détermine combien de temps les journaux d'événements, les entrées timeline et l'activité email restent interrogeables pour la segmentation. Après la période de conservation, les données sont définitivement supprimées. Les contacts eux-mêmes ne sont jamais supprimés. Une conservation plus longue est essentielle pour les comparaisons d'une année sur l'autre — c'est pourquoi le plan Pro à 24 mois est populaire auprès des équipes e-commerce.",
   },
 ]
 ---
 
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Pricing - Notifuse Cloud</title>
+    <title>Tarifs - Notifuse Cloud</title>
     <meta
       name="description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Bring your own ESP. Start your 30-day free trial today."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Apportez votre propre ESP. Essai gratuit 30 jours."
     />
 
-    <link rel="canonical" href="https://notifuse.com/pricing" />
+    <link rel="canonical" href="https://notifuse.com/fr/tarifs" />
     <meta name="theme-color" content="#7763F1" />
     <meta name="robots" content="index, follow" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://notifuse.com/pricing" />
-    <meta property="og:title" content="Pricing - Notifuse Cloud" />
+    <meta property="og:url" content="https://notifuse.com/fr/tarifs" />
+    <meta property="og:title" content="Tarifs - Notifuse Cloud" />
     <meta
       property="og:description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Start free."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Essai gratuit."
     />
-<meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pricing - Notifuse Cloud" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tarifs - Notifuse Cloud" />
     <meta
       name="twitter:description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Start free."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Essai gratuit."
     />
+
     <GtagHead />
+
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
   </head>
 
   <body class="bg-white text-gray-900">
@@ -184,14 +198,13 @@ const faqs = [
       <section class="pt-32 pb-24 px-4 lg:px-8">
         <div class="max-w-5xl mx-auto text-center">
           <h1 class="text-4xl font-bold text-slate-900 mb-4">
-            Stop paying per email
+            Arrêtez de payer par email
           </h1>
           <p class="text-xl text-gray-600 mb-2">
-            Every feature on every plan. Bring your own ESP and send unlimited
-            emails.
+            Toutes les fonctionnalités sur chaque plan. Apportez votre propre ESP et envoyez des emails illimités.
           </p>
           <p class="text-gray-500">
-            No credit card required &middot; 30-day free trial on any plan
+            Sans carte bancaire &middot; Essai gratuit 30 jours sur tous les plans
           </p>
         </div>
       </section>
@@ -203,19 +216,19 @@ const faqs = [
             id="toggle-annual"
             class="px-4 py-2 text-sm font-medium rounded-md transition-colors bg-slate-900 text-white"
           >
-            Billed yearly
+            Facturation annuelle
           </button>
           <button
             id="toggle-monthly"
             class="px-4 py-2 text-sm font-medium rounded-md transition-colors text-gray-600 hover:text-gray-900"
           >
-            Billed monthly
+            Facturation mensuelle
           </button>
           <span
             id="save-badge"
             class="text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-1 rounded-full"
           >
-            Save ~20% yearly
+            Économisez ~20 %
           </span>
         </div>
       </section>
@@ -236,8 +249,8 @@ const faqs = [
               >
                 {plan.highlighted && (
                   <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span class="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
-                      Most popular
+                    <span class="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap">
+                      Populaire
                     </span>
                   </div>
                 )}
@@ -261,16 +274,16 @@ const faqs = [
                     >
                       ${plan.annualPerMonth}
                     </span>
-                    <span class="text-gray-500 text-sm">/month</span>
+                    <span class="text-gray-500 text-sm">/mois</span>
                   </div>
                   <p
                     class="plan-billing-monthly text-sm text-gray-500 mt-1"
                     style="display: none;"
                   >
-                    Billed monthly
+                    Facturation mensuelle
                   </p>
                   <p class="plan-billing-annual text-sm text-gray-500 mt-1">
-                    <span class="line-through text-gray-400">${plan.monthly}/mo</span>
+                    <span class="line-through text-gray-400">${plan.monthly}/mois</span>
                   </p>
                 </div>
 
@@ -279,21 +292,21 @@ const faqs = [
                   data-plan={plan.id}
                   class="plan-cta block w-full text-center py-2.5 px-4 rounded-md font-semibold transition-colors mb-2 bg-primary text-white hover:bg-primary/90"
                 >
-                  Start free trial
+                  Essai gratuit
                 </a>
                 <p class="text-xs text-gray-500 text-center">
-                  Try premium features for 30 days
+                  Testez toutes les fonctionnalités 30 jours
                 </p>
 
                 <div class="mt-6 pt-6 border-t border-gray-100 flex-1">
                   <ul class="space-y-3 text-sm text-gray-700">
                     {[
-                      `<strong>${plan.activeContacts}</strong> active contacts`,
-                      `<strong>${plan.monthlyTimeline}</strong> timeline entries/mo`,
-                      `${plan.dataRetention} data retention`,
-                      `${plan.workspaces} workspace${plan.workspaces === "1" ? "" : "s"}`,
-                      `${plan.teamMembers} team members`,
-                      "Unlimited emails",
+                      `<strong>${plan.activeContacts}</strong> contacts actifs`,
+                      `<strong>${plan.monthlyTimeline}</strong> entrées timeline/mois`,
+                      `${plan.dataRetention} conservation des données`,
+                      `${plan.workspaces} espace${plan.workspaces === "1" ? "" : "s"} de travail`,
+                      `${plan.teamMembers} membres d'équipe`,
+                      "Emails illimités",
                     ].map((label) => (
                       <li>
                         <span set:html={label} />
@@ -316,12 +329,10 @@ const faqs = [
           class="bg-white rounded-[7px] p-6"
         >
           <p class="font-semibold text-slate-900 mb-1">
-            Only pay for contacts you actually use
+            Ne payez que les contacts que vous utilisez vraiment
           </p>
           <p class="text-sm text-gray-600">
-            Dormant contacts (no activity in 30 days) don't count toward your
-            limit — unlike Mailchimp and Klaviyo which bill for all contacts
-            regardless of activity.
+            Les contacts dormants (aucune activité depuis 30 jours) ne comptent pas dans votre limite — contrairement à Mailchimp et Klaviyo qui facturent tous les contacts, quelle que soit leur activité.
           </p>
           </div>
         </div>
@@ -331,12 +342,12 @@ const faqs = [
       <section class="pb-16 px-4 lg:px-8">
         <div class="max-w-5xl mx-auto text-center">
           <p class="text-sm text-gray-500 mb-3">
-            Looking for a free option?
+            Vous cherchez une option gratuite ?
             <a
               href="https://docs.notifuse.com/installation"
               class="text-primary hover:text-primary/80 font-medium"
-              >Self-host Notifuse</a
-            > — open-source, all features included, forever free.
+              >Auto-hébergez Notifuse</a
+            > — open-source, toutes les fonctionnalités incluses, gratuit pour toujours.
           </p>
           <a
             class="github-button"
@@ -359,14 +370,13 @@ const faqs = [
           <div class="md:w-1/3">
             <h3 class="text-xl font-bold text-slate-900 mb-2">Enterprise</h3>
             <p class="text-gray-600 text-sm mb-4">
-              For organizations with 50,000+ contacts or specific infrastructure
-              requirements.
+              Pour les organisations avec plus de 50 000 contacts ou des exigences d'infrastructure spécifiques.
             </p>
             <a
               href="mailto:hello@notifuse.com"
               class="inline-block bg-slate-900 text-white px-6 py-2.5 rounded-md font-semibold hover:bg-slate-800 transition-colors"
             >
-              Let's talk
+              Contactez-nous
             </a>
           </div>
           <div class="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -383,10 +393,10 @@ const faqs = [
               </svg>
               <div>
                 <p class="font-medium text-slate-900 text-sm">
-                  Unlimited users
+                  Utilisateurs illimités
                 </p>
                 <p class="text-xs text-gray-500">
-                  No limits on team members or workspaces
+                  Aucune limite sur les membres d'équipe ou les espaces de travail
                 </p>
               </div>
             </div>
@@ -402,29 +412,9 @@ const faqs = [
                   clip-rule="evenodd"></path>
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Custom quotas</p>
+                <p class="font-medium text-slate-900 text-sm">Quotas personnalisés</p>
                 <p class="text-xs text-gray-500">
-                  Contacts, events, and throughput tailored to you
-                </p>
-              </div>
-            </div>
-            <div class="flex items-start gap-3">
-              <svg
-                class="w-5 h-5 text-primary mt-0.5 shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"></path>
-              </svg>
-              <div>
-                <p class="font-medium text-slate-900 text-sm">
-                  Custom data retention
-                </p>
-                <p class="text-xs text-gray-500">
-                  Unlimited retention for full historical analysis
+                  Contacts, événements et débit adaptés à vos besoins
                 </p>
               </div>
             </div>
@@ -441,10 +431,30 @@ const faqs = [
               </svg>
               <div>
                 <p class="font-medium text-slate-900 text-sm">
-                  Priority support
+                  Conservation des données personnalisée
                 </p>
                 <p class="text-xs text-gray-500">
-                  Dedicated support with SLA guarantee
+                  Conservation illimitée pour une analyse historique complète
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <svg
+                class="w-5 h-5 text-primary mt-0.5 shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              <div>
+                <p class="font-medium text-slate-900 text-sm">
+                  Support prioritaire
+                </p>
+                <p class="text-xs text-gray-500">
+                  Support dédié avec garantie SLA
                 </p>
               </div>
             </div>
@@ -462,7 +472,7 @@ const faqs = [
               <div>
                 <p class="font-medium text-slate-900 text-sm">On-premise</p>
                 <p class="text-xs text-gray-500">
-                  Deploy on your own infrastructure with our support
+                  Déployez sur votre propre infrastructure avec notre support
                 </p>
               </div>
             </div>
@@ -476,7 +486,7 @@ const faqs = [
           <h2
             class="text-2xl font-bold text-slate-900 mb-6 text-center"
           >
-            Included on all plans
+            Inclus dans tous les plans
           </h2>
           <div
             class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
@@ -507,11 +517,10 @@ const faqs = [
       <section class="py-32 px-4 lg:px-8 border-t border-gray-200">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-2xl font-bold text-slate-900 mb-2 text-center">
-            Why Notifuse Cloud?
+            Pourquoi Notifuse Cloud ?
           </h2>
           <p class="text-gray-600 text-center mb-10">
-            Everything you need to run at scale — without managing
-            infrastructure.
+            Tout ce dont vous avez besoin pour fonctionner à grande échelle — sans gérer l'infrastructure.
           </p>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="flex items-start gap-3">
@@ -519,8 +528,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Automated daily backups</p>
-                <p class="text-xs text-gray-500">Your data is backed up every day with point-in-time recovery</p>
+                <p class="font-medium text-slate-900 text-sm">Sauvegardes quotidiennes automatiques</p>
+                <p class="text-xs text-gray-500">Vos données sont sauvegardées chaque jour avec restauration à un instant donné</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -528,8 +537,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Automatic updates</p>
-                <p class="text-xs text-gray-500">New features, security patches, and OS updates deployed with zero downtime</p>
+                <p class="font-medium text-slate-900 text-sm">Mises à jour automatiques</p>
+                <p class="text-xs text-gray-500">Nouvelles fonctionnalités, correctifs de sécurité et mises à jour OS déployés sans interruption</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -537,8 +546,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Built-in monitoring</p>
-                <p class="text-xs text-gray-500">We monitor uptime, performance, and errors so you don't have to</p>
+                <p class="font-medium text-slate-900 text-sm">Monitoring intégré</p>
+                <p class="text-xs text-gray-500">Nous surveillons la disponibilité, les performances et les erreurs pour que vous n'ayez pas à le faire</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -546,8 +555,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Database export anytime</p>
-                <p class="text-xs text-gray-500">Full database dump on demand — no lock-in, your data is yours</p>
+                <p class="font-medium text-slate-900 text-sm">Export de base de données à tout moment</p>
+                <p class="text-xs text-gray-500">Dump complet de la base sur demande — pas de verrouillage, vos données vous appartiennent</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -555,8 +564,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">No server maintenance</p>
-                <p class="text-xs text-gray-500">We handle provisioning, scaling, SSL certificates, and security</p>
+                <p class="font-medium text-slate-900 text-sm">Aucune maintenance serveur</p>
+                <p class="text-xs text-gray-500">Nous gérons le provisionnement, la mise à l'échelle, les certificats SSL et la sécurité</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -564,8 +573,8 @@ const faqs = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
               <div>
-                <p class="font-medium text-slate-900 text-sm">Priority support</p>
-                <p class="text-xs text-gray-500">24h email support on all plans with fast response times</p>
+                <p class="font-medium text-slate-900 text-sm">Support prioritaire</p>
+                <p class="text-xs text-gray-500">Support email 24h sur tous les plans avec des temps de réponse rapides</p>
               </div>
             </div>
           </div>
@@ -578,11 +587,10 @@ const faqs = [
           <h2
             class="text-2xl font-bold text-slate-900 mb-2 text-center"
           >
-            Compare plans
+            Comparer les plans
           </h2>
           <p class="text-gray-600 text-center mb-10">
-            All plans include every feature. Plans differ by scale and
-            retention.
+            Tous les plans incluent toutes les fonctionnalités. Les plans diffèrent par l'échelle et la conservation des données.
           </p>
 
           <div class="overflow-x-auto">
@@ -605,16 +613,16 @@ const faqs = [
               <tbody>
                 <tr class="border-b border-gray-100">
                   <td class="py-3 pr-4 font-medium text-gray-500"
-                    >Monthly price</td
+                    >Prix mensuel</td
                   >
                   {
                     plans.map((plan) => (
                       <td class="text-center py-3 px-4">
                         <span class="plan-price-monthly" style="display: none;">
-                          ${plan.monthly}/mo
+                          ${plan.monthly}/mois
                         </span>
                         <span class="plan-price-annual">
-                          ${plan.annualPerMonth}/mo
+                          ${plan.annualPerMonth}/mois
                         </span>
                       </td>
                     ))
@@ -649,7 +657,7 @@ const faqs = [
           <h2
             class="text-2xl font-bold text-slate-900 mb-10 text-center"
           >
-            Frequently asked questions
+            Questions fréquentes
           </h2>
 
           <div class="space-y-0 divide-y divide-gray-200">
@@ -688,22 +696,24 @@ const faqs = [
       <section class="py-32 px-4 lg:px-8 border-t border-gray-200">
         <div class="max-w-5xl mx-auto text-center">
           <h2 class="text-2xl font-bold text-slate-900 mb-4">
-            Ready to get started?
+            Prêt à démarrer ?
           </h2>
           <p class="text-gray-600 mb-6">
-            Start your 30-day free trial today. No credit card required.
+            Commencez votre essai gratuit de 30 jours. Sans carte bancaire.
           </p>
           <a
             href="#plans"
             class="inline-block bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors"
           >
-            Choose a plan
+            Choisir un plan
           </a>
         </div>
       </section>
     </main>
 
     <Footer />
+
+    <CookieConsent />
 
     <style>
       summary::-webkit-details-marker {
@@ -731,7 +741,7 @@ const faqs = [
 
           if (toggleAnnual) toggleAnnual.className = `px-4 py-2 text-sm font-medium rounded-md transition-colors ${isAnnual ? "bg-slate-900 text-white" : "text-gray-600 hover:text-gray-900"}`
           if (toggleMonthly) toggleMonthly.className = `px-4 py-2 text-sm font-medium rounded-md transition-colors ${!isAnnual ? "bg-slate-900 text-white" : "text-gray-600 hover:text-gray-900"}`
-  
+
           pricesMonthly.forEach((el) => el.style.display = isAnnual ? "none" : "inline")
           pricesAnnual.forEach((el) => el.style.display = isAnnual ? "inline" : "none")
           billingsMonthly.forEach((el) => el.style.display = isAnnual ? "none" : "block")

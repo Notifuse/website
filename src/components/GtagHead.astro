@@ -1,0 +1,60 @@
+---
+/**
+ * GtagHead.astro — GA4 + Consent Mode V2 <head> scripts
+ *
+ * MUST be placed inside <head> BEFORE any other Google tags.
+ * The order is critical:
+ *   1. Consent Mode V2 default (all denied) — synchronous, inline
+ *   2. gtag.js loader — async, loads immediately but respects consent state
+ *   3. GA4 config with url_passthrough and ads_data_redaction
+ *
+ * In Advanced Mode, gtag.js loads even when consent is denied.
+ * It sends cookieless pings that Google uses for conversion modeling
+ * (recovers 15–25% of lost attribution per 2026 benchmarks).
+ *
+ * Plausible Analytics is loaded separately and does NOT go through
+ * Consent Mode — it's privacy-friendly and needs no consent.
+ *
+ * Usage: <GtagHead /> inside <head>, before Plausible.
+ */
+
+interface Props {
+  measurementId?: string;
+}
+
+const { measurementId = 'G-VRFHMR2611' } = Astro.props;
+---
+
+<!-- 1. Consent Mode V2 defaults — MUST fire before gtag.js loads -->
+<script is:inline>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+// Default: all denied for EEA/UK visitors (CNIL requires opt-in)
+gtag('consent', 'default', {
+  'ad_storage': 'denied',
+  'ad_user_data': 'denied',
+  'ad_personalization': 'denied',
+  'analytics_storage': 'denied',
+  'functionality_storage': 'denied',
+  'personalization_storage': 'denied',
+  'security_storage': 'granted',
+  'wait_for_update': 500
+});
+</script>
+
+<!-- 2. gtag.js — loads immediately in Advanced Mode (cookieless pings on denied) -->
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+
+<!-- 3. GA4 config with GCLID passthrough when ad_storage is denied -->
+<script is:inline define:vars={{ measurementId }}>
+gtag('js', new Date());
+gtag('config', measurementId, {
+  // When ad_storage is denied, pass GCLID via URL parameters instead of cookies
+  'url_passthrough': true,
+  // Redact ad click info from requests when ad_storage is denied
+  'ads_data_redaction': true,
+  // Don't send page_view automatically — we control it
+  'send_page_view': true
+});
+</script>

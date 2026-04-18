@@ -1,0 +1,802 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Aperçu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "tarifs", label: "Tarifs & Coûts" },
+  { id: "editeur-email", label: "Éditeur d'emails" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "transactionnel", label: "Email transactionnel" },
+  { id: "envoi-email", label: "Envoi & Fournisseurs" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "automations", label: "Automations" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "evenements", label: "Événements personnalisés" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de départ",
+    notifuse: "Dès 19 $/mois (Cloud) · ou auto-hébergé",
+    competitor: "Gratuit (250 contacts), payant dès ~13 $/mois",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "SaaS propriétaire",
+  },
+  {
+    label: "Fournisseurs email",
+    notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, SMTP",
+    competitor: "Infrastructure Mailchimp uniquement",
+  },
+  {
+    label: "Email transactionnel",
+    notifuse: "Inclus",
+    competitor: "Add-on payant (20 $/25k emails, plan Standard requis)",
+  },
+  {
+    label: "Idéal pour",
+    notifuse: "Équipes voulant le contrôle total sur leur infrastructure email",
+    competitor: "Équipes voulant une plateforme tout-en-un managée",
+  },
+  {
+    label: "Propriété des données",
+    notifuse: "Totale (votre base PostgreSQL)",
+    competitor: "Hébergé chez Mailchimp",
+  },
+  {
+    label: "Multi-tenant",
+    notifuse: "Oui (espaces avec isolation base de données)",
+    competitor: "Non (sous-comptes via Mandrill uniquement)",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs Mailchimp : comparaison de plateformes email open-source (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et Mailchimp pour l'email marketing, le transactionnel et l'automation. Fonctionnalités, tarifs et laquelle choisir pour garder le contrôle de votre infrastructure email."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-mailchimp" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Mailchimp, alternative Mailchimp, alternative Mailchimp open-source, plateforme email open-source, comparaison emailing"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-mailchimp" />
+    <meta property="og:title" content="Notifuse vs Mailchimp : comparaison de plateformes email open-source" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse et Mailchimp pour l'email marketing, le transactionnel et l'automation. Fonctionnalités, tarifs et laquelle choisir."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs Mailchimp : comparaison de plateformes email open-source" />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+
+    <GtagHead />
+
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs Mailchimp</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Mailchimp est la plateforme d'emailing la plus connue. Notifuse est l'alternative open-source qui vous donne le contrôle total sur vos données, vos coûts et votre infrastructure email — avec 7 fournisseurs d'envoi intégrés, un éditeur visuel MJML et l'email transactionnel inclus sans surcoût.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Démo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ComparisonLayout
+        title="Notifuse vs Mailchimp"
+        description="Comparaison détaillée des fonctionnalités, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Aperçu -->
+        <FeatureSection id="apercu" title="Aperçu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Deux approches fondamentalement différentes</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Coût & Liberté</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse Cloud :</strong> dès 19 $/mois avec toutes les fonctionnalités. BYO-ESP pour des emails illimités (ex. Amazon SES à ~0,10 $/1 000 emails). Pas de facturation par contact.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Mailchimp :</strong> abonnement mensuel par contact. Email transactionnel, SMS et IP dédiées en supplément.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Choix du fournisseur d'envoi</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> intégrations natives avec 7 ESP majeurs (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, SMTP). Changez de fournisseur sans migration.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Mailchimp :</strong> verrouillé sur l'infrastructure Mailchimp. Aucun choix de fournisseur.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Mailchimp</span> (désormais propriété d'Intuit) est la plateforme d'emailing la plus connue, proposant une expérience entièrement managée avec plus de 300 intégrations, des landing pages, de l'analytics prédictif et du SMS marketing. Conçue pour les équipes qui veulent tout au même endroit sans gérer d'infrastructure.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud managé ou auto-hébergé) qui combine newsletters, email transactionnel, éditeur visuel MJML, segmentation avancée, marketing automation et multi-tenancy. <strong>Conçue pour les équipes qui veulent des fonctionnalités de niveau entreprise avec un contrôle total sur leurs données et leurs coûts</strong>, elle s'adresse aussi bien aux marketeurs qu'aux développeurs.
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="Mailchimp" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Tarifs & Coûts -->
+        <FeatureSection id="tarifs" title="Tarifs & Coûts">
+          <p class="text-gray-600 mb-6">
+            Les tarifs sont la raison n°1 pour laquelle les équipes cherchent des alternatives à Mailchimp. Voici comment les modèles de coûts se comparent.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des tarifs"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Prix de départ",
+                notifuse: "Dès 19 $/mois (Cloud) · ou auto-hébergé",
+                competitor: "Gratuit (250 contacts, 500 emails/mois)",
+              },
+              {
+                feature: "Modèle tarifaire",
+                notifuse: "Contacts actifs (Cloud) · BYO-ESP pour emails illimités",
+                competitor: "Abonnement mensuel par contact",
+              },
+              {
+                feature: "Email transactionnel",
+                notifuse: "Inclus sans surcoût",
+                competitor: "Add-on payant : 20 $/bloc de 25k emails (plan Standard/Premium requis)",
+              },
+              {
+                feature: "Limites de contacts",
+                notifuse: "2 500 à 50 000 par plan (Cloud) · Illimités (auto-hébergé)",
+                competitor: "Selon le plan (250 à 1,5M)",
+              },
+              {
+                feature: "Limites d'envoi",
+                notifuse: "Illimités (limites de votre fournisseur)",
+                competitor: "Selon le plan (500 à 15x contacts/mois)",
+              },
+              {
+                feature: "SMS",
+                notifuse: false,
+                competitor: "Add-on payant (crédits, régions limitées)",
+              },
+              {
+                feature: "IP dédiée",
+                notifuse: "Utilisez les IP de votre fournisseur",
+                competitor: "29,95 $/mois en supplément",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Coûts à l'échelle</h4>
+            <p class="text-gray-700 text-sm">
+              À <strong>2 500 contacts</strong>, Notifuse Cloud Lite coûte <strong>19 $/mois</strong> vs Mailchimp Standard à <strong>60 $/mois</strong> — économisez 68 %. À <strong>10 000 contacts</strong>, Notifuse Cloud Starter coûte <strong>49 $/mois</strong> vs Mailchimp Standard à <strong>135 $/mois</strong> — économisez 64 %. Notifuse inclut toutes les fonctionnalités sur chaque plan avec des emails illimités (BYO-ESP).
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Éditeur d'emails -->
+        <FeatureSection id="editeur-email" title="Éditeur d'emails">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des éditeurs visuels, mais avec des approches différentes. Notifuse utilise MJML pour un rendu garanti sur tous les clients email, tandis que Mailchimp offre une large bibliothèque de templates prédéfinis.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des éditeurs"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Éditeur visuel",
+                notifuse: '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> — glisser-déposer & éditeur de code, rendu mobile-responsive garanti',
+                competitor: "Glisser-déposer avec 100+ templates prédéfinis",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse: '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Handlebars + merge tags (*|MERGETAG|*)",
+              },
+              {
+                feature: "Éditeur de code MJML",
+                notifuse: "Édition directe du code MJML en parallèle du visuel",
+                competitor: "Édition HTML personnalisée",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN intégré",
+                competitor: "Content Studio",
+              },
+              {
+                feature: "Templates prédéfinis",
+                notifuse: "Bientôt disponible",
+                competitor: "100+ templates par secteur",
+              },
+              {
+                feature: "Génération IA",
+                notifuse: "Intégration Claude AI (email + blog)",
+                competitor: "IA générative intégrée",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Éditeur email MJML de Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Éditeur email MJML</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">Comparaison des fonctionnalités de campagnes newsletter et broadcast.</p>
+
+          <ComparisonTable
+            title="Fonctionnalités de campagne"
+            competitorName="Mailchimp"
+            features={[
+              { feature: "Campagnes broadcast", notifuse: true, competitor: true },
+              {
+                feature: "A/B Testing",
+                notifuse: "Objets + contenus, sélection auto du gagnant",
+                competitor: "Jusqu'à 8 combinaisons (plan Premium uniquement)",
+              },
+              { feature: "Filtrage par segments", notifuse: true, competitor: true },
+              { feature: "Optimisation heure d'envoi", notifuse: false, competitor: "Plans Standard/Premium" },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, données partagées entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec données spécifiques par contact",
+                competitor: false,
+              },
+              { feature: "Paramètres UTM", notifuse: true, competitor: true },
+              {
+                feature: "Contenu dynamique",
+                notifuse: "Via templates Liquid",
+                competitor: "Plans Standard/Premium",
+              },
+              { feature: "RSS-to-Email", notifuse: false, competitor: true },
+              { feature: "Analytics de campagne", notifuse: true, competitor: true },
+              { feature: "Planification par fuseau horaire", notifuse: true, competitor: true },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Email transactionnel -->
+        <FeatureSection id="transactionnel" title="Email transactionnel">
+          <p class="text-gray-600 mb-6">
+            L'email transactionnel est un différenciateur clé. Notifuse l'inclut sans surcoût, tandis que Mailchimp nécessite un add-on payant (Mandrill).
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités transactionnelles"
+            competitorName="Mailchimp"
+            features={[
+              { feature: "Inclus dans la plateforme", notifuse: true, competitor: "Add-on payant (Standard/Premium + 20 $/25k emails)" },
+              { feature: "API REST", notifuse: true, competitor: "Oui (102 endpoints)" },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: "Intégrée (port 587, STARTTLS)",
+                competitor: true,
+              },
+              {
+                feature: "Auto-création de contact à l'envoi",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Déduplication (external_id)",
+                notifuse: true,
+                competitor: false,
+              },
+              { feature: "Pièces jointes", notifuse: "Jusqu'à 20 fichiers, 10 Mo total", competitor: true },
+              { feature: "CC/BCC", notifuse: true, competitor: true },
+              { feature: "Traitement email entrant", notifuse: false, competitor: true },
+              {
+                feature: "IP dédiées",
+                notifuse: "Utilisez les IP de votre fournisseur",
+                competitor: "29,95 $/mois par IP",
+              },
+              {
+                feature: "Sous-comptes",
+                notifuse: "Espaces de travail (isolation BDD)",
+                competitor: "Oui (quotas, activité indépendante)",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Différence clé</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse inclut l'email transactionnel sans surcoût. Avec Mailchimp, il vous faut au minimum un plan Standard plus l'add-on Mandrill — 20 $ par bloc de 25 000 emails. Pour les confirmations de commande, réinitialisations de mot de passe et emails de bienvenue, Notifuse est bien plus économique.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Fournisseurs -->
+        <FeatureSection id="envoi-email" title="Envoi & Fournisseurs">
+          <p class="text-gray-600 mb-6">
+            Notifuse vous laisse choisir votre fournisseur d'envoi, tandis que Mailchimp vous verrouille sur sa propre infrastructure.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'envoi"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Intégrations ESP natives",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
+                competitor: "Infrastructure Mailchimp uniquement",
+              },
+              { feature: "Intégration SMTP", notifuse: true, competitor: true },
+              {
+                feature: "Changer de fournisseur sans migration",
+                notifuse: true,
+                competitor: false,
+              },
+              { feature: "Suivi ouvertures/clics", notifuse: true, competitor: true },
+              { feature: "Webhooks de rebond", notifuse: true, competitor: true },
+              { feature: "Webhooks de livraison", notifuse: true, competitor: true },
+              { feature: "Webhooks de plainte", notifuse: true, competitor: true },
+              {
+                feature: "Authentification domaine (SPF/DKIM)",
+                notifuse: "Via votre fournisseur",
+                competitor: "Intégré",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <ComparisonTable
+            title="Fonctionnalités de gestion des contacts"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Champs personnalisés",
+                notifuse: "20 champs (5 par type : texte, nombre, date, JSON)",
+                competitor: "Champs merge personnalisés",
+              },
+              { feature: "Timeline d'activité", notifuse: true, competitor: true },
+              { feature: "Segments dynamiques", notifuse: true, competitor: true },
+              { feature: "Segmentation prédictive", notifuse: false, competitor: "Plans Standard/Premium" },
+              { feature: "Import CSV avec auto-détection", notifuse: true, competitor: true },
+              { feature: "Formulaires d'inscription", notifuse: false, competitor: true },
+              { feature: "Double opt-in", notifuse: true, competitor: true },
+              {
+                feature: "Centre de notifications",
+                notifuse: "Gestion libre des préférences, 10 langues",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activité" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Profil contact avec timeline</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des builders d'automation visuels. Mailchimp offre des templates prédéfinis, tandis que Notifuse propose plus de flexibilité avec des déclencheurs personnalisés et des actions webhook.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'automation"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Builder visuel de workflows",
+                notifuse: "Éditeur canvas de flux",
+                competitor: "Customer Journey Builder (Essentials+)",
+              },
+              {
+                feature: "Déclencheurs",
+                notifuse: "Contact, liste, segment, email & événements personnalisés",
+                competitor: "E-commerce, comportemental, date",
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: "Oui (Standard+ pour les branches)",
+              },
+              {
+                feature: "Templates d'automation prédéfinis",
+                notifuse: false,
+                competitor: "12+ templates (bienvenue, panier, etc.)",
+              },
+              {
+                feature: "Actions webhook",
+                notifuse: "HTTP POST avec auth Bearer token",
+                competitor: "Limité",
+              },
+              {
+                feature: "Déclencheurs d'événements personnalisés",
+                notifuse: true,
+                competitor: "Limité aux événements e-commerce",
+              },
+              { feature: "Délais & Timing", notifuse: true, competitor: true },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <ComparisonTable
+            title="Fonctionnalités d'analytics"
+            competitorName="Mailchimp"
+            features={[
+              { feature: "Suivi des ouvertures", notifuse: true, competitor: true },
+              { feature: "Suivi des clics", notifuse: true, competitor: true },
+              { feature: "Suivi des rebonds", notifuse: true, competitor: true },
+              { feature: "Suivi des plaintes", notifuse: true, competitor: true },
+              { feature: "Suivi des revenus", notifuse: false, competitor: true },
+              { feature: "Benchmarks sectoriels", notifuse: false, competitor: "Oui (données de 481M+ campagnes)" },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Événements personnalisés -->
+        <FeatureSection id="evenements" title="Événements personnalisés & Objectifs">
+          <ComparisonTable
+            title="Fonctionnalités événements"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Tracking d'événements personnalisés",
+                notifuse: "Ingestion d'événements via API avec import en lot",
+                competitor: "Limité (orienté e-commerce)",
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, réservation, essai",
+                competitor: "Objectifs e-commerce",
+              },
+              {
+                feature: "Segmentation par objectifs",
+                notifuse: "Fonctions d'agrégation (somme, count, avg, min, max) sur les événements",
+                competitor: "Segmentation par comportement d'achat",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenant -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse est conçu pour les agences et les plateformes SaaS qui ont besoin d'une isolation complète des espaces de travail. Mailchimp ne propose pas de multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités multi-tenant"
+            competitorName="Mailchimp"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalisé par espace",
+                competitor: false,
+              },
+              { feature: "Permissions utilisateurs", notifuse: true, competitor: true },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Idéal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalité espaces de travail de Notifuse est idéale pour les agences gérant plusieurs clients. Chaque client obtient son propre environnement isolé avec domaine personnalisé, contacts séparés et clés API dédiées — le tout depuis une seule installation. Mailchimp nécessite des comptes séparés pour chaque client.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <h3 class="text-xl font-bold text-slate-900 mb-4">Choisir Notifuse</h3>
+              <ul class="space-y-3">
+                {[
+                  "Contrôle total sur vos données et votre infrastructure email",
+                  "Minimiser les coûts email (contacts actifs uniquement + BYO-ESP)",
+                  "Liberté de fournisseur d'envoi (7 ESP, changement à tout moment)",
+                  "Équipe technique à l'aise avec l'auto-hébergement",
+                  "Multi-tenant pour isolation client/projet",
+                  "Email transactionnel inclus sans surcoût",
+                  "Automations événementielles avec déclencheurs personnalisés",
+                  "Open-source auditable et extensible",
+                  "Exigences de résidence des données (RGPD, etc.)",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-xl font-bold text-slate-900 mb-4">Choisir Mailchimp</h3>
+              <ul class="space-y-3">
+                {[
+                  "Plateforme entièrement managée, zéro infrastructure",
+                  "300+ intégrations clé en main (Shopify, WooCommerce, Salesforce)",
+                  "Landing pages, formulaires et site builder intégrés",
+                  "SMS marketing en plus de l'email",
+                  "Segmentation prédictive et benchmarks sectoriels",
+                  "Templates d'automation prédéfinis pour démarrer vite",
+                  "Équipe non technique préférant le point-and-click",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi changer -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi passer à Notifuse ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Vous cherchez une alternative à Mailchimp ? Les équipes choisissent Notifuse quand elles veulent <strong>des fonctionnalités de niveau entreprise sans les tarifs entreprise</strong>.
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Pas de facturation par contact",
+                text: "Notifuse Cloud Starter : 49 $/mois pour 10 000 contacts actifs — toutes fonctionnalités incluses. Mailchimp Standard : 135 $/mois pour le même nombre. Économisez 64 %.",
+              },
+              {
+                title: "Liberté de fournisseur d'envoi",
+                text: "Choisissez le meilleur ESP selon vos besoins. Amazon SES pour le volume, Postmark pour la rapidité, Mailgun pour les APIs développeurs. Changez sans toucher à vos templates ni workflows.",
+              },
+              {
+                title: "Propriété totale des données",
+                text: "Vos contacts, votre base de données, vos serveurs. Aucun tiers n'accède à vos données d'abonnés. Essentiel pour la conformité RGPD et les exigences de résidence des données.",
+              },
+              {
+                title: "Email transactionnel inclus",
+                text: "Pas d'add-on payant. Envoyez confirmations de commande, réinitialisations de mot de passe et emails de bienvenue depuis la même plateforme que vos campagnes marketing.",
+              },
+              {
+                title: "Éditeur MJML garanti multi-clients",
+                text: "Rendu mobile-responsive garanti sur tous les clients email (Gmail, Outlook, Apple Mail, Yahoo, etc.). Plus de soucis de rendu ou de mises en page cassées.",
+              },
+              {
+                title: "Architecture multi-tenant",
+                text: "Agences et plateformes SaaS : isolation complète par espace de travail avec bases de données séparées, domaines personnalisés et clés API par client.",
+              },
+              {
+                title: "Open-source & extensible",
+                text: "Inspectez le code, étendez la plateforme, contribuez. Pas de vendor lock-in, pas de boîtes noires.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Prêt à quitter Mailchimp ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Exportez vos contacts depuis Mailchimp en CSV, importez-les dans Notifuse en quelques minutes, et connectez votre fournisseur d'envoi préféré.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions fréquentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Comment migrer de Mailchimp vers Notifuse ?",
+                a: "Migration simple : exportez vos contacts depuis Mailchimp en CSV, importez-les dans Notifuse avec notre outil d'import avec auto-détection. Recréez vos templates avec l'éditeur visuel MJML, et connectez votre fournisseur d'envoi préféré.",
+              },
+              {
+                q: "Combien puis-je économiser en quittant Mailchimp ?",
+                a: "À 10 000 contacts, Notifuse Cloud Starter à 49 $/mois vous fait économiser 86 $/mois par rapport à Mailchimp Standard à 135 $/mois — soit 64 % d'économie. À 50 000 contacts, Notifuse Cloud Business à 319 $/mois économise plus de 90 $/mois vs Mailchimp Standard à ~410 $/mois.",
+              },
+              {
+                q: "Notifuse a-t-il tout ce que Mailchimp propose ?",
+                a: "Non — et nous sommes transparents à ce sujet. Mailchimp offre des landing pages, du SMS, de l'analytics prédictif, 300+ intégrations et l'optimisation de l'heure d'envoi que Notifuse n'a pas. Mais Notifuse offre la propriété des données, la liberté de fournisseur, le multi-tenancy, le transactionnel inclus et un code open-source que Mailchimp n'a pas.",
+              },
+              {
+                q: "Notifuse est-il plus difficile à configurer ?",
+                a: "L'auto-hébergement nécessite Docker. Si vous êtes à l'aise avec Docker, l'installation prend quelques minutes. Si vous préférez zéro infrastructure, Notifuse Cloud offre une expérience managée comparable à Mailchimp, avec en plus la possibilité de passer en auto-hébergé à tout moment.",
+              },
+              {
+                q: "Puis-je utiliser mon fournisseur email actuel avec Notifuse ?",
+                a: "Oui. Notifuse s'intègre nativement avec Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost et tout serveur SMTP. Vous pouvez même utiliser différents fournisseurs pour différents usages — ex. SES pour les campagnes en volume et Postmark pour le transactionnel.",
+              },
+              {
+                q: "Y a-t-il du support entreprise ?",
+                a: "Oui. Notifuse propose un support entreprise avec assistance prioritaire, implémentation sur mesure, formation, onboarding et garanties SLA. Contactez-nous pour les détails.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- Final CTA -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à reprendre le contrôle de vos emails ?</h3>
+                  <p class="text-gray-600 mb-6">Rejoignez les développeurs et marketeurs qui ont quitté Mailchimp pour Notifuse : propriété des données, liberté de fournisseur, pas de facturation par contact.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Démo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

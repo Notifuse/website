@@ -1,5 +1,42 @@
 ---
 import logoMedium from "../assets/logo/logo-medium.png"
+import CookieConsent from "./CookieConsent.astro"
+
+const isFr = Astro.url.pathname.startsWith('/fr')
+
+const t = isFr ? {
+  tagline: "La plateforme open-source de newsletters et d'emails transactionnels qui permet aux équipes de créer, envoyer et suivre leurs communications à grande échelle.",
+  copyright: "© 2026 Notifuse. Tous droits réservés.",
+  resources: "Ressources",
+  tryEditor: "Essayer l'éditeur email",
+  pricing: "Tarifs",
+  pricingHref: "/fr/tarifs",
+  compare: "Comparer les alternatives",
+  compareHref: "/fr/compare",
+  docs: "Documentation",
+  apiRef: "Référence API",
+  legal: "Mentions légales",
+  privacy: "Politique de confidentialité",
+  terms: "Conditions d'utilisation",
+  cookies: "Gérer les cookies",
+  followUs: "Suivez-nous",
+} : {
+  tagline: "The open-source newsletter and notification platform that empowers teams to create, send, and track communications at scale.",
+  copyright: "© 2026 Notifuse. All rights reserved.",
+  resources: "Resources",
+  tryEditor: "Try Email Editor Live",
+  pricing: "Pricing",
+  pricingHref: "/pricing",
+  compare: "Compare Alternatives",
+  compareHref: "/compare",
+  docs: "Documentation",
+  apiRef: "API Reference",
+  legal: "Legal",
+  privacy: "Privacy Policy",
+  terms: "Terms of Service",
+  cookies: "Manage Cookies",
+  followUs: "Follow Us",
+}
 ---
 
 <footer class="border-t border-gray-200 py-12">
@@ -8,16 +45,21 @@ import logoMedium from "../assets/logo/logo-medium.png"
       <div class="col-span-1 md:col-span-2">
         <img src={logoMedium.src} alt="Notifuse" class="h-8 mb-4" />
         <p class="text-gray-600 mb-4 max-w-md">
-          The open-source newsletter and notification platform that empowers
-          teams to create, send, and track communications at scale.
+          {t.tagline}
         </p>
-        <div class="text-sm text-gray-500">
-          © 2026 Notifuse. All rights reserved.
+        <div class="text-sm text-gray-500 mb-4">
+          {t.copyright}
+        </div>
+        <!-- Language switcher -->
+        <div id="lang-switcher" class="flex items-center gap-2 text-sm">
+          <a id="lang-en" href="/" class="text-gray-400 hover:text-gray-700 transition-colors">English</a>
+          <span class="text-gray-300">·</span>
+          <a id="lang-fr" href="/fr/" class="text-gray-400 hover:text-gray-700 transition-colors">Français</a>
         </div>
       </div>
 
       <div>
-        <h3 class="font-semibold text-gray-900 mb-4">Resources</h3>
+        <h3 class="font-semibold text-gray-900 mb-4">{t.resources}</h3>
         <ul class="space-y-2">
           <li>
             <a
@@ -25,60 +67,68 @@ import logoMedium from "../assets/logo/logo-medium.png"
               target="_blank"
               rel="noopener noreferrer"
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Try Email Editor Live</a
+              >{t.tryEditor}</a
             >
           </li>
           <li>
             <a
-              href="/pricing"
+              href={t.pricingHref}
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Pricing</a
+              >{t.pricing}</a
             >
           </li>
           <li>
             <a
-              href="/compare"
+              href={t.compareHref}
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Compare Alternatives</a
+              >{t.compare}</a
             >
           </li>
           <li>
             <a
               href="https://docs.notifuse.com"
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Documentation</a
+              >{t.docs}</a
             >
           </li>
           <li>
             <a
               href="https://docs.notifuse.com/api-reference"
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >API Reference</a
+              >{t.apiRef}</a
             >
           </li>
         </ul>
       </div>
 
       <div>
-        <h3 class="font-semibold text-gray-900 mb-4">Legal</h3>
+        <h3 class="font-semibold text-gray-900 mb-4">{t.legal}</h3>
         <ul class="space-y-2">
           <li>
             <a
               href="/privacy"
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Privacy Policy</a
+              >{t.privacy}</a
             >
           </li>
           <li>
             <a
               href="/terms"
               class="text-gray-600 hover:text-gray-900 transition-colors"
-              >Terms of Service</a
+              >{t.terms}</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              id="cookie-manage"
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >{t.cookies}</a
             >
           </li>
         </ul>
 
-        <h3 class="font-semibold text-gray-900 mb-4 mt-8">Follow Us</h3>
+        <h3 class="font-semibold text-gray-900 mb-4 mt-8">{t.followUs}</h3>
         <div class="flex space-x-4">
           <a
             href="https://github.com/notifuse/notifuse"
@@ -108,4 +158,39 @@ import logoMedium from "../assets/logo/logo-medium.png"
       </div>
     </div>
   </div>
+<CookieConsent />
+
+<script is:inline>
+(function() {
+  var path = window.location.pathname.replace(/\/+$/, '') || '/';
+  var isFr = path === '/fr' || path.startsWith('/fr/');
+  var enLink = document.getElementById('lang-en');
+  var frLink = document.getElementById('lang-fr');
+  if (!enLink || !frLink) return;
+
+  var slugMap = { '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing' };
+
+  function addSlash(p) { return p === '/' ? '/' : p + '/'; }
+
+  var enPath, frPath;
+  if (isFr) {
+    frPath = path;
+    enPath = slugMap[path] || path.replace(/^\/fr/, '') || '/';
+  } else {
+    enPath = path;
+    frPath = slugMap[path] || '/fr' + (path === '/' ? '' : path);
+  }
+
+  enLink.href = addSlash(enPath);
+  frLink.href = addSlash(frPath);
+
+  if (isFr) {
+    frLink.classList.remove('text-gray-400');
+    frLink.classList.add('text-gray-900', 'font-semibold');
+  } else {
+    enLink.classList.remove('text-gray-400');
+    enLink.classList.add('text-gray-900', 'font-semibold');
+  }
+})();
+</script>
 </footer>

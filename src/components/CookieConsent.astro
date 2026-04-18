@@ -1,0 +1,223 @@
+---
+/**
+ * CookieConsent.astro — CNIL/GDPR-compliant cookie consent modal
+ *
+ * Center modal with backdrop — 2026 French SOTA pattern.
+ * Both buttons equally prominent (CNIL requirement).
+ *
+ * Implements Google Consent Mode V2 Advanced:
+ * - Fires gtag('consent', 'default', {...denied}) BEFORE gtag.js loads (in GtagHead)
+ * - On accept: updates all signals to 'granted'
+ * - On reject: signals stay 'denied', tags load in cookieless mode
+ * - Persists choice in first-party cookie (13 months max per CNIL)
+ * - "Manage Cookies" link in footer triggers consent reset
+ *
+ * Does NOT block Plausible Analytics (privacy-friendly, no consent needed).
+ */
+
+const isFr = Astro.url.pathname.startsWith('/fr')
+
+const t = isFr ? {
+  ariaLabel: "Gestion des cookies",
+  title: "Cookies & confidentialité",
+  body: "Nous utilisons des cookies analytiques pour mesurer l'efficacité de nos campagnes et améliorer votre expérience. Vos données ne sont jamais vendues.",
+  privacyLink: "Politique de confidentialité →",
+  reject: "Refuser",
+  accept: "OK",
+} : {
+  ariaLabel: "Cookie preferences",
+  title: "Cookies & privacy",
+  body: "We use analytics cookies to measure our campaigns and improve your experience. Your data is never sold.",
+  privacyLink: "Privacy policy →",
+  reject: "Reject",
+  accept: "Accept",
+}
+---
+
+<!-- Backdrop -->
+<div
+  id="cookie-backdrop"
+  data-cookie-consent
+  class="fixed inset-0 z-[99] bg-black/40 backdrop-blur-[2px] transition-opacity duration-300 opacity-0 pointer-events-none"
+  aria-hidden="true"
+></div>
+
+<!-- Center modal -->
+<div
+  id="cookie-banner"
+  class="fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none"
+  role="dialog"
+  aria-modal="true"
+  aria-label={t.ariaLabel}
+>
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl shadow-black/10 overflow-hidden">
+
+    <!-- Header -->
+    <div class="px-6 pt-6 pb-4">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h2 class="text-base font-semibold text-slate-900">{t.title}</h2>
+      </div>
+
+      <p class="text-sm leading-relaxed text-gray-600">
+        {t.body}
+      </p>
+
+      <a href="/privacy" class="inline-block mt-3 text-xs text-[#7763F1] hover:underline underline-offset-2">
+        {t.privacyLink}
+      </a>
+    </div>
+
+    <!-- Buttons — equally prominent (CNIL requirement) -->
+    <div class="px-6 pb-6 pt-2 flex gap-3">
+      <button
+        id="cookie-reject"
+        type="button"
+        class="flex-1 px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors
+               border border-gray-200 text-gray-700 hover:bg-gray-50 active:scale-[0.98]"
+      >
+        {t.reject}
+      </button>
+      <button
+        id="cookie-accept"
+        type="button"
+        class="flex-1 px-4 py-2.5 text-sm font-semibold rounded-lg transition-colors
+               border border-[#7763F1] bg-[#7763F1] text-white hover:bg-[#6652e0] active:scale-[0.98]"
+      >
+        {t.accept}
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+(function() {
+  // Dedup: if already initialized, skip
+  if (window.__nf_consent_init) return;
+  window.__nf_consent_init = true;
+
+  // Remove duplicate elements (if CookieConsent rendered twice via Footer + page)
+  var backdrops = document.querySelectorAll('[data-cookie-consent]');
+  for (var i = 1; i < backdrops.length; i++) backdrops[i].remove();
+  var bannerDups = document.querySelectorAll('#cookie-banner');
+  for (var i = 1; i < bannerDups.length; i++) bannerDups[i].remove();
+
+  var COOKIE_NAME = 'nf_consent';
+  var MAX_AGE_SECONDS = 13 * 30 * 24 * 60 * 60; // ~13 months (CNIL max)
+
+  // --- Cookie helpers ---
+  function getConsent() {
+    var match = document.cookie.match(new RegExp('(?:^|; )' + COOKIE_NAME + '=([^;]*)'));
+    return match ? match[1] : null;
+  }
+
+  function setConsent(value) {
+    var expires = new Date(Date.now() + MAX_AGE_SECONDS * 1000).toUTCString();
+    document.cookie = COOKIE_NAME + '=' + value
+      + '; expires=' + expires
+      + '; path=/; SameSite=Lax; Secure';
+  }
+
+  function clearConsent() {
+    document.cookie = COOKIE_NAME + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; SameSite=Lax; Secure';
+  }
+
+  // --- Consent Mode V2 updates ---
+  function grantAll() {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        analytics_storage: 'granted',
+        functionality_storage: 'granted',
+        personalization_storage: 'granted',
+        security_storage: 'granted'
+      });
+    }
+  }
+
+  function denyAll() {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied'
+      });
+    }
+  }
+
+  // --- UI ---
+  var banner = document.getElementById('cookie-banner');
+  var backdrop = document.getElementById('cookie-backdrop');
+  var acceptBtn = document.getElementById('cookie-accept');
+  var rejectBtn = document.getElementById('cookie-reject');
+
+  function showBanner() {
+    if (backdrop) {
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100');
+    }
+    if (banner) {
+      banner.classList.remove('opacity-0', 'pointer-events-none');
+      banner.classList.add('opacity-100');
+    }
+  }
+
+  function hideBanner() {
+    if (backdrop) {
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      backdrop.classList.remove('opacity-100');
+    }
+    if (banner) {
+      banner.classList.add('opacity-0', 'pointer-events-none');
+      banner.classList.remove('opacity-100');
+    }
+  }
+
+  // --- Init ---
+  var existing = getConsent();
+
+  if (existing === 'granted') {
+    grantAll();
+  } else if (existing === 'denied') {
+    denyAll();
+  } else {
+    // No delay — show immediately on first visit
+    showBanner();
+  }
+
+  // --- Event listeners ---
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function() {
+      setConsent('granted');
+      grantAll();
+      hideBanner();
+    });
+  }
+
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', function() {
+      setConsent('denied');
+      denyAll();
+      hideBanner();
+    });
+  }
+
+  // --- "Manage Cookies" link (footer or anywhere with id="cookie-manage") ---
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest ? e.target.closest('#cookie-manage') : null;
+    if (!el) { if (e.target && e.target.id === 'cookie-manage') el = e.target; }
+    if (el) {
+      e.preventDefault();
+      clearConsent();
+      showBanner();
+    }
+  });
+})();
+</script>

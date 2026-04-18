@@ -1,5 +1,29 @@
 ---
 import logoMedium from "../assets/logo/logo-medium.png"
+
+const isFr = Astro.url.pathname.startsWith('/fr')
+
+const t = isFr ? {
+  features: "Fonctionnalités",
+  featuresHref: "/fr/#features",
+  compare: "Comparer",
+  compareHref: "/fr/compare",
+  pricing: "Tarifs",
+  pricingHref: "/fr/tarifs",
+  docs: "Docs",
+  login: "Connexion",
+  signup: "S'inscrire",
+} : {
+  features: "Features",
+  featuresHref: "/#features",
+  compare: "Compare",
+  compareHref: "/compare",
+  pricing: "Pricing",
+  pricingHref: "/pricing",
+  docs: "Docs",
+  login: "Log in",
+  signup: "Sign up free",
+}
 ---
 
 <!-- Navigation -->
@@ -9,28 +33,28 @@ import logoMedium from "../assets/logo/logo-medium.png"
   <div class="max-w-5xl mx-auto px-4 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center gap-8">
-        <a href="/">
+        <a href={isFr ? "/fr/" : "/"}>
           <img src={logoMedium.src} alt="Notifuse" class="h-8" />
         </a>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-6 text-sm">
         <a
-          href="/#features"
+          href={t.featuresHref}
           class="text-gray-600 hover:text-gray-900 transition-colors"
-          >Features</a
+          >{t.features}</a
         >
         <a
-          href="/compare"
-          class="text-gray-600 hover:text-gray-900 transition-colors">Compare</a
+          href={t.compareHref}
+          class="text-gray-600 hover:text-gray-900 transition-colors">{t.compare}</a
         >
         <a
-          href="/pricing"
-          class="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a
+          href={t.pricingHref}
+          class="text-gray-600 hover:text-gray-900 transition-colors">{t.pricing}</a
         >
         <a
           href="https://docs.notifuse.com"
-          class="text-gray-600 hover:text-gray-900 transition-colors">Docs</a
+          class="text-gray-600 hover:text-gray-900 transition-colors">{t.docs}</a
         >
         </div>
       </div>
@@ -52,12 +76,12 @@ import logoMedium from "../assets/logo/logo-medium.png"
         <a
           href="https://cloud.notifuse.com"
           class="text-sm text-gray-600 hover:text-gray-900 transition-colors"
-          >Log in</a
+          >{t.login}</a
         >
         <a
           href="https://cloud.notifuse.com/signup"
           class="bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/80 transition-colors"
-          >Sign up free</a
+          >{t.signup}</a
         >
       </div>
 
@@ -79,7 +103,7 @@ import logoMedium from "../assets/logo/logo-medium.png"
           type="button"
           id="mobile-menu-button"
           class="text-gray-600 hover:text-gray-900 transition-colors flex items-center"
-          aria-label="Open menu"
+          aria-label={isFr ? "Ouvrir le menu" : "Open menu"}
         >
           <svg
             id="menu-icon"
@@ -118,24 +142,24 @@ import logoMedium from "../assets/logo/logo-medium.png"
     >
       <div class="px-4 py-4 space-y-4">
         <a
-          href="/#features"
+          href={t.featuresHref}
           class="block text-gray-600 hover:text-gray-900 transition-colors"
-          >Features</a
+          >{t.features}</a
         >
         <a
-          href="/compare"
+          href={t.compareHref}
           class="block text-gray-600 hover:text-gray-900 transition-colors"
-          >Compare</a
+          >{t.compare}</a
         >
         <a
-          href="/pricing"
+          href={t.pricingHref}
           class="block text-gray-600 hover:text-gray-900 transition-colors"
-          >Pricing</a
+          >{t.pricing}</a
         >
         <a
           href="https://docs.notifuse.com"
           class="block text-gray-600 hover:text-gray-900 transition-colors"
-          >Docs</a
+          >{t.docs}</a
         >
         <div class="pt-4 border-t border-gray-200 space-y-4">
           <a
@@ -151,7 +175,7 @@ import logoMedium from "../assets/logo/logo-medium.png"
           <a
             href="https://cloud.notifuse.com/signup"
             class="block bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/80 transition-colors text-center"
-            >Sign up free</a
+            >{t.signup}</a
           >
         </div>
       </div>
@@ -173,13 +197,11 @@ import logoMedium from "../assets/logo/logo-medium.png"
         const isMenuOpen = !mobileMenu.classList.contains("hidden")
 
         if (isMenuOpen) {
-          // Close menu
           mobileMenu.classList.add("hidden")
           menuIcon.classList.remove("hidden")
           closeIcon.classList.add("hidden")
           mobileMenuButton.setAttribute("aria-label", "Open menu")
         } else {
-          // Open menu
           mobileMenu.classList.remove("hidden")
           menuIcon.classList.add("hidden")
           closeIcon.classList.remove("hidden")
@@ -187,7 +209,6 @@ import logoMedium from "../assets/logo/logo-medium.png"
         }
       })
 
-      // Close menu when clicking on a link
       const mobileMenuLinks = mobileMenu.querySelectorAll("a")
       mobileMenuLinks.forEach((link) => {
         link.addEventListener("click", function () {

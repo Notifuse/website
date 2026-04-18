@@ -1,0 +1,1205 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Apercu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "editeur-email", label: "Editeur d'emails" },
+  { id: "listes-diffusion", label: "Gestion des listes" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "envoi-email", label: "Envoi & Delivrabilite" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "api-developpeur", label: "API & Developpeurs" },
+  { id: "automations", label: "Automations" },
+  { id: "evenements", label: "Evenements personnalises" },
+  { id: "blog", label: "Blog" },
+  { id: "tarifs", label: "Tarifs & Couts" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de depart",
+    notifuse: "Des 19 $/mois (Cloud) ou auto-heberge",
+    competitor: "Gratuit (500 abonnes, 12k emails/mois)",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "SaaS proprietaire",
+  },
+  {
+    label: "Deploiement",
+    notifuse: "Auto-heberge",
+    competitor: "Cloud SaaS uniquement",
+  },
+  {
+    label: "Infrastructure",
+    notifuse:
+      "7 ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalise",
+    competitor: "Infrastructure geree par MailerLite",
+  },
+  {
+    label: "Editeur email",
+    notifuse: "MJML visuel glisser-deposer + editeur de code",
+    competitor: "Glisser-deposer (70+ blocs), HTML personnalise (plan Advanced uniquement)",
+  },
+  {
+    label: "Email transactionnel",
+    notifuse: "Inclus (API + passerelle SMTP)",
+    competitor: "Produit separe (MailerSend, tarification distincte)",
+  },
+  {
+    label: "Multi-tenant",
+    notifuse: "Oui (espaces avec isolation BDD)",
+    competitor: "Non",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs MailerLite : plateforme email open-source vs SaaS manage (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et MailerLite pour l'email marketing et les automations. Notifuse est open-source avec liberte de fournisseur et editeur MJML. MailerLite est un SaaS manage avec landing pages et e-commerce. Fonctionnalites, tarifs et cas d'usage."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-mailerlite" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs MailerLite, alternative MailerLite, alternative MailerLite open-source, plateforme email open-source, comparaison emailing, auto-heberge email"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-mailerlite" />
+    <meta property="og:title" content="Notifuse vs MailerLite : plateforme email open-source vs SaaS manage" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse (open-source, auto-heberge) et MailerLite (SaaS manage). Liberte de fournisseur, editeur MJML, multi-tenancy vs landing pages et e-commerce."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs MailerLite : comparaison de plateformes email open-source" />
+    <meta
+      name="twitter:description"
+      content="Comparez Notifuse (open-source, auto-heberge) vs MailerLite (SaaS cloud). Liberte de fournisseur, editeur MJML, multi-tenancy vs simplicite et outils e-commerce."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <GtagHead />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Staminads Analytics -->
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs MailerLite</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Notifuse est open-source et auto-heberge avec liberte de fournisseur d'envoi, un editeur visuel MJML + code, et le multi-tenancy. MailerLite est un SaaS manage avec landing pages, outils e-commerce et 150+ integrations. Choisissez Notifuse pour la propriete des donnees, le choix de l'ESP et des fonctionnalites avancees comme la segmentation RFM, les data feeds et un blog CMS integre.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Demo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs MailerLite"
+        description="Comparaison detaillee des fonctionnalites, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Apercu -->
+        <FeatureSection id="apercu" title="Apercu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Les deux differences fondamentales</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Open-source vs SaaS cloud</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> AGPL-3.0 open-source, auto-heberge. Propriete totale des donnees, inspectez et modifiez le code.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>MailerLite :</strong> SaaS cloud manage avec un tier gratuit genereux -- mise en place plus simple, mais proprietaire sans acces au code.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Liberte de fournisseur vs Infrastructure geree</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> choisissez n'importe quel ESP, utilisez differents fournisseurs pour le transactionnel vs le marketing, changez a tout moment.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>MailerLite :</strong> infrastructure d'envoi geree avec outils de delivrabilite integres -- plus simple mais aucun choix de fournisseur.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">MailerLite</span> est une plateforme d'email marketing cloud populaire pour sa simplicite d'utilisation, avec un tier gratuit genereux (500 abonnes), un editeur glisser-deposer avec 70+ blocs de contenu, des landing pages, un constructeur de site web, des fonctionnalites e-commerce (produits numeriques, newsletters payantes) et 150+ integrations. Elle gere l'infrastructure d'envoi pour vous mais vous verrouille sur son propre systeme et facture par nombre d'abonnes.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud manage ou auto-heberge) avec un editeur visuel MJML + code, une segmentation avancee avec analyse RFM, le multi-tenancy et des connexions ESP flexibles. <strong>Choisissez votre propre ESP</strong> -- Amazon SES, Mailgun, Postmark, SendGrid, ou combinez les fournisseurs pour differents types d'email.
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="MailerLite" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Editeur d'emails -->
+        <FeatureSection id="editeur-email" title="Editeur d'emails">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des editeurs visuels. Notifuse offre un editeur visuel et code base sur MJML avec le templating Liquid. MailerLite propose un editeur glisser-deposer avec 70+ blocs et un generateur email IA, mais l'edition HTML personnalisee necessite le plan Advanced (20+ $/mois).
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des editeurs"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Editeur visuel",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> -- glisser-deposer & editeur de code, rendu mobile-responsive garanti sur tous les clients email',
+                competitor: "Glisser-deposer avec 70+ blocs de contenu (tous les plans)",
+              },
+              {
+                feature: "Editeur de code / HTML brut",
+                notifuse: "Mode code MJML en parallele de l'editeur visuel",
+                competitor: "Editeur HTML personnalise (plan Advanced uniquement, 20+ $/mois)",
+                description: "MailerLite restreint l'edition HTML a son plan le plus cher",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a> (if/else, boucles, 20+ filtres)',
+                competitor: "Balises merge avec valeurs par defaut",
+              },
+              {
+                feature: "Contenu conditionnel",
+                notifuse: "Liquid if/else/unless avec logique de programmation complete",
+                competitor: "Blocs de contenu dynamiques -- afficher/masquer par groupe ou champ (Growing Business+)",
+              },
+              {
+                feature: "Generation IA",
+                notifuse: "Integration Claude AI pour le contenu & les objets",
+                competitor: "Generateur email IA (OpenAI GPT), objets IA",
+              },
+              {
+                feature: "Editeurs texte enrichi / texte brut",
+                notifuse: false,
+                competitor: "Oui (editeurs separes)",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN integre",
+                competitor: "Oui (hebergement d'images)",
+              },
+              {
+                feature: "Support MJML",
+                notifuse: "Natif",
+                competitor: false,
+              },
+              {
+                feature: "Traduction d'emails",
+                notifuse: "Traductions pour les langues configurees",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran editeur email -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Editeur email MJML de Notifuse avec editeur de code" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Editeur email MJML visuel avec editeur de code</p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Controle visuel + code</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse donne aux developpeurs un controle total avec l'edition visuelle et le code MJML, plus la logique de programmation complete de Liquid (boucles, filtres, conditions imbriquees). L'editeur glisser-deposer de MailerLite est convivial avec 70+ blocs, la generation IA et des blocs de contenu dynamiques pour les regles d'affichage -- mais l'acces au HTML personnalise necessite le plan Advanced (20+ $/mois), et il n'y a pas de support MJML.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Gestion des listes -->
+        <FeatureSection id="listes-diffusion" title="Gestion des listes de diffusion">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent la gestion d'abonnes par listes avec preferences d'abonnement.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites de gestion de listes"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Listes de diffusion",
+                notifuse: "Completes (publiques/privees)",
+                competitor: "Groupes (utilises comme tags/listes)",
+              },
+              { feature: "Double opt-in", notifuse: true, competitor: true },
+              {
+                feature: "Gestion des abonnements",
+                notifuse: "Centre de notifications (10+ langues)",
+                competitor: "Centre de preferences (plan Advanced uniquement)",
+              },
+              {
+                feature: "Emails auto bienvenue/desabonnement",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Statuts des contacts",
+                notifuse: "Actif, En attente, Desabonne, Rebond, Plainte",
+                competitor: "Actif, Desabonne, Non confirme, Rebond, Indesirable",
+              },
+              {
+                feature: "Formulaires & Pop-ups",
+                notifuse: false,
+                competitor: "Formulaires integres, pop-ups, promotions, roue de la fortune",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent les campagnes broadcast avec planification et filtrage d'audience. Notifuse ajoute la selection automatique du gagnant pour les tests A/B, les data feeds pour la personnalisation en temps reel et la protection coupe-circuit. MailerLite ajoute les tests multivaries, le renvoi automatique et les campagnes RSS.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites de campagne"
+            competitorName="MailerLite"
+            features={[
+              { feature: "Campagnes broadcast", notifuse: true, competitor: true },
+              {
+                feature: "A/B Testing",
+                notifuse: "Oui avec selection auto du gagnant",
+                competitor: "Split A/B (objet, expediteur ou timing)",
+              },
+              {
+                feature: "Tests multivaries",
+                notifuse: false,
+                competitor: "Jusqu'a 8 combinaisons (Growing Business+)",
+                description: "Testez plusieurs elements simultanement",
+              },
+              {
+                feature: "Renvoi auto aux non-ouvreurs",
+                notifuse: false,
+                competitor: "Oui (Growing Business+)",
+              },
+              {
+                feature: "Campagnes RSS",
+                notifuse: false,
+                competitor: "Oui (Growing Business+)",
+              },
+              {
+                feature: "Envoi planifie",
+                notifuse: "Oui (avec fuseau horaire)",
+                competitor: "Oui (avec fuseau horaire)",
+              },
+              {
+                feature: "Envoi intelligent (IA)",
+                notifuse: false,
+                competitor: "Timing optimal par abonne via ML (plan Advanced)",
+              },
+              {
+                feature: "Filtrage par segments",
+                notifuse: "Segments dynamiques",
+                competitor: "Segments et groupes",
+              },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, donnees partagees entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec donnees specifiques par contact",
+                competitor: false,
+                description: "Personnalisez vos emails avec des donnees en temps reel (recommandations produit, tarifs, stocks)",
+              },
+              {
+                feature: "Parametres UTM automatiques",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Protection coupe-circuit",
+                notifuse: true,
+                competitor: false,
+                description: "Pause automatique en cas d'echecs de livraison pour proteger la reputation de l'expediteur",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Data Feeds pour la personnalisation en temps reel</h4>
+            <p class="text-gray-700 text-sm">
+              Les data feeds de Notifuse vous permettent d'injecter des donnees en temps reel dans vos campagnes email -- les feeds globaux partagent des donnees en cache entre tous les destinataires, tandis que les feeds par destinataire appellent votre API avec des donnees specifiques au contact pour des recommandations produit, tarifs ou stocks personnalises. MailerLite repose sur les donnees de champs abonne stockees pour la personnalisation.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Delivrabilite -->
+        <FeatureSection id="envoi-email" title="Envoi & Delivrabilite">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-3 text-lg">Liberte de fournisseur : choisissez votre ESP</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-sm font-semibold text-primary mb-2">Notifuse</p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>+ Choisissez n'importe quel ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalise</li>
+                    <li>+ Utilisez differents ESP pour le transactionnel vs le marketing</li>
+                    <li>+ Changez d'ESP a tout moment sans migration</li>
+                    <li>+ Payez les couts ESP directement (sans marge)</li>
+                    <li>+ Support SMTP OAuth2 (Microsoft 365, Gmail)</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-700 mb-2">MailerLite</p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>+ Infrastructure geree (pas de configuration ESP)</li>
+                    <li>+ Outils de delivrabilite integres</li>
+                    <li>+ Verification email via MailerCheck</li>
+                    <li>- Aucun choix d'ESP -- verrouille sur l'infrastructure MailerLite</li>
+                    <li>- Email transactionnel via MailerSend (produit separe)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ComparisonTable
+            title="Fonctionnalites d'envoi"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Options ESP",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + SMTP personnalise",
+                competitor: "Infrastructure geree par MailerLite",
+              },
+              {
+                feature: "ESP separes par type d'email",
+                notifuse: true,
+                competitor: false,
+                description: "Utilisez differents ESP pour le transactionnel vs le marketing",
+              },
+              { feature: "Domaine d'envoi personnalise", notifuse: true, competitor: true },
+              {
+                feature: "Email transactionnel",
+                notifuse: "Integre (API + passerelle SMTP)",
+                competitor: "Produit separe (MailerSend, gratuit des 500 emails/mois)",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: "Serveur relay complet pour les integrations legacy",
+                competitor: false,
+              },
+              { feature: "Suivi ouvertures/clics", notifuse: true, competitor: true },
+              {
+                feature: "Gestion rebonds/plaintes",
+                notifuse: "Mise a jour automatique du statut des contacts",
+                competitor: "Automatique avec nettoyage de liste",
+              },
+              {
+                feature: "Verification email",
+                notifuse: false,
+                competitor: "MailerCheck (integre, credits payants)",
+              },
+              {
+                feature: "SMTP OAuth2 (Microsoft 365/Gmail)",
+                notifuse: true,
+                competitor: false,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Email transactionnel : integre vs produit separe</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse inclut l'email transactionnel sans cout supplementaire -- envoyez reinitialisation de mot de passe, confirmations de commande et emails de bienvenue depuis la meme plateforme via API ou passerelle SMTP. MailerLite route l'email transactionnel via MailerSend, un produit separe avec sa propre tarification et son propre dashboard. Cela signifie gerer deux services et deux facturations distinctes.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes offrent la gestion de contacts avec champs personnalises et segmentation dynamique. Notifuse ajoute l'analyse RFM et les champs personnalises JSON ; MailerLite offre plus de types de filtres de segment incluant la localisation et les donnees e-commerce.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites contacts & segmentation"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Champs personnalises",
+                notifuse: "20 predefinis + 20 personnalises (texte, nombre, date, JSON)",
+                competitor: "Par defaut + personnalises (texte, nombre, date uniquement)",
+              },
+              {
+                feature: "Champs JSON personnalises",
+                notifuse: true,
+                competitor: false,
+                description: "Stockez des donnees structurees (preferences, metadonnees) par contact",
+              },
+              { feature: "Timeline d'activite", notifuse: true, competitor: true },
+              {
+                feature: "Segmentation",
+                notifuse: "Dynamique avec filtres, logique ET/OU, conditions d'activite + proprietes",
+                competitor: "Dynamique avec logique ET/OU, conditions proprietes + activite + e-commerce",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Segmentez par Recence, Frequence & Valeur monetaire",
+                competitor: false,
+                description: "Ciblez les contacts selon leur comportement d'achat (ex. clients a forte valeur, risque de desabonnement)",
+              },
+              {
+                feature: "Import CSV",
+                notifuse: "Mapping des champs avec suivi de progression",
+                competitor: true,
+              },
+              {
+                feature: "Audiences Facebook",
+                notifuse: false,
+                competitor: "Synchronisation des segments vers Facebook (plan Advanced)",
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran profil contact -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activite" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Profil contact avec timeline</p>
+          </div>
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Segmentation RFM : ciblez par comportement d'achat</h4>
+            <p class="text-gray-700 text-sm">
+              La segmentation RFM de Notifuse vous permet de segmenter les contacts par Recence (dernier achat), Frequence (combien de fois) et Valeur monetaire (combien depense). Essentielle pour la retention e-commerce et la prevention du desabonnement SaaS. MailerLite offre des filtres de segment e-commerce via les integrations Shopify/WooCommerce mais ne supporte pas les agregations RFM ni la segmentation par objectifs.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes suivent les evenements d'engagement email avec des analytics au niveau campagne.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites d'analytics"
+            competitorName="MailerLite"
+            features={[
+              { feature: "Suivi ouvertures/clics/rebonds", notifuse: true, competitor: true },
+              { feature: "Suivi des plaintes", notifuse: true, competitor: true },
+              { feature: "Analytics de campagne", notifuse: true, competitor: true },
+              {
+                feature: "Logs de messages en temps reel",
+                notifuse: "Tracking d'evenements en direct avec filtrage",
+                competitor: "Rapports de campagne",
+              },
+              {
+                feature: "Heatmaps de clics",
+                notifuse: false,
+                competitor: "Oui (landing pages, Growing Business+)",
+              },
+              {
+                feature: "Suivi des revenus e-commerce",
+                notifuse: "Via objectifs personnalises (evenements d'achat avec valeur monetaire)",
+                competitor: "Oui (via integrations e-commerce)",
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran dashboard analytics -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Multi-tenant & Agences -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse supporte des espaces de travail isoles pour les agences et les equipes multi-marques. MailerLite n'a pas de fonctionnalite multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites multi-tenant & equipe"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalise par espace",
+                competitor: false,
+                description: "Environnements isoles pour plusieurs marques ou clients",
+              },
+              {
+                feature: "Roles d'equipe",
+                notifuse: "Admins avec cles API",
+                competitor: "Gratuit (1 utilisateur), Growing Business (3), Advanced (illimite)",
+              },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Ideal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalite espaces de travail de Notifuse permet aux agences de gerer plusieurs clients avec des bases de donnees isolees, des domaines personnalises et des cles API separees. MailerLite ne supporte pas le multi-tenancy -- vous auriez besoin de comptes separes pour chaque client.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- API & Developpeurs -->
+        <FeatureSection id="api-developpeur" title="API & Developpeurs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes ont des API REST. MailerLite a un ecosysteme de SDK plus large avec des bibliotheques officielles dans 5 langages et un outil CLI. Notifuse offre une surface API plus etendue avec la gestion de broadcast et plus de types d'evenements webhook.
+          </p>
+
+          <ComparisonTable
+            title="API & outils developpeur"
+            competitorName="MailerLite"
+            features={[
+              { feature: "API RESTful", notifuse: true, competitor: true },
+              {
+                feature: "API email transactionnel",
+                notifuse: "Pieces jointes, CC/BCC, dedup via external_id",
+                competitor: "Via MailerSend (produit separe)",
+              },
+              { feature: "Specification OpenAPI", notifuse: true, competitor: true },
+              {
+                feature: "SDK officiels",
+                notifuse: false,
+                competitor: "PHP, Go, Node.js, Python, Ruby",
+              },
+              {
+                feature: "Outil CLI",
+                notifuse: false,
+                competitor: "Oui (mailerlite-cli avec dashboard TUI)",
+              },
+              {
+                feature: "Serveur MCP",
+                notifuse: false,
+                competitor: "Oui (beta -- connectivite outils IA)",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: "Serveur relay complet",
+                competitor: false,
+              },
+              {
+                feature: "Webhooks sortants",
+                notifuse: "26+ types d'evenements, endpoints multiples, HMAC-SHA256",
+                competitor: "14 types d'evenements, HMAC-SHA256",
+              },
+              {
+                feature: "Integrations natives",
+                notifuse: "Supabase, Anthropic, Firecrawl",
+                competitor: "150+ (Shopify, WooCommerce, Salesforce, Zapier, Make, etc.)",
+              },
+              {
+                feature: "API de gestion de broadcast",
+                notifuse: "CRUD complet + planification via API",
+                competitor: "API campagnes (creation, planification, envoi)",
+              },
+              {
+                feature: "Limites de requetes",
+                notifuse: "Auto-heberge (pas de limites)",
+                competitor: "120 requetes/minute",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Integrations : ecosysteme vs flexibilite</h4>
+            <p class="text-gray-700 text-sm">
+              MailerLite offre 150+ integrations natives dont Shopify, WooCommerce, Salesforce, Zapier et Make pour une mise en place rapide, plus des SDK officiels dans 5 langages. Notifuse a moins d'integrations preconstruites mais fournit 26+ types d'evenements webhook, une API REST complete et aucune limite de requetes (auto-heberge) -- vous donnant une liberte totale pour creer des integrations personnalisees avec n'importe quel service.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes incluent des builders d'automation visuels avec declencheurs, delais et branchements. MailerLite offre 11 types de declencheurs incluant des declencheurs e-commerce. Notifuse ajoute des actions webhook et des noeuds de gestion de listes.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites d'automation"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Builder visuel de workflows",
+                notifuse: "Editeur de flux canvas",
+                competitor: "Editeur d'automation visuel",
+              },
+              {
+                feature: "Types de declencheurs",
+                notifuse: "Contact, liste, segment, email & evenements personnalises",
+                competitor: "11 types (ajout groupe, formulaire, clic lien, mise a jour champ, segment, anniversaire, date, e-commerce)",
+              },
+              {
+                feature: "Multi-declencheur",
+                notifuse: true,
+                competitor: "Jusqu'a 3 declencheurs (plan Advanced uniquement)",
+              },
+              {
+                feature: "A/B Testing dans les automations",
+                notifuse: true,
+                competitor: "Oui (etape split A/B, Growing Business+)",
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: "Branches conditionnelles avec logique ET/OU (jusqu'a 5 conditions)",
+              },
+              {
+                feature: "Noeuds de delai",
+                notifuse: true,
+                competitor: "Oui (par duree, heure du jour, jour de la semaine, date specifique)",
+              },
+              {
+                feature: "Actions webhook",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Ajout/suppression de liste",
+                notifuse: true,
+                competitor: "Oui (copier/deplacer/supprimer du groupe)",
+              },
+              {
+                feature: "Mise a jour des champs contact",
+                notifuse: false,
+                competitor: true,
+              },
+              {
+                feature: "Declencheurs e-commerce",
+                notifuse: "Via evenements personnalises (modelisez tout evenement e-commerce via l'API)",
+                competitor: "Panier abandonne, achat produit, achat categorie",
+              },
+              {
+                feature: "Suivi des parcours",
+                notifuse: "Etats actif, complete, sorti & echoue",
+                competitor: "Statistiques d'automation",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Declencheurs d'automation</h4>
+            <p class="text-gray-700 text-sm">
+              Les deux plateformes supportent les fonctionnalites d'automation essentielles. MailerLite a des declencheurs e-commerce specialises (panier abandonne, achat produit) via ses integrations Shopify/WooCommerce. Notifuse declenche les automations via des evenements personnalises, vous donnant la flexibilite de modeliser toute logique metier -- y compris les evenements e-commerce -- via son API.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Evenements personnalises & Objectifs -->
+        <FeatureSection id="evenements" title="Evenements personnalises & Objectifs">
+          <p class="text-gray-600 mb-6">
+            Notifuse supporte le tracking d'evenements personnalises avec des types d'objectifs et la segmentation RFM. MailerLite n'a pas de systeme d'evenements personnalises.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites evenements & objectifs"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Tracking d'evenements personnalises",
+                notifuse: "Via API avec import en lot (jusqu'a 50 evenements)",
+                competitor: false,
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, reservation, essai",
+                competitor: false,
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Agregation : somme, count, avg, min, max",
+                competitor: false,
+                description: "Segmentez par Recence, Frequence & Valeur monetaire",
+              },
+              {
+                feature: "Evenements dans segments & automations",
+                notifuse: "Timeline d'activite, conditions de segment & declencheurs d'automation",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse inclut un CMS blog integre avec theming Liquid et integration newsletter. MailerLite a un constructeur de site web avec des capacites de blog mais pas un CMS autonome.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites blog"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "CMS blog integre",
+                notifuse: "Categories, articles, planification & SEO",
+                competitor: "Constructeur de site web avec blog (pages glisser-deposer)",
+              },
+              {
+                feature: "Moteur de themes Liquid",
+                notifuse: "Templates personnalisables avec syntaxe Shopify Liquid",
+                competitor: false,
+              },
+              {
+                feature: "Integration newsletter",
+                notifuse: "Connectez le blog aux listes email pour la croissance d'abonnes",
+                competitor: false,
+              },
+              {
+                feature: "Agent redactionnel IA",
+                notifuse: "Integration Anthropic Claude",
+                competitor: false,
+              },
+              {
+                feature: "SEO auto-genere",
+                notifuse: "Sitemap, robots.txt, balises OG, URL canoniques",
+                competitor: "Parametres SEO basiques",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Tarifs & Couts -->
+        <FeatureSection id="tarifs" title="Tarifs & Couts" gradient>
+          <p class="text-gray-600 mb-6">
+            Notifuse Cloud demarre a 19 $/mois avec toutes les fonctionnalites incluses. MailerLite facture par abonne avec des fonctionnalites restreintes selon le plan.
+          </p>
+
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">Couts a l'echelle : Notifuse Cloud vs MailerLite</h4>
+              <p class="text-gray-700 text-sm text-center mb-6">
+                Notifuse Cloud inclut toutes les fonctionnalites sur chaque plan. La tarification MailerLite augmente avec les abonnes et restreint les fonctionnalites par palier.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">2 500 abonnes</div>
+                  <div class="text-lg font-bold text-gray-700">MailerLite : 25 $/mois</div>
+                  <div class="text-xs text-gray-400">Plan Growing Business</div>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">10 000 abonnes</div>
+                  <div class="text-lg font-bold text-gray-700">MailerLite : 73 $/mois</div>
+                  <div class="text-xs text-gray-400">Plan Growing Business</div>
+                </div>
+                <div class="border border-primary bg-orange-50 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">Memes contacts</div>
+                  <div class="text-lg font-bold text-primary">Notifuse Cloud</div>
+                  <div class="text-xs text-gray-400">Lite 19 $/mois (2,5K) / Starter 39 $/mois (10K)</div>
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-500 text-center mb-2">
+                Notifuse Cloud : des 19 $/mois (Lite, 2 500 contacts) a 39 $/mois (Starter, 10 000 contacts) -- toutes fonctionnalites incluses, BYO-ESP pour emails illimites
+              </p>
+              <p class="text-[10px] text-gray-400 text-center">Tarifs en vigueur - avril 2026</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="border-2 border-primary rounded-xl p-8 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-semibold">Meilleur rapport qualite-prix</div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse Cloud</h3>
+              <div class="text-sm text-gray-600 mb-4">Toutes les fonctionnalites sur chaque plan</div>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div><strong>Lite :</strong> 19 $/mois -- 2 500 contacts actifs</div>
+                <div><strong>Starter :</strong> 39 $/mois -- 10 000 contacts actifs</div>
+                <div><strong>Pro :</strong> 99 $/mois -- 25 000 contacts actifs</div>
+              </div>
+
+              <ul class="space-y-2 text-sm">
+                <li>+ Emails illimites (BYO-ESP)</li>
+                <li>+ Toutes les fonctionnalites sur chaque plan</li>
+                <li>+ Essai gratuit 30 jours</li>
+                <li>+ Contacts actifs uniquement (30 derniers jours)</li>
+              </ul>
+
+              <p class="text-xs text-gray-400 mt-4">Ou auto-hebergement -- open-source (AGPL-3.0)</p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">MailerLite</h3>
+              <div class="text-sm text-gray-600 mb-4">Tarification par abonne</div>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Gratuit :</strong> 500 abonnes, 12 000 emails/mois<br />
+                  <span class="text-gray-500">Branding MailerLite sur les emails</span>
+                </div>
+                <div>
+                  <strong>Growing Business :</strong> des 10 $/mois (500 abonnes)<br />
+                  <span class="text-gray-500">73 $/mois a 10 000 abonnes</span>
+                </div>
+                <div>
+                  <strong>Advanced :</strong> des 20 $/mois (500 abonnes)<br />
+                  <span class="text-gray-500">HTML personnalise, envoi intelligent, centre de preferences</span>
+                </div>
+                <div>
+                  <strong>Enterprise :</strong> tarification personnalisee (100K+ abonnes)<br />
+                  <span class="text-gray-500">IP dediee, success manager</span>
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-sm text-gray-500">
+                <li>+ Zero configuration (SaaS manage)</li>
+                <li>+ Landing pages & formulaires</li>
+                <li>+ 150+ integrations</li>
+                <li>- Code source ferme</li>
+                <li>- Cout qui augmente avec les abonnes</li>
+                <li>- Pas de choix d'ESP</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">Pas de lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Export complet de la base de donnees sur demande. Notifuse est open-source (AGPL-3.0) -- passez en auto-hebergement a tout moment et conservez toutes vos donnees.
+            </p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">Pret a reduire vos couts email ?</h4>
+            <p class="text-gray-700 text-sm">
+              Essayez Notifuse Cloud gratuitement pendant 30 jours -- connectez votre fournisseur d'envoi prefere et arretez de payer par abonne.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choisir Notifuse -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Notifuse</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Notifuse est le meilleur choix si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Voulez l'<strong>open-source</strong> avec propriete totale des donnees",
+                  "Avez besoin de <strong>liberte de fournisseur</strong> (pas de verrouillage sur un seul ESP)",
+                  "Avez besoin d'un <strong>editeur de code MJML</strong> pour un controle precis des emails",
+                  "Avez besoin du <strong>multi-tenancy</strong> pour plusieurs marques ou clients",
+                  "Voulez la <strong>segmentation RFM</strong> basee sur le comportement d'achat",
+                  "Avez besoin de <strong>data feeds</strong> pour la personnalisation email en temps reel",
+                  "Voulez un <strong>CMS blog integre</strong> avec integration newsletter",
+                  "Avez besoin de l'<strong>email transactionnel</strong> integre dans la meme plateforme",
+                  "Voulez un <strong>tarif fixe</strong> qui n'augmente pas avec les abonnes",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Choisir MailerLite -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir MailerLite</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">MailerLite peut convenir si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Voulez un <strong>SaaS entierement manage</strong> (zero gestion serveur)",
+                  "Avez besoin de <strong>landing pages</strong> et d'un constructeur de site web",
+                  "Voulez des <strong>fonctionnalites e-commerce</strong> (produits numeriques, newsletters payantes, Stripe)",
+                  "Avez besoin de <strong>150+ integrations natives</strong> (Shopify, WooCommerce, Zapier)",
+                  "Voulez des <strong>formulaires et pop-ups</strong> pour la capture de leads",
+                  "Avez besoin de <strong>SDK officiels</strong> (PHP, Go, Node.js, Python, Ruby)",
+                  "Appreciez les <strong>tests multivaries</strong> et le renvoi automatique de campagnes",
+                  "Preferez l'<strong>optimisation IA</strong> de l'heure d'envoi",
+                  "Votre equipe prefere la <strong>simplicite cloud</strong> a l'auto-hebergement",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi choisir Notifuse -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi choisir Notifuse plutot que MailerLite ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Vous cherchez une alternative a MailerLite ? Les equipes choisissent Notifuse quand elles ont besoin de plus de controle, de flexibilite et de fonctionnalites email avancees :
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Liberte open-source",
+                text: "Notifuse est AGPL-3.0 open-source -- inspectez le code, modifiez-le, contribuez. MailerLite est un logiciel proprietaire a code source ferme. Avec Notifuse, vous possedez vos donnees et votre infrastructure.",
+              },
+              {
+                title: "Liberte de fournisseur d'envoi",
+                text: "Pas de verrouillage sur un seul fournisseur. Utilisez Amazon SES pour les envois en volume economiques, Postmark pour la rapidite transactionnelle. Changez d'ESP a tout moment sans migrer de plateforme. MailerLite vous verrouille sur sa propre infrastructure -- aucun choix d'ESP.",
+              },
+              {
+                title: "Editeur de code MJML + Templates Liquid",
+                text: "Edition visuelle glisser-deposer et code MJML, plus les templates Liquid avec logique de programmation complete (boucles, filtres, conditions imbriquees). MailerLite restreint le HTML personnalise au plan Advanced (20+ $/mois) et n'a pas de support MJML.",
+              },
+              {
+                title: "Couts a l'echelle",
+                text: "Notifuse Cloud Starter coute 39 $/mois pour 10 000 contacts actifs -- toutes fonctionnalites incluses. Le plan Growing de MailerLite coute 73 $/mois au meme niveau, et certaines fonctionnalites necessitent le plan Advanced plus cher.",
+              },
+              {
+                title: "Email transactionnel inclus",
+                text: "Envoyez reinitialisation de mot de passe, confirmations de commande et emails de bienvenue depuis la meme plateforme via API ou passerelle SMTP. MailerLite necessite MailerSend, un produit separe avec tarification et dashboard distincts.",
+              },
+              {
+                title: "Multi-tenancy pour les agences",
+                text: "Gerez plusieurs clients avec des espaces de travail isoles -- chacun obtient sa propre base de donnees, domaine et cles API. MailerLite ne supporte pas le multi-tenancy.",
+              },
+              {
+                title: "Segmentation RFM & Objectifs",
+                text: "Suivez les evenements personnalises avec des types d'objectifs (achat, abonnement, lead) et segmentez les contacts par Recence, Frequence et Valeur monetaire. MailerLite n'a pas de systeme d'evenements personnalises ni de segmentation par objectifs.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Pret a quitter MailerLite ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Exportez vos abonnes depuis MailerLite en CSV et importez-les dans Notifuse avec le mapping automatique des champs. Connectez votre fournisseur d'envoi prefere et commencez a envoyer.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions frequentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Notifuse peut-il egaler la delivrabilite de MailerLite ?",
+                a: "Oui. Notifuse se connecte aux principaux ESP (Amazon SES, Mailgun, Postmark, SendGrid) qui gerent la delivrabilite, la reputation IP et la conformite. Vous configurez SPF/DKIM via votre ESP -- la meme infrastructure standard du secteur qui alimente la plupart des plateformes email.",
+              },
+              {
+                q: "Notifuse a-t-il des landing pages et formulaires comme MailerLite ?",
+                a: "Non -- Notifuse se concentre sur l'email marketing, l'email transactionnel et la publication de blog. Si vous avez besoin de landing pages et de pop-ups, vous pouvez utiliser des outils dedies (Carrd, Webflow, Tally) en complement de l'API et des webhooks Notifuse pour capturer et synchroniser les abonnes.",
+              },
+              {
+                q: "Comment les editeurs email se comparent-ils ?",
+                a: "Notifuse a un editeur visuel MJML plus un mode code avec templating Liquid pour le contenu conditionnel. MailerLite a un editeur glisser-deposer avec 70+ blocs, un generateur email IA et des blocs de contenu dynamiques (Growing Business+), mais l'edition HTML personnalisee necessite le plan Advanced (20+ $/mois). MailerLite n'a pas de support MJML.",
+              },
+              {
+                q: "Qu'en est-il des fonctionnalites e-commerce de MailerLite ?",
+                a: "MailerLite offre la vente de produits numeriques, les newsletters payantes et l'integration Stripe -- des fonctionnalites que Notifuse n'a pas. Cependant, les evenements personnalises et la segmentation RFM de Notifuse offrent de puissants outils d'engagement e-commerce, et vous pouvez vous integrer a n'importe quelle plateforme e-commerce via l'API et les webhooks.",
+              },
+              {
+                q: "Notifuse est-il plus difficile a configurer ?",
+                a: "L'auto-hebergement necessite plus de configuration initiale qu'un SaaS cloud, mais Notifuse offre des options de deploiement en un clic (PikaPods, RepoCloud, Sealos, Northflank) et Docker Compose pour un demarrage rapide. Une fois deploye, l'experience quotidienne est similaire -- les deux ont des interfaces web pour gerer contacts, campagnes et automations.",
+              },
+              {
+                q: "Puis-je migrer de MailerLite vers Notifuse ?",
+                a: "Oui. Exportez vos abonnes depuis MailerLite en CSV et importez-les dans Notifuse avec le mapping automatique des champs et le suivi de progression. Les templates email doivent etre recrees dans l'editeur MJML, et les automations doivent etre reconfigurees dans le builder visuel de Notifuse. Les groupes MailerLite correspondent naturellement aux listes de diffusion de Notifuse.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- CTA final -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Pret a decouvrir Notifuse ?</h3>
+                  <p class="text-gray-600 mb-6">Open-source, auto-heberge, liberte de fournisseur, editeur de code MJML et segmentation RFM. Rejoignez les equipes qui ont choisi Notifuse pour le controle total de leur infrastructure email.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Demo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

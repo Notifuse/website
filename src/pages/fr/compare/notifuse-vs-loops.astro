@@ -1,0 +1,1172 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Aperçu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "editeur-email", label: "Éditeur d'emails" },
+  { id: "listes-diffusion", label: "Gestion des listes" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "envoi-email", label: "Envoi & Délivrabilité" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "api-developpeur", label: "API & Développeurs" },
+  { id: "automations", label: "Automations" },
+  { id: "evenements", label: "Événements personnalisés" },
+  { id: "blog", label: "Blog" },
+  { id: "tarifs", label: "Tarifs & Coûts" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de départ",
+    notifuse: "Dès 19 $/mois (Cloud) · ou auto-hébergé",
+    competitor: "Gratuit : 1 000 contacts",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "Propriétaire (code fermé)",
+  },
+  {
+    label: "Déploiement",
+    notifuse: "Auto-hébergé",
+    competitor: "Cloud uniquement (SaaS)",
+  },
+  {
+    label: "Infrastructure",
+    notifuse: "7 ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalisé",
+    competitor: "Infrastructure managée de Loops",
+  },
+  {
+    label: "Éditeur d'emails",
+    notifuse: "MJML visuel glisser-déposer + éditeur de code",
+    competitor: "Éditeur de blocs visuel (pas de mode code)",
+  },
+  {
+    label: "Champs contact",
+    notifuse: "20 prédéfinis + 20 personnalisés (dont JSON)",
+    competitor: "8 par défaut + personnalisés (texte, nombre, booléen, date)",
+  },
+  {
+    label: "Multi-tenancy",
+    notifuse: "Oui (espaces avec isolation BDD)",
+    competitor: "Non",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs Loops : comparaison open-source vs cloud SaaS (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et Loops pour l'email marketing, le transactionnel et les automations. Notifuse est open-source avec liberté de fournisseur. Loops est un SaaS managé pour les entreprises SaaS. Fonctionnalités, tarifs et cas d'usage."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-loops" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Loops, alternative Loops, plateforme email open-source, email SaaS, auto-hébergé, comparaison email marketing"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-loops" />
+    <meta property="og:title" content="Notifuse vs Loops : comparaison open-source vs cloud SaaS" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse (open-source, auto-hébergé) et Loops (SaaS cloud pour entreprises SaaS). Fonctionnalités, tarifs et quelle plateforme choisir."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs Loops : comparaison de plateformes email open-source" />
+    <meta
+      name="twitter:description"
+      content="Comparez Notifuse (open-source, auto-hébergé) vs Loops (SaaS cloud). Liberté ESP, éditeur MJML, multi-tenancy vs simplicité managée."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <GtagHead />
+
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs Loops</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Notifuse est open-source et auto-hébergé avec liberté de fournisseur et un éditeur visuel MJML + code. Loops est un SaaS cloud managé avec sa propre infrastructure d'envoi. Choisissez Notifuse pour la propriété des données, le choix de l'ESP et des fonctionnalités avancées comme la segmentation RFM, les data feeds et le blog CMS intégré.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Démo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ComparisonLayout
+        title="Notifuse vs Loops"
+        description="Comparaison détaillée des fonctionnalités, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Aperçu -->
+        <FeatureSection id="apercu" title="Aperçu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Deux différences fondamentales</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Open-source vs SaaS cloud</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> AGPL-3.0 open-source, auto-hébergé. Propriété totale des données, inspectez et modifiez le code.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Loops :</strong> SaaS cloud managé — mise en route plus simple, mais propriétaire sans accès au code.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Liberté ESP vs Infrastructure managée</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> choisissez n'importe quel ESP, utilisez des fournisseurs différents pour transactionnel vs marketing, changez à tout moment.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Loops :</strong> infrastructure d'envoi managée avec outils de délivrabilité intégrés — plus simple mais aucun choix d'ESP.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Loops</span> est une plateforme email cloud « conçue pour le SaaS » avec des automations visuelles, des campagnes, des emails transactionnels et plus de 20 intégrations natives (Stripe, Clerk, Zapier). Elle gère l'infrastructure d'envoi pour vous mais vous verrouille sur son propre système.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud managé ou auto-hébergé) avec un éditeur visuel MJML + code, une segmentation avancée avec analyse RFM, le multi-tenancy et des connexions ESP flexibles. <strong>Choisissez votre propre ESP</strong> : Amazon SES, Mailgun, Postmark, SendGrid, ou combinez des fournisseurs pour différents types d'emails.
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="Loops" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Éditeur d'emails -->
+        <FeatureSection id="editeur-email" title="Éditeur d'emails">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des éditeurs visuels, mais avec des philosophies différentes. Notifuse offre édition visuelle et code avec templates Liquid. Loops propose un éditeur de blocs visuel uniquement avec substitution de variables.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des éditeurs"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Éditeur visuel",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> — glisser-déposer & éditeur de code, rendu mobile-responsive garanti sur tous les clients email',
+                competitor: "Éditeur de blocs avec menu slash et support Markdown",
+              },
+              {
+                feature: "Éditeur de code / HTML brut",
+                notifuse: "Mode code MJML en parallèle de l'éditeur visuel",
+                competitor: false,
+                description: "Loops est visuel uniquement — pas d'édition de code",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a> (if/else, boucles, 20+ filtres)',
+                competitor: "Substitution de variables ({propertyName}) avec valeurs par défaut",
+              },
+              {
+                feature: "Contenu conditionnel",
+                notifuse: "Blocs Liquid if/else/unless",
+                competitor: false,
+                description: "Afficher/masquer du contenu selon les données du contact",
+              },
+              {
+                feature: "Composants réutilisables",
+                notifuse: "Bientôt disponible",
+                competitor: "Oui (synchronise les modifications sur tous les emails)",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN intégré",
+                competitor: false,
+              },
+              {
+                feature: "Import MJML",
+                notifuse: "Natif",
+                competitor: "Oui (upload zip)",
+              },
+              {
+                feature: "Génération IA",
+                notifuse: "Intégration Claude AI pour le contenu & les objets",
+                competitor: false,
+              },
+              {
+                feature: "Traduction d'emails",
+                notifuse: "Traductions pour les langues configurées",
+                competitor: "Traduction automatique des emails",
+              },
+              {
+                feature: "Validation pré-envoi",
+                notifuse: false,
+                competitor: "Guardian (vérifie variables, liens, valeurs par défaut)",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Éditeur email MJML de Notifuse avec mode code" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Éditeur visuel MJML avec éditeur de code</p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Visuel + Contrôle du code</h4>
+            <p class="text-gray-700 text-sm">
+              Notifuse donne aux développeurs et marketeurs un contrôle total avec édition visuelle et code, plus la logique conditionnelle Liquid pour le contenu dynamique. L'approche visuelle uniquement de Loops est plus simple mais limite la personnalisation — pas de blocs de contenu conditionnel, pas d'accès au HTML brut.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Gestion des listes -->
+        <FeatureSection id="listes-diffusion" title="Gestion des listes de diffusion">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes gèrent les listes de diffusion avec visibilité publique/privée et gestion des abonnements.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de gestion de listes"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Listes de diffusion",
+                notifuse: "Complètes (publiques/privées)",
+                competitor: "Oui (publiques/privées)",
+              },
+              {
+                feature: "Double opt-in",
+                notifuse: true,
+                competitor: "Oui (formulaires uniquement)",
+              },
+              {
+                feature: "Gestion des abonnements",
+                notifuse: "Centre de notifications (10+ langues)",
+                competitor: "Centre de préférences (auto-généré)",
+              },
+              {
+                feature: "Emails bienvenue/désinscription auto",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Statuts des contacts",
+                notifuse: "Actif, En attente, Désinscrit, Rebond, Plainte",
+                competitor: "Abonné, Désinscrit, En attente",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent les campagnes broadcast avec planification et filtrage d'audience. Notifuse ajoute l'A/B testing pour les campagnes, les paramètres UTM automatiques et les data feeds.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de campagne"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Campagnes broadcast",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "A/B Testing",
+                notifuse: "Oui avec sélection auto du gagnant",
+                competitor: "Pas en campagne (automations uniquement)",
+                description: "Loops supporte l'A/B testing uniquement dans les workflows automatisés, pas dans les campagnes ponctuelles",
+              },
+              {
+                feature: "Paramètres UTM automatiques",
+                notifuse: true,
+                competitor: false,
+                description: "Loops nécessite l'ajout manuel des paramètres UTM aux liens",
+              },
+              {
+                feature: "Envoi planifié",
+                notifuse: "Oui (avec fuseau horaire)",
+                competitor: true,
+              },
+              {
+                feature: "Filtrage par segments",
+                notifuse: "Segments dynamiques",
+                competitor: "Filtres sauvegardés",
+              },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, données partagées entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec données spécifiques par contact",
+                competitor: false,
+                description: "Personnalisez vos emails avec des données en temps réel (recommandations produit, prix, stock)",
+              },
+              {
+                feature: "Protection circuit breaker",
+                notifuse: true,
+                competitor: false,
+                description: "Pause automatique en cas d'erreurs de livraison pour protéger la réputation d'expéditeur",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">A/B Testing pour les campagnes</h4>
+            <p class="text-gray-700 text-sm">
+              L'A/B testing est essentiel pour optimiser les objets et le contenu. Notifuse permet de tester n'importe quelle campagne avec sélection automatique du gagnant. Loops ne supporte l'A/B testing que dans les automations (Experiments), pas pour les envois de campagnes ponctuels.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Délivrabilité -->
+        <FeatureSection id="envoi-email" title="Envoi & Délivrabilité">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-3 text-lg">Flexibilité ESP : choisissez votre fournisseur</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-sm font-semibold text-primary mb-2">Notifuse</p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>✓ Choix de l'ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalisé</li>
+                    <li>✓ ESP différent pour transactionnel vs marketing</li>
+                    <li>✓ Changez d'ESP à tout moment sans migration</li>
+                    <li>✓ Payez les coûts ESP directement (sans marge)</li>
+                    <li>✓ Aucun vendor lock-in</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-700 mb-2">Loops</p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>✓ Infrastructure managée (aucune configuration ESP requise)</li>
+                    <li>✓ Délivrabilité intégrée (DKIM, SPF, IP dédiées)</li>
+                    <li>✓ Intégration Google Postmaster</li>
+                    <li>✗ Aucun choix d'ESP — verrouillé sur l'infrastructure Loops</li>
+                    <li>✗ Impossible de mixer les fournisseurs par type d'email</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ComparisonTable
+            title="Fonctionnalités d'envoi"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Options ESP",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + SMTP personnalisé",
+                competitor: "Infrastructure managée de Loops",
+              },
+              {
+                feature: "ESP séparés par type d'email",
+                notifuse: true,
+                competitor: false,
+                description: "Utilisez un ESP différent pour transactionnel vs marketing",
+              },
+              {
+                feature: "Domaine d'envoi personnalisé",
+                notifuse: true,
+                competitor: "Oui (sous-domaine)",
+              },
+              {
+                feature: "IP dédiées",
+                notifuse: "Via le fournisseur ESP",
+                competitor: "Oui (intégrées)",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: "Serveur relais complet pour intégrations legacy",
+                competitor: "Basée sur templates (transactionnel uniquement)",
+                tooltip: "La passerelle SMTP de Notifuse accepte les connexions SMTP standard. Le SMTP de Loops nécessite des templates pré-construits dans l'interface Loops.",
+              },
+              {
+                feature: "Intégration Google Postmaster",
+                notifuse: false,
+                competitor: true,
+                description: "Surveillance des performances de délivrabilité Gmail",
+              },
+              {
+                feature: "Suivi ouvertures/clics",
+                notifuse: true,
+                competitor: "Marketing uniquement (désactivé pour le transactionnel)",
+              },
+              {
+                feature: "Webhooks rebond/plainte",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent la gestion de contacts avec timelines d'activité et segmentation dynamique. Notifuse ajoute l'analyse RFM et les champs personnalisés JSON.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités contacts & segmentation"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Champs personnalisés",
+                notifuse: "20 prédéfinis + 20 personnalisés (texte, nombre, date, JSON)",
+                competitor: "8 par défaut + personnalisés (texte, nombre, booléen, date)",
+              },
+              {
+                feature: "Champs JSON personnalisés",
+                notifuse: true,
+                competitor: false,
+                description: "Stockez des données structurées (préférences, métadonnées) par contact",
+              },
+              {
+                feature: "Timeline d'activité",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Segmentation",
+                notifuse: "Dynamique avec filtres, logique ET/OU, conditions activité + propriétés",
+                competitor: "Filtres sauvegardés avec ET/OU, conditions propriétés + activité",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Segmentez par Récence, Fréquence & Valeur monétaire",
+                competitor: false,
+                description: "Ciblez les contacts selon leur comportement d'achat (ex. clients à forte valeur, risque de churn)",
+              },
+              {
+                feature: "Import CSV",
+                notifuse: "Mapping de champs avec suivi de progression",
+                competitor: true,
+              },
+              {
+                feature: "Blocklist email",
+                notifuse: false,
+                competitor: "Adresses, domaines & patterns TLD",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activité" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Profil contact avec timeline d'activité</p>
+          </div>
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Segmentation RFM : ciblez par comportement d'achat</h4>
+            <p class="text-gray-700 text-sm">
+              La segmentation RFM de Notifuse permet de segmenter les contacts par Récence (dernier achat), Fréquence (à quelle fréquence) et Valeur monétaire (combien ils ont dépensé). C'est essentiel pour l'e-commerce et la rétention SaaS — Loops ne propose pas de segmentation basée sur les objectifs.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes suivent les événements d'engagement email. Loops ajoute l'intégration Google Postmaster pour la surveillance de la délivrabilité Gmail.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'analytics"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Suivi ouvertures/clics/rebonds",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Suivi des plaintes",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Analytics de campagne",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Stats transactionnel vs marketing",
+                notifuse: "Dashboards séparés",
+                competitor: "Pages de métriques",
+              },
+              {
+                feature: "Logs de messages en temps réel",
+                notifuse: "Suivi d'événements en direct avec filtrage",
+                competitor: "Logs d'événements (mises à jour horaires)",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Multi-tenant & Agences -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse supporte les espaces de travail isolés pour les agences et les équipes multi-marques. Loops propose la collaboration d'équipe mais pas de multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités multi-tenant & équipe"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalisé par espace de travail",
+                competitor: false,
+                description: "Environnements isolés pour plusieurs marques ou clients",
+              },
+              {
+                feature: "Rôles d'équipe",
+                notifuse: "Admins avec clés API",
+                competitor: "Rôles Membre/Propriétaire, sièges gratuits illimités",
+              },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Idéal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalité espaces de travail de Notifuse permet aux agences de gérer plusieurs clients avec des bases de données isolées, des domaines personnalisés et des clés API séparées. Loops ne supporte pas le multi-tenancy — il faudrait des comptes séparés pour chaque client.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- API & Développeurs -->
+        <FeatureSection id="api-developpeur" title="API & Développeurs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes sont orientées développeurs avec des APIs REST et des spécifications OpenAPI. Loops propose plus d'intégrations clé en main ; Notifuse offre une surface API plus étendue.
+          </p>
+
+          <ComparisonTable
+            title="API & Outils développeurs"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "API RESTful",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "API email transactionnel",
+                notifuse: "Pièces jointes, CC/BCC, dédup via external_id",
+                competitor: "Pièces jointes, clés d'idempotence",
+              },
+              {
+                feature: "Spécification OpenAPI",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "SDKs officiels",
+                notifuse: false,
+                competitor: "JS/TS, PHP, Ruby, Nuxt",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: "Serveur relais complet",
+                competitor: "Basée sur templates (transactionnel uniquement)",
+                description: "Le SMTP Loops nécessite des templates pré-construits ; Notifuse accepte le SMTP standard",
+              },
+              {
+                feature: "Webhooks sortants",
+                notifuse: "26+ types d'événements, endpoints multiples",
+                competitor: "20+ types d'événements",
+              },
+              {
+                feature: "Intégrations natives",
+                notifuse: "Supabase, Anthropic, Firecrawl",
+                competitor: "20+ (Stripe, Clerk, Segment, HubSpot, Zapier, etc.)",
+              },
+              {
+                feature: "API de gestion des campagnes",
+                notifuse: "CRUD complet + planification via API",
+                competitor: "Campagnes via interface uniquement",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Intégrations : clé en main vs flexible</h4>
+            <p class="text-gray-700 text-sm">
+              Loops propose plus de 20 intégrations natives (Stripe, Clerk, Zapier, Segment, HubSpot) pour une mise en route rapide. Notifuse a moins d'intégrations intégrées mais offre 26+ types de webhooks et une API complète pour construire des intégrations personnalisées avec n'importe quel service.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes incluent des builders d'automation visuels. Notifuse ajoute les actions webhook et les n&oelig;uds de gestion de listes. Loops appelle les automations « Loops » avec des Experiments pour l'A/B testing.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'automation"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Builder de workflows visuel",
+                notifuse: "Éditeur canvas de flux",
+                competitor: "Designer de workflows visuel",
+              },
+              {
+                feature: "Types de déclencheurs",
+                notifuse: "Contact, liste, segment, email & événements personnalisés",
+                competitor: "Contact, mise à jour de propriété, liste & événements personnalisés",
+              },
+              {
+                feature: "A/B Testing",
+                notifuse: true,
+                competitor: "Oui (Experiments)",
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: "Filtre d'audience, Branch & Experiment",
+              },
+              {
+                feature: "N\u0153uds de délai",
+                notifuse: true,
+                competitor: "Oui (Timer)",
+              },
+              {
+                feature: "Actions webhook",
+                notifuse: true,
+                competitor: false,
+                description: "Déclenchez des appels HTTP externes depuis les flux d'automation",
+              },
+              {
+                feature: "Ajout/Retrait de liste",
+                notifuse: true,
+                competitor: false,
+                description: "Gérez l'appartenance aux listes dans les flux d'automation",
+              },
+              {
+                feature: "Suivi des parcours",
+                notifuse: "États : actif, terminé, sorti & échoué",
+                competitor: "Métriques par loop",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Actions d'automation</h4>
+            <p class="text-gray-700 text-sm">
+              Les deux plateformes supportent l'envoi d'emails, les délais et les branchements dans les automations. Notifuse ajoute les actions webhook (appeler des APIs externes) et la gestion de listes (ajouter/retirer des contacts) comme n&oelig;uds d'automation — utile pour les workflows complexes qui interagissent avec des systèmes externes.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Événements personnalisés -->
+        <FeatureSection id="evenements" title="Événements personnalisés & Objectifs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent le tracking d'événements personnalisés. Notifuse ajoute les types d'objectifs et la segmentation RFM basée sur les données d'événements.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités événements & objectifs"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Tracking d'événements personnalisés",
+                notifuse: "Via API avec import en lot (jusqu'à 50 événements)",
+                competitor: "Via API",
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, réservation, essai",
+                competitor: false,
+                description: "Catégorisez les événements pour une segmentation métier spécifique",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Agrégation : somme, count, avg, min, max",
+                competitor: false,
+                description: "Segmentez par Récence, Fréquence & Valeur monétaire",
+              },
+              {
+                feature: "Événements dans segments & automations",
+                notifuse: "Timeline d'activité, conditions de segment & déclencheurs d'automation",
+                competitor: "Déclencheurs d'automation uniquement",
+              },
+              {
+                feature: "Propriétés d'événement dans les emails",
+                notifuse: false,
+                competitor: "Oui (par événement, {EVENT_PROPERTY:name})",
+                description: "Loops permet la personnalisation email avec des données spécifiques à chaque événement",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse inclut un CMS de blog intégré avec thèmes Liquid et intégration newsletter. Loops n'a pas de fonctionnalité blog.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités blog"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "CMS de blog intégré",
+                notifuse: "Catégories, articles, planification & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Moteur de thèmes Liquid",
+                notifuse: "Templates personnalisables avec syntaxe Shopify Liquid",
+                competitor: false,
+              },
+              {
+                feature: "Intégration newsletter",
+                notifuse: "Connectez le blog à vos listes email pour la croissance d'abonnés",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Tarifs & Coûts -->
+        <FeatureSection id="tarifs" title="Tarifs & Coûts" gradient>
+          <p class="text-gray-600 mb-6">
+            Notifuse Cloud démarre à 19 $/mois avec toutes les fonctionnalités et des emails illimités (BYO-ESP). Loops facture par nombre de contacts, et les coûts augmentent avec votre audience.
+          </p>
+
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">Coûts à l'échelle : fixe vs croissant</h4>
+              <p class="text-gray-700 text-sm text-center mb-6">
+                Les tarifs Notifuse Cloud restent prévisibles. Les tarifs Loops augmentent linéairement avec le nombre d'abonnés.
+              </p>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">1 000 contacts</div>
+                  <div class="text-lg font-bold text-gray-700">Loops : 0 $</div>
+                  <div class="text-xs text-gray-400">Gratuit (4k envois/mois)</div>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">5 000 contacts</div>
+                  <div class="text-lg font-bold text-gray-700">Loops : 49 $/mois</div>
+                  <div class="text-xs text-gray-400">Plan Starter</div>
+                  <div class="text-xs text-primary font-semibold mt-1">Notifuse Starter : 39 $/mois</div>
+                </div>
+                <div class="border border-primary bg-orange-50 rounded-lg p-4">
+                  <div class="text-xs text-gray-500 mb-1">10 000 contacts</div>
+                  <div class="text-lg font-bold text-gray-700">Loops : ~79-99 $/mois</div>
+                  <div class="text-xs text-gray-400">Augmente avec les contacts</div>
+                  <div class="text-xs text-primary font-semibold mt-1">Notifuse Starter : 39 $/mois</div>
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-500 text-center mb-2">
+                Notifuse Cloud Starter : 39 $/mois pour 10 000 contacts actifs — toutes fonctionnalités incluses, BYO-ESP pour des emails illimités
+              </p>
+              <p class="text-[10px] text-gray-400 text-center">Tarifs en date d'avril 2026</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="border-2 border-primary rounded-xl p-8 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-semibold">Meilleur rapport qualité-prix</div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse Cloud</h3>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Lite :</strong> 19 $/mois — 2 500 contacts actifs
+                </div>
+                <div>
+                  <strong>Starter :</strong> 39 $/mois — 10 000 contacts actifs
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-sm">
+                <li>✓ Emails illimités (BYO-ESP)</li>
+                <li>✓ Toutes les fonctionnalités sur chaque plan</li>
+                <li>✓ Essai gratuit 30 jours</li>
+                <li>✓ Contacts actifs uniquement (30 derniers jours)</li>
+              </ul>
+
+              <p class="text-xs text-gray-400 mt-4">Ou auto-hébergez — open-source (AGPL-3.0)</p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Loops</h3>
+              <div class="text-sm text-gray-600 mb-4">Tarification par contact</div>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Gratuit :</strong> 1 000 contacts, 4 000 envois/mois<br />
+                  <span class="text-gray-500">Branding léger sur les emails</span>
+                </div>
+                <div>
+                  <strong>Starter :</strong> 5 000 contacts, envois illimités<br />
+                  <span class="text-gray-500">49 $/mois</span>
+                </div>
+                <div>
+                  <strong>Enterprise :</strong> 100 000+ contacts<br />
+                  <span class="text-gray-500">Tarif sur mesure</span>
+                </div>
+                <div class="text-xs text-gray-500">Le prix augmente avec le nombre d'abonnés entre les paliers</div>
+              </div>
+
+              <ul class="space-y-2 text-sm text-gray-500">
+                <li>✓ Aucune configuration (SaaS managé)</li>
+                <li>✓ Toutes les fonctionnalités à chaque palier</li>
+                <li>✓ Membres d'équipe gratuits et illimités</li>
+                <li>✗ Code fermé</li>
+                <li>✗ Coût croissant avec les contacts</li>
+                <li>✗ Aucun choix d'ESP</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">Aucun verrouillage</h4>
+            <p class="text-gray-700 text-sm">
+              Export complet de la base de données à la demande. Notifuse est open-source (AGPL-3.0) — passez en auto-hébergé à tout moment et conservez toutes vos données.
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+            <div class="text-center max-w-2xl mx-auto">
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à économiser sur vos emails ?</h3>
+              <p class="text-gray-600 mb-6">Essayez Notifuse Cloud gratuitement pendant 30 jours, connectez votre propre ESP, et arrêtez de payer par contact.</p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                  Essai gratuit 30 jours
+                </a>
+                <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                  Démo en ligne
+                </a>
+              </div>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choisir Notifuse -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Notifuse</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Notifuse est le meilleur choix si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Voulez de l'<strong>open-source</strong> avec propriété totale des données",
+                  "Avez besoin de <strong>liberté ESP</strong> (pas verrouillé sur un seul fournisseur)",
+                  "Avez besoin de l'<strong>éditeur de code MJML</strong> pour un contrôle précis des emails",
+                  "Avez besoin du <strong>multi-tenancy</strong> pour plusieurs marques ou clients",
+                  "Voulez la <strong>segmentation RFM</strong> basée sur le comportement d'achat",
+                  "Avez besoin de <strong>data feeds</strong> pour la personnalisation email en temps réel",
+                  "Voulez un <strong>CMS de blog intégré</strong> avec intégration newsletter",
+                  "Avez besoin de l'<strong>A/B testing sur les campagnes</strong> (pas seulement les automations)",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Choisir Loops -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Loops</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Loops peut convenir si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Voulez un <strong>SaaS entièrement managé</strong> (zéro gestion de serveur)",
+                  "Avez besoin d'une <strong>mise en route rapide</strong> avec délivrabilité intégrée",
+                  "Voulez des <strong>intégrations clé en main</strong> (Stripe, Clerk, Zapier, Segment)",
+                  "Préférez l'<strong>édition visuelle uniquement</strong> (sans complexité code)",
+                  "Votre équipe est petite et préfère la <strong>commodité du cloud</strong>",
+                  "La <strong>tarification par contact</strong> convient à votre budget",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi changer -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi choisir Notifuse plutôt que Loops ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Les équipes choisissent Notifuse plutôt que Loops quand elles ont besoin de plus de contrôle, de flexibilité et de fonctionnalités avancées :
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Liberté open-source",
+                text: "Notifuse est open-source AGPL-3.0 — inspectez le code, modifiez-le, contribuez. Loops est un logiciel propriétaire à code fermé. Avec Notifuse, vous êtes propriétaire de vos données et de votre infrastructure.",
+              },
+              {
+                title: "Flexibilité ESP",
+                text: "Pas de dépendance à un seul fournisseur. Utilisez Amazon SES pour le transactionnel, Mailgun pour les campagnes marketing. Changez d'ESP à tout moment sans migrer de plateforme. Loops vous verrouille sur sa propre infrastructure — aucun choix d'ESP.",
+              },
+              {
+                title: "Éditeur de code MJML + Templates Liquid",
+                text: "Notifuse propose édition visuelle glisser-déposer et édition de code MJML, plus les templates Liquid avec logique conditionnelle (if/else/unless). Loops fournit un éditeur visuel uniquement avec substitution de variables — pas de contenu conditionnel, pas d'accès au code.",
+              },
+              {
+                title: "Coûts à l'échelle",
+                text: "Notifuse Cloud Starter coûte 39 $/mois pour 10 000 contacts actifs — toutes fonctionnalités incluses. Les tarifs Loops augmentent avec les contacts et atteignent ~79-99 $/mois pour 10 000 contacts.",
+              },
+              {
+                title: "Multi-tenancy pour les agences",
+                text: "Gérez plusieurs clients avec des espaces de travail isolés — chacun dispose de sa propre base de données, domaine et clés API. Loops ne supporte pas le multi-tenancy.",
+              },
+              {
+                title: "Segmentation RFM & Objectifs",
+                text: "Trackez les événements personnalisés avec des types d'objectifs (achat, abonnement, lead) et segmentez les contacts par Récence, Fréquence et Valeur monétaire. Loops a le tracking d'événements mais pas de segmentation basée sur les objectifs ni RFM.",
+              },
+              {
+                title: "CMS de blog intégré",
+                text: "Publiez du contenu de blog avec thèmes Liquid, optimisation SEO et intégration newsletter directe — pas besoin d'une plateforme de blog séparée. Loops n'a pas de fonctionnalité blog.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Prêt à quitter Loops ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Exportez vos contacts en CSV depuis Loops et importez-les dans Notifuse avec mapping automatique des champs. Connectez votre ESP préféré et commencez à envoyer.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions fréquentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Notifuse peut-il égaler la délivrabilité de Loops ?",
+                a: "Oui. Notifuse se connecte aux principaux ESP (Amazon SES, Mailgun, Postmark, SendGrid) qui gèrent la délivrabilité, la réputation IP et la conformité. Vous configurez SPF/DKIM via votre ESP — la même infrastructure standard de l'industrie qui alimente la plupart des plateformes email.",
+              },
+              {
+                q: "Notifuse a-t-il des automations comme Loops ?",
+                a: "Oui. Les deux ont des builders de workflows visuels avec déclencheurs, délais, branchements et A/B testing. Notifuse ajoute les actions webhook (appeler des APIs externes depuis les workflows) et les n\u0153uds de gestion de listes (ajouter/retirer des contacts) — utile pour les workflows complexes qui interagissent avec des systèmes externes.",
+              },
+              {
+                q: "Comment se comparent les éditeurs d'emails ?",
+                a: "Notifuse dispose d'un éditeur visuel MJML plus un mode code, avec templates Liquid pour le contenu conditionnel (if/else/unless). Loops a un éditeur de blocs visuel avec substitution de variables et valeurs par défaut — plus simple mais moins flexible. Loops a aussi des Components réutilisables pour la cohérence de marque, que Notifuse ajoutera prochainement.",
+              },
+              {
+                q: "Et les intégrations de Loops (Stripe, Clerk, Zapier) ?",
+                a: "Loops propose plus de 20 intégrations natives pour une mise en route rapide. Notifuse a moins d'intégrations intégrées (Supabase, Anthropic, Firecrawl) mais offre 26+ types de webhooks et une API REST complète — vous pouvez intégrer n'importe quel service, y compris Stripe et Clerk, via des webhooks ou des n\u0153uds webhook d'automation.",
+              },
+              {
+                q: "Notifuse est-il plus difficile à configurer ?",
+                a: "L'auto-hébergement nécessite plus de configuration initiale qu'un SaaS cloud, mais Notifuse propose des options de déploiement en un clic (PikaPods, RepoCloud, Sealos, Northflank) et Docker Compose pour démarrer rapidement. Une fois déployé, l'expérience au quotidien est similaire — les deux disposent d'interfaces web pour gérer contacts, campagnes et automations.",
+              },
+              {
+                q: "Puis-je migrer de Loops vers Notifuse ?",
+                a: "Oui. Exportez vos contacts depuis Loops en CSV et importez-les dans Notifuse avec mapping automatique des champs et suivi de progression. Les templates email doivent être recréés dans l'éditeur MJML, et les automations doivent être reconstruites dans le builder visuel de Notifuse.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- CTA final -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à découvrir Notifuse ?</h3>
+                  <p class="text-gray-600 mb-6">Open-source, auto-hébergé, liberté ESP, éditeur de code MJML et segmentation RFM. Rejoignez les équipes qui ont choisi Notifuse pour un contrôle total sur leur infrastructure email.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Démo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

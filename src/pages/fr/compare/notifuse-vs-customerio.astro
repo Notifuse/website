@@ -1,0 +1,1081 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Aperçu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "editeur-email", label: "Éditeur d'emails" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "transactionnel", label: "Email transactionnel" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "envoi-email", label: "Envoi & Délivrabilité" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "automations", label: "Automations" },
+  { id: "evenements", label: "Événements personnalisés" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "api-developpeur", label: "API & Développeurs" },
+  { id: "blog", label: "Blog" },
+  { id: "tarifs", label: "Tarifs & Coûts" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de départ",
+    notifuse: "Dès 19 $/mois (Cloud) · ou auto-hébergé",
+    competitor: "Dès 100 $/mois (5 000 profils)",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "SaaS propriétaire",
+  },
+  {
+    label: "Déploiement",
+    notifuse: "Auto-hébergé (Docker)",
+    competitor: "Cloud uniquement (SaaS)",
+  },
+  {
+    label: "Idéal pour",
+    notifuse: "Développeurs & marketeurs voulant un email auto-hébergé avec fonctionnalités avancées",
+    competitor: "Équipes ayant besoin de messaging multi-canal (email, SMS, push, in-app, WhatsApp)",
+  },
+  {
+    label: "Éditeur visuel",
+    notifuse: "MJML glisser-déposer & éditeur de code",
+    competitor: "Design Studio + Code + Rich Text",
+  },
+  {
+    label: "Intégrations",
+    notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, S3, Supabase, SMTP",
+    competitor: "60+ (CDP, CRM, analytics, plateformes pub, data warehouses)",
+  },
+  {
+    label: "Multi-tenancy",
+    notifuse: "Oui (espaces de travail)",
+    competitor: "Non",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs Customer.io : plateforme email open-source vs SaaS (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et Customer.io pour l'email marketing, le transactionnel et les automations. Open-source auto-hébergé vs SaaS multi-canal. Fonctionnalités, tarifs et cas d'usage."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-customerio" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Customer.io, alternative Customer.io, plateforme email auto-hébergée, email marketing open-source, éditeur MJML, API email transactionnel, tarifs Customer.io"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-customerio" />
+    <meta property="og:title" content="Notifuse vs Customer.io : plateforme email open-source vs SaaS" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse et Customer.io pour l'email marketing, le transactionnel et les automations. Open-source auto-hébergé vs SaaS multi-canal. Fonctionnalités, tarifs et cas d'usage."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs Customer.io : plateforme email open-source vs SaaS" />
+    <meta
+      name="twitter:description"
+      content="Comparez Notifuse et Customer.io pour l'email marketing, le transactionnel et les automations. Open-source auto-hébergé vs SaaS multi-canal."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <GtagHead />
+
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs Customer.io</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Customer.io est une plateforme SaaS multi-canal puissante. Mais si votre priorité est l'email, Notifuse offre des capacités comparables — éditeur visuel MJML, automations, segmentation, API transactionnelle — sans facturation par profil ni vendor lock-in. Cloud dès 19 $/mois ou auto-hébergé.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Démo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ComparisonLayout
+        title="Notifuse vs Customer.io"
+        description="Comparaison détaillée des fonctionnalités, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Aperçu -->
+        <FeatureSection id="apercu" title="Aperçu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Deux approches différentes de l'email</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Auto-hébergé & open-source</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> propriété totale des données, pas de facturation par profil, connectez votre propre ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost). Déployez sur votre infrastructure.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Customer.io :</strong> SaaS cloud dès 100 $/mois pour 5 000 profils. Infrastructure managée avec envoi email intégré.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Spécialiste email vs multi-canal</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> capacités email poussées avec éditeur MJML, data feeds, segmentation RFM, blog intégré et passerelle SMTP. <strong>Conçu pour exceller dans l'email.</strong>
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Customer.io :</strong> messaging multi-canal (email, SMS, push, in-app, WhatsApp, Slack) avec 60+ intégrations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Customer.io</span> est une plateforme SaaS d'automation marketing conçue pour le messaging multi-canal. Elle propose email, SMS, notifications push, messages in-app et WhatsApp via un builder de parcours visuel avec 60+ intégrations et un CDP intégré (Data Pipelines).
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud managé ou auto-hébergé) qui combine campagnes marketing et email transactionnel. Elle comprend un éditeur visuel MJML, une segmentation avancée avec scoring RFM, des automations événementielles, des espaces de travail multi-tenant et un blog avec IA. <strong>Pour les équipes centrées sur l'email, Notifuse offre des capacités comparables sans la tarification SaaS par profil.</strong>
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="Customer.io" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Éditeur d'emails -->
+        <FeatureSection id="editeur-email" title="Éditeur d'emails">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes utilisent le moteur Liquid et proposent des éditeurs visuels + code. L'éditeur MJML de Notifuse garantit un rendu mobile-responsive, tandis que le Design Studio de Customer.io propose l'analyse d'accessibilité et les aperçus boîte de réception.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des éditeurs"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Éditeur visuel",
+                notifuse: '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> — glisser-déposer & éditeur de code, rendu mobile-responsive garanti sur tous les clients email',
+                competitor: "Design Studio (blocs visuels) + éditeur code + éditeur texte enrichi",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse: '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Liquid",
+                description: "Variables dynamiques pour la personnalisation",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN intégré",
+                competitor: "Hébergement de fichiers intégré",
+              },
+              {
+                feature: "Éditeur de code MJML",
+                notifuse: "Édition directe du code MJML en parallèle du visuel",
+                competitor: "Éditeur code HTML/CSS",
+                description: "Basculez entre mode visuel et mode code",
+              },
+              {
+                feature: "Analyse d'accessibilité",
+                notifuse: "Couvert par la spec MJML (HTML sémantique, attributs alt, responsive)",
+                competitor: true,
+                description: "Vérifiez l'accessibilité de vos emails",
+              },
+              {
+                feature: "Données de test",
+                notifuse: true,
+                competitor: true,
+                description: "Prévisualisez les emails avec des données de contact fictives",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Éditeur email MJML de Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Éditeur email MJML</p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              L'éditeur MJML de Notifuse garantit un rendu parfait de vos emails sur tous les appareils et clients email (Gmail, Outlook, Apple Mail, etc.). Le Design Studio de Customer.io est un éditeur moderne avec des fonctionnalités utiles comme la vérification d'accessibilité et les aperçus boîte de réception, mais la fondation MJML de Notifuse offre une garantie de rendu plus solide nativement.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes prennent en charge les campagnes broadcast avec A/B testing et planification. Les data feeds uniques de Notifuse permettent d'injecter du contenu dynamique depuis des API externes au moment de l'envoi.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de campagne"
+            competitorName="Customer.io"
+            features={[
+              { feature: "Envoi à des listes de contacts", notifuse: true, competitor: true },
+              { feature: "Filtrage par segments", notifuse: true, competitor: true },
+              {
+                feature: "A/B Testing avec sélection auto du gagnant",
+                notifuse: true,
+                competitor: "Oui (avec tests de holdout)",
+                description: "Envoie automatiquement la variante gagnante aux contacts restants",
+              },
+              {
+                feature: "Paramètres UTM",
+                notifuse: true,
+                competitor: true,
+                description: "Mesurez la performance des campagnes avec les balises UTM",
+              },
+              { feature: "Planification par fuseau horaire", notifuse: true, competitor: true },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, données en cache partagées entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec données spécifiques par contact",
+                competitor: false,
+                description: "Personnalisez les emails avec des données en temps réel (recommandations, tarifs, stocks)",
+              },
+              {
+                feature: "Objectifs de conversion",
+                notifuse: false,
+                competitor: true,
+                description: "Suivez les conversions de campagne avec des fenêtres temporelles configurables",
+              },
+              {
+                feature: "Broadcasts déclenchés par API",
+                notifuse: false,
+                competitor: "Envois one-to-many via API avec filtres booléens imbriqués",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Email transactionnel -->
+        <FeatureSection id="transactionnel" title="Email transactionnel">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des API de messaging transactionnel. Notifuse se concentre sur l'email avec une passerelle SMTP intégrée, tandis que Customer.io étend le transactionnel sur quatre canaux.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités transactionnelles"
+            competitorName="Customer.io"
+            features={[
+              { feature: "API email transactionnel", notifuse: true, competitor: true },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Serveur SMTP intégré qui accepte les connexions SMTP standard pour l'envoi d'emails transactionnels — idéal pour les intégrations legacy.",
+              },
+              {
+                feature: "Pièces jointes",
+                notifuse: "Jusqu'à 20 fichiers, 10 Mo total",
+                competitor: true,
+              },
+              {
+                feature: "Déduplication",
+                notifuse: "Via external_id (requêtes idempotentes)",
+                competitor: "Via clés d'idempotence",
+              },
+              {
+                feature: "Transactionnel multi-canal",
+                notifuse: "Email uniquement",
+                competitor: "Email, SMS, Push, WhatsApp",
+              },
+              {
+                feature: "Envoi programmé",
+                notifuse: "Immédiat",
+                competitor: "Jusqu'à 90 jours à l'avance",
+              },
+            ]}
+          />
+
+          <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+            <div class="text-center max-w-2xl mx-auto">
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Besoin d'email transactionnel ?</h3>
+              <p class="text-gray-600 mb-6">Testez l'API transactionnelle de Notifuse ou la passerelle SMTP intégrée pour l'intégration de systèmes legacy.</p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                  Essai gratuit 30 jours
+                </a>
+                <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                  Démo en ligne
+                </a>
+              </div>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes offrent une segmentation robuste. Notifuse propose une segmentation RFM unique basée sur les objectifs, tandis que Customer.io propose la construction de segments assistée par IA et les objets personnalisés pour les données relationnelles.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités contacts & segmentation"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Champs personnalisés",
+                notifuse: true,
+                competitor: "Oui (attributs illimités)",
+              },
+              {
+                feature: "Timeline d'activité",
+                notifuse: true,
+                competitor: true,
+                description: "Historique complet des emails, ouvertures, clics et modifications de profil",
+              },
+              {
+                feature: "Segments dynamiques",
+                notifuse: "Conditions par propriétés, comportement & RFM",
+                competitor: "Conditions par propriétés, comportement & assistance IA",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Segmentez par Récence, Fréquence & Montant",
+                competitor: false,
+              },
+              {
+                feature: "Constructeur de segments IA",
+                notifuse: false,
+                competitor: "Décrivez votre audience en langage naturel",
+              },
+              {
+                feature: "Objets personnalisés",
+                notifuse: false,
+                competitor: "Modélisation de données relationnelles pour entités non-personnes (comptes, formations)",
+              },
+              {
+                feature: "Résolution d'identité",
+                notifuse: false,
+                competitor: true,
+                description: "Correspondance et fusion de profils clients et leads",
+              },
+              {
+                feature: "Import CSV",
+                notifuse: "Auto-détection et mapping des champs",
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activité" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Profil contact avec timeline d'activité</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Délivrabilité -->
+        <FeatureSection id="envoi-email" title="Envoi & Délivrabilité">
+          <p class="text-gray-600 mb-6">
+            Notifuse vous laisse choisir votre ESP, tandis que Customer.io fournit une infrastructure email intégrée avec IPs dédiées managées.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de délivrabilité"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Intégrations ESP natives",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
+                competitor: "Infrastructure intégrée",
+              },
+              {
+                feature: "Intégration SMTP",
+                notifuse: true,
+                competitor: "Support SMTP personnalisé",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Serveur SMTP intégré qui accepte les connexions SMTP standard pour l'envoi d'emails transactionnels — idéal pour les intégrations legacy.",
+              },
+              {
+                feature: "Suivi ouvertures/clics",
+                notifuse: true,
+                competitor: "Oui (+ distinction ouvertures humaines vs machine)",
+              },
+              { feature: "Webhooks de rebond", notifuse: true, competitor: true },
+              { feature: "Webhooks de plainte", notifuse: true, competitor: true },
+              {
+                feature: "IPs dédiées",
+                notifuse: "Via votre fournisseur ESP",
+                competitor: "Oui (managées, provisionnées & préchauffées)",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Suivez la performance des campagnes et l'engagement avec des analytics détaillés.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'analytics"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Suivi des ouvertures",
+                notifuse: true,
+                competitor: "Oui (+ ouvertures humaines vs machine)",
+              },
+              {
+                feature: "Suivi des clics",
+                notifuse: true,
+                competitor: "Oui (+ clics humains vs machine)",
+              },
+              { feature: "Suivi des rebonds", notifuse: true, competitor: true },
+              { feature: "Suivi des plaintes", notifuse: true, competitor: true },
+              { feature: "Suivi des désinscriptions", notifuse: true, competitor: true },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des builders d'automation visuels. Le journey builder de Customer.io supporte plus de canaux et de types de déclencheurs, tandis que Notifuse se concentre sur les workflows email avec des actions webhook.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'automation"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Builder visuel d'automation",
+                notifuse: "Éditeur canvas de flux",
+                competitor: "Builder de parcours visuel",
+              },
+              {
+                feature: "Déclencheurs d'événements",
+                notifuse: "Contact, liste, segment, email & événements personnalisés",
+                competitor: "Contact, segment, événements, formulaires, objets, relations, dates",
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: "Vrai/faux, multi-split, cohorte aléatoire, fenêtres temporelles",
+              },
+              {
+                feature: "Délais & Timing",
+                notifuse: "Périodes d'attente configurables entre les étapes",
+                competitor: "Attente, attente jusqu'à condition, fenêtres temporelles",
+              },
+              { feature: "Actions webhook", notifuse: true, competitor: true },
+              {
+                feature: "Actions multi-canal",
+                notifuse: "Email uniquement",
+                competitor: "Email, SMS, push, in-app, WhatsApp, Slack",
+              },
+              {
+                feature: "Suivi de parcours",
+                notifuse: "Suivez le statut des contacts dans les flux d'automation",
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              Les automations permettent de créer des séquences de bienvenue, des drips d'onboarding et des workflows de réengagement qui s'exécutent automatiquement. Les deux plateformes le proposent, mais si vos workflows sont centrés sur l'email, Notifuse couvre tout ce dont vous avez besoin sans la complexité de l'orchestration multi-canal.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Événements personnalisés & Objectifs -->
+        <FeatureSection id="evenements" title="Événements personnalisés & Objectifs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent le tracking d'événements personnalisés. Notifuse ajoute une segmentation RFM unique avec des types d'objectifs pour les cas d'usage e-commerce et SaaS.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités événements & objectifs"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Tracking d'événements personnalisés",
+                notifuse: "Ingestion d'événements via API avec import en lot",
+                competitor: true,
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, réservation, essai",
+                competitor: "Via événements personnalisés (pas de types d'objectifs prédéfinis)",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Segmentez par Récence, Fréquence & Montant",
+                competitor: false,
+              },
+              {
+                feature: "Timeline contact",
+                notifuse: "Événements affichés dans l'historique d'activité du contact",
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenant & Agences -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse est conçu pour les agences et les plateformes SaaS qui ont besoin d'une isolation complète des espaces de travail. Customer.io ne propose pas de multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités multi-tenant & agences"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalisé par espace de travail",
+                competitor: false,
+                description: "Environnements isolés pour plusieurs marques ou clients",
+              },
+              {
+                feature: "Permissions utilisateurs",
+                notifuse: true,
+                competitor: "Oui (basé sur les rôles avec SSO & 2FA)",
+                description: "Contrôle d'accès granulaire pour la collaboration",
+              },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Idéal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalité espaces de travail de Notifuse le rend idéal pour les agences gérant plusieurs clients. Chaque client obtient son propre environnement isolé avec domaines personnalisés, contacts séparés et clés API dédiées — le tout depuis une seule installation. Customer.io nécessite des comptes séparés par client.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- API & Développeurs -->
+        <FeatureSection id="api-developpeur" title="API & Développeurs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des API complètes. Customer.io fournit des SDK dans de multiples langages, tandis que Notifuse se concentre sur une API REST propre avec passerelle SMTP pour les intégrations legacy.
+          </p>
+
+          <ComparisonTable
+            title="Outils API & développeur"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "API RESTful",
+                notifuse: true,
+                competitor: "Oui (Track API + App API)",
+              },
+              {
+                feature: "API email transactionnel",
+                notifuse: true,
+                competitor: "Oui (+ SMS, push, WhatsApp)",
+              },
+              {
+                feature: "Spécification OpenAPI",
+                notifuse: true,
+                competitor: true,
+                description: "Documentation API complète au format OpenAPI — utile pour les intégrations IA et la génération de code",
+              },
+              {
+                feature: "SDK",
+                notifuse: "API REST (pas de SDK)",
+                competitor: "Node.js, Python, Go, iOS, Android, React Native, Flutter, Expo",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                description: "Serveur SMTP intégré qui accepte les connexions SMTP standard pour l'envoi d'emails transactionnels — idéal pour les intégrations legacy.",
+              },
+              {
+                feature: "Observabilité & Monitoring",
+                notifuse: "Historique messages & webhooks. Tracing OpenTelemetry.",
+                competitor: "Dashboards et analytics intégrés",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Avantage développeur</h4>
+            <p class="text-gray-700 text-sm">
+              Conçu pour les développeurs qui ont besoin d'une infrastructure email prête pour la production. Spécification OpenAPI, passerelle SMTP pour les intégrations legacy, environnements de dev/test par espace de travail, et API transactionnelle complète — tout ce qu'il faut pour livrer vite et scaler en confiance, sans coûts SaaS par profil.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse inclut une plateforme de blog intégrée avec des capacités IA. Customer.io ne propose pas de fonctionnalité de blog.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de blog"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "CMS de blog intégré",
+                notifuse: "Catégories, articles, planification & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Moteur de thème Liquid",
+                notifuse: "Templates personnalisables avec syntaxe Shopify Liquid",
+                competitor: false,
+              },
+              {
+                feature: "Intégration newsletter",
+                notifuse: "Connectez le blog à vos listes email pour la croissance d'abonnés",
+                competitor: false,
+              },
+              {
+                feature: "SEO auto-généré",
+                notifuse: "Sitemap, robots.txt, balises OG, URLs canoniques",
+                competitor: false,
+              },
+              {
+                feature: "Agent blog IA",
+                notifuse: "Création de contenu assistée par IA avec recherche web",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Tarifs -->
+        <FeatureSection id="tarifs" title="Tarifs & Coûts" gradient>
+          <p class="text-gray-600 mb-8">
+            Notifuse Cloud commence à 19 $/mois avec toutes les fonctionnalités incluses et des emails illimités (BYO-ESP). Customer.io commence à 100 $/mois pour 5 000 profils.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8 relative">
+              <div class="absolute -top-3 right-4">
+                <span class="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">Meilleur rapport qualité-prix</span>
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-4">Notifuse Cloud</h3>
+              <div class="space-y-2 mb-6">
+                <div class="flex items-baseline gap-3">
+                  <span class="text-sm font-semibold text-gray-600">Starter</span>
+                  <span class="text-2xl font-bold text-primary">39 $<span class="text-sm font-normal text-gray-500">/mois</span></span>
+                  <span class="text-xs text-gray-500">10 000 contacts actifs</span>
+                </div>
+                <div class="flex items-baseline gap-3">
+                  <span class="text-sm font-semibold text-gray-600">Pro</span>
+                  <span class="text-2xl font-bold text-primary">99 $<span class="text-sm font-normal text-gray-500">/mois</span></span>
+                  <span class="text-xs text-gray-500">25 000 contacts actifs</span>
+                </div>
+                <div class="flex items-baseline gap-3">
+                  <span class="text-sm font-semibold text-gray-600">Business</span>
+                  <span class="text-2xl font-bold text-primary">249 $<span class="text-sm font-normal text-gray-500">/mois</span></span>
+                  <span class="text-xs text-gray-500">50 000 contacts actifs</span>
+                </div>
+              </div>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Emails illimités (BYO-ESP)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Toutes les fonctionnalités sur chaque plan</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Essai gratuit de 30 jours</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Contacts actifs uniquement (30 derniers jours)</span>
+                </li>
+              </ul>
+              <p class="text-xs text-gray-500 mt-4">
+                Ou auto-hébergement — open-source (AGPL-3.0)
+              </p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-xl font-bold text-slate-900 mb-4">Customer.io</h3>
+              <div class="text-3xl font-bold text-slate-900 mb-2">100 $<span class="text-lg font-normal text-gray-500">/mois</span></div>
+              <p class="text-gray-600 text-sm mb-6">
+                Plan Essentials (5 000 profils, 1M emails/mois)
+              </p>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>0,009 $ par profil supplémentaire</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>0,12 $ pour 1 000 emails supplémentaires</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Premium : 1 000 $/mois (facturation annuelle)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Entreprise : tarification sur devis</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Coûts à l'échelle</h4>
+            <p class="text-gray-700 text-sm">
+              À <strong>10 000 contacts</strong>, Notifuse Cloud Starter coûte <strong>39 $/mois</strong> vs Customer.io Essentials à <strong>~145 $/mois</strong> — économisez 73 %. À <strong>50 000 contacts</strong>, Notifuse Cloud Business coûte <strong>249 $/mois</strong> vs Customer.io à <strong>~505 $/mois</strong> — économisez 51 %. Customer.io Premium commence à 1 000 $/mois.
+            </p>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Zéro lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Export complet de la base de données sur demande. Notifuse est open-source (AGPL-3.0) — passez en auto-hébergement à tout moment et conservez toutes vos données.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Notifuse</h3>
+              </div>
+              <p class="text-gray-700 text-sm mb-4">Notifuse est le meilleur choix si vous :</p>
+              <ul class="space-y-3">
+                {[
+                  "Développez une <strong>application SaaS</strong> qui a besoin d'email transactionnel + marketing",
+                  "Voulez la <strong>propriété totale des données</strong> et une infrastructure auto-hébergée",
+                  "Avez besoin d'<strong>emails mobile-responsive garantis</strong> avec l'éditeur MJML",
+                  "Êtes une <strong>agence</strong> gérant plusieurs clients (espaces de travail)",
+                  "Préférez l'<strong>open-source</strong> sans facturation par profil",
+                  "Avez besoin de <strong>data feeds</strong> pour la personnalisation email dynamique depuis des API externes",
+                  "Avez besoin de la <strong>passerelle SMTP</strong> pour la compatibilité systèmes legacy",
+                  "Voulez un <strong>blog intégré</strong> avec génération de contenu IA",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Customer.io</h3>
+              </div>
+              <p class="text-gray-700 text-sm mb-4">Customer.io est le meilleur choix si vous :</p>
+              <ul class="space-y-3">
+                {[
+                  "Avez besoin de <strong>messaging multi-canal</strong> (SMS, push, in-app, WhatsApp)",
+                  "Avez besoin de <strong>60+ intégrations prêtes à l'emploi</strong> avec CRM, analytics, plateformes pub",
+                  "Avez besoin de <strong>conformité managée</strong> (SOC 2 Type II, HIPAA, ISO 27001)",
+                  "Avez besoin de <strong>SDK mobiles</strong> pour le messaging natif dans les apps",
+                  "Avez besoin d'<strong>objets personnalisés</strong> pour la modélisation de données relationnelles",
+                  "Préférez un <strong>SaaS managé</strong> plutôt que l'auto-hébergement",
+                  "Avez besoin de la <strong>construction de segments assistée par IA</strong> et d'horaires d'envoi recommandés",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi changer -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi choisir Notifuse plutôt que Customer.io ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Si votre besoin principal est l'<strong>email</strong> — transactionnel et marketing — Notifuse offre des capacités comparables aux fonctionnalités email de Customer.io, avec les avantages supplémentaires de l'auto-hébergement, de la transparence open-source et de zéro coût par profil.
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Pas de facturation par profil",
+                text: "Customer.io facture 0,009 $ par profil supplémentaire. À 50 000 contacts, cela fait 505 $/mois avant même d'envoyer un seul email. Notifuse Cloud Starter coûte seulement 39 $/mois pour 10 000 contacts actifs — toutes fonctionnalités incluses. Ou auto-hébergez.",
+              },
+              {
+                title: "Éditeur visuel basé sur MJML",
+                text: "L'éditeur MJML de Notifuse garantit un rendu mobile-responsive sur tous les clients email (Gmail, Outlook, Apple Mail, Yahoo, etc.). Plus de problèmes de rendu ni de mises en page cassées — vos emails s'afficheront parfaitement partout.",
+              },
+              {
+                title: "Propriété totale des données",
+                text: "Vos données de contacts, templates email et analytics restent sur votre infrastructure. Pas de vendor lock-in, pas de partage de données, pas de surprises. Vous contrôlez vos données, votre confidentialité et votre posture de conformité.",
+              },
+              {
+                title: "Architecture multi-tenant",
+                text: "Les agences et plateformes SaaS ont besoin d'isolation par espace de travail. Notifuse fournit un multi-tenancy complet avec bases de données séparées, domaines personnalisés et clés API par espace — Customer.io nécessite des comptes séparés par client.",
+              },
+              {
+                title: "Data feeds pour le contenu dynamique",
+                text: "Les data feeds uniques de Notifuse injectent du contenu en temps réel depuis vos API au moment de l'envoi — recommandations produits, tarifs, niveaux de stock ou toute donnée dynamique. Les feeds globaux mettent en cache les données pour tous les destinataires, tandis que les feeds par destinataire personnalisent chaque email. Customer.io ne propose pas cette fonctionnalité.",
+              },
+              {
+                title: "Choisissez votre ESP",
+                text: "Connectez-vous à Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost ou tout fournisseur SMTP. Négociez vos propres tarifs, utilisez des fournisseurs différents pour le transactionnel et le marketing, et changez à tout moment sans changer de plateforme.",
+              },
+              {
+                title: "Blog intégré avec IA",
+                text: "Gérez un blog complet aux côtés de votre plateforme email — avec theming Liquid, optimisation SEO et un agent IA capable d'écrire, optimiser et éditer du contenu avec des capacités de recherche web. Customer.io n'a pas de fonctionnalité de blog.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Prêt à essayer Notifuse ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Démarrez en quelques minutes avec Docker ou un déploiement en un clic. Importez vos contacts par CSV et commencez à envoyer.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions fréquentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Comment Notifuse se compare-t-il à Customer.io pour l'email ?",
+                a: "Pour l'email spécifiquement, Notifuse offre des capacités comparables : éditeur visuel MJML, moteur Liquid, A/B testing, segmentation dynamique, automations, API transactionnelle et webhooks. Notifuse propose aussi des fonctionnalités uniques comme les data feeds et la segmentation RFM que Customer.io n'a pas. La principale différence est que Customer.io ajoute les canaux SMS, push, in-app et WhatsApp en plus de l'email.",
+              },
+              {
+                q: "Notifuse est-il vraiment gratuit ?",
+                a: "Notifuse propose deux options : Notifuse Cloud, un service entièrement managé dès 19 $/mois (essai gratuit de 30 jours, sans carte bancaire requise), et le déploiement auto-hébergé (open-source, AGPL-3.0). Les deux incluent toutes les fonctionnalités sans frais par profil. Export complet de la base de données sur demande — zéro lock-in.",
+              },
+              {
+                q: "Notifuse peut-il remplacer Customer.io ?",
+                a: "Pour les cas d'usage centrés sur l'email, oui. Notifuse couvre l'email transactionnel, les campagnes broadcast, les automations, la segmentation et plus encore. Cependant, si vous dépendez du SMS, des notifications push, du messaging in-app ou de WhatsApp de Customer.io, Notifuse n'est pas un remplacement direct pour ces canaux.",
+              },
+              {
+                q: "Comment se comparent les API ?",
+                a: "Les deux plateformes proposent des API REST avec spécifications OpenAPI. Notifuse ajoute une passerelle SMTP intégrée pour l'intégration de systèmes legacy. Customer.io fournit des SDK dans 8 langages (Node.js, Python, Go, iOS, Android, React Native, Flutter, Expo). Notifuse se concentre sur une API REST propre sans SDK.",
+              },
+              {
+                q: "Qu'en est-il de la conformité ?",
+                a: "Customer.io fournit des certifications de conformité managées : SOC 2 Type II, HIPAA (Premium+), RGPD, CCPA et ISO 27001. Avec Notifuse, vous gérez la conformité vous-même puisque vous contrôlez l'infrastructure. Notifuse inclut des outils RGPD (double opt-in, gestion des désinscriptions, suppression de données) mais vous êtes responsable de votre propre posture de sécurité.",
+              },
+              {
+                q: "Notifuse supporte-t-il le SMS ou les notifications push ?",
+                a: "Non. Notifuse est une plateforme centrée sur l'email. Si vous avez besoin de SMS, push, in-app ou WhatsApp, Customer.io ou une autre plateforme multi-canal peut être mieux adaptée. Notifuse excelle à faire l'email exceptionnellement bien plutôt que de se disperser sur de multiples canaux.",
+              },
+              {
+                q: "Y a-t-il du support entreprise ?",
+                a: "Oui ! Notifuse propose un support entreprise avec assistance prioritaire, implémentation personnalisée, formation, onboarding et garanties SLA. Contactez-nous pour les détails.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- CTA final -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à découvrir Notifuse ?</h3>
+                  <p class="text-gray-600 mb-6">Rejoignez les développeurs et marketeurs qui choisissent l'infrastructure email open-source plutôt que la tarification SaaS par profil.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Démo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

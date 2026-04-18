@@ -1,0 +1,1191 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Aperçu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "editeur-email", label: "Éditeur d'emails" },
+  { id: "listes-diffusion", label: "Gestion des listes" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "envoi-email", label: "Envoi & Délivrabilité" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "api-developpeur", label: "API & Développeurs" },
+  { id: "automations", label: "Automations" },
+  { id: "evenements", label: "Événements personnalisés" },
+  { id: "blog", label: "Blog" },
+  { id: "tarifs", label: "Tarifs & Coûts" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de départ",
+    notifuse: "Dès 19 $/mois (Cloud) · ou auto-hébergé",
+    competitor: "Gratuit : 3 000 emails/mois",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "Propriétaire (code fermé)",
+  },
+  {
+    label: "Déploiement",
+    notifuse: "Auto-hébergé",
+    competitor: "Cloud uniquement (SaaS)",
+  },
+  {
+    label: "Infrastructure",
+    notifuse:
+      "7 ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalisé",
+    competitor: "Amazon SES uniquement (avec marge)",
+  },
+  {
+    label: "Éditeur visuel",
+    notifuse: "MJML glisser-déposer & éditeur de code",
+    competitor: "Aucun (React Email uniquement, code requis)",
+  },
+  {
+    label: "Segmentation",
+    notifuse: "Dynamique avec filtres & conditions",
+    competitor: "Segments statiques uniquement",
+  },
+  {
+    label: "Timeline de contact",
+    notifuse: "Oui (historique complet d'activité)",
+    competitor: "Non",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs Resend : comparaison open-source vs propriétaire (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et Resend pour l'envoi d'emails et les automations. Notifuse est open-source avec éditeur MJML, Resend utilise Amazon SES avec marge. Fonctionnalités, tarifs et cas d'usage."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-resend" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Resend, alternative Resend, plateforme email open-source, éditeur MJML, Amazon SES, React Email, comparaison API email"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-resend" />
+    <meta property="og:title" content="Notifuse vs Resend : comparaison open-source vs propriétaire" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse (open-source, auto-hébergé) et Resend (propriétaire, wrapper Amazon SES). Fonctionnalités, tarifs et quelle plateforme choisir."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs Resend : comparaison de plateformes email open-source" />
+    <meta
+      name="twitter:description"
+      content="Comparez Notifuse (open-source) vs Resend (wrapper Amazon SES). Éditeur MJML auto-hébergé vs React Email cloud."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <GtagHead />
+
+    <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs Resend</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Notifuse est open-source avec un éditeur visuel MJML. Resend est un wrapper propriétaire autour d'Amazon SES avec React Email (code requis). Choisissez Notifuse pour éviter le vendor lock-in et les limitations d'un seul fournisseur.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Démo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ComparisonLayout
+        title="Notifuse vs Resend"
+        description="Comparaison détaillée des fonctionnalités, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Aperçu -->
+        <FeatureSection id="apercu" title="Aperçu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Deux différences fondamentales</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Open-source vs Code fermé</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> AGPL-3.0 open-source, auto-hébergé. Contrôle total sur votre code et vos données.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Resend :</strong> SaaS propriétaire à code fermé. Vendor lock-in sans accès au code.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Éditeur visuel vs Code uniquement</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> éditeur visuel MJML glisser-déposer. Aucun code requis.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Resend :</strong> React Email uniquement. Chaque template doit être codé.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alerte : Amazon SES -->
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-red-400 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-xl p-8">
+              <div class="flex items-start">
+                <svg class="w-8 h-8 text-red-500 mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                <div>
+                  <h4 class="font-bold text-slate-900 mb-2 text-lg">Resend utilise Amazon SES en coulisses</h4>
+                  <p class="text-gray-700 text-sm mb-3">
+                    Resend repose sur Amazon SES et applique une marge tarifaire. Avec Notifuse, vous pouvez :
+                  </p>
+                  <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Vous connecter <strong>directement à Amazon SES</strong> (même infrastructure, sans marge)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>Ne pas dépendre d'un seul ESP :</strong> utilisez Amazon SES, Mailgun, Postmark ou n'importe quel serveur SMTP</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span><strong>Configurer vos propres limites d'envoi</strong> (impossible avec Resend)</span>
+                    </li>
+                    <li class="flex items-start">
+                      <svg class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                      </svg>
+                      <span>Payer <strong>uniquement les coûts AWS</strong> (~1 $ pour 10 000 emails)</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Resend</span> est une API email cloud orientée développeurs, construite sur Amazon SES. Elle mise sur la simplicité avec des templates React Email, mais reste propriétaire, cloud uniquement, et applique une marge sur l'infrastructure Amazon SES.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud managé ou auto-hébergé) avec un éditeur visuel MJML, une segmentation avancée, le multi-tenancy et des connexions ESP flexibles. <strong>Pas de dépendance à un seul fournisseur</strong> : utilisez Amazon SES, Mailgun, Postmark, SendGrid, ou combinez différents ESP pour vos emails transactionnels et marketing.
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="Resend" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Éditeur d'emails -->
+        <FeatureSection id="editeur-email" title="Éditeur d'emails">
+          <p class="text-gray-600 mb-6">
+            La différence majeure : Notifuse propose un éditeur visuel no-code, tandis que Resend exige de coder chaque template email en React.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des éditeurs"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Éditeur visuel",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> — glisser-déposer & éditeur de code, rendu mobile-responsive garanti sur tous les clients email',
+                competitor: "Aucun — React Email nécessite du code",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "React/JSX",
+                description: "Variables dynamiques pour la personnalisation",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN intégré",
+                competitor: false,
+              },
+              {
+                feature: "Bibliothèque de templates",
+                notifuse: "Bientôt disponible",
+                competitor: "Templates React Email",
+              },
+              {
+                feature: "Éditeur de code MJML",
+                notifuse: "Édition directe du code MJML en parallèle du visuel",
+                competitor: false,
+                description: "Basculez entre les modes visuel et code",
+              },
+              {
+                feature: "Données de test",
+                notifuse: true,
+                competitor: false,
+                description: "Prévisualisez vos emails avec des données de contact fictives",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Éditeur email MJML de Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Éditeur visuel MJML (aucun code requis)</p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              Avec Notifuse, les membres non techniques de votre équipe peuvent créer des emails grâce à l'éditeur visuel MJML. Resend exige que les développeurs codent chaque template en React, ce qui le rend inadapté aux équipes avec des marketeurs ou du personnel non technique.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Gestion des listes -->
+        <FeatureSection id="listes-diffusion" title="Gestion des listes de diffusion">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes gèrent les audiences, mais avec des fonctionnalités différentes. Note : Resend appelle les listes de diffusion « Topics ».
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de gestion de listes"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Listes de diffusion",
+                notifuse: "Listes complètes avec toutes les fonctionnalités",
+                competitor: "Topics (terminologie Resend)",
+              },
+              {
+                feature: "Listes privées",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Double opt-in",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Email de bienvenue",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Email de désinscription",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Analytics de liste",
+                notifuse: true,
+                competitor: false,
+                description: "Métriques : actifs, désinscrits, spam, plaintes",
+              },
+              {
+                feature: "Centre de notifications",
+                notifuse: true,
+                competitor: false,
+                description: "Centre de gestion des préférences en libre-service pour les abonnés",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes permettent d'envoyer des campagnes broadcast, mais Notifuse propose bien plus de fonctionnalités.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités de campagne"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Campagnes broadcast",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Envoi vers plusieurs listes",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Filtrage par segments",
+                notifuse: true,
+                competitor: false,
+                description: "Les segments Resend sont des groupes statiques sans filtres",
+              },
+              {
+                feature: "A/B Testing avec sélection auto du gagnant",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Paramètres UTM",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Planification par fuseau horaire",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, données partagées entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec données spécifiques par contact",
+                competitor: false,
+                description: "Personnalisez vos emails avec des données en temps réel (recommandations produit, prix, stock)",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <p class="text-gray-600 mb-6">
+            Différence majeure : Notifuse dispose de timelines d'activité complètes et de segments dynamiques, tandis que Resend ne propose que des segments statiques et aucune timeline d'activité.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités contacts & segmentation"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Champs personnalisés",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Timeline d'activité",
+                notifuse: true,
+                competitor: false,
+                description: "Historique complet des emails, ouvertures, clics et modifications de profil",
+              },
+              {
+                feature: "Type de segmentation",
+                notifuse: "Dynamique avec filtres & conditions",
+                competitor: "Segments statiques uniquement (aucune règle dynamique)",
+              },
+              {
+                feature: "Filtres par dates relatives",
+                notifuse: true,
+                competitor: false,
+                description: 'Ex. « inscrit dans les 30 derniers jours »',
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activité" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Profil contact avec timeline (Resend n'a pas cette fonctionnalité)</p>
+          </div>
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Segmentation dynamique vs statique</h4>
+            <p class="text-gray-700 text-sm">
+              Les segments dynamiques de Notifuse se mettent à jour automatiquement selon les conditions et filtres définis. Les segments de Resend sont de simples groupes statiques : vous ajoutez/retirez manuellement les contacts. Impossible de créer des segments « utilisateurs actifs ces 30 derniers jours » ou « ont ouvert sans cliquer » avec Resend.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Délivrabilité -->
+        <FeatureSection id="envoi-email" title="Envoi & Délivrabilité">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-green-400 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-green-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-3 text-lg">Flexibilité ESP : un avantage majeur</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p class="text-sm font-semibold text-primary mb-2">Notifuse</p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>✓ Choix de l'ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost) + SMTP personnalisé</li>
+                    <li>✓ ESP différent pour transactionnel vs marketing</li>
+                    <li>✓ Changez d'ESP à tout moment</li>
+                    <li>✓ Configurez vos limites d'envoi</li>
+                    <li>✓ Aucun vendor lock-in</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-700 mb-2">Resend</p>
+                  <ul class="text-sm text-gray-500 space-y-1">
+                    <li>✗ Verrouillé sur Amazon SES uniquement</li>
+                    <li>✗ Impossible d'utiliser d'autres ESP</li>
+                    <li>✗ Impossible de changer de fournisseur</li>
+                    <li>✗ Impossible de configurer les limites d'envoi</li>
+                    <li>✗ Vendor lock-in</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ComparisonTable
+            title="Fonctionnalités d'envoi"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Options ESP",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost + SMTP personnalisé",
+                competitor: "Amazon SES uniquement (verrouillé)",
+              },
+              {
+                feature: "ESP séparés par type d'email",
+                notifuse: true,
+                competitor: false,
+                description: "Utilisez un ESP différent pour transactionnel vs marketing",
+              },
+              {
+                feature: "Limites d'envoi personnalisables",
+                notifuse: true,
+                competitor: false,
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Serveur SMTP intégré acceptant les connexions SMTP standard pour l'envoi d'emails transactionnels — idéal pour les intégrations legacy.",
+              },
+              {
+                feature: "Suivi ouvertures/clics",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Webhooks de rebond",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Webhooks de livraison",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Webhooks de spam",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Webhooks de plainte",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes suivent les événements email, mais Notifuse propose des analytics et rapports plus complets.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'analytics"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Suivi des ouvertures",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Suivi des clics",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Suivi des rebonds",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Suivi des plaintes",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Suivi des désinscriptions",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Stats transactionnel vs marketing",
+                notifuse: true,
+                competitor: false,
+                description: "Analytics séparés pour les campagnes transactionnelles et broadcast",
+              },
+            ]}
+          />
+
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Multi-tenant & Agences -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse est conçu pour les agences et les plateformes SaaS. Resend ne propose pas de multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités multi-tenant & agences"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalisé par espace de travail",
+                competitor: false,
+                description: "Environnements isolés pour plusieurs marques ou clients",
+              },
+              {
+                feature: "Permissions utilisateurs",
+                notifuse: true,
+                competitor: false,
+                description: "Contrôle d'accès granulaire pour la collaboration d'équipe",
+              },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Idéal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalité espaces de travail de Notifuse est parfaite pour les agences gérant plusieurs clients. Chaque client dispose de son propre environnement isolé — Resend ne le permet pas.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- API & Développeurs -->
+        <FeatureSection id="api-developpeur" title="API & Développeurs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes sont orientées développeurs, mais avec des approches différentes.
+          </p>
+
+          <ComparisonTable
+            title="API & Outils développeurs"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "API RESTful",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "API email transactionnel",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Support React Email",
+                notifuse: false,
+                competitor: true,
+                description: "Templates email en code React",
+              },
+              {
+                feature: "Environnement dev/test",
+                notifuse: "Environnements par espace de travail",
+                competitor: "Mode sandbox",
+              },
+              {
+                feature: "Spécification OpenAPI",
+                notifuse: true,
+                competitor: true,
+                description: "Documentation API complète au format OpenAPI — utile pour les intégrations IA et la génération de code",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                description: "Serveur SMTP intégré pour les intégrations legacy",
+              },
+              {
+                feature: "Webhooks sortants",
+                notifuse: true,
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Philosophies développeurs différentes</h4>
+            <p class="text-gray-700 text-sm">
+              Resend est orienté développeur avec des templates React Email — parfait si vous aimez coder vos emails. Notifuse s'adresse à la fois aux développeurs ET aux marketeurs avec l'éditeur visuel MJML, la passerelle SMTP, la spec OpenAPI et les environnements de test par espace de travail.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Notifuse inclut un builder d'automation visuel pour les workflows événementiels. Resend n'a aucune fonctionnalité d'automation.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités d'automation"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Builder d'automation visuel",
+                notifuse: "Éditeur canvas de flux",
+                competitor: false,
+              },
+              {
+                feature: "Déclencheurs d'événements",
+                notifuse: "Contact, liste, segment, email & événements personnalisés",
+                competitor: false,
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: false,
+              },
+              {
+                feature: "Délais & Timing",
+                notifuse: "Délais d'attente configurables entre les étapes",
+                competitor: false,
+              },
+              {
+                feature: "Suivi des parcours",
+                notifuse: "Suivez le statut des contacts dans les flux d'automation",
+                competitor: false,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              Les automations permettent de créer des séries de bienvenue, des séquences d'onboarding et des workflows de réengagement qui s'exécutent automatiquement. Au lieu de créer manuellement des campagnes pour chaque étape du cycle de vie, configurez vos flux une fois et laissez-les se déclencher selon le comportement des contacts.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Événements personnalisés -->
+        <FeatureSection id="evenements" title="Événements personnalisés & Objectifs">
+          <p class="text-gray-600 mb-6">
+            Suivez le comportement utilisateur depuis vos systèmes externes et construisez des segments RFM. Resend ne propose ni événements personnalisés ni suivi d'objectifs.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités événements & objectifs"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "Tracking d'événements personnalisés",
+                notifuse: "Ingestion d'événements via API avec import en lot",
+                competitor: false,
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, réservation, essai",
+                competitor: false,
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Segmentez par Récence, Fréquence & Valeur monétaire",
+                competitor: false,
+              },
+              {
+                feature: "Timeline de contact",
+                notifuse: "Événements affichés dans l'historique d'activité du contact",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Plateforme de blog intégrée avec thèmes Liquid et intégration newsletter. Resend n'a pas de fonctionnalité blog.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités blog"
+            competitorName="Resend"
+            features={[
+              {
+                feature: "CMS de blog intégré",
+                notifuse: "Catégories, articles, planification & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Moteur de thèmes Liquid",
+                notifuse: "Templates personnalisables avec syntaxe Shopify Liquid",
+                competitor: false,
+              },
+              {
+                feature: "Intégration newsletter",
+                notifuse: "Connectez le blog à vos listes email pour la croissance d'abonnés",
+                competitor: false,
+              },
+              {
+                feature: "SEO auto-généré",
+                notifuse: "Sitemap, robots.txt, balises OG, URLs canoniques",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Tarifs & Coûts -->
+        <FeatureSection id="tarifs" title="Tarifs & Coûts" gradient>
+          <p class="text-gray-600 mb-6">
+            Notifuse Cloud combine email transactionnel et marketing dans une seule plateforme. Resend facture séparément chaque type — et les coûts s'accumulent.
+          </p>
+
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-8">
+            <div class="bg-gradient-to-br from-white to-orange-50 rounded-xl p-8">
+              <h4 class="font-bold text-slate-900 mb-4 text-lg text-center">Même infrastructure, coût différent</h4>
+              <p class="text-gray-700 text-sm text-center mb-6">
+                Resend utilise Amazon SES en coulisses et facture séparément les emails transactionnels et marketing. Les utilisateurs Notifuse Cloud se connectent aussi directement à Amazon SES — même coût bas, sans marge.
+              </p>
+
+              <!-- Tarifs transactionnels -->
+              <div class="mb-6">
+                <h5 class="text-sm font-semibold text-slate-900 text-center mb-3">Emails transactionnels (100k/mois)</h5>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Amazon SES</div>
+                    <div class="text-2xl font-bold text-gray-700">10 $</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Resend</div>
+                    <div class="text-2xl font-bold text-gray-700">35 $</div>
+                  </div>
+                  <div class="border border-primary bg-orange-50 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Marge</div>
+                    <div class="text-2xl font-bold text-primary">25 $</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tarifs marketing -->
+              <div class="mb-6">
+                <h5 class="text-sm font-semibold text-slate-900 text-center mb-3">Emails marketing (10k contacts)</h5>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center">
+                  <div class="border border-primary bg-orange-50 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Notifuse Cloud Starter</div>
+                    <div class="text-2xl font-bold text-primary">39 $/mois</div>
+                    <div class="text-xs text-gray-600">10 000 contacts, emails illimités</div>
+                  </div>
+                  <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-1">Resend Marketing</div>
+                    <div class="text-2xl font-bold text-gray-700">80 $/mois</div>
+                    <div class="text-xs text-gray-600">10 000 contacts</div>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-xs text-gray-500 text-center mb-2">
+                Notifuse Cloud Starter : 39 $/mois pour 10K contacts avec emails illimités transactionnels + marketing (BYO-ESP). Resend : 20 $ (tx Pro) + 80 $ (mktg 10K) = 100 $/mois.
+              </p>
+              <p class="text-[10px] text-gray-400 text-center">Tarifs en date d'avril 2026</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="border-2 border-primary rounded-xl p-8 relative overflow-hidden">
+              <div class="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-semibold">Meilleur rapport qualité-prix</div>
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Notifuse Cloud</h3>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Lite :</strong> 19 $/mois<br />
+                  <span class="text-gray-500">2 500 contacts actifs</span>
+                </div>
+                <div>
+                  <strong>Starter :</strong> 39 $/mois<br />
+                  <span class="text-gray-500">10 000 contacts actifs</span>
+                </div>
+              </div>
+
+              <ul class="space-y-2 text-sm">
+                <li>✓ Emails illimités — transactionnels + marketing</li>
+                <li>✓ Toutes les fonctionnalités sur chaque plan</li>
+                <li>✓ BYO-ESP (connectez Amazon SES directement)</li>
+                <li>✓ Essai gratuit 30 jours</li>
+              </ul>
+
+              <p class="text-xs text-gray-500 mt-4">Ou auto-hébergez — open-source (AGPL-3.0)</p>
+            </div>
+
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-2xl font-bold text-slate-900 mb-2">Resend</h3>
+              <div class="text-sm text-gray-600 mb-4">Tarification à l'envoi</div>
+
+              <div class="space-y-3 mb-6 text-sm">
+                <div>
+                  <strong>Gratuit :</strong> 3 000 emails/mois<br />
+                  <span class="text-gray-500">Puis 0 $</span>
+                </div>
+                <div>
+                  <strong>Pro :</strong> 50 000 emails/mois<br />
+                  <span class="text-gray-500">20 $/mois</span>
+                </div>
+                <div>
+                  <strong>Scale :</strong> 100 000 emails/mois<br />
+                  <span class="text-gray-500">90 $/mois</span>
+                </div>
+                <div class="text-xs text-gray-500">+ Les coûts augmentent avec le volume</div>
+              </div>
+
+              <ul class="space-y-2 text-sm text-gray-500">
+                <li>✗ Code fermé</li>
+                <li>✗ Cloud uniquement</li>
+                <li>✗ Verrouillé sur Amazon SES</li>
+                <li>✗ Aucun éditeur visuel</li>
+                <li>✗ Pas de multi-tenancy</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+            <h4 class="font-semibold text-slate-900 mb-2">Aucun verrouillage</h4>
+            <p class="text-gray-700 text-sm">
+              Export complet de la base de données à la demande. Notifuse est open-source (AGPL-3.0) — passez en auto-hébergé à tout moment et conservez toutes vos données.
+            </p>
+          </div>
+
+          <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+            <div class="text-center max-w-2xl mx-auto">
+              <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à économiser sur vos emails ?</h3>
+              <p class="text-gray-600 mb-6">Connectez-vous directement à Amazon SES — sans marge. Toutes les fonctionnalités dès 19 $/mois.</p>
+              <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                  Essai gratuit 30 jours
+                </a>
+                <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                  Démo en ligne
+                </a>
+              </div>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choisir Notifuse -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Notifuse</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Notifuse est le meilleur choix si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Voulez une solution <strong>open-source</strong> (pas propriétaire)",
+                  "Avez besoin d'un <strong>éditeur visuel</strong> (sans coder en React)",
+                  "Voulez la <strong>liberté de fournisseur</strong> (pas verrouillé sur Amazon SES)",
+                  "Avez besoin de <strong>segmentation dynamique</strong> avec filtres",
+                  "Avez besoin de <strong>timelines d'activité</strong> par contact",
+                  "Voulez <strong>éviter la marge Amazon SES</strong>",
+                  "Êtes une <strong>agence</strong> (besoin de multi-tenancy)",
+                  "Avez besoin d'<strong>automations événementielles</strong> pour séries de bienvenue, réengagement & onboarding",
+                  "Voulez <strong>tracker des événements personnalisés</strong> et segmenter par comportement d'achat (RFM)",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Choisir Resend -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Resend</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Resend peut convenir si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Préférez un <strong>cloud entièrement managé</strong> (aucun serveur à gérer)",
+                  "Aimez <strong>coder vos emails en React</strong>",
+                  "Avez un faible volume (dans la limite gratuite de 3 000/mois)",
+                  "N'avez pas besoin d'éditeur visuel ni de marketeurs dans l'équipe",
+                  "Acceptez la <strong>marge Amazon SES</strong> pour plus de commodité",
+                  "Les segments statiques vous suffisent",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi changer -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi choisir Notifuse plutôt que Resend ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Les équipes choisissent Notifuse plutôt que Resend quand elles ont besoin de plus qu'une simple API email :
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Liberté open-source",
+                text: "Notifuse est open-source AGPL-3.0 — inspectez le code, modifiez-le, contribuez. Resend est un logiciel propriétaire à code fermé avec vendor lock-in.",
+              },
+              {
+                title: "Éditeur visuel pour les équipes",
+                text: "Resend exige que les développeurs codent chaque email en React. L'éditeur visuel MJML de Notifuse permet aux marketeurs de créer des emails sans coder — idéal pour les équipes pluridisciplinaires.",
+              },
+              {
+                title: "Pas de marge Amazon SES",
+                text: "Resend utilise Amazon SES et applique une marge. Notifuse se connecte directement à Amazon SES (ou tout autre ESP) sans marge — vous payez uniquement les coûts AWS. Économisez 300 $/an en évitant la marge Resend.",
+              },
+              {
+                title: "Flexibilité ESP",
+                text: "Pas de dépendance à un seul fournisseur. Utilisez Amazon SES pour le transactionnel, Mailgun pour les campagnes marketing. Changez d'ESP à tout moment. Configurez vos limites d'envoi. Resend vous verrouille sur Amazon SES uniquement.",
+              },
+              {
+                title: "Segmentation dynamique",
+                text: "Notifuse propose de vrais segments dynamiques avec filtres et conditions. Les « segments » de Resend sont de simples groupes statiques — impossible de cibler les « engagés ces 30 derniers jours » ou « ont ouvert sans cliquer ».",
+              },
+              {
+                title: "Timeline d'activité des contacts",
+                text: "Consultez l'historique complet des interactions de chaque contact. Resend n'a pas de timeline — impossible de voir l'historique email ou le comportement d'un contact.",
+              },
+              {
+                title: "Multi-tenancy pour les agences",
+                text: "Gérez plusieurs clients avec des espaces de travail isolés. Chacun dispose de sa propre base de données, domaine et clés API. Resend ne supporte pas le multi-tenancy.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Prêt à quitter Resend ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Migrez vos contacts et templates vers Notifuse. Connectez-vous directement à Amazon SES et commencez à économiser.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions fréquentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Puis-je obtenir la même délivrabilité que Resend ?",
+                a: "Oui ! Resend utilise Amazon SES en coulisses. Notifuse peut se connecter directement à Amazon SES (même infrastructure, même délivrabilité) sans la marge de Resend. Vous obtenez des performances de livraison identiques pour une fraction du coût.",
+              },
+              {
+                q: "Pourquoi payer Resend quand je peux utiliser Amazon SES directement ?",
+                a: "Exactement ! Resend facture séparément : 35 $/mois pour 100k emails transactionnels + 80 $/mois pour 10k contacts marketing. Amazon SES (que Resend utilise) ne coûte que 10 $ pour 100k emails. Notifuse Cloud démarre à 19 $/mois et se connecte directement à Amazon SES sans marge — combinant email transactionnel et marketing dans une seule plateforme. Vous évitez entièrement la marge de Resend — une économie importante, surtout si vous avez besoin des deux types d'emails.",
+              },
+              {
+                q: "Dois-je coder mes emails avec Notifuse comme avec Resend ?",
+                a: "Non ! C'est un avantage majeur. Resend exige de coder chaque template en React. Notifuse dispose d'un éditeur visuel MJML — glissez, déposez et créez de beaux emails sans écrire de code. Parfait pour les équipes avec des marketeurs.",
+              },
+              {
+                q: "Puis-je utiliser différents ESP pour différents types d'emails ?",
+                a: "Oui avec Notifuse ! Utilisez Amazon SES pour les emails transactionnels et Mailgun pour les campagnes marketing. Resend vous verrouille sur Amazon SES — impossible de mixer les fournisseurs ni d'en changer sans migrer de plateforme.",
+              },
+              {
+                q: "Et la segmentation des contacts ?",
+                a: "Notifuse propose des segments dynamiques avec filtres et conditions (ex. « ouvert ces 7 derniers jours », « a cliqué mais n'a pas converti »). Les « segments » de Resend sont de simples groupes statiques — vous gérez manuellement qui est dans chaque groupe. Aucun filtre dynamique ni mise à jour automatique.",
+              },
+              {
+                q: "Resend est-il vraiment juste Amazon SES avec une marge ?",
+                a: "Oui. Resend est construit sur l'infrastructure Amazon SES et ajoute des fonctionnalités de confort (React Email, interface agréable, webhooks) mais facture nettement plus qu'une utilisation directe d'Amazon SES. Avec Notifuse, vous obtenez ces mêmes fonctionnalités plus l'éditeur visuel, la segmentation et le multi-tenancy — tout en vous connectant directement à Amazon SES ou tout ESP de votre choix.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- CTA final -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à découvrir Notifuse ?</h3>
+                  <p class="text-gray-600 mb-6">Open-source, auto-hébergé, éditeur visuel MJML, liberté de fournisseur et pas de marge Amazon SES. Rejoignez les équipes qui ont quitté Resend.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Démo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

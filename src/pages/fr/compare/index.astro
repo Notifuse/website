@@ -1,89 +1,90 @@
 ---
-import "../../styles/global.css"
-import Navigation from "../../components/Navigation.astro"
-import Footer from "../../components/Footer.astro"
-import GtagHead from "../../components/GtagHead.astro"
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
 
 // Import competitor logos
-import listmonkLogo from "../../assets/competitors/listmonk-logo.png"
-import resendLogo from "../../assets/competitors/resend-logo.png"
-import mailchimpLogo from "../../assets/competitors/mailchimp-logo.png"
-import loopsLogo from "../../assets/competitors/loops-logo.png"
-import customerioLogo from "../../assets/competitors/customerio-logo.png"
-import klaviyoLogo from "../../assets/competitors/klaviyo-logo.png"
-import mailerliteLogo from "../../assets/competitors/mailerlite-logo.png"
-import brevoLogo from "../../assets/competitors/brevo-logo.png"
-import mauticLogo from "../../assets/competitors/mautic-logo.png"
+import listmonkLogo from "../../../assets/competitors/listmonk-logo.png"
+import resendLogo from "../../../assets/competitors/resend-logo.png"
+import mailchimpLogo from "../../../assets/competitors/mailchimp-logo.png"
+import loopsLogo from "../../../assets/competitors/loops-logo.png"
+import customerioLogo from "../../../assets/competitors/customerio-logo.png"
+import klaviyoLogo from "../../../assets/competitors/klaviyo-logo.png"
+import mailerliteLogo from "../../../assets/competitors/mailerlite-logo.png"
+import brevoLogo from "../../../assets/competitors/brevo-logo.png"
+import mauticLogo from "../../../assets/competitors/mautic-logo.png"
 
 // Comparison alternatives data
 const alternatives = [
   {
     name: "Listmonk",
     slug: "listmonk",
-    description: "Self-hosted mailing list manager",
+    description: "Gestionnaire de listes auto-hébergé",
     logo: listmonkLogo,
     available: true,
   },
   {
     name: "Resend",
     slug: "resend",
-    description: "Email API built for developers",
+    description: "API email pour développeurs",
     logo: resendLogo,
     available: true,
   },
   {
     name: "Mailchimp",
     slug: "mailchimp",
-    description: "Popular email marketing platform",
+    description: "Plateforme d'email marketing populaire",
     logo: mailchimpLogo,
     available: true,
   },
   {
     name: "Loops",
     slug: "loops",
-    description: "Email platform designed for SaaS",
+    description: "Plateforme email pour SaaS",
     logo: loopsLogo,
     available: true,
   },
   {
     name: "Customer.io",
     slug: "customerio",
-    description: "Automated messaging platform",
+    description: "Plateforme de messagerie automatisée",
     logo: customerioLogo,
     available: true,
   },
   {
     name: "Klaviyo",
     slug: "klaviyo",
-    description: "Marketing automation for ecommerce",
+    description: "Marketing automation pour l'e-commerce",
     logo: klaviyoLogo,
     available: true,
   },
   {
     name: "MailerLite",
     slug: "mailerlite",
-    description: "Email marketing platform",
+    description: "Plateforme d'email marketing",
     logo: mailerliteLogo,
     available: true,
   },
   {
     name: "Brevo",
     slug: "brevo",
-    description: "Digital marketing platform",
+    description: "Plateforme de marketing digital",
     logo: brevoLogo,
     available: true,
   },
   {
     name: "Mautic",
     slug: "mautic",
-    description: "Open-source marketing automation platform",
+    description: "Plateforme de marketing automation open-source",
     logo: mauticLogo,
     available: true,
   },
 ]
 ---
 
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -92,37 +93,37 @@ const alternatives = [
 
     <!-- SEO Meta Tags -->
     <title>
-      Notifuse Alternatives Comparison - vs Listmonk, Mailchimp, Brevo & More
+      Comparaison des alternatives à Notifuse — vs Listmonk, Mailchimp, Brevo...
     </title>
     <meta
       name="description"
-      content="Compare Notifuse with popular email platforms like Listmonk, Mailchimp, Brevo, SendGrid, Mailgun, and more. Find the best email solution for your needs — Cloud or self-hosted."
+      content="Comparez Notifuse avec les plateformes email populaires comme Listmonk, Mailchimp, Brevo, SendGrid, Mailgun et d'autres. Trouvez la meilleure solution email pour vos besoins — Cloud ou auto-hébergé."
     />
-    <link rel="canonical" href="https://notifuse.com/compare" />
+    <link rel="canonical" href="https://notifuse.com/fr/compare" />
     <meta name="theme-color" content="#7763F1" />
     <meta
       name="keywords"
-      content="Notifuse alternatives, email platform comparison, Listmonk alternative, Mailchimp alternative, self-hosted email, open source newsletter"
+      content="alternatives Notifuse, comparaison plateforme email, alternative Listmonk, alternative Mailchimp, email auto-hébergé, newsletter open source"
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://notifuse.com/compare" />
-    <meta property="og:title" content="Notifuse Alternatives Comparison" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare" />
+    <meta property="og:title" content="Comparaison des alternatives à Notifuse" />
     <meta
       property="og:description"
-      content="Compare Notifuse with popular email platforms like Listmonk, Mailchimp, Brevo, SendGrid, and more."
+      content="Comparez Notifuse avec les plateformes email populaires comme Listmonk, Mailchimp, Brevo, SendGrid et d'autres."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:site_name" content="Notifuse" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Notifuse Alternatives Comparison" />
+    <meta name="twitter:title" content="Comparaison des alternatives à Notifuse" />
     <meta
       name="twitter:description"
-      content="Compare Notifuse with popular email platforms."
+      content="Comparez Notifuse avec les plateformes email populaires."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -156,24 +157,24 @@ const alternatives = [
         <div class="px-4 lg:px-8 py-20">
           <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Compare
+              Comparez
               <span
                 class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent"
               >
                 Notifuse
               </span>
-              <span class="text-slate-900"> with Alternatives</span>
+              <span class="text-slate-900"> avec les alternatives</span>
             </h1>
             <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              See how Notifuse stacks up against other email platforms.
-              Self-hosted, cloud-based, open-source, or proprietary—find the
-              right comparison for your needs.
+              Découvrez comment Notifuse se compare aux autres plateformes email.
+              Auto-hébergé, cloud, open-source ou propriétaire — trouvez la
+              comparaison adaptée à vos besoins.
             </p>
 
             <!-- Newsletter Signup CTA -->
             <div class="max-w-md mx-auto">
               <p class="text-sm text-gray-600 mb-4">
-                Get notified when new features are added
+                Soyez informé des nouvelles fonctionnalités
               </p>
               <form
                 id="newsletter-form-hero"
@@ -182,7 +183,7 @@ const alternatives = [
                 <input
                   id="email-input-hero"
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Votre adresse email"
                   class="flex-1 px-4 py-2.5 rounded-md border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   required
                 />
@@ -191,12 +192,12 @@ const alternatives = [
                   type="submit"
                   class="bg-primary text-white px-6 py-2.5 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Subscribe to newsletter
+                  S'abonner
                 </button>
               </form>
               <div id="form-message-hero" class="mt-3 text-sm"></div>
               <p class="text-xs text-gray-500 mt-2">
-                No spam. Unsubscribe anytime.
+                Pas de spam. Désabonnement possible à tout moment.
               </p>
             </div>
           </div>
@@ -211,7 +212,7 @@ const alternatives = [
           {
             alternatives.map((alt, index) => (
               <a
-                href={alt.available ? `/compare/notifuse-vs-${alt.slug}` : "#"}
+                href={alt.available ? `/fr/compare/notifuse-vs-${alt.slug}` : "#"}
                 class={`relative p-8 border-r border-b border-gray-200 transition-colors ${
                   alt.available
                     ? "hover:bg-white cursor-pointer"
@@ -221,7 +222,7 @@ const alternatives = [
                 {!alt.available && (
                   <div class="absolute top-4 right-4">
                     <span class="text-xs bg-gray-600 text-white px-2 py-1">
-                      Coming Soon
+                      Bientôt disponible
                     </span>
                   </div>
                 )}
@@ -229,7 +230,7 @@ const alternatives = [
                 <div class="mb-6">
                   <img
                     src={alt.logo.src}
-                    alt={`${alt.name} logo`}
+                    alt={`Logo ${alt.name}`}
                     class="h-8 mb-4"
                   />
                   <h3 class="text-lg font-bold text-slate-900 mb-2">
@@ -241,7 +242,7 @@ const alternatives = [
 
                 {alt.available ? (
                   <div class="flex items-center text-primary text-sm font-semibold">
-                    View Comparison
+                    Voir la comparaison
                     <svg
                       class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
                       fill="none"
@@ -258,7 +259,7 @@ const alternatives = [
                   </div>
                 ) : (
                   <div class="text-sm text-gray-400">
-                    Comparison coming soon
+                    Comparaison bientôt disponible
                   </div>
                 )}
               </a>
@@ -272,7 +273,7 @@ const alternatives = [
         <div class="px-4 lg:px-8 py-16">
           <div class="max-w-4xl mx-auto">
             <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">
-              Why Compare Email Platforms?
+              Pourquoi comparer les plateformes email ?
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -295,11 +296,11 @@ const alternatives = [
                 </div>
                 <div>
                   <h3 class="font-semibold text-slate-900 mb-2">
-                    Make Informed Decisions
+                    Prenez des décisions éclairées
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Understand the differences in features, pricing, and
-                    capabilities before choosing your email platform.
+                    Comprenez les différences en termes de fonctionnalités, de
+                    tarifs et de capacités avant de choisir votre plateforme email.
                   </p>
                 </div>
               </div>
@@ -323,10 +324,10 @@ const alternatives = [
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-semibold text-slate-900 mb-2">Save Money</h3>
+                  <h3 class="font-semibold text-slate-900 mb-2">Économisez</h3>
                   <p class="text-sm text-gray-600">
-                    See how Notifuse Cloud compares to expensive email
-                    platforms and calculate your savings.
+                    Découvrez comment Notifuse Cloud se compare aux plateformes
+                    email coûteuses et calculez vos économies.
                   </p>
                 </div>
               </div>
@@ -350,11 +351,12 @@ const alternatives = [
                 </div>
                 <div>
                   <h3 class="font-semibold text-slate-900 mb-2">
-                    Find the Right Features
+                    Trouvez les bonnes fonctionnalités
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Discover which platform has the visual builders, APIs,
-                    segmentation, and automation features you need.
+                    Découvrez quelle plateforme propose les éditeurs visuels, les
+                    API, la segmentation et les fonctionnalités d'automatisation
+                    dont vous avez besoin.
                   </p>
                 </div>
               </div>
@@ -379,11 +381,12 @@ const alternatives = [
                 </div>
                 <div>
                   <h3 class="font-semibold text-slate-900 mb-2">
-                    Own Your Data
+                    Gardez le contrôle de vos données
                   </h3>
                   <p class="text-sm text-gray-600">
-                    Keep full ownership of your data with Notifuse Cloud or
-                    self-host. Full database export on demand.
+                    Conservez la pleine propriété de vos données avec Notifuse
+                    Cloud ou en auto-hébergement. Export complet de la base de
+                    données sur demande.
                   </p>
                 </div>
               </div>
@@ -399,30 +402,31 @@ const alternatives = [
             class="max-w-3xl mx-auto bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 text-center"
           >
             <h2 class="text-2xl font-bold text-slate-900 mb-4">
-              Ready to Try Notifuse?
+              Prêt à essayer Notifuse ?
             </h2>
             <p class="text-gray-600 mb-6">
-              Experience the modern email platform with advanced
-              features for developers and marketers. Start with Cloud or self-host.
+              Découvrez la plateforme email moderne avec des fonctionnalités
+              avancées pour les développeurs et les marketeurs. Commencez avec
+              le Cloud ou en auto-hébergement.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="https://cloud.notifuse.com/signup"
                 class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
               >
-                Start Free Trial
+                Essai gratuit
               </a>
               <a
                 href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
                 class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
               >
-                Try Live Demo
+                Démo en ligne
               </a>
               <a
                 href="https://docs.notifuse.com/installation"
                 class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors"
               >
-                Self-Host
+                Auto-hébergé
               </a>
             </div>
           </div>
@@ -432,6 +436,8 @@ const alternatives = [
       <!-- Footer -->
       <Footer />
     </div>
+
+    <CookieConsent />
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -459,8 +465,8 @@ const alternatives = [
           if (submitBtn) {
             submitBtn.disabled = loading
             submitBtn.textContent = loading
-              ? "Subscribing..."
-              : "Subscribe to newsletter"
+              ? "Inscription en cours..."
+              : "S'abonner"
           }
         }
 
@@ -470,7 +476,7 @@ const alternatives = [
 
             const email = emailInput.value.trim()
             if (!email) {
-              showMessage("Please enter a valid email address.", true)
+              showMessage("Veuillez entrer une adresse email valide.", true)
               return
             }
 
@@ -499,22 +505,22 @@ const alternatives = [
                 const data = await response.json()
                 if (data.success) {
                   showMessage(
-                    "Successfully subscribed! Check your email for confirmation."
+                    "Inscription réussie ! Vérifiez votre email pour la confirmation."
                   )
                   emailInput.value = ""
                 } else {
-                  showMessage("Subscription failed. Please try again.", true)
+                  showMessage("L'inscription a échoué. Veuillez réessayer.", true)
                 }
               } else {
                 const errorData = await response.json().catch(() => ({}))
                 const errorMessage =
-                  errorData.message || "Subscription failed. Please try again."
+                  errorData.message || "L'inscription a échoué. Veuillez réessayer."
                 showMessage(errorMessage, true)
               }
             } catch (error) {
               console.error("Subscription error:", error)
               showMessage(
-                "Network error. Please check your connection and try again.",
+                "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
                 true
               )
             } finally {

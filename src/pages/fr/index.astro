@@ -1,55 +1,56 @@
 ---
-import "../styles/global.css"
-import emailBuilderImage from "../assets/screenshots/email_editor.png"
-import emailBuilderZoomImage from "../assets/screenshots/email_builder_zoom.png"
-import IntegrationMarquee from "../components/IntegrationMarquee.astro"
-import Navigation from "../components/Navigation.astro"
-import GtagHead from "../components/GtagHead.astro"
-import Footer from "../components/Footer.astro"
-import FileManagerPreview from "../components/FileManagerPreview.astro"
-import ContactProfilePreview from "../components/ContactProfilePreview.astro"
-import AnalyticsPreview from "../components/AnalyticsPreview.astro"
-import ABTestingPreview from "../components/ABTestingPreview.astro"
-import TransactionalAPIPreview from "../components/TransactionalAPIPreview.astro"
-import NotificationCenterPreview from "../components/NotificationCenterPreview.astro"
-import SegmentationEnginePreview from "../components/SegmentationEnginePreview.astro"
-import PermissionsPreview from "../components/PermissionsPreview.astro"
-import WorkspacesPreview from "../components/WorkspacesPreview.astro"
-import AutomationsPreview from "../components/AutomationsPreview.astro"
+import "../../styles/global.css"
+import emailBuilderImage from "../../assets/screenshots/email_editor.png"
+import emailBuilderZoomImage from "../../assets/screenshots/email_builder_zoom.png"
+import IntegrationMarquee from "../../components/IntegrationMarquee.astro"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import FileManagerPreview from "../../components/FileManagerPreview.astro"
+import ContactProfilePreview from "../../components/ContactProfilePreview.astro"
+import AnalyticsPreview from "../../components/AnalyticsPreview.astro"
+import ABTestingPreview from "../../components/ABTestingPreview.astro"
+import TransactionalAPIPreview from "../../components/TransactionalAPIPreview.astro"
+import NotificationCenterPreview from "../../components/NotificationCenterPreview.astro"
+import SegmentationEnginePreview from "../../components/SegmentationEnginePreview.astro"
+import PermissionsPreview from "../../components/PermissionsPreview.astro"
+import WorkspacesPreview from "../../components/WorkspacesPreview.astro"
+import AutomationsPreview from "../../components/AutomationsPreview.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import CookieConsent from "../../components/CookieConsent.astro"
 ---
 
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Notifuse - Free Open-Source Alternative to Mailchimp & Resend</title>
+    <title>Notifuse - Alternative open-source gratuite à Mailchimp et Resend</title>
     <meta
       name="description"
-      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
     />
 
     <!-- SEO Meta Tags -->
-    <link rel="canonical" href="https://notifuse.com/" />
+    <link rel="canonical" href="https://notifuse.com/fr/" />
     <meta name="theme-color" content="#7763F1" />
     <meta name="author" content="Notifuse" />
     <meta
       name="keywords"
-      content="open source email platform, newsletter software, mailchimp alternative, self-hosted email, transactional email, MJML editor, email marketing, resend alternative"
+      content="plateforme email open source, logiciel newsletter, alternative mailchimp, email auto-hébergé, email transactionnel, éditeur MJML, email marketing, alternative resend"
     />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://notifuse.com/" />
+    <meta property="og:url" content="https://notifuse.com/fr/" />
     <meta
       property="og:title"
-      content="Notifuse - Free Open-Source Alternative to Mailchimp & Resend"
+      content="Notifuse - Alternative open-source gratuite à Mailchimp et Resend"
     />
     <meta
       property="og:description"
-      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -60,11 +61,11 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Notifuse - Free Open-Source Alternative to Mailchimp & Resend"
+      content="Notifuse - Alternative open-source gratuite à Mailchimp et Resend"
     />
     <meta
       name="twitter:description"
-      content="Open-source email platform for newsletters and transactional emails. Self-hosted alternative to Mailchimp, Resend, and Loops.so with visual MJML editor, A/B testing, and analytics."
+      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -74,7 +75,6 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <GtagHead />
-
     <script
       defer
       data-domain="notifuse.com"
@@ -103,17 +103,17 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             <!-- Content -->
             <div class="text-center lg:text-left">
               <h1 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-6">
-                The open-source <span class="italic text-primary"
+                L'<span class="italic text-primary"
                   >alternative</span
-                > to:<br />
+                > open-source à :<br />
                 <span class="text-sm lg:text-lg text-gray-600 font-normal"
                   >Mailchimp, Brevo, Mailjet, Listmonk, Mailerlite, Klaviyo...</span
                 >
               </h1>
               <p class="text-lg text-black mb-10 max-w-3xl lg:max-w-none">
-                Notifuse is a modern, self-hosted emailing platform that allows
-                you to send newsletters and transactional emails at a fraction
-                of the cost.
+                Notifuse est une plateforme d'emailing moderne et auto-hébergée
+                qui vous permet d'envoyer des newsletters et des emails
+                transactionnels à moindre coût.
               </p>
               <div
                 class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
@@ -122,13 +122,13 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                   href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
                   class="bg-primary text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
                 >
-                  Live Demo
+                  Démo en ligne
                 </a>
                 <a
                   href="https://cloud.notifuse.com/signup"
                   class="border border-gray-200 text-gray-700 px-4 py-2 rounded-md text-base font-semibold hover:bg-white transition-colors"
                 >
-                  Sign up free
+                  S'inscrire gratuitement
                 </a>
               </div>
             </div>
@@ -140,7 +140,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
               <div class="relative">
                 <img
                   src={emailBuilderImage.src}
-                  alt="Notifuse Dashboard Preview"
+                  alt="Aperçu du tableau de bord Notifuse"
                   class="w-full rounded-xl shadow-xl shadow-primary/25 border border-gray-200"
                 />
               </div>
@@ -157,11 +157,11 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
         <div class="py-20">
           <div class="px-4 lg:px-8 text-center mb-16">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">
-              Everything you need to succeed
+              Tout ce dont vous avez besoin pour réussir
             </h2>
             <p class="text-xl text-gray-600 mx-auto">
-              Powerful features designed to help you create, send, and track
-              your newsletters with ease.
+              Des fonctionnalités puissantes conçues pour vous aider à créer,
+              envoyer et suivre vos newsletters facilement.
             </p>
           </div>
 
@@ -176,24 +176,25 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-6">
                 <h3 class="text-lg font-bold text-slate-900">
-                  Visual Email Builder
+                  Éditeur d'emails visuel
                 </h3>
               </div>
               <div class="flex flex-col md:flex-row md:items-start gap-6">
                 <div class="flex-1">
                   <p class="text-gray-600 text-sm mb-4">
-                    Create stunning emails with our intuitive drag-and-drop
-                    editor. Build responsive layouts with <span
+                    Créez de superbes emails avec notre éditeur intuitif en
+                    glisser-déposer. Construisez des mises en page responsives
+                    avec des composants <span
                       class="text-primary font-semibold">MJML</span
-                    > components and real-time preview.
+                    > et un aperçu en temps réel.
                   </p>
                   <p class="text-gray-600 text-sm mb-6">
-                    Personalize emails with <span
+                    Personnalisez vos emails avec les variables de template <span
                       class="text-primary font-semibold">Liquid</span
-                    > templating variables like <span
+                    > comme <span
                       class="px-1.5 py-0.5 bg-orange-100 rounded font-mono text-xs"
                       >{`{{ contact.first_name }}`}</span
-                    > and custom fields for dynamic content.
+                    > et des champs personnalisés pour du contenu dynamique.
                   </p>
                 </div>
                 <div
@@ -202,7 +203,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                   <div class="rounded-xl overflow-hidden bg-white">
                     <img
                       src={emailBuilderZoomImage.src}
-                      alt="Email Builder Interface"
+                      alt="Interface de l'éditeur d'emails"
                       class="w-full h-auto opacity-65"
                     />
                   </div>
@@ -216,15 +217,15 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  S3 File Manager
+                  Gestionnaire de fichiers S3
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Integrated file management with <span
+                Gestion intégrée des fichiers avec stockage compatible <span
                   class="text-primary font-semibold">S3</span
-                > compatible storage for images, attachments, and <span
+                > pour les images, les pièces jointes et la diffusion via <span
                   class="text-primary font-semibold">CDN</span
-                > delivery.
+                >.
               </p>
               <FileManagerPreview />
             </div>
@@ -236,13 +237,14 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Contact Profiles & Timeline
+                  Profils contacts et historique
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Rich contact profiles with custom fields and complete activity
-                history including messages, profile changes, webhook events, and
-                subscription list changes.
+                Profils de contacts enrichis avec champs personnalisés et
+                historique complet des activités incluant les messages, les
+                modifications de profil, les événements webhook et les
+                changements de listes d'abonnement.
               </p>
               <ContactProfilePreview />
             </div>
@@ -253,12 +255,13 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Transactional API
+                  API transactionnelle
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Powerful REST API for transactional emails with responsive
-                templates for perfect rendering across all devices.
+                API REST puissante pour les emails transactionnels avec des
+                templates responsives pour un rendu parfait sur tous les
+                appareils.
               </p>
               <TransactionalAPIPreview />
             </div>
@@ -270,12 +273,13 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Opens & Click Tracking
+                  Suivi des ouvertures et clics
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Real-time analytics with detailed open rates, click tracking,
-                and engagement metrics for campaign optimization.
+                Analytiques en temps réel avec taux d'ouverture détaillés, suivi
+                des clics et métriques d'engagement pour optimiser vos
+                campagnes.
               </p>
               <AnalyticsPreview />
             </div>
@@ -286,12 +290,12 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Notification Center
+                  Centre de notifications
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Self-service portal for contacts to manage subscriptions,
-                preferences, and communication settings.
+                Portail en libre-service permettant aux contacts de gérer leurs
+                abonnements, préférences et paramètres de communication.
               </p>
               <NotificationCenterPreview />
             </div>
@@ -302,12 +306,12 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  A/B Testing
+                  Tests A/B
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Optimize your newsletters with built-in A/B testing for subject
-                lines, content, and send times.
+                Optimisez vos newsletters grâce aux tests A/B intégrés pour les
+                objets, le contenu et les horaires d'envoi.
               </p>
               <ABTestingPreview />
             </div>
@@ -319,12 +323,13 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  Real-time Segmentation
+                  Segmentation en temps réel
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Segment contacts by property, activity, and subscription. Build
-                dynamic rules with relative dates for targeted campaigns.
+                Segmentez vos contacts par propriété, activité et abonnement.
+                Créez des règles dynamiques avec des dates relatives pour des
+                campagnes ciblées.
               </p>
               <SegmentationEnginePreview />
             </div>
@@ -336,12 +341,13 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
             >
               <div class="mb-4">
                 <h3 class="text-lg font-semibold text-slate-900">
-                  User Permissions
+                  Gestion des permissions
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Granular workspace-level access control with multiple roles.
-                Perfect for team collaboration and security.
+                Contrôle d'accès granulaire au niveau des workspaces avec
+                plusieurs rôles. Idéal pour la collaboration en équipe et la
+                sécurité.
               </p>
               <PermissionsPreview />
             </div>
@@ -354,9 +360,9 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 <h3 class="text-lg font-semibold text-slate-900">Workspaces</h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Multi-tenant architecture with custom domains. Each workspace
-                has isolated data, contacts, and campaigns. Perfect for
-                agencies.
+                Architecture multi-tenant avec domaines personnalisés. Chaque
+                workspace dispose de données, contacts et campagnes isolés.
+                Idéal pour les agences.
               </p>
               <WorkspacesPreview />
             </div>
@@ -370,22 +376,23 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 <div class="flex flex-col justify-center md:order-1">
                   <div class="mb-4">
                     <h3 class="text-lg font-semibold text-slate-900">
-                      Automations
+                      Automatisations
                     </h3>
                   </div>
                   <p class="text-gray-600 text-sm mb-3">
-                    Event-driven workflows built on contact timeline. Create
-                    automated sequences based on subscriber behavior and
-                    actions.
+                    Workflows déclenchés par événements, basés sur la timeline
+                    des contacts. Créez des séquences automatisées selon le
+                    comportement et les actions des abonnés.
                   </p>
                   <p class="text-gray-600 text-sm mb-3">
-                    Trigger emails, wait periods, conditions, and A/B tests in
-                    multi-step flows. Perfect for welcome series, onboarding,
-                    and re-engagement campaigns.
+                    Déclenchez des emails, des délais d'attente, des conditions
+                    et des tests A/B dans des flux multi-étapes. Idéal pour les
+                    séries de bienvenue, l'onboarding et les campagnes de
+                    réengagement.
                   </p>
                   <p class="text-gray-600 text-sm">
-                    Design complex journeys with visual workflow builder and
-                    automatic execution.
+                    Concevez des parcours complexes avec le constructeur visuel
+                    de workflows et l'exécution automatique.
                   </p>
                 </div>
 
@@ -404,11 +411,11 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
         <div class="px-4 lg:px-8 py-20">
           <div class="text-center max-w-3xl mx-auto">
             <h2 class="text-3xl font-bold text-slate-900 mb-4">
-              Customer support is always here to help you
+              Le support client est toujours là pour vous aider
             </h2>
             <p class="text-xl text-gray-600 mb-12">
-              Whether you self-host or use Notifuse Cloud, we've got you
-              covered.
+              Que vous utilisiez l'auto-hébergement ou Notifuse Cloud, nous
+              sommes là pour vous.
             </p>
             <div
               class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto"
@@ -418,19 +425,19 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                   Notifuse Cloud
                 </h3>
                 <p class="text-gray-600 text-sm mb-4">
-                  Priority email support on all paid plans.
+                  Support email prioritaire sur tous les plans payants.
                 </p>
                 <a
                   href="/pricing"
                   class="inline-block bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  View pricing
+                  Voir les tarifs
                 </a>
               </div>
               <div class="text-center">
-                <h3 class="font-semibold text-slate-900 mb-2">Self-hosted</h3>
+                <h3 class="font-semibold text-slate-900 mb-2">Auto-hébergé</h3>
                 <p class="text-gray-600 text-sm mb-4">
-                  Community support via GitHub Issues.
+                  Support communautaire via GitHub Issues.
                 </p>
                 <a
                   href="https://github.com/notifuse/notifuse/issues"
@@ -438,7 +445,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                   rel="noopener noreferrer"
                   class="inline-block border border-gray-300 text-slate-900 px-6 py-2.5 rounded-md font-semibold hover:bg-gray-50 transition-colors"
                 >
-                  Open an issue
+                  Ouvrir un ticket
                 </a>
               </div>
             </div>
@@ -450,18 +457,19 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
       <section class="bg-gray-900 text-white border-t border-gray-200">
         <div class="px-4 lg:px-8 py-20 text-center">
           <h2 class="text-2xl font-bold mb-4">
-            Stay updated with <span class="italic text-primary">Notifuse</span>
+            Restez informé avec <span class="italic text-primary">Notifuse</span>
           </h2>
           <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
-            Get the latest updates, feature announcements, and tips for building
-            better newsletters. Join our community of developers and marketers.
+            Recevez les dernières mises à jour, annonces de fonctionnalités et
+            conseils pour créer de meilleures newsletters. Rejoignez notre
+            communauté de développeurs et marketeurs.
           </p>
           <div class="max-w-md mx-auto">
             <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3">
               <input
                 id="email-input"
                 type="email"
-                placeholder="Enter your email address"
+                placeholder="Votre adresse email"
                 class="flex-1 px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 required
               />
@@ -470,12 +478,12 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 type="submit"
                 class="bg-primary text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Subscribe
+                S'abonner
               </button>
             </form>
             <div id="form-message" class="mt-3 text-sm"></div>
             <p class="text-sm text-gray-400 mt-3">
-              No spam, unsubscribe at any time.
+              Pas de spam, désinscription à tout moment.
             </p>
           </div>
         </div>
@@ -484,6 +492,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
       <Footer />
     </div>
 
+    <CookieConsent />
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const form = document.getElementById(
@@ -509,7 +518,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
         function setLoading(loading: boolean): void {
           if (submitBtn) {
             submitBtn.disabled = loading
-            submitBtn.textContent = loading ? "Subscribing..." : "Subscribe"
+            submitBtn.textContent = loading ? "Inscription..." : "S'abonner"
           }
         }
 
@@ -519,7 +528,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
 
             const email = emailInput.value.trim()
             if (!email) {
-              showMessage("Please enter a valid email address.", true)
+              showMessage("Veuillez entrer une adresse email valide.", true)
               return
             }
 
@@ -548,22 +557,22 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 const data = await response.json()
                 if (data.success) {
                   showMessage(
-                    "Successfully subscribed! Check your email for confirmation."
+                    "Inscription réussie ! Vérifiez votre email pour confirmer."
                   )
                   emailInput.value = ""
                 } else {
-                  showMessage("Subscription failed. Please try again.", true)
+                  showMessage("L'inscription a échoué. Veuillez réessayer.", true)
                 }
               } else {
                 const errorData = await response.json().catch(() => ({}))
                 const errorMessage =
-                  errorData.message || "Subscription failed. Please try again."
+                  errorData.message || "L'inscription a échoué. Veuillez réessayer."
                 showMessage(errorMessage, true)
               }
             } catch (error) {
               console.error("Subscription error:", error)
               showMessage(
-                "Network error. Please check your connection and try again.",
+                "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
                 true
               )
             } finally {

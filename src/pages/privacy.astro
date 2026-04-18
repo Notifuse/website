@@ -2,6 +2,7 @@
 import "../styles/global.css"
 import Navigation from "../components/Navigation.astro"
 import Footer from "../components/Footer.astro"
+import GtagHead from "../components/GtagHead.astro"
 
 const lastUpdated = "March 27, 2026"
 ---
@@ -19,6 +20,7 @@ const lastUpdated = "March 27, 2026"
     />
     <link rel="canonical" href="https://notifuse.com/privacy" />
     <meta name="robots" content="index, follow" />
+    <GtagHead />
   </head>
 
   <body class="bg-white-98 text-slate-900">

@@ -1,0 +1,1139 @@
+---
+import "../../../styles/global.css"
+import Navigation from "../../../components/Navigation.astro"
+import Footer from "../../../components/Footer.astro"
+import ComparisonLayout from "../../../components/ComparisonLayout.astro"
+import TableOfContents from "../../../components/TableOfContents.astro"
+import ProConsTable from "../../../components/ProConsTable.astro"
+import ComparisonTable from "../../../components/ComparisonTable.astro"
+import FeatureSection from "../../../components/FeatureSection.astro"
+import GtagHead from "../../../components/GtagHead.astro"
+import CookieConsent from "../../../components/CookieConsent.astro"
+import emailEditorImage from "../../../assets/screenshots/email_editor.png"
+import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
+import dashboardImage from "../../../assets/screenshots/dashboard.png"
+
+const tocItems = [
+  { id: "apercu", label: "Apercu" },
+  { id: "comparaison-rapide", label: "Comparaison rapide" },
+  { id: "editeur-email", label: "Editeur d'emails" },
+  { id: "campagnes", label: "Campagnes" },
+  { id: "transactionnel", label: "Email transactionnel" },
+  { id: "contacts", label: "Contacts & Segmentation" },
+  { id: "envoi-email", label: "Envoi & Delivrabilite" },
+  { id: "analytics", label: "Analytics & Reporting" },
+  { id: "automations", label: "Automations" },
+  { id: "evenements", label: "Evenements personnalises" },
+  { id: "multi-tenant", label: "Multi-tenant & Agences" },
+  { id: "api-developpeur", label: "API & Developpeurs" },
+  { id: "blog", label: "Blog" },
+  { id: "tarifs", label: "Tarifs & Couts" },
+  { id: "cas-usage", label: "Cas d'usage" },
+  { id: "pourquoi-changer", label: "Pourquoi changer" },
+  { id: "faq", label: "FAQ" },
+]
+
+const proConsRows = [
+  {
+    label: "Prix de depart",
+    notifuse: "Des 19 $/mois (Cloud) ou auto-heberge",
+    competitor: "Gratuit jusqu'a 250 contacts ; payant des 20 $/mois",
+  },
+  {
+    label: "Licence",
+    notifuse: "Open-source (AGPL-3.0)",
+    competitor: "SaaS proprietaire",
+  },
+  {
+    label: "Deploiement",
+    notifuse: "Auto-heberge (Docker)",
+    competitor: "Cloud SaaS uniquement",
+  },
+  {
+    label: "Ideal pour",
+    notifuse:
+      "Developpeurs & marketeurs voulant un email auto-heberge avec des fonctionnalites avancees",
+    competitor:
+      "Marques e-commerce avec integration Shopify et marketing multi-canal",
+  },
+  {
+    label: "Editeur visuel",
+    notifuse: "MJML glisser-deposer & editeur de code",
+    competitor: "Glisser-deposer avec 160+ templates",
+  },
+  {
+    label: "Integrations",
+    notifuse:
+      "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost, S3, Supabase, SMTP",
+    competitor: "350+ (Shopify, WooCommerce, BigCommerce, CRM, plateformes pub)",
+  },
+  {
+    label: "Multi-tenant",
+    notifuse: "Oui (espaces de travail)",
+    competitor: "Non (gestion de portefeuille uniquement)",
+  },
+]
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Notifuse vs Klaviyo : plateforme email open-source vs marketing e-commerce (2026)</title>
+    <meta
+      name="description"
+      content="Comparez Notifuse et Klaviyo pour l'email marketing, le transactionnel et les automations. Open-source auto-heberge vs SaaS e-commerce. Fonctionnalites, tarifs et cas d'usage."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/compare/notifuse-vs-klaviyo" />
+    <meta name="theme-color" content="#7763F1" />
+    <meta
+      name="keywords"
+      content="Notifuse vs Klaviyo, alternative Klaviyo, alternative Klaviyo open-source, plateforme email auto-hebergee, editeur MJML, API email transactionnel, tarifs Klaviyo"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://notifuse.com/fr/compare/notifuse-vs-klaviyo" />
+    <meta property="og:title" content="Notifuse vs Klaviyo : plateforme email open-source vs marketing e-commerce" />
+    <meta
+      property="og:description"
+      content="Comparez Notifuse et Klaviyo pour l'email marketing, le transactionnel et les automations. Open-source auto-heberge vs SaaS e-commerce. Fonctionnalites, tarifs et cas d'usage."
+    />
+    <meta property="og:image" content="https://notifuse.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Notifuse" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Notifuse vs Klaviyo : plateforme email open-source vs marketing e-commerce" />
+    <meta
+      name="twitter:description"
+      content="Comparez Notifuse et Klaviyo pour l'email marketing, le transactionnel et les automations. Open-source auto-heberge vs SaaS e-commerce."
+    />
+    <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
+    <meta name="twitter:site" content="@notifuse" />
+    <meta name="twitter:creator" content="@notifuse" />
+
+    <GtagHead />
+
+    <script
+      defer
+      data-domain="notifuse.com"
+      src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Staminads Analytics -->
+    <link rel="dns-prefetch" href="https://prod.staminads.com" />
+    <link rel="preconnect" href="https://prod.staminads.com" />
+    <script is:inline>
+    window.StaminadsConfig = {
+      workspace_id: 'notifuse',
+      endpoint: 'https://prod.staminads.com'
+    };
+    </script>
+    <script async src="/staminads_5.0.0.min.js"></script>
+  </head>
+
+  <body class="bg-white-98">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <!-- Hero -->
+      <section class="border-b border-gray-200">
+        <div class="px-4 lg:px-8 py-20">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+              <span class="bg-gradient-to-r from-primary to-pink-600 bg-clip-text text-transparent">Notifuse</span>
+              <span class="text-slate-900"> vs Klaviyo</span>
+            </h1>
+            <p class="text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+              Klaviyo est une plateforme marketing e-commerce avec une integration Shopify poussee. Mais si votre priorite est l'email, Notifuse offre des capacites comparables -- editeur visuel MJML, automations, segmentation, API transactionnelle -- sans la facturation par profil qui peut atteindre 720 $/mois a 50 000 contacts. Cloud des 19 $/mois ou auto-heberge.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
+                class="border border-gray-200 text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-white transition-colors"
+              >
+                Demo en ligne
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Comparison Layout -->
+      <ComparisonLayout
+        title="Notifuse vs Klaviyo"
+        description="Comparaison detaillee des fonctionnalites, tarifs et cas d'usage"
+      >
+        <TableOfContents slot="toc" items={tocItems} />
+
+        <!-- Apercu -->
+        <FeatureSection id="apercu" title="Apercu">
+          <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl mb-12">
+            <div class="bg-gradient-to-br from-orange-50 to-pink-50 rounded-xl p-12">
+              <h3 class="text-xl font-bold text-slate-900 mb-8">Deux approches de l'email</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">1.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Auto-heberge & Open-source</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> propriete totale des donnees, pas de facturation par profil, connectez votre propre ESP (Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost). Deployez sur votre infrastructure.
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Klaviyo :</strong> SaaS cloud avec facturation par profil a partir de 20 $/mois (251-500 contacts). Jusqu'a 720 $/mois a 50 000 contacts pour l'email seul.
+                  </p>
+                </div>
+                <div>
+                  <div class="flex items-start mb-4">
+                    <span class="text-2xl font-bold text-primary mr-3">2.</span>
+                    <h4 class="font-semibold text-slate-900 mt-1">Specialiste email vs Plateforme e-commerce</h4>
+                  </div>
+                  <p class="text-sm text-gray-700 mb-3">
+                    <strong class="text-primary">Notifuse :</strong> fonctionnalites email poussees avec editeur MJML, data feeds, segmentation RFM, blog integre et passerelle SMTP. <strong>Concentre sur l'excellence email.</strong>
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    <strong>Klaviyo :</strong> CRM B2C oriente e-commerce avec CDP, messaging multi-canal (email, SMS, push, WhatsApp, RCS), analytics predictif et 350+ integrations. Particulierement fort avec Shopify.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Klaviyo</span> est une plateforme marketing SaaS concue pour le e-commerce. Elle propose email, SMS, push, WhatsApp et RCS via un builder de flux visuel avec 350+ integrations, un CDP integre avec analytics predictif, et une integration Shopify poussee. De nombreuses fonctionnalites avancees -- helpdesk, agent IA, analytics avance et analyse RFM -- sont des add-ons payants separes.
+          </p>
+          <p class="text-gray-600 mb-6">
+            <span class="font-semibold text-slate-900">Notifuse</span> est une plateforme email open-source (disponible en Cloud manage ou auto-heberge) qui combine campagnes marketing et email transactionnel. Elle propose un editeur visuel MJML, une segmentation avancee avec scoring RFM integre, des automations evenementielles, des espaces de travail multi-tenants et un blog integre avec IA. <strong>Pour les equipes centrees sur l'email, Notifuse offre des capacites comparables sans la facturation par profil du SaaS.</strong>
+          </p>
+        </FeatureSection>
+
+        <!-- Comparaison rapide -->
+        <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
+          <ProConsTable competitor="Klaviyo" rows={proConsRows} />
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Editeur d'emails -->
+        <FeatureSection id="editeur-email" title="Editeur d'emails">
+          <p class="text-gray-600 mb-6">
+            L'editeur MJML de Notifuse garantit un rendu mobile-responsive sur tous les clients email. L'editeur de Klaviyo propose 160+ templates et des blocs specifiques au e-commerce comme les recommandations produit et les codes promo.
+          </p>
+
+          <ComparisonTable
+            title="Comparaison des editeurs email"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Editeur visuel",
+                notifuse:
+                  '<a href="https://documentation.mjml.io/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">MJML</a> -- glisser-deposer & editeur de code, rendu mobile-responsive garanti sur tous les clients email',
+                competitor: "Glisser-deposer avec 160+ templates",
+              },
+              {
+                feature: "Moteur de templates",
+                notifuse:
+                  '<a href="https://shopify.github.io/liquid/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Liquid</a>',
+                competitor: "Templates bases sur Django",
+                description: "Variables dynamiques pour la personnalisation",
+              },
+              {
+                feature: "Gestionnaire de fichiers",
+                notifuse: "Stockage S3 avec CDN integre",
+                competitor: "Hebergement de fichiers integre",
+              },
+              {
+                feature: "Editeur de code MJML",
+                notifuse: "Edition directe du code MJML en parallele du visuel",
+                competitor: "Editeur HTML/CSS",
+                description: "Basculez entre mode visuel et code",
+              },
+              {
+                feature: "Generation IA",
+                notifuse: "Generation d'emails et d'objets par Claude AI",
+                competitor: "K:AI pour les objets et le contenu",
+              },
+              {
+                feature: "Remix image IA",
+                notifuse: false,
+                competitor: "Changement d'arriere-plan, application des couleurs de marque",
+              },
+              {
+                feature: "Blocs coupons",
+                notifuse: false,
+                competitor: "Codes promo dynamiques dans les emails",
+                description: "Generation automatique de codes de reduction uniques",
+              },
+              {
+                feature: "Blocs produits",
+                notifuse: "Via data feed par destinataire + templates Liquid",
+                competitor: "Recommandations produit dynamiques integrees",
+                description: "Affichage de donnees produit personnalisees dans les emails",
+              },
+              {
+                feature: "Donnees de test",
+                notifuse: true,
+                competitor: true,
+                description: "Previsualisation des emails avec des donnees de contact exemples",
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran editeur email -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={emailEditorImage.src} alt="Editeur email MJML de Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Editeur email MJML</p>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              L'editeur MJML de Notifuse garantit un rendu parfait de vos emails sur tous les appareils et clients email (Gmail, Outlook, Apple Mail, etc.). Klaviyo propose davantage de blocs specifiques au e-commerce (recommandations produit, coupons), mais la fondation MJML de Notifuse offre une meilleure garantie de rendu des la base.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Campagnes -->
+        <FeatureSection id="campagnes" title="Campagnes">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent les campagnes broadcast avec A/B testing et planification. Les data feeds de Notifuse permettent d'injecter du contenu dynamique depuis des APIs externes au moment de l'envoi. Klaviyo ajoute l'optimisation IA de l'heure d'envoi et les campagnes multi-canal.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites de campagne"
+            competitorName="Klaviyo"
+            features={[
+              { feature: "Envoi a des listes de contacts", notifuse: true, competitor: true },
+              { feature: "Filtrage par segments", notifuse: true, competitor: true },
+              {
+                feature: "A/B Testing avec selection auto du gagnant",
+                notifuse: true,
+                competitor: "Oui (avec tests de retenue)",
+                description: "Envoi automatique de la variante gagnante aux contacts restants",
+              },
+              {
+                feature: "Parametres UTM",
+                notifuse: true,
+                competitor: true,
+                description: "Mesure de la performance des campagnes via les balises UTM",
+              },
+              { feature: "Planification par fuseau horaire", notifuse: true, competitor: true },
+              {
+                feature: "Optimisation heure d'envoi",
+                notifuse: false,
+                competitor: "Heure d'envoi optimisee par IA par destinataire",
+                description: "Le machine learning determine le meilleur moment d'envoi pour chaque contact",
+              },
+              {
+                feature: "Data Feed global",
+                notifuse: "Un seul appel API, donnees partagees entre tous les destinataires",
+                competitor: false,
+              },
+              {
+                feature: "Data Feed par destinataire",
+                notifuse: "Appels API individuels avec donnees specifiques par contact",
+                competitor: false,
+                description: "Personnalisez vos emails avec des donnees en temps reel (recommandations produit, tarifs, stocks)",
+              },
+              {
+                feature: "Campagnes multi-canal",
+                notifuse: "Email uniquement",
+                competitor: "Email, SMS, push (builder omnicanal)",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Email transactionnel -->
+        <FeatureSection id="transactionnel" title="Email transactionnel">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des API de messagerie transactionnelle. Notifuse se concentre sur l'email avec une passerelle SMTP integree pour les systemes legacy, tandis que Klaviyo etend le transactionnel au SMS.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites transactionnelles"
+            competitorName="Klaviyo"
+            features={[
+              { feature: "API email transactionnel", notifuse: true, competitor: true },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Serveur SMTP integre qui accepte les connexions SMTP standard pour envoyer des emails transactionnels -- ideal pour les integrations legacy.",
+              },
+              {
+                feature: "Pieces jointes",
+                notifuse: "Jusqu'a 20 fichiers, 10 Mo total",
+                competitor: true,
+              },
+              {
+                feature: "Deduplication",
+                notifuse: "Via external_id (requetes idempotentes)",
+                competitor: "Via unique_id",
+              },
+              {
+                feature: "Transactionnel multi-canal",
+                notifuse: "Email uniquement",
+                competitor: "Email, SMS",
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Besoin d'email transactionnel ?</h4>
+            <p class="text-gray-700 text-sm">
+              Testez l'API transactionnelle de Notifuse ou sa passerelle SMTP integree pour vos integrations legacy.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Contacts & Segmentation -->
+        <FeatureSection id="contacts" title="Contacts & Segmentation">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes offrent une segmentation avancee. Notifuse inclut la segmentation RFM sans cout supplementaire, tandis que Klaviyo propose de l'analytics predictif et la creation de segments assistee par IA -- mais l'analyse RFM necessite l'add-on Advanced KDP a 500 $/mois.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites contacts & segmentation"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Champs personnalises",
+                notifuse: true,
+                competitor: "Oui (attributs illimites)",
+              },
+              {
+                feature: "Timeline d'activite",
+                notifuse: true,
+                competitor: "Oui (vue client a 360 degres)",
+                description: "Historique complet des emails, ouvertures, clics et modifications de profil",
+              },
+              {
+                feature: "Segments dynamiques",
+                notifuse: "Conditions sur les proprietes, le comportement et le RFM",
+                competitor: "Conditions sur les proprietes, le comportement, le predictif et l'IA",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Integree avec types d'objectifs (incluse gratuitement)",
+                competitor: "Add-on Advanced KDP (500 $/mois)",
+                tooltip: "Segmentez vos contacts par Recence, Frequence et Valeur monetaire de leurs interactions",
+              },
+              {
+                feature: "Analytics predictif",
+                notifuse: false,
+                competitor: "CLV, risque de desabonnement, prochaine commande, genre predit",
+                description: "Predictions basees sur l'IA du comportement client",
+              },
+              {
+                feature: "Resolution d'identite",
+                notifuse: false,
+                competitor: true,
+                description: "Fusion automatique des profils clients",
+              },
+              {
+                feature: "Import CSV",
+                notifuse: "Auto-detection et mapping des champs",
+                competitor: true,
+              },
+              {
+                feature: "Objets personnalises",
+                notifuse: false,
+                competitor: "Modelisation de donnees relationnelles pour les entites non-personnes",
+                description: "Modelisez comptes, produits, commandes comme des objets separes",
+              },
+              {
+                feature: "Affinite canal",
+                notifuse: false,
+                competitor: "Canal optimal par contact determine par IA",
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran profil contact -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={contactProfileImage.src} alt="Profil contact Notifuse avec timeline d'activite" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Profil contact avec timeline</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Envoi & Delivrabilite -->
+        <FeatureSection id="envoi-email" title="Envoi & Delivrabilite">
+          <p class="text-gray-600 mb-6">
+            Notifuse vous donne la liberte de choisir votre fournisseur d'envoi, tandis que Klaviyo fournit une infrastructure email integree avec IP dediees gerees.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites d'envoi"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Integrations ESP natives",
+                notifuse: "Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost",
+                competitor: "Infrastructure integree",
+              },
+              { feature: "Integration SMTP", notifuse: true, competitor: false },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                tooltip: "Serveur SMTP integre qui accepte les connexions SMTP standard pour envoyer des emails transactionnels -- ideal pour les integrations legacy.",
+              },
+              { feature: "Suivi ouvertures/clics", notifuse: true, competitor: true },
+              { feature: "Webhooks de rebond", notifuse: true, competitor: true },
+              { feature: "Webhooks de plainte", notifuse: true, competitor: true },
+              {
+                feature: "IP dediees",
+                notifuse: "Via votre fournisseur ESP",
+                competitor: "Oui (gerees & rechauffees)",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Analytics & Reporting -->
+        <FeatureSection id="analytics" title="Analytics & Reporting">
+          <p class="text-gray-600 mb-6">
+            Suivez la performance de vos campagnes et l'engagement. Klaviyo propose des analytics plus avances avec l'attribution de revenus et l'analytics produit, bien que certaines fonctionnalites necessitent des add-ons payants.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites d'analytics"
+            competitorName="Klaviyo"
+            features={[
+              { feature: "Taux d'ouverture", notifuse: true, competitor: true },
+              { feature: "Suivi des clics", notifuse: true, competitor: true },
+              { feature: "Suivi des rebonds", notifuse: true, competitor: true },
+              { feature: "Suivi des plaintes", notifuse: true, competitor: true },
+              { feature: "Suivi des desabonnements", notifuse: true, competitor: true },
+              {
+                feature: "Attribution de revenus",
+                notifuse: false,
+                competitor: "Par campagne et par flux",
+                description: "Suivi du revenu genere par chaque email",
+              },
+              { feature: "Generateur de rapports", notifuse: false, competitor: true },
+              {
+                feature: "Analyse d'entonnoir",
+                notifuse: false,
+                competitor: "Add-on Advanced KDP (500 $/mois)",
+              },
+              {
+                feature: "Analytics produit",
+                notifuse: false,
+                competitor: true,
+                description: "Insights sur les habitudes d'achat et optimisation des promotions produit",
+              },
+            ]}
+          />
+
+          <!-- Capture d'ecran dashboard analytics -->
+          <div class="my-8">
+            <div class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl">
+              <div class="rounded-xl overflow-hidden">
+                <img src={dashboardImage.src} alt="Dashboard analytics Notifuse" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Dashboard analytics</p>
+          </div>
+        </FeatureSection>
+
+        <!-- Automations -->
+        <FeatureSection id="automations" title="Automations">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des builders d'automation visuels. Klaviyo fournit 60+ templates de flux predefinies et des declencheurs specifiques au e-commerce comme les alertes retour en stock et baisse de prix. Notifuse se concentre sur les workflows email avec des actions webhook.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites d'automation"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Builder visuel d'automation",
+                notifuse: "Editeur de flux canvas",
+                competitor: "Builder de flux visuel",
+              },
+              {
+                feature: "Declencheurs",
+                notifuse: "Contact, liste, segment, email & evenements personnalises",
+                competitor: "Metrique, date, liste, segment & evenements personnalises",
+              },
+              {
+                feature: "Logique conditionnelle",
+                notifuse: "Filtres IF/THEN, splits A/B, branches par statut de liste",
+                competitor: "Split conditionnel, multi-split, cohorte aleatoire",
+              },
+              {
+                feature: "Delais & Timing",
+                notifuse: "Periodes d'attente configurables entre les etapes",
+                competitor: "Attente, attente sous conditions, fenetres temporelles",
+              },
+              {
+                feature: "Actions webhook",
+                notifuse: true,
+                competitor: true,
+              },
+              {
+                feature: "Actions multi-canal",
+                notifuse: "Email uniquement",
+                competitor: "Email, SMS, push, WhatsApp",
+              },
+              {
+                feature: "Templates de flux predefinis",
+                notifuse: false,
+                competitor: "60+ templates (bienvenue, panier abandonne, post-achat, etc.)",
+              },
+              {
+                feature: "Alertes retour en stock",
+                notifuse: false,
+                competitor: true,
+                description: "Notification automatique des clients quand les produits sont reapprovisionnement",
+              },
+              {
+                feature: "Alertes baisse de prix",
+                notifuse: false,
+                competitor: true,
+                description: "Notification automatique des clients quand les prix baissent",
+              },
+              {
+                feature: "Suivi des parcours",
+                notifuse: "Suivi du statut des contacts dans les flux d'automation",
+                competitor: true,
+              },
+            ]}
+          />
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pourquoi c'est important</h4>
+            <p class="text-gray-700 text-sm">
+              Les automations vous permettent de creer des series de bienvenue, des drips d'onboarding et des workflows de reengagement qui fonctionnent automatiquement. Klaviyo excelle sur les flux e-commerce (panier abandonne, retour en stock), mais si vos workflows sont centres sur l'email, Notifuse couvre tous vos besoins sans la complexite de l'orchestration multi-canal.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Evenements personnalises & Objectifs -->
+        <FeatureSection id="evenements" title="Evenements personnalises & Objectifs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes supportent le tracking d'evenements personnalises. Notifuse inclut la segmentation RFM integree avec des types d'objectifs pour le e-commerce et le SaaS. Klaviyo offre une API catalogue produit complete mais necessite l'add-on Advanced KDP a 500 $/mois pour l'analyse RFM.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites evenements & objectifs"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Tracking d'evenements personnalises",
+                notifuse: "Ingestion d'evenements via API avec import en lot",
+                competitor: "Oui (jusqu'a 1 000 evenements par requete)",
+              },
+              {
+                feature: "Types d'objectifs",
+                notifuse: "achat, abonnement, lead, inscription, reservation, essai",
+                competitor: "Via metriques personnalisees",
+              },
+              {
+                feature: "Segmentation RFM",
+                notifuse: "Integree (incluse gratuitement)",
+                competitor: "Add-on Advanced KDP (500 $/mois)",
+              },
+              {
+                feature: "Timeline contact",
+                notifuse: "Evenements affiches dans l'historique d'activite du contact",
+                competitor: true,
+              },
+              {
+                feature: "Catalogue / Donnees produit",
+                notifuse: false,
+                competitor: "API catalogue complete avec articles, variantes & categories",
+                description: "Synchronisez votre catalogue produit pour du contenu email dynamique",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Multi-tenant & Agences -->
+        <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
+          <p class="text-gray-600 mb-6">
+            Notifuse est concu pour les agences et les plateformes SaaS qui ont besoin d'une isolation complete des espaces de travail. Klaviyo propose une gestion au niveau du portefeuille mais pas de vrai multi-tenancy.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites multi-tenant & agences"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Multi-tenancy",
+                notifuse: "Isolation BDD & domaine personnalise par espace",
+                competitor: "Non (gestion de portefeuille uniquement)",
+                description: "Environnements isoles pour plusieurs marques ou clients",
+              },
+              {
+                feature: "Permissions utilisateurs",
+                notifuse: true,
+                competitor: "Oui (roles personnalises, gestion en masse des utilisateurs)",
+                description: "Controle d'acces granulaire pour la collaboration en equipe",
+              },
+            ]}
+          />
+
+          <div class="bg-purple-50 border border-purple-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Ideal pour les agences</h4>
+            <p class="text-gray-700 text-sm">
+              La fonctionnalite espaces de travail de Notifuse est ideale pour les agences gerant plusieurs clients. Chaque client obtient son propre environnement isole avec domaine personnalise, contacts separes et cles API dediees -- le tout depuis une seule installation. Klaviyo necessite des comptes separes par client avec une facturation separee.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- API & Developpeurs -->
+        <FeatureSection id="api-developpeur" title="API & Developpeurs">
+          <p class="text-gray-600 mb-6">
+            Les deux plateformes proposent des API completes. Klaviyo utilise la specification JSON:API et fournit des SDK dans plusieurs langages, tandis que Notifuse se concentre sur une API REST propre avec une passerelle SMTP pour les integrations legacy.
+          </p>
+
+          <ComparisonTable
+            title="API & outils developpeur"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "API RESTful",
+                notifuse: true,
+                competitor: "Oui (specification JSON:API)",
+              },
+              { feature: "API email transactionnel", notifuse: true, competitor: true },
+              {
+                feature: "Specification OpenAPI",
+                notifuse: true,
+                competitor: true,
+                description: "Documentation API complete au format OpenAPI -- utile pour les integrations IA et la generation de code",
+              },
+              {
+                feature: "SDK",
+                notifuse: "API REST (pas de SDK)",
+                competitor: "Python, PHP, Ruby, Node.js",
+              },
+              {
+                feature: "Passerelle SMTP",
+                notifuse: true,
+                competitor: false,
+                description: "Serveur SMTP integre qui accepte les connexions SMTP standard pour envoyer des emails transactionnels -- ideal pour les integrations legacy.",
+              },
+              {
+                feature: "Webhooks sortants",
+                notifuse: "Standard Webhooks avec signatures HMAC-SHA256",
+                competitor: true,
+              },
+              {
+                feature: "Observabilite & Monitoring",
+                notifuse: "Historique des messages & webhooks. Tracing OpenTelemetry.",
+                competitor: "Dashboards et analytics integres",
+              },
+            ]}
+          />
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 my-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Avantage developpeur</h4>
+            <p class="text-gray-700 text-sm">
+              Concu pour les developpeurs qui ont besoin d'une infrastructure email prete pour la production. Specification OpenAPI, passerelle SMTP pour les integrations legacy, environnements dev/test via espaces de travail, et API transactionnelle complete -- tout ce qu'il faut pour livrer vite et scaler sereinement, sans couts SaaS par profil.
+            </p>
+          </div>
+        </FeatureSection>
+
+        <!-- Blog -->
+        <FeatureSection id="blog" title="Blog">
+          <p class="text-gray-600 mb-6">
+            Notifuse inclut une plateforme de blog integree avec des capacites IA. Klaviyo n'a pas de fonctionnalite blog.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalites blog"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "CMS blog integre",
+                notifuse: "Categories, articles, planification & SEO",
+                competitor: false,
+              },
+              {
+                feature: "Moteur de themes Liquid",
+                notifuse: "Templates personnalisables avec syntaxe Shopify Liquid",
+                competitor: false,
+              },
+              {
+                feature: "Integration newsletter",
+                notifuse: "Connectez le blog a vos listes email pour la croissance d'abonnes",
+                competitor: false,
+              },
+              {
+                feature: "SEO auto-genere",
+                notifuse: "Sitemap, robots.txt, balises OG, URL canoniques",
+                competitor: false,
+              },
+              {
+                feature: "Agent blog IA",
+                notifuse: "Creation de contenu assistee par IA avec recherche web",
+                competitor: false,
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <!-- Tarifs -->
+        <FeatureSection id="tarifs" title="Tarifs & Couts" gradient>
+          <p class="text-gray-600 mb-8">
+            Notifuse Cloud demarre a 19 $/mois avec toutes les fonctionnalites incluses et des emails illimites (BYO-ESP). Klaviyo facture par profil actif, avec des couts qui augmentent significativement au fur et a mesure que votre liste grandit.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Tarifs Notifuse -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-slate-900">Notifuse Cloud</h3>
+                <span class="bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">Meilleur rapport qualite-prix</span>
+              </div>
+              <ul class="space-y-2 text-sm text-gray-700 mb-6">
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Starter</span>
+                  <span><strong>39 $/mois</strong> -- 10 000 contacts actifs</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Pro</span>
+                  <span><strong>99 $/mois</strong> -- 25 000 contacts actifs</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span class="font-medium">Business</span>
+                  <span><strong>249 $/mois</strong> -- 50 000 contacts actifs</span>
+                </li>
+              </ul>
+              <ul class="space-y-3 text-sm text-gray-700 mb-4">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Emails illimites (BYO-ESP)</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Toutes les fonctionnalites sur chaque plan</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Essai gratuit 30 jours</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Contacts actifs uniquement (30 derniers jours)</span>
+                </li>
+              </ul>
+              <p class="text-xs text-gray-500">Ou auto-hebergement -- open-source (AGPL-3.0)</p>
+            </div>
+
+            <!-- Tarifs Klaviyo -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <h3 class="text-xl font-bold text-slate-900 mb-4">Klaviyo</h3>
+              <div class="text-3xl font-bold text-slate-900 mb-2">20 $<span class="text-lg font-normal text-gray-500">/mois</span></div>
+              <p class="text-gray-600 text-sm mb-6">
+                Prix de depart du plan Email (251-500 profils actifs)
+              </p>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>Gratuit : 250 contacts, 500 emails, branding impose</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>10 000 contacts : ~150 $/mois</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>50 000 contacts : ~720 $/mois</span>
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                  </svg>
+                  <span>100 000 contacts : ~1 380 $/mois</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Couts a l'echelle</h4>
+            <p class="text-gray-700 text-sm">
+              A <strong>10 000 contacts</strong>, Notifuse Cloud Starter coute <strong>39 $/mois</strong> vs Klaviyo a <strong>150 $/mois</strong> -- economisez 74 %. A <strong>50 000 contacts</strong>, Notifuse Cloud Business coute <strong>249 $/mois</strong> vs Klaviyo a <strong>~720 $/mois</strong> -- economisez 65 %. Klaviyo facture tous les profils actifs et ajoute des supplements pour le SMS, le helpdesk (10 $/mois), l'agent IA (50 $/mois) et l'analytics (100 $/mois).
+            </p>
+          </div>
+
+          <div class="bg-green-50 border border-green-200 rounded-lg p-6 mt-6">
+            <h4 class="font-semibold text-slate-900 mb-2">Pas de lock-in</h4>
+            <p class="text-gray-700 text-sm">
+              Export complet de la base de donnees sur demande. Notifuse est open-source (AGPL-3.0) -- passez en auto-hebergement a tout moment et conservez toutes vos donnees.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
+            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Essai gratuit 30 jours
+            </a>
+          </div>
+        </FeatureSection>
+
+        <!-- Cas d'usage -->
+        <FeatureSection id="cas-usage" title="Quand choisir chaque plateforme">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Choisir Notifuse -->
+            <div class="bg-gradient-to-br from-orange-50 to-red-50 border-2 border-primary rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Notifuse</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Notifuse est le meilleur choix si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Developpez une <strong>application SaaS</strong> qui a besoin d'emails transactionnels + marketing",
+                  "Voulez la <strong>propriete totale des donnees</strong> et une infrastructure auto-hebergee",
+                  "Avez besoin d'<strong>emails mobile-responsive garantis</strong> avec l'editeur MJML",
+                  "Etes une <strong>agence</strong> gerant plusieurs clients (espaces de travail)",
+                  "Preferez l'<strong>open-source</strong> sans facturation par profil",
+                  "Avez besoin de <strong>data feeds</strong> pour la personnalisation dynamique via des APIs externes",
+                  "Avez besoin d'une <strong>passerelle SMTP</strong> pour la compatibilite avec les systemes legacy",
+                  "Voulez un <strong>blog integre</strong> avec generation de contenu IA",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-primary mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Choisir Klaviyo -->
+            <div class="border border-gray-200 rounded-xl p-8">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
+                  <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-slate-900">Choisir Klaviyo</h3>
+              </div>
+
+              <p class="text-gray-700 text-sm mb-4">Klaviyo est le meilleur choix si vous :</p>
+
+              <ul class="space-y-3">
+                {[
+                  "Gerez une <strong>boutique Shopify/e-commerce</strong> avec besoin d'integration produit poussee",
+                  "Avez besoin de <strong>messaging multi-canal</strong> (SMS, push, WhatsApp, RCS)",
+                  "Avez besoin d'<strong>analytics predictif</strong> (CLV, risque de desabonnement, prochaine commande)",
+                  "Avez besoin de <strong>350+ integrations preconstruites</strong> avec plateformes e-commerce et pub",
+                  "Avez besoin d'un <strong>catalogue produit</strong> avec alertes retour en stock et baisse de prix",
+                  "Avez besoin d'une <strong>conformite geree</strong> (SOC 2 Type II, ISO 27001)",
+                  "Preferez un <strong>SaaS manage</strong> plutot que l'auto-hebergement",
+                ].map((item) => (
+                  <li class="flex items-start text-sm">
+                    <svg class="w-5 h-5 text-gray-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span set:html={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- Pourquoi choisir Notifuse -->
+        <FeatureSection id="pourquoi-changer" title="Pourquoi choisir Notifuse plutot que Klaviyo ?" gradient>
+          <p class="text-gray-600 mb-8">
+            Si votre besoin principal est l'<strong>email</strong> -- transactionnel et marketing -- Notifuse offre des capacites comparables aux fonctionnalites email de Klaviyo, avec en plus les avantages de l'auto-hebergement, la transparence open-source et zero cout par profil.
+          </p>
+
+          <div class="space-y-6">
+            {[
+              {
+                title: "Pas de facturation par profil",
+                text: "La facturation par profil de Klaviyo augmente vite : 150 $/mois a 10 000 contacts, 720 $/mois a 50 000, et 1 380 $/mois a 100 000 -- pour l'email seul. Depuis fevrier 2025, ils facturent tous les profils actifs, pas seulement ceux que vous emailez. Notifuse Cloud Starter coute seulement 39 $/mois pour 10 000 contacts actifs avec toutes les fonctionnalites incluses. Ou auto-hebergez.",
+              },
+              {
+                title: "Editeur visuel base sur MJML",
+                text: "L'editeur MJML de Notifuse garantit un rendu mobile-responsive sur tous les clients email (Gmail, Outlook, Apple Mail, Yahoo, etc.). Plus de problemes de rendu ou de mises en page cassees -- vos emails seront parfaits partout.",
+              },
+              {
+                title: "Propriete totale des donnees",
+                text: "Vos contacts, templates et analytics restent sur votre infrastructure. Pas de vendor lock-in, pas de partage de donnees, pas de surprises. Vous controlez vos donnees, votre confidentialite et votre conformite.",
+              },
+              {
+                title: "Architecture multi-tenant",
+                text: "Les agences et plateformes SaaS ont besoin d'isolation par espace de travail. Notifuse offre un multi-tenancy complet avec bases de donnees separees, domaines personnalises et cles API par espace de travail -- Klaviyo necessite des comptes separes par client avec une facturation separee.",
+              },
+              {
+                title: "Data Feeds pour le contenu dynamique",
+                text: "Les data feeds de Notifuse injectent du contenu en temps reel depuis vos APIs au moment de l'envoi -- recommandations produit, tarifs, niveaux de stock ou toute donnee dynamique. Les feeds globaux mettent en cache les donnees pour tous les destinataires, tandis que les feeds par destinataire personnalisent chaque email. Klaviyo ne propose pas cette fonctionnalite.",
+              },
+              {
+                title: "Choisissez votre ESP",
+                text: "Connectez Amazon SES, Mailgun, Postmark, SendGrid, Mailjet, SparkPost ou tout fournisseur SMTP. Negociez vos propres tarifs, utilisez differents fournisseurs pour le transactionnel vs le marketing, et changez a tout moment sans changer de plateforme.",
+              },
+              {
+                title: "Blog integre avec IA",
+                text: "Gerez un blog complet a cote de votre plateforme email -- avec theming Liquid, optimisation SEO et un agent IA capable d'ecrire, optimiser et editer du contenu avec des capacites de recherche web. Klaviyo n'a pas de fonctionnalite blog.",
+              },
+            ].map((item) => (
+              <div class="border-l-4 border-primary pl-6 py-2">
+                <h4 class="font-semibold text-slate-900 mb-2">{item.title}</h4>
+                <p class="text-gray-700 text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-12 bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8">
+            <h4 class="text-xl font-bold text-slate-900 mb-4 text-center">Pret a essayer Notifuse ?</h4>
+            <p class="text-gray-600 text-center mb-6">
+              Demarrez en quelques minutes avec Docker ou un deploiement en un clic. Importez vos contacts par CSV et commencez a envoyer.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://cloud.notifuse.com/signup"
+                data-cta
+                class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
+              >
+                Essai gratuit 30 jours
+              </a>
+              <a
+                href="https://docs.notifuse.com/installation"
+                class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors text-center"
+              >
+                Guide d'installation
+              </a>
+            </div>
+          </div>
+        </FeatureSection>
+
+        <!-- FAQ -->
+        <FeatureSection id="faq" title="Questions frequentes">
+          <div class="space-y-6">
+            {[
+              {
+                q: "Comment Notifuse se compare-t-il a Klaviyo pour l'email ?",
+                a: "Pour l'email specifiquement, Notifuse offre des capacites comparables : editeur visuel MJML, templates Liquid, A/B testing, segmentation dynamique, automations, API transactionnelle et webhooks. Notifuse a aussi des fonctionnalites uniques comme les data feeds et la segmentation RFM integree que Klaviyo n'a pas ou facture en supplement (add-on Advanced KDP a 500 $/mois). La principale difference est que Klaviyo ajoute les canaux SMS, push, WhatsApp et RCS, plus des integrations e-commerce poussees.",
+              },
+              {
+                q: "Notifuse est-il vraiment gratuit ?",
+                a: "Notifuse propose deux options : Notifuse Cloud, un service entierement manage a partir de 19 $/mois (essai gratuit 30 jours, sans carte bancaire), et un deploiement auto-heberge (open-source, AGPL-3.0). Les deux incluent toutes les fonctionnalites sans frais par profil. Export complet de la base de donnees sur demande -- pas de lock-in.",
+              },
+              {
+                q: "Notifuse peut-il remplacer Klaviyo ?",
+                a: "Pour les cas d'usage centres sur l'email, oui. Notifuse couvre l'email transactionnel, les campagnes broadcast, les automations, la segmentation et plus encore. Cependant, si vous dependez du SMS, des notifications push, de WhatsApp, de l'integration produit Shopify poussee ou de l'analytics predictif de Klaviyo, Notifuse n'est pas un remplacement direct pour ces fonctionnalites.",
+              },
+              {
+                q: "Comment les API se comparent-elles ?",
+                a: "Les deux plateformes proposent des API REST avec specifications OpenAPI. Notifuse ajoute une passerelle SMTP integree pour les integrations legacy. Klaviyo utilise la specification JSON:API et fournit des SDK en Python, PHP, Ruby et Node.js. Notifuse se concentre sur une API REST propre sans SDK.",
+              },
+              {
+                q: "Qu'en est-il de la conformite ?",
+                a: "Klaviyo fournit des certifications de conformite gerees : SOC 2 Type II, RGPD, CCPA et ISO 27001. Avec Notifuse, vous gerez la conformite vous-meme puisque vous controlez l'infrastructure. Notifuse inclut des outils RGPD (double opt-in, gestion des desabonnements, suppression de donnees) mais vous etes responsable de votre propre posture de securite.",
+              },
+              {
+                q: "Notifuse supporte-t-il le SMS ou les notifications push ?",
+                a: "Non. Notifuse est une plateforme centree sur l'email. Si vous avez besoin de SMS, push, WhatsApp ou RCS, Klaviyo ou une autre plateforme multi-canal sera plus adaptee. Notifuse excelle a faire de l'email de maniere exceptionnelle plutot que de se disperser sur plusieurs canaux.",
+              },
+              {
+                q: "Y a-t-il du support entreprise ?",
+                a: "Oui. Notifuse propose un support entreprise avec assistance prioritaire, implementation sur mesure, formation, onboarding et garanties SLA. Contactez-nous pour les details.",
+              },
+            ].map((item) => (
+              <div class="border border-gray-200 rounded-lg p-6">
+                <h4 class="font-semibold text-slate-900 mb-3">{item.q}</h4>
+                <p class="text-gray-700 text-sm">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </FeatureSection>
+
+        <!-- CTA final -->
+        <section class="border-b border-gray-200">
+          <div class="px-4 lg:px-8 py-20">
+            <div class="max-w-4xl mx-auto">
+              <div class="bg-gradient-to-br from-gray-50 to-orange-50 border border-gray-200 rounded-xl p-8 my-12">
+                <div class="text-center max-w-2xl mx-auto">
+                  <h3 class="text-2xl font-bold text-slate-900 mb-3">Pret a decouvrir Notifuse ?</h3>
+                  <p class="text-gray-600 mb-6">Rejoignez les developpeurs et marketeurs qui ont choisi une infrastructure email open-source plutot que la facturation par profil du SaaS.</p>
+                  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Essai gratuit 30 jours
+                    </a>
+                    <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
+                      Demo en ligne
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </ComparisonLayout>
+
+      <Footer />
+    </div>
+
+    <CookieConsent />
+
+    <!-- GCLID / WBRAID / GBRAID passthrough -->
+    <script is:inline>
+    (function() {
+      var p = new URLSearchParams(window.location.search);
+      var ids = { gclid: p.get('gclid'), wbraid: p.get('wbraid'), gbraid: p.get('gbraid') };
+      var hasId = ids.gclid || ids.wbraid || ids.gbraid;
+      if (!hasId) return;
+      document.querySelectorAll('a[data-cta]').forEach(function(a) {
+        var u = new URL(a.href);
+        for (var k in ids) { if (ids[k]) u.searchParams.set(k, ids[k]); }
+        a.href = u.toString();
+      });
+    })();
+    </script>
+  </body>
+</html>

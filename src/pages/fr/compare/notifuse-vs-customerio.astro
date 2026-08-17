@@ -22,6 +22,8 @@ const tocItems = [
   { id: "contacts", label: "Contacts & Segmentation" },
   { id: "envoi-email", label: "Envoi & Délivrabilité" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "assistant-ia", label: "Assistant IA" },
   { id: "automations", label: "Automations" },
   { id: "evenements", label: "Événements personnalisés" },
   { id: "multi-tenant", label: "Multi-tenant & Agences" },
@@ -533,6 +535,125 @@ const proConsRows = [
             </div>
             <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse — Dashboard analytics</p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Le snippet JavaScript de Customer.io capture les pages vues sous forme d'événements pour la segmentation et les déclencheurs, ce qui est réellement utile. Il n'y a pas de produit d'analytics web derrière : ni tableau de bord de trafic, ni attribution par canal, ni temps d'engagement, ni vue en direct — Customer.io renvoie vers Google Analytics 4 pour cela.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités Web Analytics"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Analytics de site intégrées",
+                notifuse: "Sessions, pages vues & objectifs",
+                competitor: "Pages vues comme événements — pas de tableau de bord trafic",
+                description: "Sessions et pages vues de votre site, pas seulement les ouvertures d'emails",
+              },
+              {
+                feature: "Suivi sans cookies",
+                notifuse: "Aucun cookie, aucune bannière",
+                competitor: "Cookies par défaut ; le refus casse le suivi entre pages",
+                description: "Aucun cookie déposé, donc aucune bannière de consentement",
+              },
+              {
+                feature: "Script auto-hébergé & base de données",
+                notifuse: "Servi par votre propre instance",
+                competitor: "Proxy CDN sur votre domaine ; données dans le cloud Customer.io",
+                description: "Données d'analytics web stockées sur votre propre infrastructure",
+              },
+              {
+                feature: "Attribution de canaux éditable",
+                notifuse: "Règles éditables + backfill sur l'historique",
+                competitor: "Attribution last-touch des messages ; pas de règles de canaux web",
+                description: "Définissez vos canaux et rejouez les règles sur l'historique",
+              },
+              {
+                feature: "Métrique de temps d'engagement",
+                notifuse: "TimeScore — temps actif médian",
+                competitor: false,
+                description: "Temps réellement actif, pas le temps brut passé sur la page",
+              },
+              {
+                feature: "Carte des visiteurs en direct",
+                notifuse: "30 dernières minutes, rafraîchi toutes les 10 s",
+                competitor: false,
+                description: "Qui est sur votre site en ce moment, sur une carte",
+              },
+              {
+                feature: "Objectifs web avec valeur",
+                notifuse: "achat, abonnement, lead, inscription…",
+                competitor: "Objectifs avec valeur monétaire, par source de message",
+                description: "Conversions typées avec chiffre d'affaires, réparties par canal",
+              },
+              {
+                feature: "Annotations de campagne sur le trafic",
+                notifuse: "Les campagnes s'annotent automatiquement",
+                competitor: false,
+                description: "Voyez une campagne et le trafic qu'elle a généré sur la même courbe",
+              },
+              {
+                feature: "Comportement web dans segments & automatisations",
+                notifuse: "Les objectifs deviennent des événements sur la timeline",
+                competitor: "Segments et déclencheurs sur pages vues, paramètres d'URL inclus",
+                description: "Déclenchez des campagnes selon la navigation sur votre site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="assistant-ia" title="Assistant IA">
+          <p class="text-gray-600 mb-6">
+            L'agent de Customer.io est réellement puissant : il crée des segments, rédige des emails, exécute des rapports planifiés et répond en langage naturel sur vos métriques d'envoi. Il fonctionne sur les modèles de Customer.io, avec des actions LLM facturées en crédits, et ne voit pas le trafic de votre site.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités IA"
+            competitorName="Customer.io"
+            features={[
+              {
+                feature: "Assistant IA intégré",
+                notifuse: "Un assistant conversationnel : email, blog & analytics",
+                competitor: "L'agent — inclus dès le plan Essentials (bêta)",
+              },
+              {
+                feature: "Génération d'emails par IA",
+                notifuse: "Construit et modifie les blocs, l'objet & la prévisualisation",
+                competitor: "L'agent rédige les emails ; objets générés",
+              },
+              {
+                feature: "Rédaction d'articles par IA",
+                notifuse: "Articles avec métadonnées SEO",
+                competitor: false,
+                description: "Articles longs avec leurs métadonnées SEO",
+              },
+              {
+                feature: "Analytics conversationnelles",
+                notifuse: "Quelles campagnes ont généré sessions, objectifs & revenus",
+                competitor: "Interrogez l'agent sur les métriques d'envoi, pas le trafic web",
+                description: "Interrogez vos propres données en langage naturel",
+              },
+              {
+                feature: "Votre propre clé API",
+                notifuse: "Anthropic, OpenAI ou Gemini",
+                competitor: false,
+                description: "Utilisez votre propre compte fournisseur d'IA, au prix coûtant",
+              },
+              {
+                feature: "Recherche web par IA",
+                notifuse: "Via l'intégration Firecrawl",
+                competitor: false,
+                description: "Recherche web et extraction d'URL comme sources",
+              },
+              {
+                feature: "Modèle de tarification IA",
+                notifuse: "Sans crédits ni marge — vous payez votre fournisseur",
+                competitor: "Agent inclus ; actions LLM en crédits (10 $ / 100 K)",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Automations -->

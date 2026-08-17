@@ -22,6 +22,8 @@ const tocItems = [
   { id: "envoi-email", label: "Envoi & Delivrabilite" },
   { id: "contacts", label: "Contacts & Segmentation" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "assistant-ia", label: "Assistant IA" },
   { id: "multi-tenant", label: "Multi-tenant & Agences" },
   { id: "api-developpeur", label: "API & Developpeurs" },
   { id: "automations", label: "Automations" },
@@ -262,7 +264,7 @@ const proConsRows = [
               },
               {
                 feature: "Generation IA",
-                notifuse: "Integration Claude AI pour le contenu & les objets",
+                notifuse: "Assistant IA (email, blog & analytics) — votre propre clé Anthropic, OpenAI ou Gemini",
                 competitor: "Generateur email IA (OpenAI GPT), objets IA",
               },
               {
@@ -598,7 +600,7 @@ const proConsRows = [
               },
               {
                 feature: "Suivi des revenus e-commerce",
-                notifuse: "Via objectifs personnalises (evenements d'achat avec valeur monetaire)",
+                notifuse: "Via des objectifs avec valeur monétaire — aussi répartis par canal d'acquisition",
                 competitor: "Oui (via integrations e-commerce)",
               },
             ]}
@@ -613,6 +615,125 @@ const proConsRows = [
             </div>
             <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Dashboard analytics</p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            MailerLite fournit de vraies statistiques de visite — visiteurs uniques, vues et heatmaps de clics — pour les sites et landing pages qu'il héberge, sans aucune configuration. Il n'offre rien pour un site qu'il n'héberge pas : ni attribution par canal, ni temps d'engagement, ni carte des visiteurs en direct ; la documentation renvoie vers Google Analytics.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités Web Analytics"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Analytics de site intégrées",
+                notifuse: "Sessions, pages vues & objectifs",
+                competitor: "Uniquement pour les sites et landing pages hébergés par MailerLite",
+                description: "Sessions et pages vues de votre site, pas seulement les ouvertures d'emails",
+              },
+              {
+                feature: "Suivi sans cookies",
+                notifuse: "Aucun cookie, aucune bannière",
+                competitor: "Cookies essentiels déposés ; suivi e-commerce sans cookies",
+                description: "Aucun cookie déposé, donc aucune bannière de consentement",
+              },
+              {
+                feature: "Script auto-hébergé & base de données",
+                notifuse: "Servi par votre propre instance",
+                competitor: false,
+                description: "Données d'analytics web stockées sur votre propre infrastructure",
+              },
+              {
+                feature: "Attribution de canaux éditable",
+                notifuse: "Règles éditables + backfill sur l'historique",
+                competitor: false,
+                description: "Définissez vos canaux et rejouez les règles sur l'historique",
+              },
+              {
+                feature: "Métrique de temps d'engagement",
+                notifuse: "TimeScore — temps actif médian",
+                competitor: false,
+                description: "Temps réellement actif, pas le temps brut passé sur la page",
+              },
+              {
+                feature: "Carte des visiteurs en direct",
+                notifuse: "30 dernières minutes, rafraîchi toutes les 10 s",
+                competitor: false,
+                description: "Qui est sur votre site en ce moment, sur une carte",
+              },
+              {
+                feature: "Objectifs web avec valeur",
+                notifuse: "achat, abonnement, lead, inscription…",
+                competitor: "Revenus e-commerce par campagne ; pas d'objectifs web typés",
+                description: "Conversions typées avec chiffre d'affaires, réparties par canal",
+              },
+              {
+                feature: "Annotations de campagne sur le trafic",
+                notifuse: "Les campagnes s'annotent automatiquement",
+                competitor: false,
+                description: "Voyez une campagne et le trafic qu'elle a généré sur la même courbe",
+              },
+              {
+                feature: "Comportement web dans segments & automatisations",
+                notifuse: "Les objectifs deviennent des événements sur la timeline",
+                competitor: "Événements e-commerce uniquement ; pas de déclencheur de page",
+                description: "Déclenchez des campagnes selon la navigation sur votre site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="assistant-ia" title="Assistant IA">
+          <p class="text-gray-600 mb-6">
+            L'IA de MailerLite est utile dans l'éditeur, et son serveur MCP gratuit permet d'interroger les données email depuis Claude ou ChatGPT. Dans l'application, elle fonctionne sur un modèle fixe limité par des crédits non rechargeables, et ne touche jamais aux données de site web.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités IA"
+            competitorName="MailerLite"
+            features={[
+              {
+                feature: "Assistant IA intégré",
+                notifuse: "Un assistant conversationnel : email, blog & analytics",
+                competitor: "Assistant de rédaction + agent éditeur HTML, pas un assistant unique",
+              },
+              {
+                feature: "Génération d'emails par IA",
+                notifuse: "Construit et modifie les blocs, l'objet & la prévisualisation",
+                competitor: "Contenu + objets (Comfort/Power, limité en crédits)",
+              },
+              {
+                feature: "Rédaction d'articles par IA",
+                notifuse: "Articles avec métadonnées SEO",
+                competitor: "Blocs de texte IA ; pas d'articles ni de métadonnées SEO",
+                description: "Articles longs avec leurs métadonnées SEO",
+              },
+              {
+                feature: "Analytics conversationnelles",
+                notifuse: "Quelles campagnes ont généré sessions, objectifs & revenus",
+                competitor: "Via MCP dans votre outil IA (bêta), données email uniquement",
+                description: "Interrogez vos propres données en langage naturel",
+              },
+              {
+                feature: "Votre propre clé API",
+                notifuse: "Anthropic, OpenAI ou Gemini",
+                competitor: "Pas de clé perso dans l'app ; MCP via votre abonnement IA",
+                description: "Utilisez votre propre compte fournisseur d'IA, au prix coûtant",
+              },
+              {
+                feature: "Recherche web par IA",
+                notifuse: "Via l'intégration Firecrawl",
+                competitor: false,
+                description: "Recherche web et extraction d'URL comme sources",
+              },
+              {
+                feature: "Modèle de tarification IA",
+                notifuse: "Sans crédits ni marge — vous payez votre fournisseur",
+                competitor: "Inclus mais plafonné en crédits, non rechargeable",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Multi-tenant & Agences -->
@@ -691,7 +812,7 @@ const proConsRows = [
               },
               {
                 feature: "Integrations natives",
-                notifuse: "Supabase, Anthropic, Firecrawl",
+                notifuse: "Supabase, Anthropic, OpenAI, Gemini, Firecrawl",
                 competitor: "150+ (Shopify, WooCommerce, Salesforce, Zapier, Make, etc.)",
               },
               {
@@ -859,7 +980,7 @@ const proConsRows = [
               },
               {
                 feature: "Agent redactionnel IA",
-                notifuse: "Integration Anthropic Claude",
+                notifuse: "Agent blog IA — Anthropic, OpenAI ou Gemini (votre clé) + recherche web Firecrawl en option",
                 competitor: false,
               },
               {

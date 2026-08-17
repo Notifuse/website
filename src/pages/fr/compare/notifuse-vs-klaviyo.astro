@@ -22,6 +22,8 @@ const tocItems = [
   { id: "contacts", label: "Contacts & Segmentation" },
   { id: "envoi-email", label: "Envoi & Delivrabilite" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "assistant-ia", label: "Assistant IA" },
   { id: "automations", label: "Automations" },
   { id: "evenements", label: "Evenements personnalises" },
   { id: "multi-tenant", label: "Multi-tenant & Agences" },
@@ -265,7 +267,7 @@ const proConsRows = [
               },
               {
                 feature: "Generation IA",
-                notifuse: "Generation d'emails et d'objets par Claude AI",
+                notifuse: "Assistant IA (email, blog & analytics) — votre propre clé Anthropic, OpenAI ou Gemini",
                 competitor: "K:AI pour les objets et le contenu",
               },
               {
@@ -559,6 +561,125 @@ const proConsRows = [
             </div>
             <p class="text-center text-xs text-gray-500 mt-2">Interface Notifuse -- Dashboard analytics</p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Le JavaScript on-site de Klaviyo enregistre les événements Active on Site et Viewed Product pour les navigateurs identifiés et les injecte dans les segments, flows et modèles d'attribution. Ce n'est pas pour autant un outil d'analytics web : aucun rapport de trafic en sessions ou pages vues, un tracker qui dépose un cookie et requiert le consentement dans l'UE, et une classification des canaux figée dans une table UTM non éditable, derrière un add-on payant.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités Web Analytics"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Analytics de site intégrées",
+                notifuse: "Sessions, pages vues & objectifs",
+                competitor: "Événements Active on Site, pas de tableau de bord trafic",
+                description: "Sessions et pages vues de votre site, pas seulement les ouvertures d'emails",
+              },
+              {
+                feature: "Suivi sans cookies",
+                notifuse: "Aucun cookie, aucune bannière",
+                competitor: false,
+                description: "Aucun cookie déposé, donc aucune bannière de consentement",
+              },
+              {
+                feature: "Script auto-hébergé & base de données",
+                notifuse: "Servi par votre propre instance",
+                competitor: false,
+                description: "Données d'analytics web stockées sur votre propre infrastructure",
+              },
+              {
+                feature: "Attribution de canaux éditable",
+                notifuse: "Règles éditables + backfill sur l'historique",
+                competitor: "Table UTM figée, non éditable ; add-on payant",
+                description: "Définissez vos canaux et rejouez les règles sur l'historique",
+              },
+              {
+                feature: "Métrique de temps d'engagement",
+                notifuse: "TimeScore — temps actif médian",
+                competitor: false,
+                description: "Temps réellement actif, pas le temps brut passé sur la page",
+              },
+              {
+                feature: "Carte des visiteurs en direct",
+                notifuse: "30 dernières minutes, rafraîchi toutes les 10 s",
+                competitor: "Carte d'activité en temps réel des événements, pas des visiteurs",
+                description: "Qui est sur votre site en ce moment, sur une carte",
+              },
+              {
+                feature: "Objectifs web avec valeur",
+                notifuse: "achat, abonnement, lead, inscription…",
+                competitor: "Métriques de conversion avec valeur, par campagne/flow",
+                description: "Conversions typées avec chiffre d'affaires, réparties par canal",
+              },
+              {
+                feature: "Annotations de campagne sur le trafic",
+                notifuse: "Les campagnes s'annotent automatiquement",
+                competitor: false,
+                description: "Voyez une campagne et le trafic qu'elle a généré sur la même courbe",
+              },
+              {
+                feature: "Comportement web dans segments & automatisations",
+                notifuse: "Les objectifs deviennent des événements sur la timeline",
+                competitor: "Flows et segments sur Active on Site / Viewed Product",
+                description: "Déclenchez des campagnes selon la navigation sur votre site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="assistant-ia" title="Assistant IA">
+          <p class="text-gray-600 mb-6">
+            Klaviyo devance largement la plupart des outils email sur l'IA : Composer est un agent conversationnel qui construit campagnes, flows et segments, et répond aux questions d'analyse en langage naturel. Il fonctionne sur les modèles de Klaviyo, facturé en crédits expirant chaque mois, sans possibilité d'utiliser votre propre clé Anthropic, OpenAI ou Gemini.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités IA"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Assistant IA intégré",
+                notifuse: "Un assistant conversationnel : email, blog & analytics",
+                competitor: "Composer — agent marketing IA conversationnel",
+              },
+              {
+                feature: "Génération d'emails par IA",
+                notifuse: "Construit et modifie les blocs, l'objet & la prévisualisation",
+                competitor: "Objets, textes de prévisualisation et contenu à votre ton",
+              },
+              {
+                feature: "Rédaction d'articles par IA",
+                notifuse: "Articles avec métadonnées SEO",
+                competitor: false,
+                description: "Articles longs avec leurs métadonnées SEO",
+              },
+              {
+                feature: "Analytics conversationnelles",
+                notifuse: "Quelles campagnes ont généré sessions, objectifs & revenus",
+                competitor: "Composer répond aux questions de performance en langage naturel",
+                description: "Interrogez vos propres données en langage naturel",
+              },
+              {
+                feature: "Votre propre clé API",
+                notifuse: "Anthropic, OpenAI ou Gemini",
+                competitor: false,
+                description: "Utilisez votre propre compte fournisseur d'IA, au prix coûtant",
+              },
+              {
+                feature: "Recherche web par IA",
+                notifuse: "Via l'intégration Firecrawl",
+                competitor: "Utilise vos réglages de marque ; aucun accès web",
+                description: "Recherche web et extraction d'URL comme sources",
+              },
+              {
+                feature: "Modèle de tarification IA",
+                notifuse: "Sans crédits ni marge — vous payez votre fournisseur",
+                competitor: "Facturé en crédits : Composer dès 14 $/mois pour 2 000 crédits",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Automations -->

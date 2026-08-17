@@ -24,6 +24,8 @@ const tocItems = [
   { id: "contact-management", label: "Contact Management & Segmentation" },
   { id: "email-sending", label: "Email Sending & Deliverability" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "ai-assistant", label: "AI Assistant" },
   { id: "automations", label: "Automations" },
   { id: "custom-events", label: "Custom Events & Goals" },
   { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
@@ -291,7 +293,7 @@ const proConsRows = [
               },
 {
                 feature: "AI Content Generation",
-                notifuse: "Claude-powered email & subject line generation",
+                notifuse: "AI assistant (email, blog & analytics) — bring your own Anthropic, OpenAI or Gemini key",
                 competitor: "K:AI subject lines and content generation",
               },
               {
@@ -689,6 +691,125 @@ const proConsRows = [
               Notifuse UI - Analytics Dashboard
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Klaviyo's onsite JavaScript records Active on Site and Viewed Product events for identified browsers and feeds them into segments, flows and attribution. It is not a web analytics tool, though: there is no sessions or pageviews traffic report, the tracker sets a cookie and needs consent in the EU, and channel classification is a fixed UTM map you cannot edit, behind a paid add-on.
+          </p>
+
+          <ComparisonTable
+            title="Web Analytics Features"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Built-in Website Analytics",
+                notifuse: "Sessions, pageviews & goals",
+                competitor: "Active on Site events, no traffic dashboard",
+                description: "Sessions and pageviews from your own site, not just email opens",
+              },
+              {
+                feature: "Cookieless Tracking",
+                notifuse: "No cookie, no consent banner",
+                competitor: false,
+                description: "No cookie set, so no consent banner to lose visitors to",
+              },
+              {
+                feature: "Self-hosted Script & Own Database",
+                notifuse: "Served from your own instance",
+                competitor: false,
+                description: "Website analytics data stored on your own infrastructure",
+              },
+              {
+                feature: "Editable Channel Attribution",
+                notifuse: "Editable rules + backfill over history",
+                competitor: "Fixed UTM map, not editable; paid add-on",
+                description: "Define your own channels and replay the rules over history",
+              },
+              {
+                feature: "Engaged-time Metric",
+                notifuse: "TimeScore — median engaged time",
+                competitor: false,
+                description: "Genuinely active time, not raw time-on-page",
+              },
+              {
+                feature: "Live Visitor Map",
+                notifuse: "Last 30 min, refreshed every 10s",
+                competitor: "Realtime map of events, not visitors online",
+                description: "Who is on your site right now, plotted on a map",
+              },
+              {
+                feature: "Website Goals with Value",
+                notifuse: "purchase, subscription, lead, signup…",
+                competitor: "Conversion metrics with value, by campaign/flow",
+                description: "Typed conversions carrying revenue, split by channel",
+              },
+              {
+                feature: "Campaign Annotations on Traffic",
+                notifuse: "Broadcasts annotate the chart automatically",
+                competitor: false,
+                description: "See a campaign and the traffic it caused on the same chart",
+              },
+              {
+                feature: "Web Behaviour in Segments & Automations",
+                notifuse: "Goals become custom events on the timeline",
+                competitor: "Active on Site / Viewed Product flows and segments",
+                description: "Trigger campaigns from what someone browsed on your site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="ai-assistant" title="AI Assistant">
+          <p class="text-gray-600 mb-6">
+            Klaviyo is genuinely far ahead of most email tools on AI: Composer is a conversational agent that builds campaigns, flows and segments and answers analytics questions in plain language. It runs on Klaviyo's own models, metered in credits that expire monthly, with no option to bring your own Anthropic, OpenAI or Gemini key.
+          </p>
+
+          <ComparisonTable
+            title="AI Features"
+            competitorName="Klaviyo"
+            features={[
+              {
+                feature: "Built-in AI Assistant",
+                notifuse: "One conversational assistant — email, blog & analytics",
+                competitor: "Composer — conversational AI marketing agent",
+              },
+              {
+                feature: "AI Email Generation",
+                notifuse: "Builds and edits the blocks, subject line & preview text",
+                competitor: "Subject lines, preview text and content in your brand voice",
+              },
+              {
+                feature: "AI Blog Writing",
+                notifuse: "Posts with SEO metadata",
+                competitor: false,
+                description: "Long-form posts with their SEO metadata",
+              },
+              {
+                feature: "Conversational Analytics",
+                notifuse: "Ask which campaigns drove sessions, goals & revenue",
+                competitor: "Composer answers performance questions in plain language",
+                description: "Ask questions about your own data in plain language",
+              },
+              {
+                feature: "Bring Your Own API Key",
+                notifuse: "Anthropic, OpenAI or Gemini",
+                competitor: false,
+                description: "Use your own AI provider account, at cost",
+              },
+              {
+                feature: "AI Web Research",
+                notifuse: "Via Firecrawl integration",
+                competitor: "Uses your configured brand settings; no web access",
+                description: "Search the web and scrape URLs for source material",
+              },
+              {
+                feature: "AI Pricing Model",
+                notifuse: "No credits, no markup — you pay your provider",
+                competitor: "Credit-metered: Composer from $14/mo for 2,000 credits",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Automations -->

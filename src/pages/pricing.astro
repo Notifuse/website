@@ -17,6 +17,7 @@ const plans = [
     activeContacts: "2,500",
     storedContacts: "10,000",
     monthlyTimeline: "50,000",
+    monthlyPageviews: "50,000",
     dataRetention: "12 months",
     workspaces: "1",
     teamMembers: "3",
@@ -31,6 +32,7 @@ const plans = [
     activeContacts: "10,000",
     storedContacts: "50,000",
     monthlyTimeline: "200,000",
+    monthlyPageviews: "200,000",
     dataRetention: "12 months",
     workspaces: "5",
     teamMembers: "3",
@@ -45,6 +47,7 @@ const plans = [
     activeContacts: "25,000",
     storedContacts: "150,000",
     monthlyTimeline: "500,000",
+    monthlyPageviews: "500,000",
     dataRetention: "24 months",
     workspaces: "10",
     teamMembers: "10",
@@ -59,6 +62,7 @@ const plans = [
     activeContacts: "50,000",
     storedContacts: "300,000",
     monthlyTimeline: "1,000,000",
+    monthlyPageviews: "1,000,000",
     dataRetention: "36 months",
     workspaces: "20",
     teamMembers: "25",
@@ -69,6 +73,7 @@ const comparisonFeatures = [
   { label: "Active contacts", key: "activeContacts", tooltip: "Unique contacts with activity in the last 30 days" },
   { label: "Stored contacts", key: "storedContacts", tooltip: "Total contacts in your database, active or dormant" },
   { label: "Monthly timeline entries", key: "monthlyTimeline", tooltip: "Emails, opens, clicks, list changes, automations, and custom events" },
+  { label: "Monthly pageviews", key: "monthlyPageviews", tooltip: "Website pageviews recorded by Web Analytics. Cookieless, so you measure 100% of your traffic — not the slice that accepts a banner" },
   { label: "Data retention", key: "dataRetention", tooltip: "How long timeline and analytics data stays queryable for segmentation" },
   { label: "Workspaces", key: "workspaces", tooltip: "Isolated environments with separate contacts, campaigns, and settings" },
   { label: "Team members", key: "teamMembers", tooltip: "Users who can access your account" },
@@ -88,6 +93,7 @@ const includedFeatures = [
   "Contact timeline & profiles",
   "A/B testing",
   "Analytics & reporting",
+  "Cookieless web analytics",
 ]
 
 const faqs = [
@@ -99,7 +105,7 @@ const faqs = [
   {
     question: "What happens when I exceed my plan limits?",
     answer:
-      "There are no overage fees and your campaigns are never paused. We'll notify you at 80% and 100% of your plan limits. If you exceed your tier, you simply move to the next plan on your next billing cycle — no surprise charges, no action required on your side.",
+      "There are no overage fees, your campaigns are never paused, and we never stop recording your website traffic. We'll notify you at 80% and 100% of your plan limits. If you exceed your tier, you simply move to the next plan on your next billing cycle — no surprise charges, no action required on your side. Traffic spikes are treated gently: one big month — a launch, a front-page link — won't move you up. We only ask you to change plans if you're over the pageview limit two months running, or more than 3× over it.",
   },
   {
     question: "Do I need to pay for email sending?",
@@ -125,6 +131,11 @@ const faqs = [
     question: "What are monthly timeline entries?",
     answer:
       "Timeline entries are every contact interaction tracked by the platform: emails sent and engagement (delivery, open, click, bounce), list subscriptions, segment changes, automation runs, and custom events. If you exceed your timeline limit, you'll be auto-upgraded to the next tier on your next billing cycle.",
+  },
+  {
+    question: "What counts as a pageview?",
+    answer:
+      "Every page a visitor opens on a site you've added to Web Analytics. It counts once per page, not once per heartbeat — someone reading a single article for ten minutes is one pageview, however long they stay. Traffic we identify as a bot is discarded and never counts. Web Analytics is cookieless, so there is no consent banner and no sampling: the number reflects 100% of your traffic. And a visit from a contact you've identified doesn't also consume timeline entries — the same event is never metered twice.",
   },
   {
     question: "Is my data safe? Where is it hosted?",
@@ -290,6 +301,7 @@ const faqs = [
                     {[
                       `<strong>${plan.activeContacts}</strong> active contacts`,
                       `<strong>${plan.monthlyTimeline}</strong> timeline entries/mo`,
+                      `<strong>${plan.monthlyPageviews}</strong> pageviews/mo`,
                       `${plan.dataRetention} data retention`,
                       `${plan.workspaces} workspace${plan.workspaces === "1" ? "" : "s"}`,
                       `${plan.teamMembers} team members`,
@@ -404,7 +416,7 @@ const faqs = [
               <div>
                 <p class="font-medium text-slate-900 text-sm">Custom quotas</p>
                 <p class="text-xs text-gray-500">
-                  Contacts, events, and throughput tailored to you
+                  Contacts, events, pageviews, and throughput tailored to you
                 </p>
               </div>
             </div>

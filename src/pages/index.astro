@@ -16,6 +16,8 @@ import SegmentationEnginePreview from "../components/SegmentationEnginePreview.a
 import PermissionsPreview from "../components/PermissionsPreview.astro"
 import WorkspacesPreview from "../components/WorkspacesPreview.astro"
 import AutomationsPreview from "../components/AutomationsPreview.astro"
+import AIPreview from "../components/AIPreview.astro"
+import WebAnalyticsPreview from "../components/WebAnalyticsPreview.astro"
 ---
 
 <html lang="en">
@@ -240,8 +242,11 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Rich contact profiles with custom fields and complete activity
-                history including messages, profile changes, webhook events, and
+                Rich contact profiles with
+                <span class="text-primary font-semibold">custom fields</span>
+                and complete activity history including messages,
+                <span class="text-primary font-semibold">web sessions</span>
+                and page views, profile changes, webhook events, and
                 subscription list changes.
               </p>
               <ContactProfilePreview />
@@ -257,8 +262,8 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Powerful REST API for transactional emails with responsive
-                templates for perfect rendering across all devices.
+                Powerful <span class="text-primary font-semibold">REST API</span> for transactional emails with
+                <span class="text-primary font-semibold">responsive templates</span> for perfect rendering across all devices.
               </p>
               <TransactionalAPIPreview />
             </div>
@@ -274,8 +279,9 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Real-time analytics with detailed open rates, click tracking,
-                and engagement metrics for campaign optimization.
+                Real-time analytics with detailed
+                <span class="text-primary font-semibold">open rates</span>,
+                <span class="text-primary font-semibold">click tracking</span>, and engagement metrics for campaign optimization.
               </p>
               <AnalyticsPreview />
             </div>
@@ -290,8 +296,8 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Self-service portal for contacts to manage subscriptions,
-                preferences, and communication settings.
+                <span class="text-primary font-semibold">Self-service portal</span> for contacts to manage subscriptions, preferences, and
+                communication settings.
               </p>
               <NotificationCenterPreview />
             </div>
@@ -306,8 +312,9 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Optimize your newsletters with built-in A/B testing for subject
-                lines, content, and send times.
+                Optimize your newsletters with built-in
+                <span class="text-primary font-semibold">A/B testing</span>
+                for subject lines, content, and send times.
               </p>
               <ABTestingPreview />
             </div>
@@ -324,7 +331,8 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
               </div>
               <p class="text-gray-600 text-sm mb-6">
                 Segment contacts by property, activity, and subscription. Build
-                dynamic rules with relative dates for targeted campaigns.
+                <span class="text-primary font-semibold">dynamic rules</span>
+                with <span class="text-primary font-semibold">relative dates</span> for targeted campaigns.
               </p>
               <SegmentationEnginePreview />
             </div>
@@ -340,7 +348,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Granular workspace-level access control with multiple roles.
+                Granular <span class="text-primary font-semibold">workspace-level access control</span> with multiple roles.
                 Perfect for team collaboration and security.
               </p>
               <PermissionsPreview />
@@ -354,9 +362,9 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                 <h3 class="text-lg font-semibold text-slate-900">Workspaces</h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Multi-tenant architecture with custom domains. Each workspace
-                has isolated data, contacts, and campaigns. Perfect for
-                agencies.
+                <span class="text-primary font-semibold">Multi-tenant</span>
+                architecture with <span class="text-primary font-semibold">custom domains</span>. Each workspace has isolated data,
+                contacts, and campaigns. Perfect for agencies.
               </p>
               <WorkspacesPreview />
             </div>
@@ -374,7 +382,8 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                     </h3>
                   </div>
                   <p class="text-gray-600 text-sm mb-3">
-                    Event-driven workflows built on contact timeline. Create
+                    <span class="text-primary font-semibold">Event-driven
+                    workflows</span> built on contact timeline. Create
                     automated sequences based on subscriber behavior and
                     actions.
                   </p>
@@ -384,16 +393,89 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
                     and re-engagement campaigns.
                   </p>
                   <p class="text-gray-600 text-sm">
-                    Design complex journeys with visual workflow builder and
-                    automatic execution — and automatically stop the sequence
-                    the moment a contact replies, so you never email someone who
-                    already responded.
+                    Design complex journeys with
+                    <span class="text-primary font-semibold">visual workflow
+                    builder</span> and automatic execution — and automatically
+                    stop the sequence the moment a contact replies, so you never
+                    email someone who already responded.
                   </p>
                 </div>
 
                 <!-- Right Column: Illustration -->
                 <div class="md:order-2">
                   <AutomationsPreview />
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 6: AI + Web Analytics -->
+            <!-- AI Assistant -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  AI Assistant
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">
+                One assistant across Notifuse: write emails and subject lines in
+                the editor, draft blog posts with their SEO metadata, and
+                ask your <span class="text-primary font-semibold"
+                  >Web Analytics</span
+                > which campaigns actually worked.
+              </p>
+              <p class="text-gray-600 text-sm mb-6">
+                Bring your own key — <span class="text-primary font-semibold"
+                  >Anthropic</span
+                >, <span class="text-primary font-semibold">OpenAI</span> or <span
+                  class="text-primary font-semibold">Gemini</span
+                >. Add <span class="text-primary font-semibold">Firecrawl</span> and
+                it can research the web before it writes.
+              </p>
+              <AIPreview />
+            </div>
+
+            <!-- Web Analytics -->
+            <div
+              class="md:col-span-2 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Column: Title and Description -->
+                <div class="flex flex-col md:order-1">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-slate-900">
+                      Web Analytics
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Cookieless by design: no cookie, no consent banner, so you
+                    measure <span class="text-primary font-semibold"
+                      >100% of your traffic</span
+                    > — not the slice that opts in.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Split sources, group pages and define your own <span
+                      class="text-primary font-semibold">channels</span
+                    >, then rank them by <span class="text-primary font-semibold"
+                      >TimeScore</span
+                    >, the active time visitors really spend. Every broadcast
+                    annotates itself on the chart, so you see what each campaign
+                    brought in.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Record goals with a value and read revenue back by channel,
+                    ready for your <span class="text-primary font-semibold"
+                      >segments</span
+                    > and <span class="text-primary font-semibold"
+                      >automations</span
+                    >.
+                  </p>
+                </div>
+
+                <!-- Right Column: Illustration -->
+                <div class="md:order-2 flex flex-col justify-center">
+                  <WebAnalyticsPreview />
                 </div>
               </div>
             </div>

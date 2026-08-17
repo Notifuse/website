@@ -24,6 +24,8 @@ const tocItems = [
   { id: "email-sending", label: "Email Sending & Deliverability" },
   { id: "contact-management", label: "Contact Management & Segmentation" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "ai-assistant", label: "AI Assistant" },
   { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
   { id: "developer-api", label: "Developer Experience & API" },
   { id: "automations", label: "Automations" },
@@ -617,6 +619,125 @@ const proConsRows = [
               Notifuse UI - Analytics Dashboard
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Listmonk is a self-hosted newsletter engine with solid campaign analytics for opens, clicks, bounces and top links. It ships no website tracking at all: no sessions, pageviews, attribution, goals or live view. Notifuse keeps the same own-your-database posture and adds a cookieless web analytics layer on top.
+          </p>
+
+          <ComparisonTable
+            title="Web Analytics Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Built-in Website Analytics",
+                notifuse: "Sessions, pageviews & goals",
+                competitor: false,
+                description: "Sessions and pageviews from your own site, not just email opens",
+              },
+              {
+                feature: "Cookieless Tracking",
+                notifuse: "No cookie, no consent banner",
+                competitor: false,
+                description: "No cookie set, so no consent banner to lose visitors to",
+              },
+              {
+                feature: "Self-hosted Script & Own Database",
+                notifuse: "Served from your own instance",
+                competitor: "Fully self-hosted, but email tracking only",
+                description: "Website analytics data stored on your own infrastructure",
+              },
+              {
+                feature: "Editable Channel Attribution",
+                notifuse: "Editable rules + backfill over history",
+                competitor: false,
+                description: "Define your own channels and replay the rules over history",
+              },
+              {
+                feature: "Engaged-time Metric",
+                notifuse: "TimeScore — median engaged time",
+                competitor: false,
+                description: "Genuinely active time, not raw time-on-page",
+              },
+              {
+                feature: "Live Visitor Map",
+                notifuse: "Last 30 min, refreshed every 10s",
+                competitor: false,
+                description: "Who is on your site right now, plotted on a map",
+              },
+              {
+                feature: "Website Goals with Value",
+                notifuse: "purchase, subscription, lead, signup…",
+                competitor: false,
+                description: "Typed conversions carrying revenue, split by channel",
+              },
+              {
+                feature: "Campaign Annotations on Traffic",
+                notifuse: "Broadcasts annotate the chart automatically",
+                competitor: false,
+                description: "See a campaign and the traffic it caused on the same chart",
+              },
+              {
+                feature: "Web Behaviour in Segments & Automations",
+                notifuse: "Goals become custom events on the timeline",
+                competitor: false,
+                description: "Trigger campaigns from what someone browsed on your site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="ai-assistant" title="AI Assistant">
+          <p class="text-gray-600 mb-6">
+            Listmonk has no AI features anywhere in the product. Notifuse ships one assistant across the email editor, the blog and Web Analytics, running on your own API key.
+          </p>
+
+          <ComparisonTable
+            title="AI Features"
+            competitorName="Listmonk"
+            features={[
+              {
+                feature: "Built-in AI Assistant",
+                notifuse: "One conversational assistant — email, blog & analytics",
+                competitor: false,
+              },
+              {
+                feature: "AI Email Generation",
+                notifuse: "Builds and edits the blocks, subject line & preview text",
+                competitor: false,
+              },
+              {
+                feature: "AI Blog Writing",
+                notifuse: "Posts with SEO metadata",
+                competitor: false,
+                description: "Long-form posts with their SEO metadata",
+              },
+              {
+                feature: "Conversational Analytics",
+                notifuse: "Ask which campaigns drove sessions, goals & revenue",
+                competitor: false,
+                description: "Ask questions about your own data in plain language",
+              },
+              {
+                feature: "Bring Your Own API Key",
+                notifuse: "Anthropic, OpenAI or Gemini",
+                competitor: false,
+                description: "Use your own AI provider account, at cost",
+              },
+              {
+                feature: "AI Web Research",
+                notifuse: "Via Firecrawl integration",
+                competitor: false,
+                description: "Search the web and scrape URLs for source material",
+              },
+              {
+                feature: "AI Pricing Model",
+                notifuse: "No credits, no markup — you pay your provider",
+                competitor: false,
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Multi-tenancy & Agency -->

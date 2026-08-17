@@ -22,6 +22,8 @@ const tocItems = [
   { id: "envoi-email", label: "Envoi & Délivrabilité" },
   { id: "contacts", label: "Contacts & Segmentation" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "assistant-ia", label: "Assistant IA" },
   { id: "multi-tenant", label: "Multi-tenant & Agences" },
   { id: "api-developpeur", label: "API & Développeurs" },
   { id: "automations", label: "Automations" },
@@ -272,7 +274,7 @@ const proConsRows = [
               },
               {
                 feature: "Génération IA",
-                notifuse: "Intégration Claude AI pour le contenu & les objets",
+                notifuse: "Assistant IA (email, blog & analytics) — votre propre clé Anthropic, OpenAI ou Gemini",
                 competitor: false,
               },
               {
@@ -605,6 +607,125 @@ const proConsRows = [
           </div>
         </FeatureSection>
 
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Loops est une plateforme d'emails lifecycle volontairement ciblée pour les équipes SaaS, et elle excelle dans ce rôle. Elle n'embarque en revanche aucun script de suivi pour votre site : ni sessions, ni pages vues, ni attribution, et son reporting s'arrête aux ouvertures, clics et conversions sur propriétés de contact.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités Web Analytics"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Analytics de site intégrées",
+                notifuse: "Sessions, pages vues & objectifs",
+                competitor: false,
+                description: "Sessions et pages vues de votre site, pas seulement les ouvertures d'emails",
+              },
+              {
+                feature: "Suivi sans cookies",
+                notifuse: "Aucun cookie, aucune bannière",
+                competitor: false,
+                description: "Aucun cookie déposé, donc aucune bannière de consentement",
+              },
+              {
+                feature: "Script auto-hébergé & base de données",
+                notifuse: "Servi par votre propre instance",
+                competitor: false,
+                description: "Données d'analytics web stockées sur votre propre infrastructure",
+              },
+              {
+                feature: "Attribution de canaux éditable",
+                notifuse: "Règles éditables + backfill sur l'historique",
+                competitor: false,
+                description: "Définissez vos canaux et rejouez les règles sur l'historique",
+              },
+              {
+                feature: "Métrique de temps d'engagement",
+                notifuse: "TimeScore — temps actif médian",
+                competitor: false,
+                description: "Temps réellement actif, pas le temps brut passé sur la page",
+              },
+              {
+                feature: "Carte des visiteurs en direct",
+                notifuse: "30 dernières minutes, rafraîchi toutes les 10 s",
+                competitor: false,
+                description: "Qui est sur votre site en ce moment, sur une carte",
+              },
+              {
+                feature: "Objectifs web avec valeur",
+                notifuse: "achat, abonnement, lead, inscription…",
+                competitor: false,
+                description: "Conversions typées avec chiffre d'affaires, réparties par canal",
+              },
+              {
+                feature: "Annotations de campagne sur le trafic",
+                notifuse: "Les campagnes s'annotent automatiquement",
+                competitor: false,
+                description: "Voyez une campagne et le trafic qu'elle a généré sur la même courbe",
+              },
+              {
+                feature: "Comportement web dans segments & automatisations",
+                notifuse: "Les objectifs deviennent des événements sur la timeline",
+                competitor: "Uniquement via des événements que vous envoyez vous-même",
+                description: "Déclenchez des campagnes selon la navigation sur votre site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="assistant-ia" title="Assistant IA">
+          <p class="text-gray-600 mb-6">
+            Loops mise sur une approche agent-native : son serveur MCP, sa CLI et ses skills permettent à Claude de piloter le produit depuis l'extérieur, la traduction en un clic étant la seule fonctionnalité IA native. Notifuse intègre l'assistant au produit et le relie au fournisseur de votre choix.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités IA"
+            competitorName="Loops"
+            features={[
+              {
+                feature: "Assistant IA intégré",
+                notifuse: "Un assistant conversationnel : email, blog & analytics",
+                competitor: "Pas d'assistant intégré ; connecteur MCP vers Claude",
+              },
+              {
+                feature: "Génération d'emails par IA",
+                notifuse: "Construit et modifie les blocs, l'objet & la prévisualisation",
+                competitor: "Traduction IA uniquement ; pas de rédaction d'objets",
+              },
+              {
+                feature: "Rédaction d'articles par IA",
+                notifuse: "Articles avec métadonnées SEO",
+                competitor: false,
+                description: "Articles longs avec leurs métadonnées SEO",
+              },
+              {
+                feature: "Analytics conversationnelles",
+                notifuse: "Quelles campagnes ont généré sessions, objectifs & revenus",
+                competitor: "Via Claude et le serveur MCP, pas dans l'application",
+                description: "Interrogez vos propres données en langage naturel",
+              },
+              {
+                feature: "Votre propre clé API",
+                notifuse: "Anthropic, OpenAI ou Gemini",
+                competitor: false,
+                description: "Utilisez votre propre compte fournisseur d'IA, au prix coûtant",
+              },
+              {
+                feature: "Recherche web par IA",
+                notifuse: "Via l'intégration Firecrawl",
+                competitor: false,
+                description: "Recherche web et extraction d'URL comme sources",
+              },
+              {
+                feature: "Modèle de tarification IA",
+                notifuse: "Sans crédits ni marge — vous payez votre fournisseur",
+                competitor: "Traduction incluse ; IA agent sur votre propre plan Claude",
+              },
+            ]}
+          />
+        </FeatureSection>
+
         <!-- Multi-tenant & Agences -->
         <FeatureSection id="multi-tenant" title="Multi-tenant & Agences">
           <p class="text-gray-600 mb-6">
@@ -680,7 +801,7 @@ const proConsRows = [
               },
               {
                 feature: "Intégrations natives",
-                notifuse: "Supabase, Anthropic, Firecrawl",
+                notifuse: "Supabase, Anthropic, OpenAI, Gemini, Firecrawl",
                 competitor: "20+ (Stripe, Clerk, Segment, HubSpot, Zapier, etc.)",
               },
               {

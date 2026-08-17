@@ -18,6 +18,7 @@ const plans = [
     activeContacts: "2,500",
     storedContacts: "10,000",
     monthlyTimeline: "50,000",
+    monthlyPageviews: "50,000",
     dataRetention: "12 mois",
     workspaces: "1",
     teamMembers: "3",
@@ -32,6 +33,7 @@ const plans = [
     activeContacts: "10,000",
     storedContacts: "50,000",
     monthlyTimeline: "200,000",
+    monthlyPageviews: "200,000",
     dataRetention: "12 mois",
     workspaces: "5",
     teamMembers: "3",
@@ -46,6 +48,7 @@ const plans = [
     activeContacts: "25,000",
     storedContacts: "150,000",
     monthlyTimeline: "500,000",
+    monthlyPageviews: "500,000",
     dataRetention: "24 mois",
     workspaces: "10",
     teamMembers: "10",
@@ -60,6 +63,7 @@ const plans = [
     activeContacts: "50,000",
     storedContacts: "300,000",
     monthlyTimeline: "1,000,000",
+    monthlyPageviews: "1,000,000",
     dataRetention: "36 mois",
     workspaces: "20",
     teamMembers: "25",
@@ -70,6 +74,7 @@ const comparisonFeatures = [
   { label: "Contacts actifs", key: "activeContacts", tooltip: "Contacts uniques ayant eu au moins une activité dans les 30 derniers jours" },
   { label: "Contacts stockés", key: "storedContacts", tooltip: "Total de contacts dans votre base, actifs ou inactifs" },
   { label: "Entrées timeline/mois", key: "monthlyTimeline", tooltip: "Emails, ouvertures, clics, changements de liste, automations et événements personnalisés" },
+  { label: "Pages vues/mois", key: "monthlyPageviews", tooltip: "Pages vues sur votre site enregistrées par le Web Analytics. Sans cookie, vous mesurez 100% de votre trafic — pas seulement la part qui accepte une bannière" },
   { label: "Conservation des données", key: "dataRetention", tooltip: "Durée pendant laquelle les données timeline et analytics restent interrogeables pour la segmentation" },
   { label: "Espaces de travail", key: "workspaces", tooltip: "Environnements isolés avec contacts, campagnes et paramètres séparés" },
   { label: "Membres d'équipe", key: "teamMembers", tooltip: "Utilisateurs pouvant accéder à votre compte" },
@@ -89,6 +94,7 @@ const includedFeatures = [
   "Timeline & profils des contacts",
   "Tests A/B",
   "Analytics & reporting",
+  "Web analytics sans cookie",
 ]
 
 const faqs = [
@@ -100,7 +106,7 @@ const faqs = [
   {
     question: "Que se passe-t-il si je dépasse les limites de mon plan ?",
     answer:
-      "Il n'y a aucun frais de dépassement et vos campagnes ne sont jamais interrompues. Nous vous notifions à 80 % et 100 % des limites de votre plan. Si vous dépassez votre palier, vous passez simplement au plan supérieur lors de votre prochain cycle de facturation — pas de frais surprise, aucune action requise de votre côté.",
+      "Il n'y a aucun frais de dépassement, vos campagnes ne sont jamais interrompues, et nous n'arrêtons jamais d'enregistrer le trafic de votre site. Nous vous notifions à 80 % et 100 % des limites de votre plan. Si vous dépassez votre palier, vous passez simplement au plan supérieur lors de votre prochain cycle de facturation — pas de frais surprise, aucune action requise de votre côté. Les pics de trafic sont traités avec souplesse : un seul gros mois — un lancement, un lien en une — ne vous fait pas changer de plan. Nous ne vous demandons de changer que si vous dépassez la limite de pages vues deux mois de suite, ou de plus de 3×.",
   },
   {
     question: "Dois-je payer pour l'envoi d'emails ?",
@@ -126,6 +132,11 @@ const faqs = [
     question: "Que sont les entrées timeline mensuelles ?",
     answer:
       "Les entrées timeline représentent chaque interaction contact suivie par la plateforme : emails envoyés et engagement (livraison, ouverture, clic, rebond), abonnements aux listes, changements de segments, exécutions d'automations et événements personnalisés. Si vous dépassez votre limite timeline, vous serez automatiquement mis à niveau au palier supérieur lors de votre prochain cycle de facturation.",
+  },
+  {
+    question: "Qu'est-ce qui compte comme une page vue ?",
+    answer:
+      "Chaque page ouverte par un visiteur sur un site que vous avez ajouté au Web Analytics. Elle est comptée une fois par page, et non à chaque battement : un visiteur qui lit un article pendant dix minutes représente une seule page vue, quelle que soit la durée. Le trafic identifié comme robot est écarté et ne compte jamais. Le Web Analytics est sans cookie, donc sans bannière de consentement ni échantillonnage : le chiffre reflète 100 % de votre trafic. Et la visite d'un contact que vous avez identifié ne consomme pas en plus des entrées timeline — le même événement n'est jamais compté deux fois.",
   },
   {
     question: "Mes données sont-elles en sécurité ? Où sont-elles hébergées ?",
@@ -303,6 +314,7 @@ const faqs = [
                     {[
                       `<strong>${plan.activeContacts}</strong> contacts actifs`,
                       `<strong>${plan.monthlyTimeline}</strong> entrées timeline/mois`,
+                      `<strong>${plan.monthlyPageviews}</strong> pages vues/mois`,
                       `${plan.dataRetention} conservation des données`,
                       `${plan.workspaces} espace${plan.workspaces === "1" ? "" : "s"} de travail`,
                       `${plan.teamMembers} membres d'équipe`,
@@ -414,7 +426,7 @@ const faqs = [
               <div>
                 <p class="font-medium text-slate-900 text-sm">Quotas personnalisés</p>
                 <p class="text-xs text-gray-500">
-                  Contacts, événements et débit adaptés à vos besoins
+                  Contacts, événements, pages vues et débit adaptés à vos besoins
                 </p>
               </div>
             </div>

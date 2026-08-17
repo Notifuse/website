@@ -15,6 +15,8 @@ import SegmentationEnginePreview from "../../components/SegmentationEnginePrevie
 import PermissionsPreview from "../../components/PermissionsPreview.astro"
 import WorkspacesPreview from "../../components/WorkspacesPreview.astro"
 import AutomationsPreview from "../../components/AutomationsPreview.astro"
+import AIPreview from "../../components/AIPreview.astro"
+import WebAnalyticsPreview from "../../components/WebAnalyticsPreview.astro"
 import GtagHead from "../../components/GtagHead.astro"
 import CookieConsent from "../../components/CookieConsent.astro"
 ---
@@ -241,10 +243,11 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Profils de contacts enrichis avec champs personnalisés et
-                historique complet des activités incluant les messages, les
-                modifications de profil, les événements webhook et les
-                changements de listes d'abonnement.
+                Profils de contacts enrichis avec
+                <span class="text-primary font-semibold">champs personnalisés</span> et historique complet des activités incluant les
+                messages, les <span class="text-primary font-semibold">sessions
+                web</span> et pages vues, les modifications de profil, les
+                événements webhook et les changements de listes d'abonnement.
               </p>
               <ContactProfilePreview />
             </div>
@@ -259,9 +262,9 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                API REST puissante pour les emails transactionnels avec des
-                templates responsives pour un rendu parfait sur tous les
-                appareils.
+                <span class="text-primary font-semibold">API REST</span>
+                puissante pour les emails transactionnels avec des
+                <span class="text-primary font-semibold">templates responsives</span> pour un rendu parfait sur tous les appareils.
               </p>
               <TransactionalAPIPreview />
             </div>
@@ -277,9 +280,9 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Analytiques en temps réel avec taux d'ouverture détaillés, suivi
-                des clics et métriques d'engagement pour optimiser vos
-                campagnes.
+                Analytiques en temps réel avec
+                <span class="text-primary font-semibold">taux d'ouverture</span> détaillés, <span class="text-primary font-semibold">suivi des clics</span> et métriques d'engagement pour optimiser
+                vos campagnes.
               </p>
               <AnalyticsPreview />
             </div>
@@ -294,7 +297,8 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Portail en libre-service permettant aux contacts de gérer leurs
+                <span class="text-primary font-semibold">Portail en
+                libre-service</span> permettant aux contacts de gérer leurs
                 abonnements, préférences et paramètres de communication.
               </p>
               <NotificationCenterPreview />
@@ -310,8 +314,8 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Optimisez vos newsletters grâce aux tests A/B intégrés pour les
-                objets, le contenu et les horaires d'envoi.
+                Optimisez vos newsletters grâce aux
+                <span class="text-primary font-semibold">tests A/B intégrés</span> pour les objets, le contenu et les horaires d'envoi.
               </p>
               <ABTestingPreview />
             </div>
@@ -328,8 +332,9 @@ import CookieConsent from "../../components/CookieConsent.astro"
               </div>
               <p class="text-gray-600 text-sm mb-6">
                 Segmentez vos contacts par propriété, activité et abonnement.
-                Créez des règles dynamiques avec des dates relatives pour des
-                campagnes ciblées.
+                Créez des <span class="text-primary font-semibold">règles
+                dynamiques</span> avec des
+                <span class="text-primary font-semibold">dates relatives</span> pour des campagnes ciblées.
               </p>
               <SegmentationEnginePreview />
             </div>
@@ -345,9 +350,9 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 </h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Contrôle d'accès granulaire au niveau des workspaces avec
-                plusieurs rôles. Idéal pour la collaboration en équipe et la
-                sécurité.
+                <span class="text-primary font-semibold">Contrôle d'accès
+                granulaire</span> au niveau des workspaces avec plusieurs
+                rôles. Idéal pour la collaboration en équipe et la sécurité.
               </p>
               <PermissionsPreview />
             </div>
@@ -360,9 +365,9 @@ import CookieConsent from "../../components/CookieConsent.astro"
                 <h3 class="text-lg font-semibold text-slate-900">Workspaces</h3>
               </div>
               <p class="text-gray-600 text-sm mb-6">
-                Architecture multi-tenant avec domaines personnalisés. Chaque
-                workspace dispose de données, contacts et campagnes isolés.
-                Idéal pour les agences.
+                Architecture <span class="text-primary font-semibold">multi-tenant</span> avec
+                <span class="text-primary font-semibold">domaines personnalisés</span>. Chaque workspace dispose de données, contacts et
+                campagnes isolés. Idéal pour les agences.
               </p>
               <WorkspacesPreview />
             </div>
@@ -380,7 +385,8 @@ import CookieConsent from "../../components/CookieConsent.astro"
                     </h3>
                   </div>
                   <p class="text-gray-600 text-sm mb-3">
-                    Workflows déclenchés par événements, basés sur la timeline
+                    <span class="text-primary font-semibold">Workflows
+                    déclenchés par événements</span>, basés sur la timeline
                     des contacts. Créez des séquences automatisées selon le
                     comportement et les actions des abonnés.
                   </p>
@@ -391,16 +397,90 @@ import CookieConsent from "../../components/CookieConsent.astro"
                     réengagement.
                   </p>
                   <p class="text-gray-600 text-sm">
-                    Concevez des parcours complexes avec le constructeur visuel
-                    de workflows et l'exécution automatique — et arrêtez
-                    automatiquement la séquence dès qu'un contact répond, pour ne
-                    jamais relancer quelqu'un qui a déjà répondu.
+                    Concevez des parcours complexes avec le
+                    <span class="text-primary font-semibold">constructeur
+                    visuel de workflows</span> et l'exécution automatique — et
+                    arrêtez automatiquement la séquence dès qu'un contact
+                    répond, pour ne jamais relancer quelqu'un qui a déjà
+                    répondu.
                   </p>
                 </div>
 
                 <!-- Right Column: Illustration -->
                 <div class="md:order-2">
                   <AutomationsPreview />
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 6: AI + Web Analytics -->
+            <!-- Assistant IA -->
+            <div
+              class="md:col-span-1 p-8 border-b border-r border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-slate-900">
+                  Assistant IA
+                </h3>
+              </div>
+              <p class="text-gray-600 text-sm mb-3">
+                Un seul assistant dans tout Notifuse : rédigez emails et objets
+                dans l'éditeur, des articles de blog avec leurs métadonnées SEO,
+                et demandez à vos <span class="text-primary font-semibold"
+                  >Web Analytics</span
+                > quelles campagnes ont marché.
+              </p>
+              <p class="text-gray-600 text-sm mb-6">
+                Utilisez votre propre clé API — <span
+                  class="text-primary font-semibold">Anthropic</span
+                >, <span class="text-primary font-semibold">OpenAI</span> ou <span
+                  class="text-primary font-semibold">Gemini</span
+                >. Ajoutez <span class="text-primary font-semibold">Firecrawl</span
+                > et il peut chercher sur le web avant d'écrire.
+              </p>
+              <AIPreview />
+            </div>
+
+            <!-- Web Analytics -->
+            <div
+              class="md:col-span-2 p-8 border-b border-gray-200 hover:bg-white transition-colors"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Column: Title and Description -->
+                <div class="flex flex-col md:order-1">
+                  <div class="mb-4">
+                    <h3 class="text-lg font-semibold text-slate-900">
+                      Web Analytics
+                    </h3>
+                  </div>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Sans cookies par conception : aucun cookie, aucune bannière
+                    de consentement, donc vous mesurez <span
+                      class="text-primary font-semibold">100 % de votre trafic</span
+                    > — pas seulement ceux qui acceptent.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-3">
+                    Séparez vos sources, regroupez vos pages, définissez vos
+                    propres <span class="text-primary font-semibold">canaux</span
+                    >, puis classez-les par <span
+                      class="text-primary font-semibold">TimeScore</span
+                    >, le temps réellement actif de vos visiteurs. Chaque
+                    campagne s'annote sur la courbe : vous voyez ce qu'elle a
+                    rapporté.
+                  </p>
+                  <p class="text-gray-600 text-sm mb-4">
+                    Enregistrez des objectifs avec une valeur et relisez le
+                    chiffre d'affaires par canal, prêt pour vos <span
+                      class="text-primary font-semibold">segments</span
+                    > et <span class="text-primary font-semibold"
+                      >automatisations</span
+                    >.
+                  </p>
+                </div>
+
+                <!-- Right Column: Illustration -->
+                <div class="md:order-2 flex flex-col justify-center">
+                  <WebAnalyticsPreview />
                 </div>
               </div>
             </div>

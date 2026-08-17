@@ -22,6 +22,8 @@ const tocItems = [
   { id: "contacts", label: "Contacts & Segmentation" },
   { id: "envoi-email", label: "Envoi & Délivrabilité" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "assistant-ia", label: "Assistant IA" },
   { id: "automations", label: "Automations" },
   { id: "evenements", label: "Événements personnalisés" },
   { id: "multi-tenant", label: "Multi-tenant & Agences" },
@@ -472,7 +474,7 @@ const proConsRows = [
               },
               {
                 feature: "Génération de contenu IA",
-                notifuse: "Via intégration Anthropic (Claude)",
+                notifuse: "Assistant IA (email, blog & analytics) — votre propre clé Anthropic, OpenAI ou Gemini",
                 competitor: "IA intégrée (objets + corps du message)",
               },
               {
@@ -754,7 +756,7 @@ const proConsRows = [
               },
               {
                 feature: "Analyste de données IA",
-                notifuse: false,
+                notifuse: "Inclus — interrogez vos Web Analytics en langage naturel (votre propre clé API)",
                 competitor: "Plan Professionnel (499 $/mois)",
               },
             ]}
@@ -775,6 +777,125 @@ const proConsRows = [
               Brevo offre un reporting agrégé plus riche (cartes de chaleur, géo, appareils) sur les plans payants. La timeline d'activité de Notifuse vous donne une vision plus approfondie par contact — consultez l'historique complet des interactions de chaque contact, ce que Brevo ne propose pas.
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Le tracker de Brevo enregistre les pages vues, mais la documentation dirige ces données vers les journaux d'événements, les segments et les automatisations. Il n'existe aucun rapport de trafic dans Brevo : sessions, sources, temps d'engagement et répartition par canal restent donc dans Google Analytics.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités Web Analytics"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Analytics de site intégrées",
+                notifuse: "Sessions, pages vues & objectifs",
+                competitor: "Tracker de pages vues pour les segments ; pas de rapport de trafic",
+                description: "Sessions et pages vues de votre site, pas seulement les ouvertures d'emails",
+              },
+              {
+                feature: "Suivi sans cookies",
+                notifuse: "Aucun cookie, aucune bannière",
+                competitor: false,
+                description: "Aucun cookie déposé, donc aucune bannière de consentement",
+              },
+              {
+                feature: "Script auto-hébergé & base de données",
+                notifuse: "Servi par votre propre instance",
+                competitor: false,
+                description: "Données d'analytics web stockées sur votre propre infrastructure",
+              },
+              {
+                feature: "Attribution de canaux éditable",
+                notifuse: "Règles éditables + backfill sur l'historique",
+                competitor: "Rapport source/medium figé ; 2 modèles, pas de règles",
+                description: "Définissez vos canaux et rejouez les règles sur l'historique",
+              },
+              {
+                feature: "Métrique de temps d'engagement",
+                notifuse: "TimeScore — temps actif médian",
+                competitor: false,
+                description: "Temps réellement actif, pas le temps brut passé sur la page",
+              },
+              {
+                feature: "Carte des visiteurs en direct",
+                notifuse: "30 dernières minutes, rafraîchi toutes les 10 s",
+                competitor: "Liste des visiteurs en direct (pays, pas de carte)",
+                description: "Qui est sur votre site en ce moment, sur une carte",
+              },
+              {
+                feature: "Objectifs web avec valeur",
+                notifuse: "achat, abonnement, lead, inscription…",
+                competitor: "Métriques de conversion avec revenus, par campagne (multi = Pro+)",
+                description: "Conversions typées avec chiffre d'affaires, réparties par canal",
+              },
+              {
+                feature: "Annotations de campagne sur le trafic",
+                notifuse: "Les campagnes s'annotent automatiquement",
+                competitor: false,
+                description: "Voyez une campagne et le trafic qu'elle a généré sur la même courbe",
+              },
+              {
+                feature: "Comportement web dans segments & automatisations",
+                notifuse: "Les objectifs deviennent des événements sur la timeline",
+                competitor: "Visites de pages et événements comme déclencheurs et filtres",
+                description: "Déclenchez des campagnes selon la navigation sur votre site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="assistant-ia" title="Assistant IA">
+          <p class="text-gray-600 mb-6">
+            L'IA de Brevo est réellement solide côté messaging : Aura est un véritable assistant conversationnel, il génère un design d'email complet avec objet et texte de prévisualisation, et sa page tarifs annonce un AI Data Analyst à partir du plan Professional (499 $/mois). Elle fonctionne sur les modèles de Brevo, conditionnée au niveau de plan plutôt qu'à votre propre clé.
+          </p>
+
+          <ComparisonTable
+            title="Fonctionnalités IA"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Assistant IA intégré",
+                notifuse: "Un assistant conversationnel : email, blog & analytics",
+                competitor: "Chat Aura dans la barre supérieure, plus des agents par rôle",
+              },
+              {
+                feature: "Génération d'emails par IA",
+                notifuse: "Construit et modifie les blocs, l'objet & la prévisualisation",
+                competitor: "Design d'email complet, objets et textes de prévisualisation",
+              },
+              {
+                feature: "Rédaction d'articles par IA",
+                notifuse: "Articles avec métadonnées SEO",
+                competitor: false,
+                description: "Articles longs avec leurs métadonnées SEO",
+              },
+              {
+                feature: "Analytics conversationnelles",
+                notifuse: "Quelles campagnes ont généré sessions, objectifs & revenus",
+                competitor: "AI Data Analyst — plan Professional et plus (499 $/mois)",
+                description: "Interrogez vos propres données en langage naturel",
+              },
+              {
+                feature: "Votre propre clé API",
+                notifuse: "Anthropic, OpenAI ou Gemini",
+                competitor: false,
+                description: "Utilisez votre propre compte fournisseur d'IA, au prix coûtant",
+              },
+              {
+                feature: "Recherche web par IA",
+                notifuse: "Via l'intégration Firecrawl",
+                competitor: "Lit les URL fournies pour le contexte ; pas de recherche web",
+                description: "Recherche web et extraction d'URL comme sources",
+              },
+              {
+                feature: "Modèle de tarification IA",
+                notifuse: "Sans crédits ni marge — vous payez votre fournisseur",
+                competitor: "Inclus dans le plan ; meilleures fonctions réservées à Professional+",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Automations -->

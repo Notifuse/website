@@ -24,6 +24,8 @@ const tocItems = [
   { id: "contact-management", label: "Contact Management & Segmentation" },
   { id: "email-sending", label: "Email Sending & Deliverability" },
   { id: "analytics", label: "Analytics & Reporting" },
+  { id: "web-analytics", label: "Web Analytics" },
+  { id: "ai-assistant", label: "AI Assistant" },
   { id: "automations", label: "Automations" },
   { id: "custom-events", label: "Custom Events & Goals" },
   { id: "multi-tenancy", label: "Multi-tenancy & Agency" },
@@ -561,7 +563,7 @@ const proConsRows = [
               },
               {
                 feature: "AI Content Generation",
-                notifuse: "Via Anthropic (Claude) integration",
+                notifuse: "AI assistant (email, blog & analytics) — bring your own Anthropic, OpenAI or Gemini key",
                 competitor: "Built-in AI (subject lines + body)",
               },
               {
@@ -925,7 +927,7 @@ const proConsRows = [
               },
               {
                 feature: "AI Data Analyst",
-                notifuse: false,
+                notifuse: "Included — ask your Web Analytics in plain language (your own API key)",
                 competitor: "Professional plan ($499/mo)",
               },
             ]}
@@ -957,6 +959,125 @@ const proConsRows = [
               the complete history of every contact's interactions, which Brevo doesn't offer.
             </p>
           </div>
+        </FeatureSection>
+
+        <FeatureSection id="web-analytics" title="Web Analytics">
+          <p class="text-gray-600 mb-6">
+            Brevo's tracker records pageviews, but the docs route that data to event logs, segments and automations. There is no website traffic report in Brevo, so sessions, sources, engaged time and channel breakdowns still live in Google Analytics.
+          </p>
+
+          <ComparisonTable
+            title="Web Analytics Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Built-in Website Analytics",
+                notifuse: "Sessions, pageviews & goals",
+                competitor: "Pageview tracker feeds segments; no traffic report",
+                description: "Sessions and pageviews from your own site, not just email opens",
+              },
+              {
+                feature: "Cookieless Tracking",
+                notifuse: "No cookie, no consent banner",
+                competitor: false,
+                description: "No cookie set, so no consent banner to lose visitors to",
+              },
+              {
+                feature: "Self-hosted Script & Own Database",
+                notifuse: "Served from your own instance",
+                competitor: false,
+                description: "Website analytics data stored on your own infrastructure",
+              },
+              {
+                feature: "Editable Channel Attribution",
+                notifuse: "Editable rules + backfill over history",
+                competitor: "Fixed source/medium report; 2 models, no rules",
+                description: "Define your own channels and replay the rules over history",
+              },
+              {
+                feature: "Engaged-time Metric",
+                notifuse: "TimeScore — median engaged time",
+                competitor: false,
+                description: "Genuinely active time, not raw time-on-page",
+              },
+              {
+                feature: "Live Visitor Map",
+                notifuse: "Last 30 min, refreshed every 10s",
+                competitor: "Conversations live visitor list (country, no map)",
+                description: "Who is on your site right now, plotted on a map",
+              },
+              {
+                feature: "Website Goals with Value",
+                notifuse: "purchase, subscription, lead, signup…",
+                competitor: "Conversion metrics with revenue, by campaign (multi = Pro+)",
+                description: "Typed conversions carrying revenue, split by channel",
+              },
+              {
+                feature: "Campaign Annotations on Traffic",
+                notifuse: "Broadcasts annotate the chart automatically",
+                competitor: false,
+                description: "See a campaign and the traffic it caused on the same chart",
+              },
+              {
+                feature: "Web Behaviour in Segments & Automations",
+                notifuse: "Goals become custom events on the timeline",
+                competitor: "Page visits and custom events as triggers and filters",
+                description: "Trigger campaigns from what someone browsed on your site",
+              },
+            ]}
+          />
+        </FeatureSection>
+
+        <FeatureSection id="ai-assistant" title="AI Assistant">
+          <p class="text-gray-600 mb-6">
+            Brevo's AI is genuinely strong on the messaging side: Aura is a real conversational assistant, it can generate a whole email design with subject line and preview text, and its pricing page lists an AI Data Analyst on Professional plans and above ($499/mo). It runs on Brevo's models, gated by plan tier rather than by your own key.
+          </p>
+
+          <ComparisonTable
+            title="AI Features"
+            competitorName="Brevo"
+            features={[
+              {
+                feature: "Built-in AI Assistant",
+                notifuse: "One conversational assistant — email, blog & analytics",
+                competitor: "Aura chat in the top bar, plus role-specific agents",
+              },
+              {
+                feature: "AI Email Generation",
+                notifuse: "Builds and edits the blocks, subject line & preview text",
+                competitor: "Full email design, subject lines and preview text",
+              },
+              {
+                feature: "AI Blog Writing",
+                notifuse: "Posts with SEO metadata",
+                competitor: false,
+                description: "Long-form posts with their SEO metadata",
+              },
+              {
+                feature: "Conversational Analytics",
+                notifuse: "Ask which campaigns drove sessions, goals & revenue",
+                competitor: "AI Data Analyst — Professional plan and above ($499/mo)",
+                description: "Ask questions about your own data in plain language",
+              },
+              {
+                feature: "Bring Your Own API Key",
+                notifuse: "Anthropic, OpenAI or Gemini",
+                competitor: false,
+                description: "Use your own AI provider account, at cost",
+              },
+              {
+                feature: "AI Web Research",
+                notifuse: "Via Firecrawl integration",
+                competitor: "Reads URLs you supply for brand context; no web search",
+                description: "Search the web and scrape URLs for source material",
+              },
+              {
+                feature: "AI Pricing Model",
+                notifuse: "No credits, no markup — you pay your provider",
+                competitor: "Included in the plan; best features gated to Professional+",
+              },
+            ]}
+          />
         </FeatureSection>
 
         <!-- Automations -->

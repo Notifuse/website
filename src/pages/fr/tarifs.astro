@@ -4,6 +4,7 @@ import Navigation from "../../components/Navigation.astro"
 import Footer from "../../components/Footer.astro"
 import GtagHead from "../../components/GtagHead.astro"
 import CookieConsent from "../../components/CookieConsent.astro"
+import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
 
 const CLOUD_SIGNUP_URL = "https://cloud.notifuse.com/signup"
 
@@ -199,6 +200,9 @@ const faqs = [
     };
     </script>
     <script async src="https://prod.staminads.com/sdk/staminads_6.1.0.min.js"></script>
+
+    <!-- Notifuse Web Analytics -->
+    <NotifuseAnalytics />
   </head>
 
   <body class="bg-white-98 text-gray-900">

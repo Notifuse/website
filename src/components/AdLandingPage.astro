@@ -3,6 +3,7 @@ import "../styles/global.css"
 import ProConsTable from "./ProConsTable.astro"
 import GtagHead from "./GtagHead.astro"
 import CookieConsent from "./CookieConsent.astro"
+import NotifuseAnalytics from "./NotifuseAnalytics.astro"
 
 interface Benefit {
   icon: string;
@@ -81,6 +82,9 @@ const {
 
     <!-- Plausible — privacy-friendly, no consent needed, loads independently -->
     <script defer data-domain="notifuse.com" src="https://plausible.notifuse.com/js/script.js"></script>
+
+    <!-- Notifuse Web Analytics -->
+    <NotifuseAnalytics />
   </head>
 
   <body class="bg-white-98 text-gray-900">

@@ -3,6 +3,7 @@ import "../styles/global.css"
 import Navigation from "../components/Navigation.astro"
 import Footer from "../components/Footer.astro"
 import GtagHead from "../components/GtagHead.astro"
+import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 
 const CLOUD_SIGNUP_URL = "https://cloud.notifuse.com/signup"
 
@@ -185,6 +186,9 @@ const faqs = [
       content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Start free."
     />
     <GtagHead />
+
+    <!-- Notifuse Web Analytics -->
+    <NotifuseAnalytics />
   </head>
 
   <body class="bg-white-98 text-gray-900">

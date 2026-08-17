@@ -18,6 +18,7 @@ import WorkspacesPreview from "../components/WorkspacesPreview.astro"
 import AutomationsPreview from "../components/AutomationsPreview.astro"
 import AIPreview from "../components/AIPreview.astro"
 import WebAnalyticsPreview from "../components/WebAnalyticsPreview.astro"
+import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 ---
 
 <html lang="en">
@@ -92,6 +93,9 @@ import WebAnalyticsPreview from "../components/WebAnalyticsPreview.astro"
     };
     </script>
     <script async src="https://prod.staminads.com/sdk/staminads_6.1.0.min.js"></script>
+
+    <!-- Notifuse Web Analytics -->
+    <NotifuseAnalytics />
   </head>
   <body class="bg-white-98">
     <div class="container relative border-r border-l border-gray-200">

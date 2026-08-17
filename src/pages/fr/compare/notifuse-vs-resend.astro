@@ -12,6 +12,7 @@ import CookieConsent from "../../../components/CookieConsent.astro"
 import emailEditorImage from "../../../assets/screenshots/email_editor.png"
 import contactProfileImage from "../../../assets/screenshots/contact_profile.png"
 import dashboardImage from "../../../assets/screenshots/dashboard.png"
+import NotifuseAnalytics from "../../../components/NotifuseAnalytics.astro"
 
 const tocItems = [
   { id: "apercu", label: "Aperçu" },
@@ -130,6 +131,9 @@ const proConsRows = [
     };
     </script>
     <script async src="https://prod.staminads.com/sdk/staminads_6.1.0.min.js"></script>
+
+    <!-- Notifuse Web Analytics -->
+    <NotifuseAnalytics />
   </head>
 
   <body class="bg-white-98">

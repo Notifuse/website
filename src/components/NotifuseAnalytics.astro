@@ -1,0 +1,19 @@
+---
+/**
+ * NotifuseAnalytics.astro — Notifuse Web Analytics tracker
+ *
+ * Cookieless, privacy-friendly first-party analytics served from
+ * news.notifuse.com — no consent needed, so it does NOT go through
+ * Consent Mode (unlike the Google tags in GtagHead).
+ *
+ * Usage: <NotifuseAnalytics /> inside <head>.
+ */
+---
+
+<script is:inline>
+  window.NotifuseAnalyticsConfig = {
+    workspace_id: "notifuse",
+    endpoint: "https://news.notifuse.com",
+  }
+</script>
+<script async src="https://news.notifuse.com/na.js"></script>

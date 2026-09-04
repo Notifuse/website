@@ -12,7 +12,8 @@ const t = isFr ? {
   pricingHref: "/fr/tarifs",
   docs: "Docs",
   login: "Connexion",
-  signup: "S'inscrire",
+  cta: "Commencer",
+  ctaHref: "/fr/tarifs",
 } : {
   features: "Features",
   featuresHref: "/#features",
@@ -22,7 +23,8 @@ const t = isFr ? {
   pricingHref: "/pricing",
   docs: "Docs",
   login: "Log in",
-  signup: "Sign up free",
+  cta: "Get Started",
+  ctaHref: "/pricing",
 }
 ---
 
@@ -79,9 +81,9 @@ const t = isFr ? {
           >{t.login}</a
         >
         <a
-          href="https://cloud.notifuse.com/signup"
+          href={t.ctaHref}
           class="bg-primary text-white px-4 py-1 rounded-md hover:bg-primary/80 transition-colors"
-          >{t.signup}</a
+          >{t.cta}</a
         >
       </div>
 
@@ -173,9 +175,9 @@ const t = isFr ? {
             Star
           </a>
           <a
-            href="https://cloud.notifuse.com/signup"
+            href={t.ctaHref}
             class="block bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/80 transition-colors text-center"
-            >{t.signup}</a
+            >{t.cta}</a
           >
         </div>
       </div>

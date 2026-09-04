@@ -1,0 +1,279 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import {
+  LICENSED_FROM_VERSION,
+  licence,
+  licensedCapabilities,
+  neverLicensed,
+  selfHostTiers,
+  highlightedTier,
+  capabilityLabels,
+} from "../../data/licensing"
+
+// /licence-features redirects to this page's #features anchor. That URL is written into the
+// Additional Use Grant of every v40 binary, and with a four-year Change Date those binaries
+// outlive any page layout — so the URL is pinned and the page is free to move.
+//
+// The version and date are load-bearing for the second half: "nothing free in v40 is ever
+// moved out of this list" is a commitment only if a reader can point at which version made it
+// and when.
+const version = 1
+const lastUpdated = "September 4, 2026"
+
+const capabilities = licensedCapabilities.en
+const never = neverLicensed.en
+const labels = capabilityLabels.en
+const lic = licence("en")
+const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Self-hosted pricing and licensing - Notifuse</title>
+    <meta
+      name="description"
+      content="Self-host Notifuse free, with no per-email, per-contact or per-seat fee. Five capabilities need a licence key from $290/year — and here is what a licence never covers, dated and versioned."
+    />
+    <link rel="canonical" href="https://notifuse.com/pricing/self-hosted" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <!-- Hero -->
+        <section class="pt-28 pb-12 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <p class="text-sm text-gray-500 mb-3">
+              <a href="/pricing" class="hover:text-primary">Pricing</a> · Self-hosted
+            </p>
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">Self-hosted</h1>
+            <p class="text-xl text-gray-600 mb-6">
+              Free to run on your own infrastructure. No per-email, per-contact or per-seat
+              fee, ever. Five capabilities need a licence key.
+            </p>
+          </div>
+        </section>
+
+        <!-- Tiers -->
+        <section class="pb-16 px-4 lg:px-8">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="relative rounded-lg border border-gray-200 p-6 bg-white flex flex-col">
+              <h2 class="text-lg font-bold mb-1">Free</h2>
+              <p class="text-3xl font-bold mb-1">$0</p>
+              <p class="text-sm text-gray-500 mb-5">No key needed</p>
+              <p class="text-sm text-gray-600 mb-5 flex-1">
+                Everything below in “what a licence never covers”, which is most of Notifuse.
+              </p>
+              <ul class="text-sm space-y-1.5 border-t border-gray-100 pt-4">
+                <li class="font-medium">3 {labels.workspaces.toLowerCase()}</li>
+                {gated.map((capability) => (
+                  <li class="text-gray-400">{labels[capability]}</li>
+                ))}
+              </ul>
+              <a
+                href="https://docs.notifuse.com"
+                class="block w-full text-center py-2.5 px-4 mt-5 rounded-md font-semibold border border-gray-300 text-gray-700 hover:border-primary hover:text-primary transition-colors"
+                >View docs</a
+              >
+            </div>
+
+            {selfHostTiers.map((tier) => (
+              <div
+                class:list={[
+                  "relative rounded-lg border p-6 bg-white flex flex-col",
+                  tier.id === highlightedTier
+                    ? "border-primary ring-2 ring-primary/20"
+                    : "border-gray-200",
+                ]}
+              >
+                {tier.id === highlightedTier && (
+                  <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span class="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
+                      Most chosen
+                    </span>
+                  </div>
+                )}
+                <h2 class="text-lg font-bold mb-1">{tier.name}</h2>
+                <p class="text-3xl font-bold mb-1">${tier.annualUsd}</p>
+                <p class="text-sm text-gray-500 mb-5">per year</p>
+                <p class="text-sm text-gray-600 mb-5 flex-1">{tier.forWhom.en}</p>
+                <ul class="text-sm space-y-1.5 border-t border-gray-100 pt-4">
+                  <li class="font-medium">{tier.workspaces} {labels.workspaces.toLowerCase()}</li>
+                  {gated.map((capability) => (
+                    <li
+                      class:list={[
+                        (tier.capabilities as readonly string[]).includes(capability)
+                          ? "text-gray-700"
+                          : "text-gray-300",
+                      ]}
+                    >
+                      {labels[capability]}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={tier.buyUrl}
+                  class="block w-full text-center py-2.5 px-4 mt-5 rounded-md font-semibold transition-colors bg-primary text-white hover:bg-primary/90"
+                >
+                  Buy {tier.name}
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <p class="max-w-5xl mx-auto text-sm text-gray-500 text-center mt-6">
+            One key covers one deployment — one PostgreSQL database, whatever the number of API
+            containers. Need something else? <a
+              href="mailto:hello@notifuse.com"
+              class="text-primary hover:underline">Talk to us</a
+            > about a Custom licence.
+          </p>
+        </section>
+
+        <!-- What needs a key -->
+        <section id="features" class="py-16 px-4 lg:px-8 border-t border-gray-200 scroll-mt-20">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-2">The five capabilities that need a key</h2>
+            <p class="text-gray-500 mb-2 text-sm">
+              Version {version} — last updated {lastUpdated}
+            </p>
+            <p class="text-gray-600 mb-8">
+              This list is written into the licence itself, in the Additional Use Grant of the
+              <a
+                href="https://github.com/notifuse/notifuse/blob/main/LICENSE"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer">LICENSE file</a
+              >, so its scope is fixed by the version you downloaded and cannot be changed under
+              you afterwards. Everything else in Notifuse runs without a key.
+            </p>
+
+            <ol class="space-y-6">
+              {capabilities.map((capability, index) => (
+                <li class="border border-gray-200 rounded-lg p-6 bg-white">
+                  <h3 class="font-semibold text-lg mb-2">
+                    <span class="text-gray-400 mr-2">{index + 1}.</span>{capability.title}
+                  </h3>
+                  <p class="text-gray-700 mb-3">{capability.body}</p>
+                  <p class="text-sm text-gray-500">
+                    <span class="font-medium">Refused at:</span> {capability.refusedAt}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <div class="mt-8 border border-gray-200 rounded-lg p-6 bg-white">
+              <h3 class="font-semibold mb-3">What a refusal does, and does not do</h3>
+              <ul class="text-gray-700 space-y-2 text-sm">
+                <li>
+                  It refuses one action, at the moment you take it. Nothing is deleted, hidden,
+                  disabled or made read-only, and no part of the console is walled off.
+                </li>
+                <li>
+                  <strong>The send path contains no licence check of any kind.</strong> Scheduled
+                  broadcasts, transactional email, webhooks and API keys keep working in every
+                  licence state, including one with no key at all.
+                </li>
+                <li>
+                  A key that reaches its expiry keeps granting everything it ever granted for a
+                  further 30 days before the installation falls back to the free tier.
+                </li>
+                <li>
+                  An installation that already exceeds a limit keeps everything it has. Eight
+                  workspaces stay eight; it simply cannot create a ninth.
+                </li>
+              </ul>
+            </div>
+
+            <p class="text-sm text-gray-500 mt-6">
+              Install a key under Settings › Licence as the root user, or set <code
+                class="bg-gray-100 px-1 rounded">NOTIFUSE_LICENSE_KEY</code
+              >. Verification is offline against a signature compiled into the binary: no
+              phone-home, no account, nothing about your installation leaves it.
+            </p>
+          </div>
+        </section>
+
+        <!-- Never covered -->
+        <section id="never" class="py-16 px-4 lg:px-8 border-t border-gray-200 scroll-mt-20">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-2">What a licence never covers</h2>
+            <p class="text-gray-600 mb-2">
+              A list of what you must pay for is a price list. This is a commitment, and it is
+              only a commitment because it is dated, versioned, and hard to walk back. Every line
+              below can be checked against a running instance in ten minutes.
+            </p>
+            <p class="text-gray-700 mb-8 font-medium">
+              Nothing that is free in {LICENSED_FROM_VERSION} will ever be moved out of this
+              list. Any change to it carries 90 days' notice, with the previous version left
+              visible — and the version and date above are how you hold us to that.
+            </p>
+
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
+              {never.map((item) => (
+                <li class="flex gap-3 text-gray-700 text-sm">
+                  <span class="text-primary font-semibold shrink-0">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <!-- The licence -->
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">The licence</h2>
+            <p class="text-gray-700 mb-4">
+              Notifuse is {lic.sentence}. You may run it, modify it, and make it available to
+              third parties — including hosting it for other people, and charging them for it —
+              provided you do not use one of the five capabilities above in production without a
+              valid key.
+            </p>
+            <p class="text-gray-700 mb-4">
+              The four-year clock runs per version, and it does not depend on us still being
+              here.
+            </p>
+            <p class="text-gray-700">
+              The authoritative text is the <a
+                href="https://github.com/notifuse/notifuse/blob/main/LICENSE"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer">LICENSE file in the repository</a
+              >, with the map in <a
+                href="https://github.com/notifuse/notifuse/blob/main/LICENSING.md"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer">LICENSING.md</a
+              >. Where this page and those files disagree, the files govern — this page exists
+              to explain them, not to replace them.
+            </p>
+          </div>
+        </section>
+
+        <section class="pb-20 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto flex flex-wrap gap-4 items-center">
+            <a href="/pricing/cloud" class="text-primary hover:underline"
+              >Let us run it for you instead →</a
+            >
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

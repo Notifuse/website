@@ -1,4 +1,6 @@
 ---
+import { licence } from "../../data/licensing"
+const lic = licence("en")
 import "../../styles/global.css"
 import Navigation from "../../components/Navigation.astro"
 import Footer from "../../components/Footer.astro"
@@ -46,7 +48,7 @@ const proConsRows = [
   },
   {
     label: "License",
-    notifuse: "Open-source (AGPL-3.0)",
+    notifuse: lic.table,
     competitor: "Proprietary SaaS",
   },
   {

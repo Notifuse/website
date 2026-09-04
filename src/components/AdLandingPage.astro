@@ -217,7 +217,12 @@ const {
       var enLink = document.getElementById('lang-en');
       var frLink = document.getElementById('lang-fr');
       if (!enLink || !frLink) return;
-      var slugMap = { '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing' };
+      var slugMap = {
+    '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing',
+    '/pricing/cloud': '/fr/tarifs/cloud', '/fr/tarifs/cloud': '/pricing/cloud',
+    '/pricing/self-hosted': '/fr/tarifs/auto-heberge',
+    '/fr/tarifs/auto-heberge': '/pricing/self-hosted'
+  };
       function addSlash(p) { return p === '/' ? '/' : p + '/'; }
       var enPath, frPath;
       if (isFr) { frPath = path; enPath = slugMap[path] || path.replace(/^\/fr/, '') || '/'; }

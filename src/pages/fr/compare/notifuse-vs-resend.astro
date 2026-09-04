@@ -1,4 +1,6 @@
 ---
+import { licence } from "../../../data/licensing"
+const lic = licence("fr")
 import "../../../styles/global.css"
 import Navigation from "../../../components/Navigation.astro"
 import Footer from "../../../components/Footer.astro"
@@ -44,7 +46,7 @@ const proConsRows = [
   },
   {
     label: "Licence",
-    notifuse: "Open-source (AGPL-3.0)",
+    notifuse: lic.table,
     competitor: "Propriétaire (code fermé)",
   },
   {
@@ -153,11 +155,11 @@ const proConsRows = [
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://cloud.notifuse.com/signup"
+                href="/fr/tarifs"
                 data-cta
                 class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
               >
-                Essai gratuit 14 jours
+                Commencer
               </a>
               <a
                 href="https://demo.notifuse.com/signin?email=demo@notifuse.com"
@@ -188,7 +190,7 @@ const proConsRows = [
                     <h4 class="font-semibold text-slate-900 mt-1">Open-source vs Code fermé</h4>
                   </div>
                   <p class="text-sm text-gray-700 mb-3">
-                    <strong class="text-primary">Notifuse :</strong> AGPL-3.0 open-source, auto-hébergé. Contrôle total sur votre code et vos données.
+                    <strong class="text-primary">Notifuse :</strong> {lic.inline}, auto-hébergé. Contrôle total sur votre code et vos données.
                   </p>
                   <p class="text-sm text-gray-500">
                     <strong>Resend :</strong> SaaS propriétaire à code fermé. Vendor lock-in sans accès au code.
@@ -265,8 +267,8 @@ const proConsRows = [
         <FeatureSection id="comparaison-rapide" title="Comparaison rapide" gradient>
           <ProConsTable competitor="Resend" rows={proConsRows} />
           <div class="flex flex-col sm:flex-row gap-4 justify-center my-8">
-            <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
-              Essai gratuit 14 jours
+            <a href="/fr/tarifs" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center">
+              Commencer
             </a>
           </div>
         </FeatureSection>
@@ -1044,7 +1046,7 @@ const proConsRows = [
                 <li>✓ Essai gratuit 14 jours</li>
               </ul>
 
-              <p class="text-xs text-gray-500 mt-4">Ou auto-hébergez — open-source (AGPL-3.0)</p>
+              <p class="text-xs text-gray-500 mt-4">Ou auto-hébergez — {lic.inline}</p>
             </div>
 
             <div class="border border-gray-200 rounded-xl p-8">
@@ -1080,7 +1082,7 @@ const proConsRows = [
           <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
             <h4 class="font-semibold text-slate-900 mb-2">Aucun verrouillage</h4>
             <p class="text-gray-700 text-sm">
-              Export complet de la base de données à la demande. Notifuse est open-source (AGPL-3.0) — passez en auto-hébergé à tout moment et conservez toutes vos données.
+              Export complet de la base de données à la demande. Notifuse est {lic.inline} — passez en auto-hébergé à tout moment et conservez toutes vos données.
             </p>
           </div>
 
@@ -1089,8 +1091,8 @@ const proConsRows = [
               <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à économiser sur vos emails ?</h3>
               <p class="text-gray-600 mb-6">Connectez-vous directement à Amazon SES — sans marge. Toutes les fonctionnalités dès 19 $/mois.</p>
               <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
-                  Essai gratuit 14 jours
+                <a href="/fr/tarifs" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                  Commencer
                 </a>
                 <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
                   Démo en ligne
@@ -1182,7 +1184,7 @@ const proConsRows = [
             {[
               {
                 title: "Liberté open-source",
-                text: "Notifuse est open-source AGPL-3.0 — inspectez le code, modifiez-le, contribuez. Resend est un logiciel propriétaire à code fermé avec vendor lock-in.",
+                text: `Notifuse est ${lic.inline} — inspectez le code, modifiez-le, contribuez. Resend est un logiciel propriétaire à code fermé avec vendor lock-in.`,
               },
               {
                 title: "Éditeur visuel pour les équipes",
@@ -1223,11 +1225,11 @@ const proConsRows = [
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://cloud.notifuse.com/signup"
+                href="/fr/tarifs"
                 data-cta
                 class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors text-center"
               >
-                Essai gratuit 14 jours
+                Commencer
               </a>
               <a
                 href="https://docs.notifuse.com/installation"
@@ -1285,8 +1287,8 @@ const proConsRows = [
                   <h3 class="text-2xl font-bold text-slate-900 mb-3">Prêt à découvrir Notifuse ?</h3>
                   <p class="text-gray-600 mb-6">Open-source, auto-hébergé, éditeur visuel MJML, liberté de fournisseur et pas de marge Amazon SES. Rejoignez les équipes qui ont quitté Resend.</p>
                   <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://cloud.notifuse.com/signup" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
-                      Essai gratuit 14 jours
+                    <a href="/fr/tarifs" data-cta class="bg-primary text-white px-6 py-3 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors">
+                      Commencer
                     </a>
                     <a href="https://demo.notifuse.com/signin?email=demo@notifuse.com" class="border border-gray-200 bg-white text-gray-700 px-6 py-3 rounded-md text-base font-semibold hover:bg-gray-50 transition-colors">
                       Démo en ligne

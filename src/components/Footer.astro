@@ -1,4 +1,7 @@
 ---
+// The tagline says "open-source" in both licence states, by decision of 2026-09-04: BSL 1.1
+// converts every release to AGPL-3.0 after four years, and the positioning keeps the word.
+// See src/data/licensing.ts for the wording rule that makes it defensible.
 import logoMedium from "../assets/logo/logo-medium.png"
 import CookieConsent from "./CookieConsent.astro"
 
@@ -168,7 +171,12 @@ const t = isFr ? {
   var frLink = document.getElementById('lang-fr');
   if (!enLink || !frLink) return;
 
-  var slugMap = { '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing' };
+  var slugMap = {
+    '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing',
+    '/pricing/cloud': '/fr/tarifs/cloud', '/fr/tarifs/cloud': '/pricing/cloud',
+    '/pricing/self-hosted': '/fr/tarifs/auto-heberge',
+    '/fr/tarifs/auto-heberge': '/pricing/self-hosted'
+  };
 
   function addSlash(p) { return p === '/' ? '/' : p + '/'; }
 

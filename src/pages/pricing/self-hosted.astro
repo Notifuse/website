@@ -1,4 +1,6 @@
 ---
+import CheckIcon from "../../components/CheckIcon.astro";
+import LaunchBanner from "../../components/LaunchBanner.astro"
 import "../../styles/global.css"
 import Navigation from "../../components/Navigation.astro"
 import Footer from "../../components/Footer.astro"
@@ -12,6 +14,8 @@ import {
   selfHostTiers,
   highlightedTier,
   capabilityLabels,
+  comingSoon,
+  comingSoonLabel,
 } from "../../data/licensing"
 
 // /licence-features redirects to this page's #features anchor. That URL is written into the
@@ -28,7 +32,6 @@ const capabilities = licensedCapabilities.en
 const never = neverLicensed.en
 const labels = capabilityLabels.en
 const lic = licence("en")
-const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
 ---
 
 <html lang="en">
@@ -55,33 +58,34 @@ const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
       <main>
         <!-- Hero -->
         <section class="pt-28 pb-12 px-4 lg:px-8">
+          <LaunchBanner lang="en" showCta={false} class="max-w-4xl mx-auto mb-8" />
           <div class="max-w-4xl mx-auto text-center">
             <p class="text-sm text-gray-500 mb-3">
               <a href="/pricing" class="hover:text-primary">Pricing</a> · Self-hosted
             </p>
             <h1 class="text-4xl font-bold text-slate-900 mb-4">Self-hosted</h1>
             <p class="text-xl text-gray-600 mb-6">
-              Free to run on your own infrastructure. No per-email, per-contact or per-seat
-              fee, ever. Five capabilities need a licence key.
+              Free to run in production. Notifuse never charges per email, per contact or per
+              seat. Five capabilities need a licence key, from $290 a year — everything else is
+              free, and stays free.
             </p>
           </div>
         </section>
 
         <!-- Tiers -->
         <section class="pb-16 px-4 lg:px-8">
+          <!-- Each card is a subgrid spanning six rows of this grid — title, price, cadence,
+               description, list, button — so every row is as tall as its tallest sibling and the
+               lists start level across the four cards, whatever their description or row count. -->
           <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="relative rounded-lg border border-gray-200 p-6 bg-white flex flex-col">
+            <div class="relative rounded-lg border border-gray-200 p-6 bg-white grid grid-rows-subgrid row-span-6">
               <h2 class="text-lg font-bold mb-1">Free</h2>
               <p class="text-3xl font-bold mb-1">$0</p>
               <p class="text-sm text-gray-500 mb-5">No key needed</p>
-              <p class="text-sm text-gray-600 mb-5 flex-1">
-                Everything below in “what a licence never covers”, which is most of Notifuse.
-              </p>
+              <p class="text-sm text-gray-600 mb-5">For one team.</p>
               <ul class="text-sm space-y-1.5 border-t border-gray-100 pt-4">
-                <li class="font-medium">3 {labels.workspaces.toLowerCase()}</li>
-                {gated.map((capability) => (
-                  <li class="text-gray-400">{labels[capability]}</li>
-                ))}
+                <li class="text-gray-500 pb-1">Included:</li>
+                <li class="flex items-start gap-2 font-medium"><CheckIcon />3 {labels.workspaces.toLowerCase()}</li>
               </ul>
               <a
                 href="https://docs.notifuse.com"
@@ -90,10 +94,15 @@ const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
               >
             </div>
 
-            {selfHostTiers.map((tier) => (
+            {selfHostTiers.map((tier) => {
+              // Every capability the tier includes, in full, on every card — a card is read on
+              // its own, not against its neighbour. A capability a tier lacks is simply not
+              // listed: no greyed rows, no strike-through, the absence of a row is the only
+              // "not included" on this page.
+              return (
               <div
                 class:list={[
-                  "relative rounded-lg border p-6 bg-white flex flex-col",
+                  "relative rounded-lg border p-6 bg-white grid grid-rows-subgrid row-span-6",
                   tier.id === highlightedTier
                     ? "border-primary ring-2 ring-primary/20"
                     : "border-gray-200",
@@ -109,18 +118,19 @@ const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
                 <h2 class="text-lg font-bold mb-1">{tier.name}</h2>
                 <p class="text-3xl font-bold mb-1">${tier.annualUsd}</p>
                 <p class="text-sm text-gray-500 mb-5">per year</p>
-                <p class="text-sm text-gray-600 mb-5 flex-1">{tier.forWhom.en}</p>
+                <p class="text-sm text-gray-600 mb-5">{tier.forWhom.en}</p>
                 <ul class="text-sm space-y-1.5 border-t border-gray-100 pt-4">
-                  <li class="font-medium">{tier.workspaces} {labels.workspaces.toLowerCase()}</li>
-                  {gated.map((capability) => (
-                    <li
-                      class:list={[
-                        (tier.capabilities as readonly string[]).includes(capability)
-                          ? "text-gray-700"
-                          : "text-gray-300",
-                      ]}
-                    >
-                      {labels[capability]}
+                  <li class="text-gray-500 pb-1">Included:</li>
+                  <li class="flex items-start gap-2 font-medium"><CheckIcon />{tier.workspaces} {labels.workspaces.toLowerCase()}</li>
+                  {(tier.capabilities as readonly string[]).map((capability) => (
+                    <li class="flex items-start gap-2">
+                      <CheckIcon />
+                      <span>
+                        {labels[capability as keyof typeof labels]}
+                        {comingSoon.has(capability) && (
+                          <span class="ml-1.5 text-[10px] font-semibold uppercase tracking-wide text-gray-400 align-middle">{comingSoonLabel.en}</span>
+                        )}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -131,7 +141,8 @@ const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
                   Buy {tier.name}
                 </a>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <p class="max-w-5xl mx-auto text-sm text-gray-500 text-center mt-6">
@@ -140,6 +151,11 @@ const gated = ["rbac", "ses_tenant", "template_i18n", "sso"] as const
               href="mailto:hello@notifuse.com"
               class="text-primary hover:underline">Talk to us</a
             > about a Custom licence.
+          </p>
+          <p class="max-w-5xl mx-auto text-sm text-gray-500 text-center mt-3">
+            <span class="font-medium text-gray-700">14-day refund, no questions asked.</span> The
+            key you receive at purchase is valid for 30 days; your one-year key is emailed
+            automatically once the refund period has passed. Nothing to do on your side.
           </p>
         </section>
 

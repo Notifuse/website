@@ -1,0 +1,65 @@
+---
+// The self-hosted licence launch offer. Short, one line, one code, one date.
+//
+// It disappears twice over: at build time once the date has passed, and in the browser for a
+// site built before the date and not rebuilt since — a stale promise of a discount is worse
+// than no banner. The date is the only thing to change when the offer is extended.
+interface Props {
+  lang?: "en" | "fr";
+  /** The link to the tiers is left out on the page that lists them. */
+  showCta?: boolean;
+  class?: string;
+}
+const { lang = "en", showCta = true, class: className = "" } = Astro.props;
+
+export const LAUNCH_OFFER_UNTIL = "2026-10-05T23:59:59Z";
+const expired = Date.now() > Date.parse(LAUNCH_OFFER_UNTIL);
+
+const copy = {
+  en: {
+    lead: "Self-hosted licences are live: 30% off with code",
+    until: "until 5 October 2026.",
+    cta: "See the tiers →",
+    href: "/pricing/self-hosted",
+  },
+  fr: {
+    lead: "Licences auto-hébergées : lancement à -30 % avec le code",
+    until: "jusqu'au 5 octobre 2026.",
+    cta: "Voir les paliers →",
+    href: "/fr/tarifs/auto-heberge",
+  },
+}[lang];
+---
+
+{
+  !expired && (
+    <div
+      data-launch-banner
+      data-until={LAUNCH_OFFER_UNTIL}
+      class:list={[
+        "rounded-lg p-[1.5px] bg-gradient-to-r from-primary via-fuchsia-500 to-pink-500",
+        className,
+      ]}
+    >
+      <div class="rounded-[6.5px] bg-white px-4 py-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm text-gray-700 text-center">
+        <span>
+          {copy.lead}{" "}
+          <code class="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[13px] font-semibold text-slate-900">LAUNCH30</code>, {copy.until}
+        </span>
+        {showCta && (
+          <a href={copy.href} class="font-semibold text-primary hover:underline">
+            {copy.cta}
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
+<script>
+  // Hides the banner after the date on a site built before it and not rebuilt since.
+  document.querySelectorAll<HTMLElement>("[data-launch-banner]").forEach((el) => {
+    const until = el.dataset.until;
+    if (until && Date.now() > Date.parse(until)) el.hidden = true;
+  });
+</script>

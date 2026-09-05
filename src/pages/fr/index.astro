@@ -20,6 +20,7 @@ import WebAnalyticsPreview from "../../components/WebAnalyticsPreview.astro"
 import GtagHead from "../../components/GtagHead.astro"
 import CookieConsent from "../../components/CookieConsent.astro"
 import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import LaunchBanner from "../../components/LaunchBanner.astro"
 ---
 
 <html lang="fr">
@@ -105,6 +106,7 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
       <!-- Hero Section -->
       <section>
         <div class="px-4 lg:px-8 py-20">
+          <LaunchBanner lang="fr" class="mb-10" />
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Content -->
             <div class="text-center lg:text-left">
@@ -137,6 +139,11 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
                   Commencer
                 </a>
               </div>
+              <p class="text-sm text-gray-500 mt-5">
+                Gratuit à auto-héberger. Cloud managé dès 16 $/mois, ou une
+                <a href="/fr/tarifs/auto-heberge" class="text-primary hover:underline">licence auto-hébergée</a>
+                dès 290 $/an pour les équipes qui ont besoin de plus.
+              </p>
             </div>
 
             <!-- App Preview -->
@@ -358,6 +365,10 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
                 granulaire</span> au niveau des workspaces avec plusieurs
                 rôles. Idéal pour la collaboration en équipe et la sécurité.
               </p>
+              <p class="text-xs text-gray-400 mb-6">
+                Tous les plans Cloud. Auto-hébergé : modifier un jeu de permissions restreint demande une
+                <a href="/fr/tarifs/auto-heberge#features" class="hover:text-primary underline">clé de licence</a>.
+              </p>
               <PermissionsPreview />
             </div>
 
@@ -372,6 +383,10 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
                 Architecture <span class="text-primary font-semibold">multi-tenant</span> avec
                 <span class="text-primary font-semibold">domaines personnalisés</span>. Chaque workspace dispose de données, contacts et
                 campagnes isolés. Idéal pour les agences.
+              </p>
+              <p class="text-xs text-gray-400 mb-6">
+                Tous les plans Cloud. Auto-hébergé : trois inclus, davantage avec une
+                <a href="/fr/tarifs/auto-heberge#features" class="hover:text-primary underline">clé de licence</a>.
               </p>
               <WorkspacesPreview />
             </div>

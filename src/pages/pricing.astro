@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro"
 import GtagHead from "../components/GtagHead.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 import { selfHostTiers } from "../data/licensing"
+import LaunchBanner from "../components/LaunchBanner.astro"
 
 // The two ways to run Notifuse answer different questions, and a visitor who lands straight
 // on monthly Cloud tiers has no way to know the other exists. For most of the people who find
@@ -36,6 +37,7 @@ const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
 
       <main>
         <section class="pt-28 pb-8 px-4 lg:px-8">
+          <LaunchBanner lang="en" class="max-w-4xl mx-auto mb-8" />
           <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl font-bold text-slate-900 mb-4">Two ways to run Notifuse</h1>
             <p class="text-xl text-gray-600">

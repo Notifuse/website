@@ -14,6 +14,8 @@ const t = isFr ? {
   tryEditor: "Essayer l'éditeur email",
   pricing: "Tarifs",
   pricingHref: "/fr/tarifs",
+  licences: "Licences auto-hébergées",
+  licencesHref: "/fr/tarifs/auto-heberge",
   compare: "Comparer les alternatives",
   compareHref: "/fr/compare",
   docs: "Documentation",
@@ -30,6 +32,8 @@ const t = isFr ? {
   tryEditor: "Try Email Editor Live",
   pricing: "Pricing",
   pricingHref: "/pricing",
+  licences: "Self-hosted licences",
+  licencesHref: "/pricing/self-hosted",
   compare: "Compare Alternatives",
   compareHref: "/compare",
   docs: "Documentation",
@@ -78,6 +82,13 @@ const t = isFr ? {
               href={t.pricingHref}
               class="text-gray-600 hover:text-gray-900 transition-colors"
               >{t.pricing}</a
+            >
+          </li>
+          <li>
+            <a
+              href={t.licencesHref}
+              class="text-gray-600 hover:text-gray-900 transition-colors"
+              >{t.licences}</a
             >
           </li>
           <li>

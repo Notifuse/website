@@ -227,8 +227,8 @@ export const selfHostTiers = [
     workspaces: 5,
     capabilities: ["rbac", "ses_tenant", "template_i18n"],
     forWhom: {
-      en: "One company, a few brands, a team that needs permission control.",
-      fr: "Une entreprise, quelques marques, une équipe qui a besoin de gérer les permissions.",
+      en: "For a company and its brands.",
+      fr: "Pour une entreprise et ses marques.",
     },
   },
   {
@@ -239,8 +239,8 @@ export const selfHostTiers = [
     workspaces: 15,
     capabilities: ["rbac", "ses_tenant", "template_i18n"],
     forWhom: {
-      en: "One workspace per client, each with its own isolated database.",
-      fr: "Un workspace par client, chacun avec sa base isolée.",
+      en: "For an agency and its clients.",
+      fr: "Pour une agence et ses clients.",
     },
   },
   {
@@ -249,10 +249,10 @@ export const selfHostTiers = [
     name: "Enterprise",
     annualUsd: 1990,
     workspaces: 15,
-    capabilities: ["rbac", "ses_tenant", "template_i18n", "sso"],
+    capabilities: ["rbac", "ses_tenant", "template_i18n", "sso", "audit_logs"],
     forWhom: {
-      en: "Everything above, plus single sign-on through your identity provider.",
-      fr: "Tout ce qui précède, plus l'authentification unique via votre fournisseur d'identité.",
+      en: "For SSO and compliance requirements.",
+      fr: "Pour les exigences SSO et conformité.",
     },
   },
 ] as const;
@@ -265,6 +265,7 @@ export const capabilityLabels = {
     ses_tenant: "Amazon SES tenant isolation",
     template_i18n: "Template translations",
     sso: "Single sign-on (OIDC)",
+    audit_logs: "Audit logs",
   },
   fr: {
     workspaces: "Workspaces",
@@ -272,5 +273,20 @@ export const capabilityLabels = {
     ses_tenant: "Isolation de tenant Amazon SES",
     template_i18n: "Traductions de templates",
     sso: "Authentification unique (OIDC)",
+    audit_logs: "Journaux d'audit",
   },
 } as const;
+
+/**
+ * Capabilities a tier will carry that no release ships yet.
+ *
+ * `audit_logs` is on the Enterprise card as a roadmap item, and the tag it renders under is
+ * what keeps that honest. It is NOT in `licensedCapabilities` above and must not be: that
+ * list is what the software refuses, and a capability that exists in no release cannot be one
+ * you are refused. Enterprise keys already carry `audit_logs` (billing-api mints it from day
+ * one, so nothing has to be re-issued when it ships), which is why it can be promised here
+ * without promising a date.
+ */
+export const comingSoon: ReadonlySet<string> = new Set(["audit_logs"]);
+
+export const comingSoonLabel = { en: "coming soon", fr: "bientôt" } as const;

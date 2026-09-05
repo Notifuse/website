@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro"
 import GtagHead from "../components/GtagHead.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 
-const lastUpdated = "March 27, 2026"
+const lastUpdated = "September 5, 2026"
 ---
 
 <html lang="en">
@@ -78,7 +78,7 @@ const lastUpdated = "March 27, 2026"
           </ul>
 
           <h3 class="text-lg font-semibold mt-6 mb-3">3.2 Billing data</h3>
-          <p class="text-gray-600 mb-2">When you subscribe to a paid plan, our payment processor (Stripe) collects:</p>
+          <p class="text-gray-600 mb-2">When you subscribe to a paid Cloud plan or buy a self-hosted licence, our payment processor (Stripe) collects:</p>
           <ul class="list-disc pl-6 text-gray-600 space-y-1">
             <li>Payment method details (processed and stored by Stripe)</li>
             <li>Billing address</li>
@@ -108,7 +108,32 @@ const lastUpdated = "March 27, 2026"
             This data may include email addresses, names, and other contact information of our customers' recipients.
             This processing is governed by our Data Processing Agreement (DPA) with each customer, not by this Privacy Policy.
           </p>
-        </section>
+        
+          <h3 class="text-lg font-semibold mt-6 mb-3">3.6 Self-hosted software</h3>
+          <p class="text-gray-600 mb-2">
+            Notifuse can also be run on your own infrastructure. In that case we hold no data about your contacts, your messages or your users: they never leave your servers. Two things do reach us.
+          </p>
+          <p class="text-gray-600 mb-2"><strong>Licence purchases.</strong> When you buy a self-hosted licence:</p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>Stripe collects your name, email address, billing address and payment method, as in 3.2.</li>
+            <li>The licence key we email you embeds the organisation name and the email address given at purchase. The software shows them to its administrators as &ldquo;Licensed to&rdquo;, so that a key passed around names who bought it. Nothing else is embedded, and the key contains no secret of yours.</li>
+            <li>A copy of every licence email we send is kept in our own mailbox, for record-keeping and support.</li>
+            <li>The key re-send form on our website takes an email address and re-sends to it the keys issued to that address, and nothing else.</li>
+          </ul>
+          <p class="text-gray-600 mt-2 mb-2">
+            <strong>Usage telemetry.</strong> The software can send usage telemetry to <code>telemetry.notifuse.com</code>. It is a single switch, chosen in the setup wizard or set with <code>TELEMETRY=false</code> in the environment; off means nothing at all is sent. When it is on, the software reports once at startup and then once a day, sending for each workspace:
+          </p>
+          <ul class="list-disc pl-6 text-gray-600 space-y-1">
+            <li>a SHA-1 hash of the workspace identifier, so that successive reports from the same workspace can be told apart without naming it;</li>
+            <li>the workspace's creation date, last update date and the date of its last message;</li>
+            <li>counts of contacts, lists, segments, broadcasts, transactional notifications, messages, users and blog posts;</li>
+            <li>the public URL of your API, and which integrations are configured &mdash; email providers, storage, AI providers, web analytics &mdash; as yes/no flags;</li>
+            <li>the software version, the licence tier if any, whether single sign-on is configured, and whether any workspace uses a restricted permission set or an Amazon SES tenant.</li>
+          </ul>
+          <p class="text-gray-600 mt-2">
+            No contact, no message content, no email address, no licence key, no organisation name and no credential is ever sent. We process telemetry on the basis of our legitimate interest in understanding how the software is used and which capabilities to maintain (Article 6(1)(f) GDPR), and we keep it for as long as we produce usage statistics from it. Switching it off is always available and takes effect at the next report.
+          </p>
+</section>
 
         <!-- 4. Purposes and Legal Bases -->
         <section class="mb-12">

@@ -19,6 +19,7 @@ import AutomationsPreview from "../components/AutomationsPreview.astro"
 import AIPreview from "../components/AIPreview.astro"
 import WebAnalyticsPreview from "../components/WebAnalyticsPreview.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
+import LaunchBanner from "../components/LaunchBanner.astro"
 ---
 
 <html lang="en">
@@ -105,6 +106,7 @@ import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
       <!-- Hero Section -->
       <section>
         <div class="px-4 lg:px-8 py-20">
+          <LaunchBanner lang="en" class="mb-10" />
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Content -->
             <div class="text-center lg:text-left">
@@ -137,6 +139,11 @@ import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
                   Get Started
                 </a>
               </div>
+              <p class="text-sm text-gray-500 mt-5">
+                Free to self-host. Managed Cloud from $16/month, or a
+                <a href="/pricing/self-hosted" class="text-primary hover:underline">self-hosted licence</a>
+                from $290/year for teams that need more.
+              </p>
             </div>
 
             <!-- App Preview -->
@@ -355,6 +362,10 @@ import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
                 Granular <span class="text-primary font-semibold">workspace-level access control</span> with multiple roles.
                 Perfect for team collaboration and security.
               </p>
+              <p class="text-xs text-gray-400 mb-6">
+                Every Cloud plan. Self-hosted: editing a restricted set needs a
+                <a href="/pricing/self-hosted#features" class="hover:text-primary underline">licence key</a>.
+              </p>
               <PermissionsPreview />
             </div>
 
@@ -369,6 +380,10 @@ import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
                 <span class="text-primary font-semibold">Multi-tenant</span>
                 architecture with <span class="text-primary font-semibold">custom domains</span>. Each workspace has isolated data,
                 contacts, and campaigns. Perfect for agencies.
+              </p>
+              <p class="text-xs text-gray-400 mb-6">
+                Every Cloud plan. Self-hosted: three included, more with a
+                <a href="/pricing/self-hosted#features" class="hover:text-primary underline">licence key</a>.
               </p>
               <WorkspacesPreview />
             </div>

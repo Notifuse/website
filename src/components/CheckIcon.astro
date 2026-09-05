@@ -1,0 +1,21 @@
+---
+// A check mark for "included" lists. Pricing cards list only what a tier includes — nothing
+// greyed out, nothing struck through — so every row carries the same mark and the absence of
+// a row is the only "not included" there is.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+  class:list={["h-4 w-4 shrink-0 mt-0.5 text-primary", className]}
+  viewBox="0 0 20 20"
+  fill="currentColor"
+  aria-hidden="true"
+>
+  <path
+    fill-rule="evenodd"
+    d="M16.704 5.29a1 1 0 0 1 0 1.42l-7.5 7.5a1 1 0 0 1-1.42 0l-3.5-3.5a1 1 0 1 1 1.42-1.42L8.5 12.09l6.79-6.8a1 1 0 0 1 1.414 0Z"
+    clip-rule="evenodd"></path>
+</svg>

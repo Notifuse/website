@@ -5,7 +5,7 @@ import Footer from "../components/Footer.astro"
 import GtagHead from "../components/GtagHead.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 
-const lastUpdated = "March 27, 2026"
+const lastUpdated = "September 5, 2026"
 ---
 
 <html lang="en">
@@ -171,7 +171,7 @@ const lastUpdated = "March 27, 2026"
 
           <h3 class="text-lg font-semibold mt-4 mb-3">7.1 Plans and trials</h3>
           <p class="text-gray-600 mb-4">
-            The Service is offered through paid subscription plans (Starter, Pro, Enterprise). All plans include a <strong>14-day free trial</strong>. A valid credit card or payment method is required to start a trial; you will not be charged until the trial ends, and you can cancel at any time before then. Current pricing is available at
+            The Service is offered through paid subscription plans (Lite, Starter, Pro, Business). All plans include a <strong>14-day free trial</strong>. A valid credit card or payment method is required to start a trial; you will not be charged until the trial ends, and you can cancel at any time before then. Current pricing is available at
             <a href="https://notifuse.com" class="text-primary hover:underline">notifuse.com</a>.
           </p>
           <p class="text-gray-600 mb-4">
@@ -192,8 +192,30 @@ const lastUpdated = "March 27, 2026"
           <p class="text-gray-600 mb-4">
             If payment fails, we will notify you and provide a <strong>15-day grace period</strong> to update your payment method. Continued non-payment after the grace period may result in suspension or termination of your account.
           </p>
-          <p class="text-gray-600">
+          <p class="text-gray-600 mb-4">
             For professional (B2B) customers, in accordance with Article L441-10 of the French Code de Commerce: late payments shall accrue interest at a rate equal to the European Central Bank's most recent refinancing rate plus 10 percentage points, calculated on the overdue amount from the day following the payment due date. In addition, a fixed indemnity of <strong>40 EUR</strong> for recovery costs (<em>indemnit&eacute; forfaitaire pour frais de recouvrement</em>) is due automatically on each late payment, without the need for a reminder. If actual recovery costs exceed this amount, we may claim additional reasonable compensation upon justification.
+          </p>
+
+          <h3 class="text-lg font-semibold mt-4 mb-3">7.5 Self-hosted licences</h3>
+          <p class="text-gray-600 mb-4">
+            Notifuse is also available as self-hosted software under the <strong>Business Source License 1.1</strong>. Running it on your own infrastructure is free. Five capabilities named in the software's LICENSE file require a paid licence key (a <strong>&ldquo;Licence&rdquo;</strong>), sold as an annual subscription through Stripe, priced in US dollars, at
+            <a href="/pricing/self-hosted" class="text-primary hover:underline">notifuse.com/pricing/self-hosted</a>. TVA non applicable, article 293 B du Code G&eacute;n&eacute;ral des Imp&ocirc;ts: no VAT is charged, and customers located outside France remain responsible for any tax due under their own law. A Licence grants exactly the rights set out in that LICENSE file and nothing more. Sections 7.1 to 7.4 and Section 11 describe the Cloud Service and do not apply to Licences except where this section says so.
+          </p>
+          <p class="text-gray-600 mb-4">
+            <strong>Scope.</strong> A Licence covers <strong>one production deployment</strong> of the software &mdash; one system database, whatever the number of API containers behind it. Using a Licensed Feature on a second production deployment requires a second Licence. Copies run for development, testing or staging need no Licence: the LICENSE file restricts Licensed Features in production only.
+          </p>
+          <p class="text-gray-600 mb-4">
+            <strong>Refund.</strong> A Licence may be refunded in full within <strong>14 days</strong> of its first purchase, on request to
+            <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>, without justification. The refund window applies to the first purchase only, not to renewals. Once refunded, the key issued at purchase ceases to be a valid licence key within the meaning of the Business Source License, whatever the software continues to accept.
+          </p>
+          <p class="text-gray-600 mb-4">
+            <strong>Keys.</strong> The key issued at purchase is valid for <strong>30 days</strong>. The one-year key is issued automatically by email once the refund window has closed, provided the subscription is active and has not been refunded. A new key is issued at each annual renewal. You may cancel at any time, from the customer portal linked in your Stripe receipts or by email to <a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>; no further renewal is charged, and the key you hold remains valid until the expiry date it carries. Keys are verified offline by the software and cannot be revoked once issued, which is why validity is defined by this section and by the LICENSE file rather than by what the software accepts.
+          </p>
+          <p class="text-gray-600 mb-4">
+            <strong>Price changes and late payment.</strong> Section 7.3 applies to Licences: a price change takes effect at your next annual renewal. If a renewal payment fails, no new key is issued; the key you hold runs to its expiry and the software then falls back to the capabilities that need no key. Nothing is deleted. The software may keep honouring an expired key for a short grace period; that is a courtesy of the software, not an extension of the Licence, whose validity ends on the date the key carries.
+          </p>
+          <p class="text-gray-600">
+            <strong>Capabilities announced as coming soon.</strong> A capability shown as &ldquo;coming soon&rdquo; on the pricing page is not part of any Licence until a release lists it in its LICENSE file, and no release date is promised. When it is released, every key of a tier that lists it, valid at that time, covers it at no extra cost and without a new key.
           </p>
         </section>
 
@@ -330,7 +352,7 @@ const lastUpdated = "March 27, 2026"
 
           <h3 class="text-lg font-semibold mt-4 mb-3">11.1 Termination by you</h3>
           <p class="text-gray-600 mb-4">
-            You may terminate your account at any time through the Service dashboard or by contacting us. Termination takes effect at the end of your current billing cycle. No refunds are provided for unused portions of a billing period.
+            You may terminate your account at any time through the Service dashboard or by contacting us. Termination takes effect at the end of your current billing cycle. No refunds are provided for unused portions of a Cloud subscription billing period. Self-hosted Licences are governed by Section 7.5.
           </p>
 
           <h3 class="text-lg font-semibold mt-4 mb-3">11.2 Termination by us</h3>

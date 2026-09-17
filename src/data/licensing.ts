@@ -61,13 +61,13 @@ export function licence(lang: Lang) {
  * What self-hosting costs.
  *
  * "All features included" and "forever free" are gone, and that is independent of what the
- * licence is called: five capabilities need a key, so both phrases became false whatever word
+ * licence is called: six capabilities need a key, so both phrases became false whatever word
  * describes the licence. Everything else stays free, and saying so plainly is worth more than
  * a superlative that can be checked and disproved in ten minutes with an instance.
  */
 export const selfHostBlurb = {
-  en: "Free to run and free to self-host, with no per-email, per-contact or per-seat fee, ever. Five capabilities need a licence key; everything else does not.",
-  fr: "Gratuit à exécuter et à auto-héberger, sans frais par email, par contact ni par siège, jamais. Cinq capacités demandent une clé de licence ; tout le reste, non.",
+  en: "Free to run and free to self-host, with no per-email, per-contact or per-seat fee, ever. Six capabilities need a licence key; everything else does not.",
+  fr: "Gratuit à exécuter et à auto-héberger, sans frais par email, par contact ni par siège, jamais. Six capacités demandent une clé de licence ; tout le reste, non.",
 } as const;
 
 export function selfHost(lang: Lang) {
@@ -75,12 +75,12 @@ export function selfHost(lang: Lang) {
 }
 
 /**
- * The five licensed capabilities, in the order the Additional Use Grant lists them.
+ * The six licensed capabilities, in the order the Additional Use Grant lists them.
  *
  * This list is the product boundary. It must say exactly what the software refuses and nothing
- * more — every entry corresponds to a gate that exists in the shipped binary. `audit_logs` is
- * deliberately absent: Enterprise keys carry it so nothing has to be re-issued the day it
- * ships, but a capability that exists in no release cannot be one you are refused.
+ * more — every entry corresponds to a gate that exists in the shipped binary. Audit logs joined
+ * it in v41; the gate there is on recording, and it refuses nothing to anyone, which the entry
+ * says in as many words.
  */
 export const licensedCapabilities = {
   en: [
@@ -109,6 +109,11 @@ export const licensedCapabilities = {
       body: "Signing in through SSO. Without a licence that covers it the SSO button is not offered, and everyone signs in with a login code instead — nobody is locked out, and sessions already open are unaffected.",
       refusedAt: "The sign-in page stops offering the SSO button",
     },
+    {
+      title: "Audit logs",
+      body: "Recording an audit log of administrative actions: who changed what, from where, and whether it was allowed. Without a key covering it nothing is written, and nothing is refused — the page, the export and the retention setting stay available, entries recorded while a key covered it stay readable, and a marker entry says when recording stopped and resumed.",
+      refusedAt: "Nothing is refused — an unlicensed deployment simply records nothing",
+    },
   ],
   fr: [
     {
@@ -135,6 +140,11 @@ export const licensedCapabilities = {
       title: "Authentification unique (OpenID Connect)",
       body: "Se connecter en SSO. Sans licence qui le couvre, le bouton SSO n'est pas proposé et chacun se connecte avec un code de connexion — personne n'est enfermé dehors, et les sessions ouvertes ne sont pas interrompues.",
       refusedAt: "La page de connexion cesse de proposer le bouton SSO",
+    },
+    {
+      title: "Journaux d'audit",
+      body: "Enregistrer un journal d'audit des actions d'administration : qui a modifié quoi, depuis où, et si c'était autorisé. Sans clé qui le couvre, rien n'est écrit et rien n'est refusé — la page, l'export et le réglage de rétention restent disponibles, les entrées enregistrées pendant qu'une clé le couvrait restent lisibles, et une entrée-repère indique quand l'enregistrement s'est arrêté et a repris.",
+      refusedAt: "Rien n'est refusé — un déploiement sans licence n'enregistre simplement rien",
     },
   ],
 } as const;
@@ -280,13 +290,10 @@ export const capabilityLabels = {
 /**
  * Capabilities a tier will carry that no release ships yet.
  *
- * `audit_logs` is on the Enterprise card as a roadmap item, and the tag it renders under is
- * what keeps that honest. It is NOT in `licensedCapabilities` above and must not be: that
- * list is what the software refuses, and a capability that exists in no release cannot be one
- * you are refused. Enterprise keys already carry `audit_logs` (billing-api mints it from day
- * one, so nothing has to be re-issued when it ships), which is why it can be promised here
- * without promising a date.
+ * Empty since v41 shipped audit logs. The set stays so that a future roadmap item renders under
+ * the "coming soon" tag instead of being listed as something you can be refused: that list is
+ * what the software refuses, and a capability that exists in no release cannot be one.
  */
-export const comingSoon: ReadonlySet<string> = new Set(["audit_logs"]);
+export const comingSoon: ReadonlySet<string> = new Set<string>();
 
 export const comingSoonLabel = { en: "coming soon", fr: "bientôt" } as const;

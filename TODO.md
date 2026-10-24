@@ -21,7 +21,7 @@ déploiement gratuit, la documentation et l'activité GitHub datée.
 
 ## Étape 2 — Confiance et segments (pages à créer)
 
-- [ ] `/security` + `/fr/securite` — Sécurité & conformité (factuel uniquement) :
+- [x] `/security` + `/fr/securite` — Sécurité & conformité (factuel uniquement) : processus de divulgation inclus
       inclure le processus de divulgation du repo (accusé de réception sous 3 jours
       ouvrés, première évaluation sous 10 jours ouvrés, divulgation coordonnée,
       correctifs sur la dernière version — SECURITY.md)

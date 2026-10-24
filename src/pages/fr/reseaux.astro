@@ -1,0 +1,157 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import WorkspacesPreview from "../../components/WorkspacesPreview.astro"
+import PermissionsPreview from "../../components/PermissionsPreview.astro"
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Réseaux multi-entités & franchises - Notifuse</title>
+    <meta
+      name="description"
+      content="Une seule plateforme email pour tout un réseau : le siège fixe templates, traductions et permissions ; chaque franchise ou entité garde son workspace isolé, son domaine et sa réputation d'envoi."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/reseaux" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-16 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">
+              Une seule plateforme email pour tout le réseau
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+              Le siège garde la main sur la marque. Chaque franchise, magasin ou entité
+              envoie depuis son propre workspace isolé — ses contacts, son domaine et sa
+              réputation d'envoi.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Voir l'interface en direct</a>
+              <a href="/fr/tarifs/auto-heberge" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Voir les licences</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Le problème du compte partagé</h2>
+            <p class="text-gray-700 mb-4">
+              Un réseau finit en général avec l'une de ces deux mauvaises options. Soit
+              toutes les entités partagent un seul compte marketing — une campagne mal
+              ciblée peut abîmer la réputation d'envoi de tout le réseau, et personne ne
+              sait qui a envoyé quoi. Soit chaque entité achète son propre outil — le
+              siège perd la marque, les templates et toute vision commune des envois.
+            </p>
+            <p class="text-gray-700">
+              Notifuse est construit pour l'entre-deux : un seul déploiement, des
+              workspaces isolés, gouvernés depuis le centre.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 class="text-2xl font-bold mb-4">Le siège fixe le cadre</h2>
+              <p class="text-gray-700 mb-4">
+                Les templates et leurs traductions sont préparés au centre, pour que
+                chaque entité envoie des emails conformes à la marque, dans sa langue.
+                Les permissions décident de qui peut faire quoi dans chaque workspace :
+                un responsable local mène ses campagnes, le siège garde les réglages et
+                les intégrations.
+              </p>
+              <p class="text-gray-700">
+                Chaque workspace a sa propre base de données, ses contacts, ses campagnes
+                et son domaine personnalisé pour le suivi et les pages de désinscription.
+                Les entités ne voient pas les données les unes des autres.
+              </p>
+            </div>
+            <WorkspacesPreview />
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <PermissionsPreview />
+            <div>
+              <h2 class="text-2xl font-bold mb-4">L'erreur d'une entité reste la sienne</h2>
+              <p class="text-gray-700 mb-4">
+                Avec l'isolation de tenant Amazon SES, chaque entité peut envoyer avec sa
+                propre réputation et sa propre liste de suppression. Une campagne qui se
+                passe mal dans un magasin peut y être mise en pause — elle n'entraîne pas
+                le reste du réseau avec elle.
+              </p>
+              <p class="text-gray-700">
+                Et comme les workspaces sont isolés, une équipe locale reçoit exactement
+                les accès dont elle a besoin, et pas davantage.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Un exemple</h2>
+            <p class="text-sm text-gray-400 mb-3">Scénario illustratif — ce n'est pas un cas client.</p>
+            <p class="text-gray-700 mb-4">
+              Un réseau de 40 magasins déploie Notifuse une fois, sur ses propres
+              serveurs. Le siège prépare les templates et les deux langues utilisées par
+              le réseau. Chaque magasin reçoit un workspace avec ses contacts et son
+              domaine, et envoie ses campagnes locales. Le siège voit le cadre qu'il a
+              fixé ; les magasins ne voient pas les listes les uns des autres. Quand le
+              réseau dépasse les workspaces de sa licence, il passe à une licence Custom
+              au lieu de changer d'outil.
+            </p>
+            <p class="text-gray-700">
+              Les accès sont gouvernés par l'authentification unique et les permissions
+              granulaires, et les actions d'administration sont conservées dans les
+              journaux d'audit. Les détails sont sur notre
+              {" "}<a href="/fr/securite" class="text-primary hover:underline">page sécurité</a>.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Les licences pour les réseaux</h2>
+            <p class="text-gray-700 mb-4">
+              Commencez gratuitement avec trois workspaces. Studio en couvre cinq, Agency
+              et Enterprise quinze — avec les permissions, l'isolation de tenant SES et
+              les traductions de templates, plus l'authentification unique et les
+              journaux d'audit sur Enterprise. Plus de quinze workspaces, ou un
+              déploiement à l'échelle du réseau ? C'est une
+              {" "}<a href="/fr/tarifs/auto-heberge#custom" class="text-primary hover:underline">licence Custom</a>,
+              établie par déploiement, avec devis en euros HT.
+            </p>
+            <p class="text-gray-700 mb-6">
+              Les licences payantes incluent un support privé par email, du lundi au
+              vendredi — premier retour sous deux jours ouvrés, un jour si la production
+              est bloquée.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/fr/tarifs/auto-heberge" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Comparer les licences</a>
+              <a href="mailto:hello@notifuse.com?subject=Licence%20Custom%20—%20réseau" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Parlons de votre licence Custom</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

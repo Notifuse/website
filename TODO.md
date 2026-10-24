@@ -25,7 +25,7 @@ déploiement gratuit, la documentation et l'activité GitHub datée.
       inclure le processus de divulgation du repo (accusé de réception sous 3 jours
       ouvrés, première évaluation sous 10 jours ouvrés, divulgation coordonnée,
       correctifs sur la dernière version — SECURITY.md)
-- [ ] Landing réseaux multi-entités (EN + FR)
+- [x] Landing réseaux multi-entités (EN + FR) — `/networks`, `/fr/reseaux`
 - [ ] Landing secteur public (EN + FR) — devis, bon de commande, Chorus Pro
 - [ ] Landing industries régulées (EN + FR) — santé avec formulation HDS stricte
 - [ ] Remplacer les ancres du menu Solutions par ces URLs

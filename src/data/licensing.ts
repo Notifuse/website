@@ -207,7 +207,7 @@ export const neverLicensed = {
  * a badge repeated in one language and not the other is the exact failure this file exists to
  * prevent, and "most chosen" is a factual claim, so it must move as one edit or not at all.
  */
-export const highlightedTier = "studio";
+export const highlightedTier = "enterprise";
 
 /**
  * The self-hosted licence tiers.
@@ -259,7 +259,7 @@ export const selfHostTiers = [
     name: "Enterprise",
     annualUsd: 1990,
     workspaces: 15,
-    capabilities: ["rbac", "ses_tenant", "template_i18n", "sso", "audit_logs"],
+    capabilities: ["rbac", "ses_tenant", "template_i18n", "sso", "audit_logs", "data_retention"],
     forWhom: {
       en: "For SSO and compliance requirements.",
       fr: "Pour les exigences SSO et conformité.",
@@ -276,6 +276,7 @@ export const capabilityLabels = {
     template_i18n: "Template translations",
     sso: "Single sign-on (OIDC)",
     audit_logs: "Audit logs",
+    data_retention: "Data retention",
   },
   fr: {
     workspaces: "Workspaces",
@@ -284,16 +285,17 @@ export const capabilityLabels = {
     template_i18n: "Traductions de templates",
     sso: "Authentification unique (OIDC)",
     audit_logs: "Journaux d'audit",
+    data_retention: "Rétention des données",
   },
 } as const;
 
 /**
  * Capabilities a tier will carry that no release ships yet.
  *
- * Empty since v41 shipped audit logs. The set stays so that a future roadmap item renders under
+ * Holds automatic data retention management (Enterprise roadmap). The set exists so that a roadmap item renders under
  * the "coming soon" tag instead of being listed as something you can be refused: that list is
  * what the software refuses, and a capability that exists in no release cannot be one.
  */
-export const comingSoon: ReadonlySet<string> = new Set<string>();
+export const comingSoon: ReadonlySet<string> = new Set<string>(["data_retention"]);
 
 export const comingSoonLabel = { en: "coming soon", fr: "bientôt" } as const;

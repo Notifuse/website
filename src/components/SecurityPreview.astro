@@ -1,0 +1,56 @@
+---
+const { lang = "en" } = Astro.props
+
+const t = lang === "fr" ? {
+  title: "Avis de sécurité",
+  fixed: "Corrigé dans la dernière version",
+  steps: [
+    { label: "Signalement reçu en privé", time: "Jour 0" },
+    { label: "Accusé de réception", time: "≤ 3 jours ouvrés" },
+    { label: "Première évaluation", time: "≤ 10 jours ouvrés" },
+    { label: "Correctif publié avec avis public", time: "Dernière version" },
+  ],
+} : {
+  title: "Security advisory",
+  fixed: "Fixed in the latest release",
+  steps: [
+    { label: "Private report received", time: "Day 0" },
+    { label: "Acknowledged", time: "≤ 3 business days" },
+    { label: "Initial assessment", time: "≤ 10 business days" },
+    { label: "Fix published with a public advisory", time: "Latest release" },
+  ],
+}
+---
+
+<div class="border border-gray-200 rounded-xl bg-white p-6 max-w-md mx-auto w-full" aria-hidden="true">
+  <div class="flex items-center gap-5 mb-6">
+    <svg class="w-16 h-16 shrink-0" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="security-shield-gradient" x1="10" y1="32" x2="54" y2="32" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#7763F1" />
+          <stop offset="1" stop-color="#A78BFA" />
+        </linearGradient>
+      </defs>
+      <path d="M32 3 54 11v17c0 14.5-9.4 26.8-22 33C19.4 54.8 10 42.5 10 28V11L32 3Z" fill="url(#security-shield-gradient)" />
+      <path d="m22 31.5 7 7L42.5 25" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <div>
+      <p class="font-semibold text-slate-900">{t.title}</p>
+      <p class="text-sm text-emerald-600 font-medium">{t.fixed}</p>
+    </div>
+  </div>
+  <ol class="space-y-0">
+    {t.steps.map((step, i) => (
+      <li class="flex gap-3">
+        <div class="flex flex-col items-center">
+          <span class:list={["w-2.5 h-2.5 rounded-full shrink-0 mt-1", i === t.steps.length - 1 ? "bg-emerald-500" : "bg-primary"]} />
+          {i < t.steps.length - 1 && <span class="w-px flex-1 bg-gray-200 my-1" />}
+        </div>
+        <div class="flex flex-1 items-baseline justify-between gap-3 pb-4">
+          <span class="text-sm text-gray-700">{step.label}</span>
+          <span class="text-xs text-gray-400 whitespace-nowrap">{step.time}</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+</div>

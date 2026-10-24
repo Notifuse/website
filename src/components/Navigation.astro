@@ -6,23 +6,39 @@ const isFr = Astro.url.pathname.startsWith('/fr')
 const t = isFr ? {
   features: "Fonctionnalités",
   featuresHref: "/fr/#features",
+  solutions: "Solutions",
+  solutionItems: [
+    { label: "Réseaux multi-entités", href: "/fr/#segment-networks" },
+    { label: "Secteur public", href: "/fr/#segment-public" },
+    { label: "Industries régulées", href: "/fr/#segment-regulated" },
+    { label: "Sécurité & conformité", href: "/fr/#security" },
+  ],
   compare: "Comparer",
   compareHref: "/fr/compare",
   pricing: "Tarifs",
   pricingHref: "/fr/tarifs",
   docs: "Docs",
   login: "Connexion",
+  mobileCta: "Voir les licences",
   cta: "Commencer",
   ctaHref: "/fr/tarifs",
 } : {
   features: "Features",
   featuresHref: "/#features",
+  solutions: "Solutions",
+  solutionItems: [
+    { label: "Multi-entity networks", href: "/#segment-networks" },
+    { label: "Public sector", href: "/#segment-public" },
+    { label: "Regulated industries", href: "/#segment-regulated" },
+    { label: "Security & compliance", href: "/#security" },
+  ],
   compare: "Compare",
   compareHref: "/compare",
   pricing: "Pricing",
   pricingHref: "/pricing",
   docs: "Docs",
   login: "Log in",
+  mobileCta: "See licences",
   cta: "Get Started",
   ctaHref: "/pricing",
 }
@@ -46,6 +62,23 @@ const t = isFr ? {
           class="text-gray-600 hover:text-gray-900 transition-colors"
           >{t.features}</a
         >
+        <div class="relative group">
+          <button
+            type="button"
+            class="text-gray-600 hover:text-gray-900 transition-colors inline-flex items-center gap-1"
+            aria-haspopup="true"
+          >
+            {t.solutions}
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block group-focus-within:block">
+            <div class="bg-white border border-gray-200 rounded-md shadow-lg py-2 w-60">
+              {t.solutionItems.map((item) => (
+                <a href={item.href} class="block px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors">{item.label}</a>
+              ))}
+            </div>
+          </div>
+        </div>
         <a
           href={t.compareHref}
           class="text-gray-600 hover:text-gray-900 transition-colors">{t.compare}</a
@@ -148,6 +181,14 @@ const t = isFr ? {
           class="block text-gray-600 hover:text-gray-900 transition-colors"
           >{t.features}</a
         >
+        <div>
+          <p class="text-gray-400 text-xs font-semibold uppercase tracking-wide mb-2">{t.solutions}</p>
+          <div class="space-y-3 pl-3">
+            {t.solutionItems.map((item) => (
+              <a href={item.href} class="block text-gray-600 hover:text-gray-900 transition-colors">{item.label}</a>
+            ))}
+          </div>
+        </div>
         <a
           href={t.compareHref}
           class="block text-gray-600 hover:text-gray-900 transition-colors"
@@ -165,19 +206,9 @@ const t = isFr ? {
         >
         <div class="pt-4 border-t border-gray-200 space-y-4">
           <a
-            class="github-button"
-            href="https://github.com/notifuse/notifuse"
-            data-color-scheme="no-preference: light; light: light; dark: light;"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star notifuse/notifuse on GitHub"
-          >
-            Star
-          </a>
-          <a
             href={t.ctaHref}
             class="block bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/80 transition-colors text-center"
-            >{t.cta}</a
+            >{t.mobileCta}</a
           >
         </div>
       </div>

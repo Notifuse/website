@@ -26,17 +26,31 @@ déploiement gratuit, la documentation et l'activité GitHub datée.
       ouvrés, première évaluation sous 10 jours ouvrés, divulgation coordonnée,
       correctifs sur la dernière version — SECURITY.md)
 - [x] Landing réseaux multi-entités (EN + FR) — `/networks`, `/fr/reseaux`
-- [ ] Landing secteur public (EN + FR) — devis, bon de commande, Chorus Pro
-- [ ] Landing industries régulées (EN + FR) — santé avec formulation HDS stricte
-- [ ] Remplacer les ancres du menu Solutions par ces URLs
-- [ ] Liens segments depuis le pied de page
+- [x] Landing secteur public (EN + FR) — `/public-sector`, `/fr/secteur-public`, Chorus Pro en FR uniquement
+- [x] Landing industries régulées (EN + FR) — santé avec formulation HDS stricte
+      `/regulated-industries`, `/fr/industries-regulees` : aucune certification
+      revendiquée pour le logiciel, hébergement HDS = périmètre de l'hébergeur
+      (build vérifié le 2026-10-24)
+- [x] Remplacer les ancres du menu Solutions par ces URLs
+- [x] Liens segments depuis le pied de page
 
 ## Étape 3 — Formulaire Custom
 
-- [ ] Formulaire court intégré (organisation, segment, workspaces, hébergement, message)
-- [ ] Cloud Function Firebase (créée dans ce chantier) → email via API Postmark
-- [ ] Anti-spam minimal, clé Postmark en secret d'environnement
-- [ ] Vérifier plan Firebase et région de la fonction (Europe de préférence)
+- [x] Formulaire court intégré (organisation, segment, workspaces, hébergement, message)
+      Composant `CustomForm` EN + FR dans les sections Custom des pages licences
+      (+ email professionnel, indispensable pour répondre)
+- [x] Cloud Function Firebase (créée dans ce chantier) → email via API Postmark
+      `functions/` : `customForm`, europe-west1, destination pierre@notifuse.com,
+      émetteur hello@notifuse.com. Testée en émulateur (405/400/honeypot 200/envoi
+      réel rejeté par Postmark faute de vrai token). Non déployée : voir ci-dessous.
+- [x] Anti-spam minimal, clé Postmark en secret d'environnement
+      Secret défini par Pierre, fonction + hosting déployés le 2026-10-24
+      (europe-west1). Tests réels sur notifuse.web.app et www.notifuse.com :
+      GET 405, invalide 400, honeypot 200, envoi valide 200 (email de test
+      reçu via Postmark).
+- [x] Vérifier plan Firebase et région de la fonction (Europe de préférence)
+      Projet `notifuse` (fonctions v2 existantes, plan Blaze effectif),
+      fonction en europe-west1 (Belgique), APIs activées le 2026-10-24.
 
 ## Avant publication
 

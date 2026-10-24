@@ -1,0 +1,125 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import VerifyIcon from "../../components/VerifyIcon.astro"
+import CustomModal from "../../components/CustomModal.astro"
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Secteur public - Notifuse</title>
+    <meta
+      name="description"
+      content="L'emailing des organisations publiques, hébergé sur votre infrastructure : code auditable, données dans votre périmètre, SSO et journaux d'audit, achat par devis, bon de commande et Chorus Pro."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/secteur-public" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-16 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">
+              L'emailing qui reste sur votre infrastructure
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+              Pour les organisations publiques qui doivent garder les données des
+              usagers dans leur périmètre : déployez Notifuse sur vos serveurs, avec
+              un code auditable et des données qui ne quittent pas votre réseau.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Voir l'interface en direct</a>
+              <a href="/fr/securite" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Lire notre page sécurité</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Pourquoi les organisations publiques auto-hébergent</h2>
+            <p class="text-gray-700 mb-4">
+              Une plateforme marketing hébergée place les adresses email, les noms et
+              les habitudes de lecture des usagers sur les serveurs d'un tiers, avec
+              ses propres sous-traitants. Pour une collectivité, cela veut dire une
+              analyse de conformité pour chaque outil de communication — et une
+              dépendance qu'elle ne peut pas inspecter.
+            </p>
+            <p class="text-gray-700">
+              En auto-hébergé, le tableau est plus simple : le logiciel tourne là où
+              vos autres systèmes tournent déjà, la base de données est la vôtre, et
+              le code peut être lu par vos propres équipes.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">Ce que vous pouvez vérifier avant d'acheter</h2>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex gap-3"><VerifyIcon name="code" /><span><strong class="text-slate-900">Le code.</strong>{" "}Le code source est public, et chaque version devient AGPL-3.0 après quatre ans.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="licence" /><span><strong class="text-slate-900">La licence.</strong>{" "}Ce qui demande une clé, ce qui ne le demandera jamais, et ce qui se passe sans clé — écrit, daté et versionné sur notre{" "}<a href="/fr/tarifs/auto-heberge" class="text-primary hover:underline">page licences</a>.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="shield" /><span><strong class="text-slate-900">Le processus de sécurité.</strong>{" "}Signalement privé des vulnérabilités, réponse sous trois jours ouvrés, correctifs dans la dernière version avec avis public. Détails sur notre{" "}<a href="/fr/securite" class="text-primary hover:underline">page sécurité</a>.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="users" /><span><strong class="text-slate-900">Le contrôle des accès.</strong>{" "}Authentification unique via votre fournisseur d'identité, permissions granulaires et journaux d'audit des actions d'administration.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="wifi-off" /><span><strong class="text-slate-900">Aucun appel sortant.</strong>{" "}Les clés de licence sont vérifiées localement. Rien de votre installation ne nous est envoyé.</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Un exemple</h2>
+            <p class="text-sm text-gray-400 mb-3">Scénario illustratif — ce n'est pas un cas client.</p>
+            <p class="text-gray-700 mb-4">
+              Un regroupement de communes exécute Notifuse sur son infrastructure
+              partagée. Chaque commune a son workspace, ses contacts et son domaine ;
+              le service informatique commun garde les templates et les réglages. Les
+              agents se connectent via le fournisseur d'identité de la structure, et
+              les actions d'administration sont conservées dans les journaux d'audit.
+              Newsletters et messages transactionnels — confirmations d'inscription,
+              alertes de service — partent via le fournisseur d'envoi déjà utilisé.
+            </p>
+            <p class="text-gray-700">
+              Chaque workspace est isolé dans sa propre base de données : une commune
+              ne voit jamais les usagers d'une autre.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Comment se passe l'achat</h2>
+            <p class="text-gray-700 mb-4">
+              Les licences standard s'achètent en ligne. Les déploiements plus larges
+              — plusieurs entités, plus de quinze workspaces, exigences particulières
+              — passent par une
+              {" "}<a href="/fr/tarifs/auto-heberge#custom" class="text-primary hover:underline">licence Custom</a> :
+              devis en euros HT, bon de commande et facturation Chorus Pro acceptés.
+              Les licences payantes incluent un support privé par email, en français
+              et en anglais, du lundi au vendredi.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/fr/tarifs/auto-heberge" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Comparer les licences</a>
+              <button type="button" data-custom-open class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Parlons de votre licence Custom</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <CustomModal lang="fr" />
+      <Footer />
+    </div>
+  </body>
+</html>

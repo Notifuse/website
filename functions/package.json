@@ -1,0 +1,12 @@
+{
+  "name": "notifuse-homepage-functions",
+  "private": true,
+  "description": "Cloud Functions for the Notifuse homepage (Custom licence form).",
+  "engines": {
+    "node": "22"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-functions": "^7.4.0"
+  }
+}

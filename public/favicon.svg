@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+  <path
+    d="M305 79H112a54 54 0 0 0-54 54v242a54 54 0 0 0 54 54h256a54 54 0 0 0 54-54V176"
+    fill="none"
+    stroke="#42465e"
+    stroke-width="37"
+    stroke-linecap="round"
+  />
+  <path
+    fill="#42465e"
+    d="M142 368V112h56l78 106V112h56v256h-56l-78-106v106z"
+  />
+  <circle cx="406" cy="61" r="60" fill="#eb0e63" />
+</svg>

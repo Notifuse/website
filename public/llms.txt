@@ -1,0 +1,55 @@
+# Notifuse
+
+> Notifuse is an open-source email platform — newsletters, campaigns and transactional email — that you run on your own infrastructure, under your control. Self-hosting is free, with no per-email, per-contact or per-seat fee. Six capabilities need a paid licence key; everything else does not. A hosted cloud version exists for teams that prefer not to run servers.
+
+Key facts:
+
+- Source code: public on GitHub (notifuse/notifuse), BSL 1.1, each release becomes AGPL-3.0 after four years.
+- Free tier: run in production and self-host at no cost, including 3 workspaces, each in its own isolated PostgreSQL database.
+- Six capabilities need a licence key: more than three workspaces, granular permissions, Amazon SES tenant isolation, template translations, single sign-on (OpenID Connect), audit logs.
+- Self-hosted licences (per year, per deployment): Studio $290 (5 workspaces), Agency $890 (15 workspaces), Enterprise $1,990 (15 workspaces), Custom quoted per deployment for larger or regulated setups.
+- Licence keys are verified offline against a signature in the binary: no phone-home, no account, nothing about an installation is sent to Notifuse.
+- Paid licences include private email support in English and French, Monday to Friday. Free-tier support is on GitHub Issues.
+- Notifuse claims no certification (no HDS, ISO 27001, SOC 2 or HIPAA attestation). Organisations that need certified hosting deploy Notifuse on infrastructure they qualify themselves.
+- Live demo, no signup: https://demo.notifuse.com/console/signin?email=demo@notifuse.com
+
+## Product and pricing
+
+- [Homepage](https://www.notifuse.com/): What Notifuse is, who it is for, and how deployment works.
+- [Self-hosted licences](https://www.notifuse.com/pricing/self-hosted): Free tier, the six licensed capabilities, licence tiers and prices, Custom licences, support terms.
+- [Licence keys (docs)](https://docs.notifuse.com/self-hosting/licence.md): Which capabilities need a key, what happens without one, how to install a key.
+- [Cloud pricing](https://www.notifuse.com/pricing/cloud): Hosted plans from $19/month, for teams that do not want to run servers.
+- [Self-hosted installation (docs)](https://docs.notifuse.com/self-hosting/installation.md): How to deploy Notifuse on your own servers.
+
+## Segments
+
+- [Multi-entity networks](https://www.notifuse.com/networks): One platform for a whole franchise or multi-entity network — headquarters controls the brand, each entity sends from its own isolated workspace.
+- [Public sector](https://www.notifuse.com/public-sector): Email that stays on public organisations' own infrastructure, with auditable code.
+- [Regulated industries](https://www.notifuse.com/regulated-industries): Deploying Notifuse inside a compliance perimeter you already qualify, including health-data hosting (HDS) responsibilities.
+- [Compare alternatives](https://www.notifuse.com/compare): Notifuse compared with Mailchimp, Brevo, Resend, Loops, Klaviyo, Customer.io, MailerLite, Listmonk and Mautic.
+
+## Trust and security
+
+- [Security and compliance](https://www.notifuse.com/security): SSO, granular permissions, scoped API keys, audit logs, workspace isolation, offline licence verification, and the vulnerability disclosure process.
+- [Vulnerability disclosure policy](https://github.com/notifuse/notifuse/blob/main/SECURITY.md): Private reports acknowledged within three business days, first assessment within ten business days.
+- [GitHub repository](https://github.com/notifuse/notifuse): Source code, issues and community support.
+- [Releases](https://github.com/notifuse/notifuse/releases): Version history and release dates.
+
+## Documentation
+
+- [Documentation home](https://docs.notifuse.com/): Guides for workspaces, contacts, templates, campaigns, automations and the transactional API.
+- [Documentation index for LLMs](https://docs.notifuse.com/llms.txt): Full machine-readable index of the documentation, including the API reference (every docs page also exists as Markdown by replacing the extension with .md).
+- [Workspaces (docs)](https://docs.notifuse.com/features/workspaces.md): The isolation unit — each workspace has its own contacts, templates, domain and database.
+- [Transactional API (docs)](https://docs.notifuse.com/features/transactional-api.md): Sending event-driven email from an application.
+- [Single sign-on (docs)](https://docs.notifuse.com/self-hosting/sso.md): OpenID Connect sign-in with an existing identity provider.
+
+## Optional
+
+- [Accueil (français)](https://www.notifuse.com/fr/): French homepage.
+- [Licences auto-hébergées (français)](https://www.notifuse.com/fr/tarifs/auto-heberge): Self-hosted licences in French, Custom quotes in EUR excl. tax.
+- [Réseaux multi-entités (français)](https://www.notifuse.com/fr/reseaux): Multi-entity networks landing page in French.
+- [Secteur public (français)](https://www.notifuse.com/fr/secteur-public): Public sector landing page in French.
+- [Industries régulées (français)](https://www.notifuse.com/fr/industries-regulees): Regulated industries landing page in French, including the HDS wording.
+- [Sécurité et conformité (français)](https://www.notifuse.com/fr/securite): Security page in French.
+- [Privacy policy](https://www.notifuse.com/privacy): How the website and cloud service handle personal data.
+- [Terms of service](https://www.notifuse.com/terms): Terms for the website and cloud service.

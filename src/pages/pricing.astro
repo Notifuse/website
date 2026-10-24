@@ -4,13 +4,12 @@ import Navigation from "../components/Navigation.astro"
 import Footer from "../components/Footer.astro"
 import GtagHead from "../components/GtagHead.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
-import { selfHostTiers } from "../data/licensing"
+import { licensedCapabilities } from "../data/licensing"
 
-// The two ways to run Notifuse answer different questions, and a visitor who lands straight
-// on monthly Cloud tiers has no way to know the other exists. For most of the people who find
-// this project, self-hosting is the reason they came — so it gets equal weight here, and
-// neither card is styled as the default.
-const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
+// Self-hosted licences lead this page: they are the offer. Cloud follows as the
+// alternative for organisations that cannot run Notifuse themselves — present,
+// but deliberately not an equal-weight card.
+const capabilityCount = licensedCapabilities.en.length
 ---
 
 <html lang="en">
@@ -19,7 +18,7 @@ const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Pricing - Notifuse</title>
+    <title>Pricing — Self-hosted licences & Cloud - Notifuse</title>
     <meta
       name="description"
       content="Two ways to run Notifuse: a managed Cloud from $16/month, or self-hosted on your own infrastructure with no per-email, per-contact or per-seat fee."
@@ -39,106 +38,43 @@ const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
           <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl font-bold text-slate-900 mb-4">Two ways to run Notifuse</h1>
             <p class="text-xl text-gray-600">
-              Both send unlimited email through your own provider. Neither charges per email,
-              per contact or per seat.
+              Self-host it on your infrastructure with a licence, or let us run it for you
+              in the EU.
             </p>
           </div>
         </section>
 
-        <section class="pb-16 px-4 lg:px-8">
-          <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Cloud -->
-            <div
-              class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col"
-            >
-              <h2 class="text-2xl font-bold mb-2">Notifuse Cloud</h2>
-              <p class="text-gray-600 mb-6">We run it. You log in.</p>
-
-              <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>A PostgreSQL server of your own, dedicated to your deployment — with a
-                    separate database per workspace inside it</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Daily backups with point-in-time recovery</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Hosted in the EU, GDPR compliant</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Every capability included, on every plan</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Nothing to maintain, patch or monitor</span>
-                </li>
-              </ul>
-
-              <div class="border-t border-gray-100 pt-5">
-                <p class="text-sm text-gray-500 mb-1">Billed monthly or yearly</p>
-                <p class="text-3xl font-bold mb-4">
-                  From $16<span class="text-lg font-normal text-gray-500">/month</span>
-                </p>
-                <a
-                  href="/pricing/cloud"
-                  class="block w-full text-center py-2.5 px-4 rounded-md font-semibold bg-primary text-white hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']"
-                >
-                  See Cloud plans
-                </a>
-              </div>
-            </div>
-
-            <!-- Self-hosted -->
-            <div
-              class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col"
-            >
-              <h2 class="text-2xl font-bold mb-2">Self-hosted</h2>
-              <p class="text-gray-600 mb-6">You run it, on your own infrastructure.</p>
-
-              <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Your servers, your database, your data</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Unlimited emails, contacts, team members and automations</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Three workspaces, and every capability but five</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>No account, no phone-home, nothing reported to us</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>A licence key unlocks the five, if you need them</span>
-                </li>
-              </ul>
-
-              <div class="border-t border-gray-100 pt-5">
-                <p class="text-sm text-gray-500 mb-1">Free, or a yearly licence</p>
-                <p class="text-3xl font-bold mb-4">
-                  Free<span class="text-lg font-normal text-gray-500">
-                    &nbsp;· or from ${cheapestLicence}/year</span
-                  >
-                </p>
-                <a
-                  href="/pricing/self-hosted"
-                  class="block w-full text-center py-2.5 px-4 rounded-md font-semibold bg-primary text-white hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']"
-                >
-                  See licence tiers
-                </a>
-              </div>
+        <section class="pb-20 px-4 lg:px-8">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+          <div class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">Self-hosted licences</h2>
+            <p class="text-gray-600 mb-6">You run it, on your own infrastructure.</p>
+            <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Your servers, your database, your data</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Unlimited emails, contacts, team members and automations</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Three workspaces free, and {capabilityCount} capabilities unlocked by a licence key</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>No account, no phone-home, nothing reported to us</span></li>
+            </ul>
+            <div class="flex flex-wrap items-center gap-4 mt-auto">
+              <a href="/pricing/self-hosted" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']">See licences</a>
+              <p class="text-gray-600 text-sm">Free · or from $290/year</p>
             </div>
           </div>
-
+          <div class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">Notifuse Cloud</h2>
+            <p class="text-gray-600 mb-6">We run it. You log in.</p>
+            <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>A dedicated PostgreSQL server, with a separate database per workspace</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Daily backups with point-in-time recovery</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Hosted in the EU, GDPR compliant</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Every capability included, on every plan — nothing to maintain</span></li>
+            </ul>
+            <div class="flex flex-wrap items-center gap-4 mt-auto">
+              <a href="/pricing/cloud" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']">See Cloud plans</a>
+              <p class="text-gray-600 text-sm">From $16/month</p>
+            </div>
+          </div>
+          </div>
           <p class="max-w-4xl mx-auto text-sm text-gray-500 text-center mt-8">
             Not sure? Self-hosting is free to try and there is nothing to cancel — and you can
             move between the two in either direction, because the data export is complete and

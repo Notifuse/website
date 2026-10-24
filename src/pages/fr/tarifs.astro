@@ -4,13 +4,12 @@ import Navigation from "../../components/Navigation.astro"
 import Footer from "../../components/Footer.astro"
 import GtagHead from "../../components/GtagHead.astro"
 import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
-import { selfHostTiers } from "../../data/licensing"
+import { licensedCapabilities } from "../../data/licensing"
 
-// The two ways to run Notifuse answer different questions, and a visitor who lands straight
-// on monthly Cloud tiers has no way to know the other exists. For most of the people who find
-// this project, self-hosting is the reason they came — so it gets equal weight here, and
-// neither card is styled as the default.
-const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
+// Les licences auto-hébergées ouvrent cette page : c'est l'offre. Le Cloud suit comme
+// alternative pour les organisations qui ne peuvent pas exécuter Notifuse elles-mêmes —
+// présent, mais volontairement pas une carte à égalité.
+const capabilityCount = licensedCapabilities.fr.length
 ---
 
 <html lang="fr">
@@ -19,7 +18,7 @@ const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Tarifs - Notifuse</title>
+    <title>Tarifs — Licences auto-hébergées & Cloud - Notifuse</title>
     <meta
       name="description"
       content="Deux façons d'exécuter Notifuse : un Cloud managé à partir de 16 $/mois, ou l'auto-hébergement sur votre infrastructure, sans frais par email, par contact ni par siège."
@@ -39,106 +38,43 @@ const cheapestLicence = Math.min(...selfHostTiers.map((tier) => tier.annualUsd))
           <div class="max-w-4xl mx-auto text-center">
             <h1 class="text-4xl font-bold text-slate-900 mb-4">Deux façons d'exécuter Notifuse</h1>
             <p class="text-xl text-gray-600">
-              Les deux envoient sans limite via votre propre fournisseur. Aucune ne facture
-              par email, par contact ni par siège.
+              Auto-hébergez-le sur votre infrastructure avec une licence, ou laissez-nous
+              l'exécuter pour vous en Europe.
             </p>
           </div>
         </section>
 
-        <section class="pb-16 px-4 lg:px-8">
-          <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Cloud -->
-            <div
-              class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col"
-            >
-              <h2 class="text-2xl font-bold mb-2">Notifuse Cloud</h2>
-              <p class="text-gray-600 mb-6">Nous l'exécutons. Vous vous connectez.</p>
-
-              <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Un serveur PostgreSQL rien qu'à vous, dédié à votre déploiement — avec
-                    une base séparée par workspace à l'intérieur</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Sauvegardes quotidiennes avec restauration à un instant donné</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Hébergé en Europe, conforme RGPD</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Toutes les capacités incluses, sur tous les plans</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Rien à maintenir, patcher ni surveiller</span>
-                </li>
-              </ul>
-
-              <div class="border-t border-gray-100 pt-5">
-                <p class="text-sm text-gray-500 mb-1">Facturé au mois ou à l'année</p>
-                <p class="text-3xl font-bold mb-4">
-                  Dès 16 $<span class="text-lg font-normal text-gray-500">/mois</span>
-                </p>
-                <a
-                  href="/fr/tarifs/cloud"
-                  class="block w-full text-center py-2.5 px-4 rounded-md font-semibold bg-primary text-white hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']"
-                >
-                  Voir les plans Cloud
-                </a>
-              </div>
-            </div>
-
-            <!-- Self-hosted -->
-            <div
-              class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col"
-            >
-              <h2 class="text-2xl font-bold mb-2">Auto-hébergé</h2>
-              <p class="text-gray-600 mb-6">Vous l'exécutez, sur votre propre infrastructure.</p>
-
-              <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Vos serveurs, votre base, vos données</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Emails, contacts, membres d'équipe et automatisations sans limite</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Trois workspaces, et toutes les capacités sauf cinq</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Aucun compte, aucun appel sortant, rien ne nous est remonté</span>
-                </li>
-                <li class="flex gap-2.5">
-                  <span class="text-primary shrink-0">✓</span>
-                  <span>Une clé de licence débloque les cinq, si vous en avez besoin</span>
-                </li>
-              </ul>
-
-              <div class="border-t border-gray-100 pt-5">
-                <p class="text-sm text-gray-500 mb-1">Gratuit, ou une licence annuelle</p>
-                <p class="text-3xl font-bold mb-4">
-                  Gratuit<span class="text-lg font-normal text-gray-500">
-                    &nbsp;· ou dès {cheapestLicence} $/an</span
-                  >
-                </p>
-                <a
-                  href="/fr/tarifs/auto-heberge"
-                  class="block w-full text-center py-2.5 px-4 rounded-md font-semibold bg-primary text-white hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']"
-                >
-                  Voir les licences
-                </a>
-              </div>
+        <section class="pb-20 px-4 lg:px-8">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+          <div class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">Licences auto-hébergées</h2>
+            <p class="text-gray-600 mb-6">Vous l'exécutez, sur votre propre infrastructure.</p>
+            <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Vos serveurs, votre base, vos données</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Emails, contacts, membres d'équipe et automatisations sans limite</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Trois workspaces gratuits, et {capabilityCount} capacités débloquées par une clé de licence</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Aucun compte, aucun appel sortant, rien ne nous est remonté</span></li>
+            </ul>
+            <div class="flex flex-wrap items-center gap-4 mt-auto">
+              <a href="/fr/tarifs/auto-heberge" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']">Voir les licences</a>
+              <p class="text-gray-600 text-sm">Gratuit · ou dès 290 $/an</p>
             </div>
           </div>
-
+          <div class="relative border border-gray-200 rounded-xl p-8 bg-white hover:border-primary transition-colors flex flex-col">
+            <h2 class="text-2xl font-bold mb-2">Notifuse Cloud</h2>
+            <p class="text-gray-600 mb-6">Nous l'exécutons. Vous vous connectez.</p>
+            <ul class="space-y-2.5 text-sm text-gray-700 mb-8 flex-1">
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Un serveur PostgreSQL dédié, avec une base séparée par workspace</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Sauvegardes quotidiennes avec restauration à un instant donné</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Hébergé en Europe, conforme RGPD</span></li>
+              <li class="flex gap-2.5"><span class="text-primary shrink-0">✓</span><span>Toutes les capacités incluses, sur tous les plans — rien à maintenir</span></li>
+            </ul>
+            <div class="flex flex-wrap items-center gap-4 mt-auto">
+              <a href="/fr/tarifs/cloud" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors after:absolute after:inset-0 after:rounded-xl after:content-['']">Voir les plans Cloud</a>
+              <p class="text-gray-600 text-sm">Dès 16 $/mois</p>
+            </div>
+          </div>
+          </div>
           <p class="max-w-4xl mx-auto text-sm text-gray-500 text-center mt-8">
             Vous hésitez ? L'auto-hébergement s'essaie gratuitement et il n'y a rien à
             résilier — et vous pouvez passer de l'un à l'autre dans les deux sens, parce que

@@ -1,6 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #7763f1;
+  --color-white-98: #fafafa;
+}
+
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 1078px;
+}
 
 /* Custom animation delays for hero background */
 .animation-delay-2000 {

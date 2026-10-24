@@ -20,6 +20,7 @@ import WebAnalyticsPreview from "../../components/WebAnalyticsPreview.astro"
 import GtagHead from "../../components/GtagHead.astro"
 import CookieConsent from "../../components/CookieConsent.astro"
 import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import SecurityPreview from "../../components/SecurityPreview.astro"
 ---
 
 <html lang="fr">
@@ -28,10 +29,10 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Notifuse - Alternative open-source gratuite à Mailchimp et Resend</title>
+    <title>Notifuse — L'emailing sur votre infrastructure, sous votre contrôle</title>
     <meta
       name="description"
-      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
+      content="Plateforme d'emailing auto-hébergée pour les organisations qui doivent garder le contrôle : déployez sur votre infrastructure, donnez à chaque entité son propre workspace isolé, gouvernez les accès avec SSO et journaux d'audit. Envoyez des emails sans limite, à autant de contacts que vous voulez."
     />
 
     <!-- SEO Meta Tags -->
@@ -49,11 +50,11 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
     <meta property="og:url" content="https://notifuse.com/fr/" />
     <meta
       property="og:title"
-      content="Notifuse - Alternative open-source gratuite à Mailchimp et Resend"
+      content="Notifuse — L'emailing sur votre infrastructure, sous votre contrôle"
     />
     <meta
       property="og:description"
-      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
+      content="Plateforme d'emailing auto-hébergée pour les organisations qui doivent garder le contrôle : votre infrastructure, des entités isolées, SSO et journaux d'audit. Aucun frais par email, par contact ni par siège."
     />
     <meta property="og:image" content="https://notifuse.com/og-image.png" />
     <meta property="og:image:width" content="1200" />
@@ -64,11 +65,11 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Notifuse - Alternative open-source gratuite à Mailchimp et Resend"
+      content="Notifuse — L'emailing sur votre infrastructure, sous votre contrôle"
     />
     <meta
       name="twitter:description"
-      content="Plateforme d'emailing open-source pour newsletters et emails transactionnels. Alternative auto-hébergée à Mailchimp, Resend et Loops.so avec éditeur visuel MJML, tests A/B et analytics."
+      content="Plateforme d'emailing auto-hébergée pour les organisations qui doivent garder le contrôle : votre infrastructure, des entités isolées, SSO et journaux d'audit. Aucun frais par email, par contact ni par siège."
     />
     <meta name="twitter:image" content="https://notifuse.com/og-image.png" />
     <meta name="twitter:site" content="@notifuse" />
@@ -109,38 +110,34 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
             <!-- Content -->
             <div class="text-center lg:text-left">
               <h1 class="text-2xl lg:text-3xl font-bold text-slate-900 mb-6">
-                L'<span class="italic text-primary"
-                  >alternative</span
-                > open-source à :<br />
-                <span class="text-sm lg:text-lg text-gray-600 font-normal"
-                  >Mailchimp, Brevo, Mailjet, Listmonk, Mailerlite, Klaviyo...</span
-                >
+                L'emailing sur <span class="italic text-primary"
+                  >votre infrastructure</span
+                >, sous votre contrôle.
               </h1>
               <p class="text-lg text-black mb-10 max-w-3xl lg:max-w-none">
-                Notifuse est une plateforme d'emailing moderne et auto-hébergée
-                qui vous permet d'envoyer des newsletters et des emails
-                transactionnels à moindre coût.
+                Déployez Notifuse sur vos propres serveurs — ou un cloud
+                européen de confiance. Donnez à chaque entité son propre workspace
+                isolé, gouvernez les accès avec SSO et journaux d'audit, et envoyez sans frais par
+                email, par contact ni par siège.
               </p>
               <div
                 class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
               >
                 <a
                   href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com"
-                  class="bg-primary text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 transition-colors"
+                  class="order-2 sm:order-1 border border-gray-200 text-gray-700 bg-white sm:border-transparent sm:bg-primary sm:text-white px-4 py-2 rounded-md text-base font-semibold hover:bg-white sm:hover:bg-primary/80 transition-colors"
                 >
-                  Démo en ligne
+                  Voir l'interface en direct
                 </a>
                 <a
                   href="/fr/tarifs"
-                  class="border border-gray-200 text-gray-700 px-4 py-2 rounded-md text-base font-semibold hover:bg-white transition-colors"
+                  class="order-1 sm:order-2 bg-primary text-white sm:bg-transparent sm:border sm:border-gray-200 sm:text-gray-700 px-4 py-2 rounded-md text-base font-semibold hover:bg-primary/80 sm:hover:bg-white transition-colors"
                 >
-                  Commencer
+                  Voir les licences
                 </a>
               </div>
               <p class="text-sm text-gray-500 mt-5">
-                Gratuit à auto-héberger. Cloud managé dès 16 $/mois, ou une
-                <a href="/fr/tarifs/auto-heberge" class="text-primary hover:underline">licence auto-hébergée</a>
-                dès 290 $/an pour les équipes qui ont besoin de plus.
+                <a href="/fr/tarifs/cloud" class="text-primary hover:underline">Ou choisissez le Cloud managé — hébergé en Europe, dès 16 $/mois</a>.
               </p>
             </div>
 
@@ -160,6 +157,105 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
 
           <!-- Integration Logos - Streaming -->
           <IntegrationMarquee />
+        </div>
+      </section>
+
+      <!-- Chiffres de confiance : datés et sourcés — vérifiés le 24 octobre 2026 -->
+      <section class="border-t border-gray-200">
+        <div class="grid grid-cols-2 md:grid-cols-4 md:divide-x divide-gray-200">
+          <a href="https://github.com/notifuse/notifuse/releases" target="_blank" rel="noopener noreferrer" class="px-4 py-8 text-center hover:bg-white transition-colors">
+            <p class="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-violet-400">95</p>
+            <p class="text-sm text-gray-500 mt-1">versions sur les 12 derniers mois</p>
+          </a>
+          <a href="https://codecov.io/gh/Notifuse/notifuse" target="_blank" rel="noopener noreferrer" class="px-4 py-8 text-center hover:bg-white transition-colors">
+            <p class="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-violet-400">&gt;90 %</p>
+            <p class="text-sm text-gray-500 mt-1">de couverture de tests</p>
+          </a>
+          <a href="https://hub.docker.com/r/notifuse/notifuse" target="_blank" rel="noopener noreferrer" class="px-4 py-8 text-center hover:bg-white transition-colors">
+            <p class="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-violet-400">10 000/mois</p>
+            <p class="text-sm text-gray-500 mt-1">téléchargements de l'image Docker</p>
+          </a>
+          <a href="https://github.com/notifuse/notifuse" target="_blank" rel="noopener noreferrer" class="px-4 py-8 text-center hover:bg-white transition-colors">
+            <p class="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-primary to-violet-400">Open-source</p>
+            <p class="text-sm text-gray-500 mt-1">un code que votre équipe sécurité peut lire et auditer</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Segments -->
+      <section class="border-t border-gray-200" id="segments">
+        <div class="px-4 lg:px-8 py-16">
+          <h2 class="text-2xl font-bold text-slate-900 text-center mb-10">
+            Pour les organisations qui veulent garder le contrôle
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div id="segment-networks" class="border border-gray-200 rounded-lg p-6 bg-white scroll-mt-24">
+              <h3 class="font-semibold text-slate-900 mb-2">Réseaux multi-entités</h3>
+              <p class="text-sm text-gray-600">
+                Franchises, groupements et réseaux : le siège fixe le cadre — templates,
+                traductions, permissions — pendant que chaque entité garde son workspace
+                isolé, son domaine et sa réputation d'envoi.
+              </p>
+            </div>
+            <div id="segment-public" class="border border-gray-200 rounded-lg p-6 bg-white scroll-mt-24">
+              <h3 class="font-semibold text-slate-900 mb-2">Secteur public</h3>
+              <p class="text-sm text-gray-600">
+                Déployé sur votre propre infrastructure, avec un code auditable et des
+                données qui ne quittent pas votre périmètre. Licences Custom sur devis en
+                euros, bon de commande et facturation Chorus Pro.
+              </p>
+            </div>
+            <div id="segment-regulated" class="border border-gray-200 rounded-lg p-6 bg-white scroll-mt-24">
+              <h3 class="font-semibold text-slate-900 mb-2">Industries régulées</h3>
+              <p class="text-sm text-gray-600">
+                SSO, permissions granulaires, clés API scopées et journaux d'audit, sur une
+                infrastructure que votre organisation qualifie déjà — y compris la santé,
+                sur votre infrastructure ou celle de votre hébergeur certifié.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sécurité & gouvernance -->
+      <section class="border-t border-gray-200" id="security">
+        <div class="px-4 lg:px-8 py-16">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">La sécurité est un processus, pas une liste de fonctions</h2>
+            <p class="text-gray-600 mb-6">
+              Les vulnérabilités se signalent en privé, avec un accusé de réception sous
+              trois jours ouvrés et une première évaluation sous dix jours. Les correctifs
+              paraissent dans la dernière version, avec un avis public indiquant la version
+              qui corrige — et rester à jour fait partie du modèle, avec environ quatre
+              versions par mois. La clé de licence elle-même est vérifiée hors-ligne : rien
+              de votre installation ne nous est jamais remonté.
+            </p>
+            <a href="https://github.com/notifuse/notifuse/blob/main/SECURITY.md" class="text-primary font-semibold hover:underline" target="_blank" rel="noopener noreferrer">Lire notre politique de sécurité →</a>
+            </div>
+            <SecurityPreview lang="fr" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Déploiement -->
+      <section class="border-t border-gray-200" id="deploy">
+        <div class="px-4 lg:px-8 py-16">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4">Déployez-le vous-même, gratuitement</h2>
+            <p class="text-gray-600 mb-6">
+              Aucune redevance pour commencer : installez Notifuse sur un serveur avec
+              PostgreSQL et un fournisseur d'envoi, et utilisez-le en production avec trois
+              workspaces. Vous payez votre infrastructure et vos envois — rien par email,
+              par contact ni par siège. Une clé de licence débloque workspaces
+              supplémentaires, permissions, SSO et journaux d'audit quand votre organisation
+              en a besoin.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="https://docs.notifuse.com/self-hosting/installation" class="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-primary/80 transition-colors">Installer gratuitement</a>
+              <a href="/fr/tarifs/auto-heberge" class="border border-gray-200 text-gray-700 px-4 py-2 rounded-md font-semibold hover:bg-white transition-colors">Comparer les licences</a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -209,7 +305,7 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
                   </p>
                 </div>
                 <div
-                  class="bg-gradient-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl w-full md:max-w-72 md:flex-shrink-0"
+                  class="bg-linear-to-br from-gray-200 via-gray-200 to-primary/80 p-px rounded-xl w-full md:max-w-72 md:flex-shrink-0"
                 >
                   <div class="rounded-xl overflow-hidden bg-white">
                     <img
@@ -536,7 +632,9 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
               <div class="text-center">
                 <h3 class="font-semibold text-slate-900 mb-2">Auto-hébergé</h3>
                 <p class="text-gray-600 text-sm mb-4">
-                  Support communautaire via GitHub Issues.
+                  Les licences payantes incluent un support privé par email, du lundi au
+                  vendredi — premier retour sous deux jours ouvrés, un jour si la production
+                  est bloquée. Version gratuite : support communautaire sur GitHub.
                 </p>
                 <a
                   href="https://github.com/notifuse/notifuse/issues"
@@ -569,7 +667,7 @@ import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
                 id="email-input"
                 type="email"
                 placeholder="Votre adresse email"
-                class="flex-1 px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                class="flex-1 px-3 py-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-hidden focus:ring-2 focus:ring-primary focus:border-transparent"
                 required
               />
               <button

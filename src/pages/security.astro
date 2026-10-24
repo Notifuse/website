@@ -1,0 +1,158 @@
+---
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+import GtagHead from "../components/GtagHead.astro"
+import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
+import SecurityPreview from "../components/SecurityPreview.astro"
+
+const lastUpdated = "October 24, 2026"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Security & compliance - Notifuse</title>
+    <meta
+      name="description"
+      content="How Notifuse handles security: SSO, audit logs, granular permissions, offline licence verification, vulnerability disclosure, EU hosting and GDPR. Every claim on this page links to its source."
+    />
+    <link rel="canonical" href="https://notifuse.com/security" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-12 px-4 lg:px-8">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 class="text-4xl font-bold text-slate-900 mb-4">Security &amp; compliance</h1>
+              <p class="text-xl text-gray-600 mb-4">
+                How Notifuse handles security, who is responsible for what, and what happens
+                when a vulnerability is found.
+              </p>
+              <p class="text-sm text-gray-400">Last updated {lastUpdated}</p>
+            </div>
+            <div class="w-full max-w-md mx-auto" style="zoom: 0.8"><SecurityPreview lang="en" /></div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">Self-hosted or Cloud: who does what</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="relative overflow-hidden border border-gray-200 rounded-lg p-6 bg-white">
+                <div class="absolute -top-5 -right-5 pointer-events-none" aria-hidden="true"><svg class="w-24 h-24 text-primary opacity-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div>
+                <h3 class="font-semibold text-slate-900 mb-3">Self-hosted</h3>
+                <p class="text-gray-700 text-sm">
+                  You run Notifuse on your own servers, with your database and your network
+                  rules. We provide the product and the controls below. Your data does not
+                  pass through us.
+                </p>
+              </div>
+              <div class="relative overflow-hidden border border-gray-200 rounded-lg p-6 bg-white">
+                <div class="absolute -top-5 -right-5 pointer-events-none" aria-hidden="true"><svg class="w-24 h-24 text-primary opacity-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 19a4.3 4.3 0 0 1-.6-8.55A6 6 0 0 1 17.9 8.7 4.6 4.6 0 0 1 17.2 19Z"/><path d="m9.5 14.5 2 2 3.5-3.5"/></svg></div>
+                <h3 class="font-semibold text-slate-900 mb-3">Notifuse Cloud</h3>
+                <p class="text-gray-700 text-sm">
+                  We run it in the EU (OVHcloud in France, Google Cloud in Belgium). Each
+                  deployment gets its own PostgreSQL server, daily backups with
+                  point-in-time recovery, and encryption at rest and in transit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">Product controls</h2>
+            <ul class="space-y-5 text-gray-700">
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M12 11v10"/><path d="M12 16h4"/><path d="M12 20h3"/></svg><span><strong class="text-slate-900">Single sign-on (OIDC).</strong>{" "}
+                Users sign in through your identity provider (Microsoft Entra ID, Keycloak,
+                Okta, Google Workspace…). Your MFA rules apply, and tokens are checked on
+                the server. {" "}<a href="https://docs.notifuse.com/self-hosting/sso" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><strong class="text-slate-900">Granular permissions &amp; scoped API keys.</strong>{" "}
+                Set read and write access per area, for users and API keys. Changes take
+                effect straight away.
+                {" "}<a href="https://docs.notifuse.com/features/admins-api-keys" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg><span><strong class="text-slate-900">Audit logs.</strong>{" "}
+                A record of admin actions: who did what, from where, and whether it was
+                allowed. It cannot be edited, it can be exported, and you choose how long
+                it is kept (Enterprise licence).
+                {" "}<a href="https://docs.notifuse.com/features/audit-logs" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg><span><strong class="text-slate-900">Workspace isolation.</strong>{" "}
+                Each workspace has its own database, contacts, campaigns and settings.
+                Entities cannot see each other's data.
+                {" "}<a href="https://docs.notifuse.com/features/workspaces" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/><path d="M16.85 11.25a10 10 0 0 1 2.22 1.68"/><path d="M5 13a10 10 0 0 1 5.24-2.76"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="m2 2 20 20"/></svg><span><strong class="text-slate-900">Offline licence verification.</strong>{" "}
+                Licence keys are checked locally, inside the program. No account is needed
+                and nothing about your installation is sent to us.
+                {" "}<a href="/pricing/self-hosted" class="text-primary hover:underline">How licensing works</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><span><strong class="text-slate-900">Auditable code.</strong>{" "}
+                The source code is public. Each release is published under BSL 1.1 and
+                becomes AGPL-3.0 after four years.
+                {" "}<a href="https://github.com/notifuse/notifuse" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Repository</a> ·
+                {" "}<a href="https://github.com/notifuse/notifuse/blob/main/LICENSE" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">LICENSE</a></span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">When a vulnerability is found</h2>
+            <p class="text-gray-700 mb-4">
+              Please report vulnerabilities privately, through GitHub or by email at
+              {" "}<a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>.
+              We reply within <strong>three business days</strong> and give a first
+              assessment within <strong>ten business days</strong>. We publish the details
+              once a fix is out, and we credit reporters who want to be named.
+            </p>
+            <p class="text-gray-700 mb-4">
+              Fixes are published in the <strong>latest release</strong>, with a public
+              note saying which version fixes the problem. If you self-host, please keep
+              up with releases — there are about four a month. Standard licences do not
+              include a guaranteed fix deadline; one can be agreed in a Custom licence.
+            </p>
+            <p class="text-gray-700">
+              The full policy is in
+              {" "}<a href="https://github.com/notifuse/notifuse/blob/main/SECURITY.md" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">SECURITY.md</a>.
+              Published advisories are on
+              {" "}<a href="https://github.com/notifuse/notifuse/security/advisories" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Data protection</h2>
+            <p class="text-gray-700 mb-4">
+              For your recipients' data, you are the controller and we are the processor
+              (GDPR Article 28). Our data processing terms are in
+              {" "}<a href="/terms" class="text-primary hover:underline">section 9.4 of our Terms</a>.
+              They cover breach notification and help with access or deletion requests.
+              Our sub-processors are OVHcloud (France), Google Cloud (Belgium), Stripe and
+              Postmark (United States). They are listed in our
+              {" "}<a href="/privacy" class="text-primary hover:underline">Privacy Policy</a>, and
+              we tell customers before we add or change one.
+            </p>
+            <p class="text-gray-700">
+              If you self-host, your data stays on your infrastructure and none of this
+              goes through us.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

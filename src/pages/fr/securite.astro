@@ -1,0 +1,161 @@
+---
+import "../../styles/global.css"
+import Navigation from "../../components/Navigation.astro"
+import Footer from "../../components/Footer.astro"
+import GtagHead from "../../components/GtagHead.astro"
+import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
+import SecurityPreview from "../../components/SecurityPreview.astro"
+
+const lastUpdated = "24 octobre 2026"
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Sécurité & conformité - Notifuse</title>
+    <meta
+      name="description"
+      content="Comment Notifuse traite la sécurité : SSO, journaux d'audit, permissions granulaires, vérification de licence hors-ligne, divulgation des vulnérabilités, hébergement européen et RGPD. Chaque affirmation renvoie à sa source."
+    />
+    <link rel="canonical" href="https://notifuse.com/fr/securite" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-12 px-4 lg:px-8">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h1 class="text-4xl font-bold text-slate-900 mb-4">Sécurité &amp; conformité</h1>
+              <p class="text-xl text-gray-600 mb-4">
+                Comment Notifuse gère la sécurité, qui est responsable de quoi, et ce qui
+                se passe quand une vulnérabilité est découverte.
+              </p>
+              <p class="text-sm text-gray-400">Dernière mise à jour : {lastUpdated}</p>
+            </div>
+            <div class="w-full max-w-md mx-auto" style="zoom: 0.8"><SecurityPreview lang="fr" /></div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">Auto-hébergé ou Cloud : qui fait quoi</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="relative overflow-hidden border border-gray-200 rounded-lg p-6 bg-white">
+                <div class="absolute -top-5 -right-5 pointer-events-none" aria-hidden="true"><svg class="w-24 h-24 text-primary opacity-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></div>
+                <h3 class="font-semibold text-slate-900 mb-3">Auto-hébergé</h3>
+                <p class="text-gray-700 text-sm">
+                  Vous exécutez Notifuse sur vos serveurs, avec votre base de données et
+                  vos règles réseau. Nous fournissons le produit et les contrôles
+                  ci-dessous. Vos données ne passent pas par nous.
+                </p>
+              </div>
+              <div class="relative overflow-hidden border border-gray-200 rounded-lg p-6 bg-white">
+                <div class="absolute -top-5 -right-5 pointer-events-none" aria-hidden="true"><svg class="w-24 h-24 text-primary opacity-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 19a4.3 4.3 0 0 1-.6-8.55A6 6 0 0 1 17.9 8.7 4.6 4.6 0 0 1 17.2 19Z"/><path d="m9.5 14.5 2 2 3.5-3.5"/></svg></div>
+                <h3 class="font-semibold text-slate-900 mb-3">Notifuse Cloud</h3>
+                <p class="text-gray-700 text-sm">
+                  Nous l'exécutons dans l'Union européenne (OVHcloud en France, Google
+                  Cloud en Belgique). Chaque déploiement a son propre serveur PostgreSQL,
+                  des sauvegardes quotidiennes avec restauration à un instant donné, et un
+                  chiffrement au repos et en transit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">Contrôles du produit</h2>
+            <ul class="space-y-5 text-gray-700">
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="7" r="4"/><path d="M12 11v10"/><path d="M12 16h4"/><path d="M12 20h3"/></svg><span><strong class="text-slate-900">Authentification unique (OIDC).</strong>{" "}
+                Les utilisateurs se connectent via votre fournisseur d'identité (Microsoft
+                Entra ID, Keycloak, Okta, Google Workspace…). Vos règles MFA s'appliquent,
+                et les jetons sont vérifiés côté serveur. {" "}<a href="https://docs.notifuse.com/self-hosting/sso" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span><strong class="text-slate-900">Permissions granulaires &amp; clés API scopées.</strong>{" "}
+                Définissez les accès en lecture et en écriture par zone, pour les
+                utilisateurs et les clés API. Les changements s'appliquent tout de suite.
+                {" "}<a href="https://docs.notifuse.com/features/admins-api-keys" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg><span><strong class="text-slate-900">Journaux d'audit.</strong>{" "}
+                Un journal des actions d'administration : qui a fait quoi, depuis où, et
+                si c'était autorisé. Il ne peut pas être modifié, il peut être exporté, et
+                vous choisissez combien de temps il est conservé (licence Enterprise).
+                {" "}<a href="https://docs.notifuse.com/features/audit-logs" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg><span><strong class="text-slate-900">Isolation des workspaces.</strong>{" "}
+                Chaque workspace a sa propre base de données, ses contacts, ses campagnes
+                et ses réglages. Les entités ne voient pas les données les unes des autres.
+                {" "}<a href="https://docs.notifuse.com/features/workspaces" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Documentation</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h.01"/><path d="M2 8.82a15 15 0 0 1 4.17-2.65"/><path d="M10.66 5c4.01-.36 8.14.9 11.34 3.76"/><path d="M16.85 11.25a10 10 0 0 1 2.22 1.68"/><path d="M5 13a10 10 0 0 1 5.24-2.76"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="m2 2 20 20"/></svg><span><strong class="text-slate-900">Vérification de licence hors-ligne.</strong>{" "}
+                Les clés de licence sont vérifiées localement, dans le programme. Aucun
+                compte n'est requis et rien de votre installation ne nous est envoyé.
+                {" "}<a href="/fr/tarifs/auto-heberge" class="text-primary hover:underline">Comment fonctionne la licence</a></span></li>
+              <li class="flex gap-3"><svg class="w-5 h-5 text-primary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg><span><strong class="text-slate-900">Code auditable.</strong>{" "}
+                Le code source est public. Chaque version est publiée sous BSL 1.1 et
+                devient AGPL-3.0 après quatre ans.
+                {" "}<a href="https://github.com/notifuse/notifuse" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">Dépôt</a> ·
+                {" "}<a href="https://github.com/notifuse/notifuse/blob/main/LICENSE" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">LICENSE</a></span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Quand une vulnérabilité est découverte</h2>
+            <p class="text-gray-700 mb-4">
+              Merci de signaler les vulnérabilités en privé, via GitHub ou par email à
+              {" "}<a href="mailto:hello@notifuse.com" class="text-primary hover:underline">hello@notifuse.com</a>.
+              Nous répondons sous <strong>trois jours ouvrés</strong> et donnons une
+              première évaluation sous <strong>dix jours ouvrés</strong>. Nous publions
+              les détails une fois le correctif disponible, et nous créditons les
+              chercheurs qui le souhaitent.
+            </p>
+            <p class="text-gray-700 mb-4">
+              Les correctifs sont publiés dans la <strong>dernière version</strong>, avec
+              un avis public indiquant la version qui corrige. Si vous auto-hébergez,
+              merci de suivre les versions — il y en a environ quatre par mois. Les
+              licences standard ne garantissent pas de délai de correction ; un délai
+              peut être convenu dans une licence Custom.
+            </p>
+            <p class="text-gray-700">
+              La politique complète est dans
+              {" "}<a href="https://github.com/notifuse/notifuse/blob/main/SECURITY.md" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">SECURITY.md</a>.
+              Les avis publiés sont sur
+              {" "}<a href="https://github.com/notifuse/notifuse/security/advisories" class="text-primary hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Protection des données</h2>
+            <p class="text-gray-700 mb-4">
+              Pour les données de vos destinataires, vous êtes responsable de traitement
+              et nous sous-traitant (article 28 du RGPD). Nos conditions de sous-traitance
+              sont dans la {" "}<a href="/terms" class="text-primary hover:underline">section 9.4 de nos Conditions</a> (en anglais).
+              Elles couvrent la notification des violations et l'aide pour les demandes
+              d'accès ou de suppression. Nos sous-traitants sont OVHcloud (France), Google
+              Cloud (Belgique), Stripe et Postmark (États-Unis). Ils sont listés dans la
+              {" "}<a href="/privacy" class="text-primary hover:underline">Politique de confidentialité</a>, et
+              nous prévenons nos clients avant tout ajout ou changement.
+            </p>
+            <p class="text-gray-700">
+              En auto-hébergé, vos données restent sur votre infrastructure et rien ne
+              passe par nous.
+            </p>
+          </div>
+        </section>
+
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

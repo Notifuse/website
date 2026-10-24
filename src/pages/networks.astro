@@ -1,0 +1,152 @@
+---
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+import GtagHead from "../components/GtagHead.astro"
+import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
+import WorkspacesPreview from "../components/WorkspacesPreview.astro"
+import PermissionsPreview from "../components/PermissionsPreview.astro"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Multi-entity networks & franchises - Notifuse</title>
+    <meta
+      name="description"
+      content="One email platform for a whole network: headquarters sets templates, translations and permissions; each franchise or entity keeps its own isolated workspace, domain and sending reputation."
+    />
+    <link rel="canonical" href="https://notifuse.com/networks" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-16 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">
+              One email platform for the whole network
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+              Headquarters keeps control of the brand. Every franchise, store or entity
+              sends from its own isolated workspace — its own contacts, domain and sending
+              reputation.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">See the live interface</a>
+              <a href="/pricing/self-hosted" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">See licences</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">The problem with one shared account</h2>
+            <p class="text-gray-700 mb-4">
+              A network usually ends up with one of two bad options. Either every entity
+              shares one marketing account — one badly targeted campaign can damage the
+              sending reputation of the whole network, and nobody can tell who sent what.
+              Or every entity buys its own tool — headquarters loses the brand, the
+              templates and any common view of what is being sent.
+            </p>
+            <p class="text-gray-700">
+              Notifuse is built for the middle: one deployment, many isolated workspaces,
+              governed from the centre.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 class="text-2xl font-bold mb-4">Headquarters sets the frame</h2>
+              <p class="text-gray-700 mb-4">
+                Templates and their translations are prepared centrally, so every entity
+                sends on-brand email in its own language. Permissions decide who can do
+                what in each workspace: a local manager runs their campaigns, headquarters
+                keeps the settings and the integrations.
+              </p>
+              <p class="text-gray-700">
+                Each workspace has its own database, contacts, campaigns and custom domain
+                for tracking and unsubscribe pages. Entities do not see each other's data.
+              </p>
+            </div>
+            <WorkspacesPreview />
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <PermissionsPreview />
+            <div>
+              <h2 class="text-2xl font-bold mb-4">One entity's mistake stays its own</h2>
+              <p class="text-gray-700 mb-4">
+                With Amazon SES tenant isolation, each entity can send under its own
+                reputation and suppression list. A campaign that goes wrong in one store
+                can be paused there — it does not take the rest of the network down with
+                it.
+              </p>
+              <p class="text-gray-700">
+                And because workspaces are isolated, a local team can be given exactly the
+                access it needs, and no more.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">An example</h2>
+            <p class="text-sm text-gray-400 mb-3">Illustrative scenario — not a customer case.</p>
+            <p class="text-gray-700 mb-4">
+              A retail network with 40 locations deploys Notifuse once, on its own
+              servers. Headquarters prepares the templates and the two languages the
+              network uses. Each store gets a workspace with its own contacts and its own
+              domain, and sends its local campaigns. Headquarters can see the frame it
+              set; stores cannot see each other's lists. When the network grows past the
+              workspaces in its licence, it moves to a Custom licence instead of changing
+              tools.
+            </p>
+            <p class="text-gray-700">
+              Access is governed with single sign-on and granular permissions, and admin
+              actions are kept in audit logs. Details are on our
+              {" "}<a href="/security" class="text-primary hover:underline">security page</a>.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Licences for networks</h2>
+            <p class="text-gray-700 mb-4">
+              Start free with three workspaces. Studio covers five, Agency and Enterprise
+              fifteen — with permissions, SES tenant isolation and template translations,
+              plus single sign-on and audit logs on Enterprise. More than fifteen
+              workspaces, or a network-wide rollout? That is a
+              {" "}<a href="/pricing/self-hosted#custom" class="text-primary hover:underline">Custom licence</a>,
+              quoted per deployment.
+            </p>
+            <p class="text-gray-700 mb-6">
+              Paid licences include private email support, Monday to Friday — first reply
+              within two business days, one when production is blocked.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/pricing/self-hosted" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Compare licences</a>
+              <a href="mailto:hello@notifuse.com?subject=Custom%20licence%20—%20network" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Talk about a Custom licence</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  </body>
+</html>

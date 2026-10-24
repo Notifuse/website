@@ -6,6 +6,7 @@ import GtagHead from "../components/GtagHead.astro"
 import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
 import VerifyIcon from "../components/VerifyIcon.astro"
 import CustomModal from "../components/CustomModal.astro"
+import RegulatedCloud from "../components/RegulatedCloud.astro"
 ---
 
 <html lang="en">
@@ -31,19 +32,22 @@ import CustomModal from "../components/CustomModal.astro"
 
       <main>
         <section class="pt-20 pb-16 px-4 lg:px-8">
-          <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">
-              Email on infrastructure you already qualify
-            </h1>
-            <p class="text-xl text-gray-600 mb-8">
-              For health, insurance, finance and other regulated organisations:
-              deploy Notifuse inside the perimeter you already control, with the
-              access controls and the audit trail your reviewers ask for.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">See the live interface</a>
-              <a href="/security" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Read our security page</a>
+          <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="text-center lg:text-left">
+              <h1 class="text-4xl font-bold text-slate-900 mb-4">
+                Email on infrastructure you already qualify
+              </h1>
+              <p class="text-xl text-gray-600 mb-8">
+                For health, insurance, finance and other regulated organisations:
+                deploy Notifuse inside the perimeter you already control, with the
+                access controls and the audit trail your reviewers ask for.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">See the live interface</a>
+                <a href="/security" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Read our security page</a>
+              </div>
             </div>
+            <div class="w-full max-w-[520px] mx-auto"><RegulatedCloud /></div>
           </div>
         </section>
 

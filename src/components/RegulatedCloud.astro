@@ -1,0 +1,79 @@
+---
+const { lang = "en" } = Astro.props
+
+const logoModules = import.meta.glob(
+  "../assets/regulatedcloud/*.{svg,png,webp,jpg}",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+) as Record<string, string>
+
+const logoSrc = (slug: string) =>
+  Object.entries(logoModules).find(([path]) =>
+    path.includes(`/regulatedcloud/${slug}.`),
+  )?.[1]
+
+// h = display height (px) scaled so every logo occupies the same
+// surface: its mark bounding box (median of all logos, internal file
+// padding excluded), measured by rasterizing each file.
+const brands = [
+  { "name": "ISO", "slug": "iso", "h": 50.1 },
+  { "name": "ANS — HDS health data hosting", "slug": "ans-hds", "h": 28.7 },
+  { "name": "AICPA — SOC 2", "slug": "aicpa-soc", "h": 87.4 },
+  { "name": "PCI DSS", "slug": "pci-dss", "h": 28.8 },
+  { "name": "ANSSI", "slug": "anssi", "h": 52.3 },
+  { "name": "CNIL", "slug": "cnil", "h": 19 },
+  { "name": "NIST", "slug": "nist", "h": 19 },
+  { "name": "FedRAMP", "slug": "fedramp", "h": 98.3 },
+  { "name": "ENISA", "slug": "enisa", "h": 59.5 },
+  { "name": "Cloud Security Alliance", "slug": "csa", "h": 31.2 },
+  { "name": "AFNOR Certification", "slug": "afnor", "h": 40 },
+  { "name": "European Union — GDPR", "slug": "gdpr-eu", "h": 42.6 },
+]
+
+// Globe layout: 1 logo at the centre, 5 on a middle ring, the rest on
+// the outer ring. Outer logos are scaled down (perspective) like a tag
+// cloud on a sphere. Base size is h / 2, scaled up 30%.
+const placed = brands.map((brand, i) => {
+  const ring = i === 0 ? 0 : i <= 5 ? 1 : 2
+  const count = ring === 0 ? 1 : ring === 1 ? 5 : brands.length - 6
+  const idx = ring === 0 ? 0 : ring === 1 ? i - 1 : i - 6
+  const angle =
+    ring === 0
+      ? 0
+      : ((-90 + (idx * 360) / count + (ring === 2 ? 20 : 0)) * Math.PI) / 180
+  const radius = ring === 0 ? 0 : ring === 1 ? 15 : 26
+  const depth = [1, 0.9, 0.78][ring]
+  const top = 50 + radius * Math.sin(angle)
+  return {
+    ...brand,
+    ring,
+    left: 50 + radius * Math.cos(angle),
+    // Remap the cluster (centres span 24-76% of a square) to fill the
+    // cropped container height, so no empty margin sits above it.
+    top: ((top - 23) / 56) * 100,
+    displayH: ((brand.h / 2) * 1.3 * depth) / 5.2,
+  }
+})
+---
+
+<div>
+  <div
+    class="relative mx-auto aspect-[26/15] w-full max-w-[520px]"
+    style="container-type: inline-size"
+    role="img"
+    aria-label={brands.map((brand) => brand.name).join(", ")}
+  >
+    {placed.map((brand) => (
+      <img
+        src={logoSrc(brand.slug)}
+        alt={brand.name}
+        loading="lazy"
+        style={`left: ${brand.left}%; top: ${brand.top}%; height: ${brand.displayH}cqw; transform: translate(-50%, -50%)`}
+        class="absolute w-auto max-w-[28%] object-contain"
+      />
+    ))}
+  </div>
+</div>

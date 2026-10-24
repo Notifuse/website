@@ -1,0 +1,175 @@
+---
+const { lang = "en" } = Astro.props
+const isFr = lang === "fr"
+
+const t = isFr ? {
+  organisation: "Organisation",
+  name: "Votre nom",
+  email: "Email professionnel",
+  segment: "Segment",
+  segments: ["Réseau multi-entités", "Secteur public", "Industries régulées", "Autre"],
+  workspaces: "Nombre de workspaces estimé",
+  hosting: "Hébergement envisagé",
+  hostings: ["Nos serveurs", "Cloud européen", "Hébergeur certifié", "À définir"],
+  message: "Parlez-nous de votre projet",
+  submit: "Envoyer la demande",
+  sending: "Envoi en cours…",
+  sent: "Demande envoyée. Nous revenons vers vous sous deux jours ouvrés.",
+  error: "L'envoi a échoué. Écrivez-nous à hello@notifuse.com.",
+  checkFields: "Vérifiez les champs entourés en rouge.",
+  errRequired: "Ce champ est requis.",
+  errEmail: "Adresse email invalide.",
+  errMessage: "Parlez-nous un peu plus de votre projet (10 caractères minimum).",
+  errWorkspaces: "Un nombre entier positif.",
+} : {
+  organisation: "Organisation",
+  name: "Your name",
+  email: "Work email",
+  segment: "Segment",
+  segments: ["Multi-entity network", "Public sector", "Regulated industries", "Other"],
+  workspaces: "Estimated number of workspaces",
+  hosting: "Planned hosting",
+  hostings: ["Our own servers", "European cloud", "Certified host", "Not decided yet"],
+  message: "Tell us about your project",
+  submit: "Send the request",
+  sending: "Sending…",
+  sent: "Request sent. We reply within two business days.",
+  error: "Sending failed. Write to us at hello@notifuse.com.",
+  checkFields: "Check the fields outlined in red.",
+  errRequired: "This field is required.",
+  errEmail: "Invalid email address.",
+  errMessage: "Tell us a bit more about your project (10 characters minimum).",
+  errWorkspaces: "A positive whole number.",
+}
+---
+
+<form id={`custom-form-${lang}`} class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl" novalidate>
+  <label class="block">
+    <span class="block text-sm font-semibold text-gray-900 mb-1">{t.organisation} *</span>
+    <input required name="organisation" type="text" maxlength="120" class="w-full border border-primary rounded-md px-3 py-2 bg-white outline-none focus:ring-1 focus:ring-primary/60" />
+  </label>
+  <label class="block">
+    <span class="block text-sm font-semibold text-gray-900 mb-1">{t.name} *</span>
+    <input required name="name" type="text" maxlength="120" class="w-full border border-primary rounded-md px-3 py-2 bg-white outline-none focus:ring-1 focus:ring-primary/60" />
+  </label>
+  <label class="block">
+    <span class="block text-sm font-semibold text-gray-900 mb-1">{t.email} *</span>
+    <input required name="email" type="email" maxlength="120" class="w-full border border-primary rounded-md px-3 py-2 bg-white outline-none focus:ring-1 focus:ring-primary/60" />
+  </label>
+  <label class="block">
+    <span class="block text-sm font-semibold text-gray-900 mb-1">{t.workspaces}</span>
+    <input name="workspaces" type="text" inputmode="numeric" maxlength="20" class="w-full border border-primary rounded-md px-3 py-2 bg-white outline-none focus:ring-1 focus:ring-primary/60" />
+  </label>
+  <fieldset class="sm:col-span-2">
+    <legend class="text-sm font-semibold text-gray-900 mb-2">{t.segment}</legend>
+    <div class="flex flex-wrap gap-2">
+      {t.segments.map((s, i) => (
+        <label class="inline-flex items-center gap-2 border border-primary rounded-md px-3 py-2 bg-white cursor-pointer has-checked:border-primary has-checked:bg-primary/5">
+          <input type="radio" name="segment" value={s} checked={i === 0} class="accent-primary" />
+          <span class="text-sm text-gray-700">{s}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+  <fieldset class="sm:col-span-2">
+    <legend class="text-sm font-semibold text-gray-900 mb-2">{t.hosting}</legend>
+    <div class="flex flex-wrap gap-2">
+      {t.hostings.map((s, i) => (
+        <label class="inline-flex items-center gap-2 border border-primary rounded-md px-3 py-2 bg-white cursor-pointer has-checked:border-primary has-checked:bg-primary/5">
+          <input type="radio" name="hosting" value={s} checked={i === 0} class="accent-primary" />
+          <span class="text-sm text-gray-700">{s}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+  <label class="block sm:col-span-2">
+    <span class="block text-sm font-semibold text-gray-900 mb-1">{t.message} *</span>
+    <textarea required name="message" rows="4" maxlength="4000" class="w-full border border-primary rounded-md px-3 py-2 bg-white outline-none focus:ring-1 focus:ring-primary/60"></textarea>
+  </label>
+  <!-- Honeypot: hidden from humans, filled by bots -->
+  <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+  <div class="sm:col-span-2">
+    <button type="submit" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">{t.submit}</button>
+    <p class="form-status text-sm mt-3 hidden" role="status"></p>
+  </div>
+</form>
+
+<script is:inline define:vars={{ lang, sending: t.sending, sent: t.sent, error: t.error, checkFields: t.checkFields, errRequired: t.errRequired, errEmail: t.errEmail, errMessage: t.errMessage, errWorkspaces: t.errWorkspaces }}>
+  (function () {
+    var form = document.getElementById("custom-form-" + lang)
+    if (!form) return
+    var status = form.querySelector(".form-status")
+
+    function showError(input, msg) {
+      input.classList.remove("border-primary"); input.classList.add("border-red-500")
+      input.setAttribute("aria-invalid", "true")
+      var err = input.parentElement.querySelector(".field-error")
+      if (!err) {
+        err = document.createElement("p")
+        err.className = "field-error text-red-600 text-xs mt-1"
+        input.parentElement.appendChild(err)
+      }
+      err.textContent = msg
+    }
+    function clearError(input) {
+      input.classList.remove("border-red-500"); input.classList.add("border-primary")
+      input.removeAttribute("aria-invalid")
+      var err = input.parentElement.querySelector(".field-error")
+      if (err) err.remove()
+    }
+    form.querySelectorAll("input, textarea").forEach(function (input) {
+      input.addEventListener("input", function () { clearError(input) })
+    })
+
+    function validate() {
+      var firstInvalid = null
+      function check(name, ok, msg) {
+        var input = form.querySelector('[name="' + name + '"]')
+        if (!input) return
+        clearError(input)
+        if (!ok) {
+          showError(input, msg)
+          if (!firstInvalid) firstInvalid = input
+        }
+      }
+      var val = function (n) { var el = form.querySelector('[name="' + n + '"]'); return el ? (el.value || "").trim() : "" }
+      check("organisation", val("organisation").length > 0, errRequired)
+      check("name", val("name").length > 0, errRequired)
+      check("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val("email")), val("email") ? errEmail : errRequired)
+      check("workspaces", val("workspaces") === "" || (/^\d+$/.test(val("workspaces")) && parseInt(val("workspaces"), 10) > 0), errWorkspaces)
+      check("message", val("message").length >= 10, val("message") ? errMessage : errRequired)
+      return firstInvalid
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault()
+      var invalid = validate()
+      if (invalid) {
+        status.textContent = checkFields
+        status.classList.remove("hidden", "text-green-700", "text-gray-600")
+        status.classList.add("text-red-600")
+        invalid.focus()
+        return
+      }
+      status.textContent = sending
+      status.classList.remove("hidden", "text-red-600", "text-green-700")
+      status.classList.add("text-gray-600")
+      var data = Object.fromEntries(new FormData(form).entries())
+      fetch("/api/custom", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then(function (r) { if (!r.ok) throw new Error(r.status) })
+        .then(function () {
+          form.reset()
+          status.textContent = sent
+          status.classList.add("text-green-700")
+        })
+        .catch(function () {
+          status.textContent = error
+          status.classList.add("text-red-600")
+        })
+    })
+  })()
+</script>

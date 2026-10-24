@@ -18,6 +18,15 @@ const t = isFr ? {
   licencesHref: "/fr/tarifs/auto-heberge",
   compare: "Comparer les alternatives",
   compareHref: "/fr/compare",
+  segments: "Segments",
+  segNetworks: "Réseaux multi-entités",
+  segNetworksHref: "/fr/reseaux",
+  segPublic: "Secteur public",
+  segPublicHref: "/fr/secteur-public",
+  segRegulated: "Industries régulées",
+  segRegulatedHref: "/fr/industries-regulees",
+  segSecurity: "Sécurité & conformité",
+  segSecurityHref: "/fr/securite",
   docs: "Documentation",
   apiRef: "Référence API",
   legal: "Mentions légales",
@@ -36,6 +45,15 @@ const t = isFr ? {
   licencesHref: "/pricing/self-hosted",
   compare: "Compare Alternatives",
   compareHref: "/compare",
+  segments: "Segments",
+  segNetworks: "Multi-entity networks",
+  segNetworksHref: "/networks",
+  segPublic: "Public sector",
+  segPublicHref: "/public-sector",
+  segRegulated: "Regulated industries",
+  segRegulatedHref: "/regulated-industries",
+  segSecurity: "Security & compliance",
+  segSecurityHref: "/security",
   docs: "Documentation",
   apiRef: "API Reference",
   legal: "Legal",
@@ -48,7 +66,7 @@ const t = isFr ? {
 
 <footer class="border-t border-gray-200 py-12">
   <div class="max-w-5xl mx-auto px-4 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
       <div class="col-span-1 md:col-span-2">
         <img src={logoMedium.src} alt="Notifuse" class="h-8 mb-4" />
         <p class="text-gray-600 mb-4 max-w-md">
@@ -63,6 +81,16 @@ const t = isFr ? {
           <span class="text-gray-300">·</span>
           <a id="lang-fr" href="/fr/" class="text-gray-400 hover:text-gray-700 transition-colors">Français</a>
         </div>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-gray-900 mb-4">{t.segments}</h3>
+        <ul class="space-y-2">
+          <li><a href={t.segNetworksHref} class="text-gray-600 hover:text-gray-900 transition-colors">{t.segNetworks}</a></li>
+          <li><a href={t.segPublicHref} class="text-gray-600 hover:text-gray-900 transition-colors">{t.segPublic}</a></li>
+          <li><a href={t.segRegulatedHref} class="text-gray-600 hover:text-gray-900 transition-colors">{t.segRegulated}</a></li>
+          <li><a href={t.segSecurityHref} class="text-gray-600 hover:text-gray-900 transition-colors">{t.segSecurity}</a></li>
+        </ul>
       </div>
 
       <div>
@@ -182,22 +210,40 @@ const t = isFr ? {
   var frLink = document.getElementById('lang-fr');
   if (!enLink || !frLink) return;
 
+  // Bidirectional EN <-> FR slugs. Pages with no counterpart in the
+  // other language (privacy, terms) keep their own path: never invent
+  // a /fr/... URL, it would 404.
   var slugMap = {
+    '/': '/fr', '/fr': '/',
+    '/networks': '/fr/reseaux', '/fr/reseaux': '/networks',
+    '/public-sector': '/fr/secteur-public',
+    '/fr/secteur-public': '/public-sector',
+    '/security': '/fr/securite', '/fr/securite': '/security',
+    '/regulated-industries': '/fr/industries-regulees',
+    '/fr/industries-regulees': '/regulated-industries',
     '/pricing': '/fr/tarifs', '/fr/tarifs': '/pricing',
     '/pricing/cloud': '/fr/tarifs/cloud', '/fr/tarifs/cloud': '/pricing/cloud',
     '/pricing/self-hosted': '/fr/tarifs/auto-heberge',
-    '/fr/tarifs/auto-heberge': '/pricing/self-hosted'
+    '/fr/tarifs/auto-heberge': '/pricing/self-hosted',
+    '/compare': '/fr/compare', '/fr/compare': '/compare'
   };
+
+  function counterpart(p, toFr) {
+    if (slugMap[p]) return slugMap[p];
+    if (toFr && p.startsWith('/compare/')) return '/fr' + p;
+    if (!toFr && p.startsWith('/fr/compare/')) return p.replace(/^\/fr/, '');
+    return p;
+  }
 
   function addSlash(p) { return p === '/' ? '/' : p + '/'; }
 
   var enPath, frPath;
   if (isFr) {
     frPath = path;
-    enPath = slugMap[path] || path.replace(/^\/fr/, '') || '/';
+    enPath = counterpart(path, false);
   } else {
     enPath = path;
-    frPath = slugMap[path] || '/fr' + (path === '/' ? '' : path);
+    frPath = counterpart(path, true);
   }
 
   enLink.href = addSlash(enPath);

@@ -6,6 +6,8 @@ import GtagHead from "../../components/GtagHead.astro"
 import NotifuseAnalytics from "../../components/NotifuseAnalytics.astro"
 import WorkspacesPreview from "../../components/WorkspacesPreview.astro"
 import PermissionsPreview from "../../components/PermissionsPreview.astro"
+import LogoCloud from "../../components/LogoCloud.astro"
+import CustomModal from "../../components/CustomModal.astro"
 ---
 
 <html lang="fr">
@@ -30,20 +32,23 @@ import PermissionsPreview from "../../components/PermissionsPreview.astro"
       <Navigation />
 
       <main>
-        <section class="pt-28 pb-16 px-4 lg:px-8">
-          <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl font-bold text-slate-900 mb-4">
-              Une seule plateforme email pour tout le réseau
-            </h1>
-            <p class="text-xl text-gray-600 mb-8">
-              Le siège garde la main sur la marque. Chaque franchise, magasin ou entité
-              envoie depuis son propre workspace isolé — ses contacts, son domaine et sa
-              réputation d'envoi.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-3 justify-center">
-              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Voir l'interface en direct</a>
-              <a href="/fr/tarifs/auto-heberge" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Voir les licences</a>
+        <section class="pt-20 pb-16 px-4 lg:px-8">
+          <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div class="text-center lg:text-left">
+              <h1 class="text-4xl font-bold text-slate-900 mb-4">
+                Une seule plateforme email pour tout le réseau
+              </h1>
+              <p class="text-xl text-gray-600 mb-8">
+                Le siège garde la main sur la marque. Chaque franchise, magasin ou entité
+                envoie depuis son propre workspace isolé — ses contacts, son domaine et sa
+                réputation d'envoi.
+              </p>
+              <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Voir l'interface en direct</a>
+                <a href="/fr/tarifs/auto-heberge" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Voir les licences</a>
+              </div>
             </div>
+            <div class="w-full max-w-[520px] mx-auto"><LogoCloud lang="fr" /></div>
           </div>
         </section>
 
@@ -145,12 +150,13 @@ import PermissionsPreview from "../../components/PermissionsPreview.astro"
             </p>
             <div class="flex flex-wrap gap-3">
               <a href="/fr/tarifs/auto-heberge" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Comparer les licences</a>
-              <a href="mailto:hello@notifuse.com?subject=Licence%20Custom%20—%20réseau" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Parlons de votre licence Custom</a>
+              <button type="button" data-custom-open class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Parlons de votre licence Custom</button>
             </div>
           </div>
         </section>
       </main>
 
+      <CustomModal lang="fr" />
       <Footer />
     </div>
   </body>

@@ -1,0 +1,121 @@
+---
+import "../styles/global.css"
+import Navigation from "../components/Navigation.astro"
+import Footer from "../components/Footer.astro"
+import GtagHead from "../components/GtagHead.astro"
+import NotifuseAnalytics from "../components/NotifuseAnalytics.astro"
+import VerifyIcon from "../components/VerifyIcon.astro"
+import CustomModal from "../components/CustomModal.astro"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Public sector - Notifuse</title>
+    <meta
+      name="description"
+      content="Email for public organisations, hosted on your own infrastructure: auditable code, data that stays in your perimeter, SSO and audit logs, and purchasing by quote and purchase order."
+    />
+    <link rel="canonical" href="https://notifuse.com/public-sector" />
+    <meta name="robots" content="index, follow" />
+    <GtagHead />
+    <NotifuseAnalytics />
+  </head>
+
+  <body class="bg-white-98 text-slate-900">
+    <div class="container relative border-r border-l border-gray-200">
+      <Navigation />
+
+      <main>
+        <section class="pt-28 pb-16 px-4 lg:px-8">
+          <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl font-bold text-slate-900 mb-4">
+              Email that stays on your infrastructure
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">
+              For public organisations that must keep citizen data in their own
+              perimeter: deploy Notifuse on your servers, with auditable code and no
+              data leaving your network.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a href="https://demo.notifuse.com/console/signin?email=demo@notifuse.com" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">See the live interface</a>
+              <a href="/security" class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Read our security page</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Why public organisations self-host</h2>
+            <p class="text-gray-700 mb-4">
+              A hosted marketing platform puts residents' email addresses, names and
+              reading habits on someone else's servers, under someone else's
+              sub-processors. For a public body, that means a data processing review for
+              every campaign tool — and a dependency you cannot inspect.
+            </p>
+            <p class="text-gray-700">
+              Self-hosted, the picture is simpler: the software runs where your other
+              systems already run, the database is yours, and the code can be read by
+              your own teams.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6">What you can verify before you buy</h2>
+            <ul class="space-y-4 text-gray-700">
+              <li class="flex gap-3"><VerifyIcon name="code" /><span><strong class="text-slate-900">The code.</strong>{" "}The source is public, and each release becomes AGPL-3.0 after four years.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="licence" /><span><strong class="text-slate-900">The licence.</strong>{" "}What needs a key, what never will, and what happens without one — written, dated and versioned on our{" "}<a href="/pricing/self-hosted" class="text-primary hover:underline">licence page</a>.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="shield" /><span><strong class="text-slate-900">The security process.</strong>{" "}Private vulnerability reports, a reply within three business days, fixes in the latest release with a public advisory. Details on our{" "}<a href="/security" class="text-primary hover:underline">security page</a>.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="users" /><span><strong class="text-slate-900">Access control.</strong>{" "}Single sign-on through your identity provider, granular permissions, and audit logs of admin actions.</span></li>
+              <li class="flex gap-3"><VerifyIcon name="wifi-off" /><span><strong class="text-slate-900">No phone-home.</strong>{" "}Licence keys are checked locally. Nothing about your installation is sent to us.</span></li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">An example</h2>
+            <p class="text-sm text-gray-400 mb-3">Illustrative scenario — not a customer case.</p>
+            <p class="text-gray-700 mb-4">
+              A group of municipalities runs Notifuse on its shared infrastructure. Each
+              town has its own workspace, contacts and domain; the shared IT service
+              keeps the templates and the settings. Staff sign in through the
+              organisation's identity provider, and admin actions are kept in audit
+              logs. Newsletters and transactional messages — registration confirmations,
+              service alerts — go out through the provider the group already uses.
+            </p>
+            <p class="text-gray-700">
+              Each workspace is isolated in its own database, so one town never sees
+              another town's residents.
+            </p>
+          </div>
+        </section>
+
+        <section class="py-16 px-4 lg:px-8 border-t border-gray-200">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">How purchasing works</h2>
+            <p class="text-gray-700 mb-4">
+              Standard licences are bought online. Larger deployments — several
+              entities, more than fifteen workspaces, specific requirements — use a
+              {" "}<a href="/pricing/self-hosted#custom" class="text-primary hover:underline">Custom licence</a>:
+              quoted per deployment, with purchase-order purchasing. Paid licences
+              include private email support in English and French, Monday to Friday.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/pricing/self-hosted" class="bg-primary text-white px-6 py-2.5 rounded-md font-semibold hover:bg-primary/90 transition-colors">Compare licences</a>
+              <button type="button" data-custom-open class="border border-gray-200 text-gray-700 px-6 py-2.5 rounded-md font-semibold hover:bg-white transition-colors">Talk about a Custom licence</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <CustomModal />
+      <Footer />
+    </div>
+  </body>
+</html>

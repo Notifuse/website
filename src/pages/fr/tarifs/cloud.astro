@@ -24,6 +24,12 @@ const plans = [
     dataRetention: "12 mois",
     workspaces: "3",
     teamMembers: "3",
+    permissions: "—",
+    sesTenant: "—",
+    translations: "—",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: null,
   },
   {
     id: "starter",
@@ -37,8 +43,14 @@ const plans = [
     monthlyTimeline: "200,000",
     monthlyPageviews: "200,000",
     dataRetention: "12 mois",
-    workspaces: "5",
+    workspaces: "3",
     teamMembers: "3",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates",
   },
   {
     id: "pro",
@@ -54,6 +66,12 @@ const plans = [
     dataRetention: "24 mois",
     workspaces: "10",
     teamMembers: "10",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates",
   },
   {
     id: "business",
@@ -69,6 +87,12 @@ const plans = [
     dataRetention: "36 mois",
     workspaces: "20",
     teamMembers: "25",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "✓",
+    auditLogs: "✓",
+    capabilityLine: "<strong>SSO</strong> et <strong>journaux d’audit</strong>, en plus de tout Pro",
   },
 ]
 
@@ -80,6 +104,11 @@ const comparisonFeatures = [
   { label: "Conservation des données", key: "dataRetention", tooltip: "Durée pendant laquelle les données timeline et analytics restent interrogeables pour la segmentation" },
   { label: "Espaces de travail", key: "workspaces", tooltip: "Environnements isolés avec contacts, campagnes et paramètres séparés" },
   { label: "Membres d'équipe", key: "teamMembers", tooltip: "Utilisateurs pouvant accéder à votre compte" },
+  { label: "Permissions granulaires", key: "permissions", tooltip: "Donnez à chaque membre ou clé API uniquement les permissions nécessaires, au lieu d'un accès complet" },
+  { label: "Isolation de tenant Amazon SES", key: "sesTenant", tooltip: "Chaque intégration SES a sa propre réputation d'envoi et sa propre liste de suppression" },
+  { label: "Traductions de templates", key: "translations", tooltip: "Un template, traduit selon la langue de chaque contact" },
+  { label: "Authentification unique (OIDC)", key: "sso", tooltip: "Connexion via votre fournisseur d'identité : Google Workspace, Okta, Microsoft Entra ID, Keycloak…" },
+  { label: "Journaux d'audit", key: "auditLogs", tooltip: "Qui a fait quoi dans un workspace, avec avant/après, filtres et export" },
 ]
 
 const includedFeatures = [
@@ -123,7 +152,7 @@ const faqs = [
   {
     question: "Que se passe-t-il après l'essai de 14 jours ?",
     answer:
-      "Pendant votre essai, vous avez un accès complet à toutes les fonctionnalités. Une carte bancaire est requise pour démarrer l'essai — vous ne serez pas débité avant la fin de la période d'essai. Avant la fin de l'essai, nous vous rappelons de choisir un plan. Si vous ne vous abonnez pas, votre instance est suspendue (pas supprimée) — vos données sont conservées pendant 30 jours pour vous permettre de réactiver à tout moment.",
+      "Pendant votre essai, vous avez tout ce qu'inclut le plan choisi. Une carte bancaire est requise pour démarrer l'essai — vous ne serez pas débité avant la fin de la période d'essai. Avant la fin de l'essai, nous vous rappelons de choisir un plan. Si vous ne vous abonnez pas, votre instance est suspendue (pas supprimée) — vos données sont conservées pendant 30 jours pour vous permettre de réactiver à tout moment.",
   },
   {
     question: "Puis-je changer de plan ?",
@@ -148,7 +177,7 @@ const faqs = [
   {
     question: "Existe-t-il une option gratuite ?",
     answer:
-      "Oui — Notifuse est gratuit à exécuter et à auto-héberger, sans frais par email, par contact ni par siège, jamais. Six capacités demandent une clé de licence (voir /fr/tarifs/auto-heberge) ; tout le reste est gratuit et le reste. Notifuse Cloud est la version managée pour les équipes qui ne veulent pas gérer leur propre infrastructure, et elle inclut toutes les capacités.",
+      "Oui — Notifuse est gratuit à exécuter et à auto-héberger, sans frais par email, par contact ni par siège, jamais. Six capacités demandent une clé de licence (voir /fr/tarifs/auto-heberge) ; tout le reste est gratuit et le reste. Notifuse Cloud est la version managée pour les équipes qui ne veulent pas gérer leur propre infrastructure : Starter et Pro incluent les permissions granulaires, l'isolation de tenant SES et les traductions de templates, et Business y ajoute le SSO et les journaux d'audit.",
   },
   {
     question: "Que signifie la conservation des données ?",
@@ -167,7 +196,7 @@ const faqs = [
     <title>Tarifs - Notifuse Cloud</title>
     <meta
       name="description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Apportez votre propre ESP. Essai gratuit 14 jours."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Apportez votre propre ESP. Essai gratuit 14 jours."
     />
 
     <link rel="canonical" href="https://www.notifuse.com/fr/tarifs/cloud" />
@@ -179,13 +208,13 @@ const faqs = [
     <meta property="og:title" content="Tarifs - Notifuse Cloud" />
     <meta
       property="og:description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Essai gratuit."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Essai gratuit."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tarifs - Notifuse Cloud" />
     <meta
       name="twitter:description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités incluses sur chaque plan. Emails illimités. Essai gratuit."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Essai gratuit."
     />
 
     <GtagHead />
@@ -217,7 +246,7 @@ const faqs = [
             Arrêtez de payer par email
           </h1>
           <p class="text-xl text-gray-600 mb-2">
-            Toutes les fonctionnalités sur chaque plan. Apportez votre propre ESP et envoyez des emails illimités.
+            Toutes les fonctionnalités marketing sur chaque plan. Apportez votre propre ESP et envoyez des emails illimités.
           </p>
           <p class="text-gray-500">
             Essai gratuit 14 jours sur tous les plans
@@ -311,7 +340,7 @@ const faqs = [
                   Essai gratuit
                 </a>
                 <p class="text-xs text-gray-500 text-center">
-                  Testez toutes les fonctionnalités 14 jours
+                  Essai gratuit de 14 jours de ce plan
                 </p>
 
                 <div class="mt-6 pt-6 border-t border-gray-100 flex-1">
@@ -324,6 +353,7 @@ const faqs = [
                       `${plan.workspaces} espace${plan.workspaces === "1" ? "" : "s"} de travail`,
                       `${plan.teamMembers} membres d'équipe`,
                       "Emails illimités",
+                      ...(plan.capabilityLine ? [plan.capabilityLine] : []),
                     ].map((label) => (
                       <li>
                         <span set:html={label} />
@@ -583,7 +613,7 @@ const faqs = [
             Comparer les plans
           </h2>
           <p class="text-gray-600 text-center mb-10">
-            Tous les plans incluent toutes les fonctionnalités. Les plans diffèrent par l'échelle et la conservation des données.
+            Toutes les fonctionnalités marketing sont sur chaque plan. Les plans diffèrent par l'échelle, la conservation des données et les fonctions d'administration.
           </p>
 
           <div class="overflow-x-auto">

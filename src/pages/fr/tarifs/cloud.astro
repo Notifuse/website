@@ -17,10 +17,10 @@ const plans = [
     annual: 190,
     annualPerMonth: 16,
     highlighted: false,
-    activeContacts: "2,500",
-    storedContacts: "10,000",
-    monthlyTimeline: "50,000",
-    monthlyPageviews: "50,000",
+    activeContacts: "2,5k",
+    storedContacts: "10k",
+    monthlyTimeline: "50k",
+    monthlyPageviews: "50k",
     dataRetention: "12 mois",
     workspaces: "3",
     teamMembers: "3",
@@ -38,10 +38,10 @@ const plans = [
     annual: 468,
     annualPerMonth: 39,
     highlighted: true,
-    activeContacts: "10,000",
-    storedContacts: "50,000",
-    monthlyTimeline: "200,000",
-    monthlyPageviews: "200,000",
+    activeContacts: "10k",
+    storedContacts: "50k",
+    monthlyTimeline: "200k",
+    monthlyPageviews: "200k",
     dataRetention: "12 mois",
     workspaces: "3",
     teamMembers: "3",
@@ -59,10 +59,10 @@ const plans = [
     annual: 1188,
     annualPerMonth: 99,
     highlighted: false,
-    activeContacts: "25,000",
-    storedContacts: "150,000",
-    monthlyTimeline: "500,000",
-    monthlyPageviews: "500,000",
+    activeContacts: "25k",
+    storedContacts: "150k",
+    monthlyTimeline: "500k",
+    monthlyPageviews: "500k",
     dataRetention: "24 mois",
     workspaces: "10",
     teamMembers: "10",
@@ -80,10 +80,10 @@ const plans = [
     annual: 2988,
     annualPerMonth: 249,
     highlighted: false,
-    activeContacts: "50,000",
-    storedContacts: "300,000",
-    monthlyTimeline: "1,000,000",
-    monthlyPageviews: "1,000,000",
+    activeContacts: "50k",
+    storedContacts: "300k",
+    monthlyTimeline: "1M",
+    monthlyPageviews: "1M",
     dataRetention: "36 mois",
     workspaces: "20",
     teamMembers: "25",
@@ -92,7 +92,7 @@ const plans = [
     translations: "✓",
     sso: "✓",
     auditLogs: "✓",
-    capabilityLine: "<strong>SSO</strong> et <strong>journaux d’audit</strong>, en plus de tout Pro",
+    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates, <strong>SSO</strong> et <strong>journaux d’audit</strong>",
   },
 ]
 
@@ -137,7 +137,7 @@ const faqs = [
   {
     question: "Que se passe-t-il si je dépasse les limites de mon plan ?",
     answer:
-      "Il n'y a aucun frais de dépassement, vos campagnes ne sont jamais interrompues, et nous n'arrêtons jamais d'enregistrer le trafic de votre site. Nous vous notifions à 80 % et 100 % des limites de votre plan. Si vous dépassez votre palier, vous passez simplement au plan supérieur lors de votre prochain cycle de facturation — pas de frais surprise, aucune action requise de votre côté. Les pics de trafic sont traités avec souplesse : un seul gros mois — un lancement, un lien en une — ne vous fait pas changer de plan. Nous ne vous demandons de changer que si vous dépassez la limite de pages vues deux mois de suite, ou de plus de 3×.",
+      "Il n'y a aucun frais de dépassement, vos campagnes ne sont jamais interrompues, et nous n'arrêtons jamais d'enregistrer le trafic de votre site. Nous vous notifions à 80 % et 100 % des limites de votre plan. Si vous dépassez votre palier, vous passez simplement au plan supérieur lors de votre prochain cycle de facturation — pas de frais surprise, aucune action requise de votre côté. Les pics de trafic sont traités avec souplesse : un seul gros mois — un lancement, un lien en une — ne vous fait pas changer de plan. Nous ne vous demandons de changer que si vous dépassez la limite de pages vues deux mois de suite, ou de plus de 3×. Ce passage au plan supérieur est un changement de plan comme un autre. Si vous vous êtes abonné avant que les plans ne débloquent des capacités sous licence différentes, vous passez aux capacités du nouveau plan : passer de Lite à Starter ou de Starter à Pro retire le SSO et les journaux d'audit, passer de Pro à Business ne retire rien, et votre nombre de workspaces ne baisse jamais.",
   },
   {
     question: "Dois-je payer pour l'envoi d'emails ?",
@@ -196,7 +196,7 @@ const faqs = [
     <title>Tarifs - Notifuse Cloud</title>
     <meta
       name="description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Apportez votre propre ESP. Essai gratuit 14 jours."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Emails illimités. Apportez votre propre ESP. Essai gratuit 14 jours."
     />
 
     <link rel="canonical" href="https://www.notifuse.com/fr/tarifs/cloud" />
@@ -208,13 +208,13 @@ const faqs = [
     <meta property="og:title" content="Tarifs - Notifuse Cloud" />
     <meta
       property="og:description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Essai gratuit."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Emails illimités. Essai gratuit."
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tarifs - Notifuse Cloud" />
     <meta
       name="twitter:description"
-      content="Tarifs simples et transparents pour Notifuse Cloud. Toutes les fonctionnalités marketing sur chaque plan. Emails illimités. Essai gratuit."
+      content="Tarifs simples et transparents pour Notifuse Cloud. Emails illimités. Essai gratuit."
     />
 
     <GtagHead />
@@ -246,7 +246,7 @@ const faqs = [
             Arrêtez de payer par email
           </h1>
           <p class="text-xl text-gray-600 mb-2">
-            Toutes les fonctionnalités marketing sur chaque plan. Apportez votre propre ESP et envoyez des emails illimités.
+            Apportez votre propre ESP et envoyez des emails illimités.
           </p>
           <p class="text-gray-500">
             Essai gratuit 14 jours sur tous les plans
@@ -613,7 +613,7 @@ const faqs = [
             Comparer les plans
           </h2>
           <p class="text-gray-600 text-center mb-10">
-            Toutes les fonctionnalités marketing sont sur chaque plan. Les plans diffèrent par l'échelle, la conservation des données et les fonctions d'administration.
+            Les plans diffèrent par l'échelle, la conservation des données et les capacités sous licence qu'ils débloquent.
           </p>
 
           <div class="overflow-x-auto">

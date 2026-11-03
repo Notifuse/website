@@ -92,7 +92,7 @@ export const licensedCapabilities = {
     {
       title: "Granular permissions",
       body: "Setting a member's permissions in the permission editor (refused whatever the set, full access included), inviting a member with a restricted set, or creating an API key with a restricted scope you choose. Permissions already granted stay enforced in every licence state — the authorization engine never consults the licence — and removing a member is always allowed, because that is what revokes a leaked API key.",
-      refusedAt: "Saving permissions, inviting with a restricted set, creating an API key with a restricted scope you choose",
+      refusedAt: "Saving permissions, inviting with a restricted set, restricting a new API key",
     },
     {
       title: "Amazon SES tenant isolation",
@@ -124,7 +124,7 @@ export const licensedCapabilities = {
     {
       title: "Permissions granulaires",
       body: "Définir les permissions d'un membre dans l'éditeur de permissions (refusé quel que soit le jeu, accès complet compris), inviter avec un jeu restreint, ou créer une clé API avec un scope restreint de votre choix. Les permissions déjà accordées restent appliquées dans tout état de licence — le moteur d'autorisation ne consulte jamais la licence — et retirer un membre est toujours possible, parce que c'est ce qui révoque une clé fuitée.",
-      refusedAt: "À l'enregistrement des permissions, à l'invitation restreinte, à la création d'une clé API avec un scope restreint de votre choix",
+      refusedAt: "À l'enregistrement des permissions, à l'invitation restreinte, à la restriction d'une nouvelle clé API",
     },
     {
       title: "Isolation de tenant Amazon SES",

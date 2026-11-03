@@ -28,7 +28,7 @@ const plans = [
     translations: "—",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: null,
+    capabilityLines: [] as string[],
   },
   {
     id: "starter",
@@ -49,7 +49,7 @@ const plans = [
     translations: "✓",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: "Granular permissions, SES isolation, template translations",
+    capabilityLines: ["Granular permissions, SES isolation, template translations"],
   },
   {
     id: "pro",
@@ -70,7 +70,7 @@ const plans = [
     translations: "✓",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: "Granular permissions, SES isolation, template translations",
+    capabilityLines: ["Granular permissions, SES isolation, template translations"],
   },
   {
     id: "business",
@@ -91,7 +91,7 @@ const plans = [
     translations: "✓",
     sso: "✓",
     auditLogs: "✓",
-    capabilityLine: "Granular permissions, SES isolation, template translations, <strong>SSO</strong> and <strong>audit logs</strong>",
+    capabilityLines: ["Granular permissions, SES isolation, template translations", "<strong>SSO</strong>", "<strong>Audit logs</strong>"],
   },
 ]
 
@@ -339,7 +339,7 @@ const faqs = [
                       `${plan.workspaces} workspace${plan.workspaces === "1" ? "" : "s"}`,
                       `${plan.teamMembers} team members`,
                       "Unlimited emails",
-                      ...(plan.capabilityLine ? [plan.capabilityLine] : []),
+                      ...plan.capabilityLines,
                     ].map((label) => (
                       <li>
                         <span set:html={label} />

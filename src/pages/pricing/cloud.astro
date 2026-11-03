@@ -23,6 +23,12 @@ const plans = [
     dataRetention: "12 months",
     workspaces: "3",
     teamMembers: "3",
+    permissions: "—",
+    sesTenant: "—",
+    translations: "—",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: null,
   },
   {
     id: "starter",
@@ -36,8 +42,14 @@ const plans = [
     monthlyTimeline: "200,000",
     monthlyPageviews: "200,000",
     dataRetention: "12 months",
-    workspaces: "5",
+    workspaces: "3",
     teamMembers: "3",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: "Granular permissions, SES isolation, template translations",
   },
   {
     id: "pro",
@@ -53,6 +65,12 @@ const plans = [
     dataRetention: "24 months",
     workspaces: "10",
     teamMembers: "10",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "—",
+    auditLogs: "—",
+    capabilityLine: "Granular permissions, SES isolation, template translations",
   },
   {
     id: "business",
@@ -68,6 +86,12 @@ const plans = [
     dataRetention: "36 months",
     workspaces: "20",
     teamMembers: "25",
+    permissions: "✓",
+    sesTenant: "✓",
+    translations: "✓",
+    sso: "✓",
+    auditLogs: "✓",
+    capabilityLine: "<strong>SSO</strong> and <strong>audit logs</strong>, plus everything in Pro",
   },
 ]
 
@@ -79,6 +103,11 @@ const comparisonFeatures = [
   { label: "Data retention", key: "dataRetention", tooltip: "How long timeline and analytics data stays queryable for segmentation" },
   { label: "Workspaces", key: "workspaces", tooltip: "Isolated environments with separate contacts, campaigns, and settings" },
   { label: "Team members", key: "teamMembers", tooltip: "Users who can access your account" },
+  { label: "Granular permissions", key: "permissions", tooltip: "Give each member or API key only the permissions it needs, instead of full access" },
+  { label: "Amazon SES tenant isolation", key: "sesTenant", tooltip: "Each SES integration gets its own sending reputation and suppression list" },
+  { label: "Template translations", key: "translations", tooltip: "One template, translated per contact language" },
+  { label: "Single sign-on (OIDC)", key: "sso", tooltip: "Sign in with your identity provider: Google Workspace, Okta, Microsoft Entra ID, Keycloak…" },
+  { label: "Audit logs", key: "auditLogs", tooltip: "Who did what in a workspace, with before/after, filters and export" },
 ]
 
 const includedFeatures = [
@@ -122,7 +151,7 @@ const faqs = [
   {
     question: "What happens after the 14-day trial?",
     answer:
-      "During your trial, you get full access to all features. A credit card is required to start the trial — you won't be charged until the trial ends. Before the trial ends, we'll remind you to pick a plan. If you don't subscribe, your instance is suspended (not deleted) — your data is preserved for 30 days so you can reactivate anytime.",
+      "During your trial, you get everything in the plan you picked. A credit card is required to start the trial — you won't be charged until the trial ends. Before the trial ends, we'll remind you to pick a plan. If you don't subscribe, your instance is suspended (not deleted) — your data is preserved for 30 days so you can reactivate anytime.",
   },
   {
     question: "Can I switch plans?",
@@ -147,7 +176,7 @@ const faqs = [
   {
     question: "Is there a free option?",
     answer:
-      'Yes — Notifuse is free to run and free to self-host, with no per-email, per-contact or per-seat fee, ever. Six capabilities need a licence key (see /pricing/self-hosted); everything else is free and stays free. Notifuse Cloud is the managed version for teams who don\'t want to maintain their own infrastructure, and it includes every capability.',
+      'Yes — Notifuse is free to run and free to self-host, with no per-email, per-contact or per-seat fee, ever. Six capabilities need a licence key (see /pricing/self-hosted); everything else is free and stays free. Notifuse Cloud is the managed version for teams who don\'t want to maintain their own infrastructure: Starter and Pro include granular permissions, SES tenant isolation and template translations, and Business adds SSO and audit logs.',
   },
   {
     question: "What does data retention mean?",
@@ -166,7 +195,7 @@ const faqs = [
     <title>Pricing - Notifuse Cloud</title>
     <meta
       name="description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Bring your own ESP. Start your 14-day free trial today."
+      content="Simple, transparent pricing for Notifuse Cloud. Every marketing feature on every plan. Unlimited emails. Bring your own ESP. Start your 14-day free trial today."
     />
 
     <link rel="canonical" href="https://www.notifuse.com/pricing/cloud" />
@@ -178,13 +207,13 @@ const faqs = [
     <meta property="og:title" content="Pricing - Notifuse Cloud" />
     <meta
       property="og:description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Start free."
+      content="Simple, transparent pricing for Notifuse Cloud. Every marketing feature on every plan. Unlimited emails. Start free."
     />
 <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Pricing - Notifuse Cloud" />
     <meta
       name="twitter:description"
-      content="Simple, transparent pricing for Notifuse Cloud. All features included on every plan. Unlimited emails. Start free."
+      content="Simple, transparent pricing for Notifuse Cloud. Every marketing feature on every plan. Unlimited emails. Start free."
     />
     <GtagHead />
 
@@ -203,8 +232,8 @@ const faqs = [
             Stop paying per email
           </h1>
           <p class="text-xl text-gray-600 mb-2">
-            Every feature on every plan. Bring your own ESP and send unlimited
-            emails.
+            Every marketing feature on every plan. Bring your own ESP and send
+            unlimited emails.
           </p>
           <p class="text-gray-500">
             14-day free trial on any plan
@@ -298,7 +327,7 @@ const faqs = [
                   Start free trial
                 </a>
                 <p class="text-xs text-gray-500 text-center">
-                  Try premium features for 14 days
+                  14-day free trial of this plan
                 </p>
 
                 <div class="mt-6 pt-6 border-t border-gray-100 flex-1">
@@ -311,6 +340,7 @@ const faqs = [
                       `${plan.workspaces} workspace${plan.workspaces === "1" ? "" : "s"}`,
                       `${plan.teamMembers} team members`,
                       "Unlimited emails",
+                      ...(plan.capabilityLine ? [plan.capabilityLine] : []),
                     ].map((label) => (
                       <li>
                         <span set:html={label} />
@@ -574,8 +604,8 @@ const faqs = [
             Compare plans
           </h2>
           <p class="text-gray-600 text-center mb-10">
-            All plans include every feature. Plans differ by scale and
-            retention.
+            Every marketing feature is on every plan. Plans differ by scale,
+            retention and administration features.
           </p>
 
           <div class="overflow-x-auto">

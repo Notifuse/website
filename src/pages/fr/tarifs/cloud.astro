@@ -29,7 +29,7 @@ const plans = [
     translations: "—",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: null,
+    capabilityLines: [] as string[],
   },
   {
     id: "starter",
@@ -50,7 +50,7 @@ const plans = [
     translations: "✓",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates",
+    capabilityLines: ["Permissions granulaires, isolation SES, traductions de templates"],
   },
   {
     id: "pro",
@@ -71,7 +71,7 @@ const plans = [
     translations: "✓",
     sso: "—",
     auditLogs: "—",
-    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates",
+    capabilityLines: ["Permissions granulaires, isolation SES, traductions de templates"],
   },
   {
     id: "business",
@@ -92,7 +92,7 @@ const plans = [
     translations: "✓",
     sso: "✓",
     auditLogs: "✓",
-    capabilityLine: "Permissions granulaires, isolation SES, traductions de templates, <strong>SSO</strong> et <strong>journaux d’audit</strong>",
+    capabilityLines: ["Permissions granulaires, isolation SES, traductions de templates", "<strong>SSO</strong>", "<strong>Journaux d'audit</strong>"],
   },
 ]
 
@@ -353,7 +353,7 @@ const faqs = [
                       `${plan.workspaces} espace${plan.workspaces === "1" ? "" : "s"} de travail`,
                       `${plan.teamMembers} membres d'équipe`,
                       "Emails illimités",
-                      ...(plan.capabilityLine ? [plan.capabilityLine] : []),
+                      ...plan.capabilityLines,
                     ].map((label) => (
                       <li>
                         <span set:html={label} />
